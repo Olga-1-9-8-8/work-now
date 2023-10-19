@@ -1,5 +1,5 @@
-function App() {
-  return import.meta.env.MODE
-}
+import { WorkerSearchListPage } from "./features/workerSearch/list";
 
-export default App
+export const App = () => {
+  return <WorkerSearchListPage />;
+};
