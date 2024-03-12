@@ -25,10 +25,9 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "@stylexjs"],
+  "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "react/prop-types": "off",
-    "@stylexjs/valid-styles": "error",
     "import/prefer-default-export": "off",
     "import/no-default-export": "error",
     "unicorn/filename-case": [
