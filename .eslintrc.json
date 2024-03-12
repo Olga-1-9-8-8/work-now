@@ -27,6 +27,7 @@
   },
   "plugins": ["react", "@typescript-eslint", "@stylexjs"],
   "rules": {
+    "react/prop-types": "off",
     "@stylexjs/valid-styles": "error",
     "import/prefer-default-export": "off",
     "import/no-default-export": "error",
@@ -58,7 +59,8 @@
           "props": true,
           "Ref": true,
           "err": true,
-          "ref": true
+          "ref": true,
+          "e": true
         }
       }
     ],
