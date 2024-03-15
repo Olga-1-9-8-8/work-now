@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg viewBox="0 0 235 86" xmlns="http://www.w3.org/2000/svg">
 <text transform="matrix(1.3279 0 0 1.3289 -68.857 -28.087)" x="77.26122342863738" y="85.60971627134785" fill="#ffffff" font-family="Ubuntu, sans-serif" font-size="28" font-style="italic" font-weight="bold" stroke="null" stroke-opacity="null" stroke-width="0" xml:space="preserve">WN</text>
-<ellipse cx="18.5" cy="53.453" rx="20.5" ry="19" fill="	#7c3aed" stroke="null" stroke-opacity="null" stroke-width="null"/>
-<ellipse cx="31.5" cy="40.453" rx="20.5" ry="19" fill="#16a34a" stroke="null" stroke-opacity="null" stroke-width="null"/>
+<ellipse cx="18.5" cy="53.453" rx="14" ry="14" fill="	#7c3aed" stroke="null" stroke-opacity="null" stroke-width="null"/>
+<ellipse cx="31.5" cy="40.453" rx="15" ry="15" fill="#16a34a" stroke="null" stroke-opacity="null" stroke-width="null"/>
 </svg>
