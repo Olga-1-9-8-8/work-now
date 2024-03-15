@@ -16,7 +16,7 @@ export const useResponsiveContext = () => {
 };
 
 export const ResponsiveProvider = ({ children }: ResponsiveProviderProps) => {
-  const isMobile = useMediaQuery("(hover: none) and (pointer: coarse)");
+  const isMobile = useMediaQuery("(hover: none) and (pointer: coarse), (max-width: 768px)");
 
   const value = React.useMemo<ResponsiveContextType>(() => ({ isMobile }), [isMobile]);
 
