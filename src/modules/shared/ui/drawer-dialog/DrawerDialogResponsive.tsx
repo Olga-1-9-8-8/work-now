@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { useMediaQuery } from "../../hooks";
-import { Button } from "../buttons/Button";
+import { useMediaQuery } from "../../responsive";
 import {
   Dialog,
   DialogContent,
@@ -51,9 +50,7 @@ export const DrawerDialogResponsive = ({
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerTrigger asChild>
-        <Button variant="outline">{button}</Button>
-      </DrawerTrigger>
+      <DrawerTrigger asChild>{button}</DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="text-left">
           <DrawerTitle>{title}</DrawerTitle>
