@@ -1,1 +1,1 @@
-export { useCreateContext } from "./hooks/useCreateContext";
+export { createContext } from "./createContext";

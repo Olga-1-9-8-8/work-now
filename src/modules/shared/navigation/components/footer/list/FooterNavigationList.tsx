@@ -5,9 +5,9 @@ export const FooterNavigationList = () => {
   return (
     <ul className="hidden flex-col text-sm leading-loose text-white lg:flex lg:flex-row xl:gap-2">
       <FooterNavigationListItem href={siteConfig.links.twitter} title="Built by">
-        OlgaKoroleva &trade; &#46;
+        Olga Koroleva &trade; &#46;
       </FooterNavigationListItem>
-      <FooterNavigationListItem href={siteConfig.links.vercel} title="Hosted ony">
+      <FooterNavigationListItem href={siteConfig.links.vercel} title="Hosted on">
         Vercel &#46;
       </FooterNavigationListItem>
       <FooterNavigationListItem
