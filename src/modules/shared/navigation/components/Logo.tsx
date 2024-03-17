@@ -17,7 +17,7 @@ export const Logo = ({ isShort = false }: LogoProps) => {
       {isMobile || isShort ? (
         <LogoIconSmall className="h-20 w-52" />
       ) : (
-        <LogoIcon className="h-24 w-48" />
+        <LogoIcon className="h-24 w-40 lg:w-48" />
       )}
     </Link>
   );

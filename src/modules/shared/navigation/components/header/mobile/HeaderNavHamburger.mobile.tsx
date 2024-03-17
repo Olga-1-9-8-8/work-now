@@ -1,0 +1,43 @@
+import { Menu } from "lucide-react";
+import { MainNavItem } from "../../../../configs/mainNavConfig";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "../../../../ui/nav-menu/NavigationMenu";
+import { HeaderNavListItemLink } from "../link/HeaderNavListItemLink";
+
+interface HeaderNavHamburgerMobileProps {
+  items: MainNavItem[];
+}
+
+export const HeaderNavHamburgerMobile = ({ items }: HeaderNavHamburgerMobileProps) => {
+  return (
+    <NavigationMenu delayDuration={100}>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>
+            <Menu size={46} className="text-white" />
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="w-[300px] p-4">
+              {items.map((i: MainNavItem) => {
+                return (
+                  <HeaderNavListItemLink
+                    className="flex-row gap-4 text-base font-bold text-dark"
+                    key={i.title}
+                    to={i.href}
+                    title={i.title}
+                    icon={i.icon}
+                  />
+                );
+              })}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
+  );
+};
