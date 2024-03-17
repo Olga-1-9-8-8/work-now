@@ -10,7 +10,7 @@ export const LkDetailsCard = ({ title, children }: LkDetailsCardProps) => {
   return (
     <div className="flex flex-col gap-6">
       <CardTitle>{title}</CardTitle>
-      <Card className="w-50vh md:w-3/5">
+      <Card className="w-full">
         <CardContent className="p-10">{children}</CardContent>
       </Card>
     </div>

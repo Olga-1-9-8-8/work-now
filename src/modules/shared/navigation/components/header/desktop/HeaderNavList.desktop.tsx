@@ -12,7 +12,7 @@ interface HeaderNavListDesktopProps {
 
 export const HeaderNavListDesktop = ({ items }: HeaderNavListDesktopProps) => {
   return (
-    <NavigationMenu delayDuration={100}>
+    <NavigationMenu delayDuration={100} className="justify-end">
       <NavigationMenuList className="gap-2 pl-2 lg:gap-8">
         {items.map((item) => {
           return (

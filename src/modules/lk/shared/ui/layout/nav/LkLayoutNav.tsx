@@ -1,20 +1,34 @@
-import { FileText, Heart, Home, Mails, UserCircle2 } from "lucide-react";
+import { lkNavConfig } from "../../../../../shared/configs/lkNavConfig";
+import { HeaderNavListItemLink } from "../../../../../shared/navigation/components/header/link/HeaderNavListItemLink";
+import { useResponsiveContext } from "../../../../../shared/responsive";
 import {
   NavigationMenu,
+  NavigationMenuItem,
   NavigationMenuList,
 } from "../../../../../shared/ui/nav-menu/NavigationMenu";
-import { LkLayoutNavItem } from "./item/LkLayoutNavItem";
 
 export const LkLayoutNav = () => {
+  const isMobile = useResponsiveContext();
+
   return (
-    <NavigationMenu className="mt-4 max-w-full">
-      <NavigationMenuList className="gap-20">
-        <LkLayoutNavItem icon={<Home size={24} />} title="Главная" to="" />
-        <LkLayoutNavItem icon={<UserCircle2 size={24} />} title="Профиль" to="details" />
-        <LkLayoutNavItem icon={<Heart size={24} />} title="Избранное" to="favorites" />
-        <LkLayoutNavItem icon={<FileText size={24} />} title="Мои резюме" to="resumes" />
-        <LkLayoutNavItem icon={<Mails size={24} />} title="Отклики" to="applications" />
-      </NavigationMenuList>
-    </NavigationMenu>
+    <div className="flex justify-center">
+      <NavigationMenu delayDuration={100} className="p-4">
+        <NavigationMenuList>
+          {lkNavConfig.map((i) => {
+            return (
+              <NavigationMenuItem>
+                <HeaderNavListItemLink
+                  className="flex-col text-base font-bold text-dark lg:flex-row lg:gap-4"
+                  key={i.title}
+                  to={i.href}
+                  title={isMobile ? undefined : i.title}
+                  icon={i.icon}
+                />
+              </NavigationMenuItem>
+            );
+          })}
+        </NavigationMenuList>
+      </NavigationMenu>
+    </div>
   );
 };
