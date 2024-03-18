@@ -5,9 +5,8 @@ import { LkDetailsPersonalDataCard } from "./cards/LkDetailsPersonalDataCard";
 export const LkDetails = () => {
   // TODO : временно, получать из стора
   const user: User = {
-    image: "https://github.com/shadcn.png",
     name: "Ольга",
-    gender: "Женский",
+    gender: "female",
     phone: "7(202) 456-78-45",
   };
 

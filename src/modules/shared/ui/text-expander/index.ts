@@ -1,0 +1,1 @@
+export { TextExpander } from "./TextExpander";

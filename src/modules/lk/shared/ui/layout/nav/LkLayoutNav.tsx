@@ -16,10 +16,9 @@ export const LkLayoutNav = () => {
         <NavigationMenuList>
           {lkNavConfig.map((i) => {
             return (
-              <NavigationMenuItem>
+              <NavigationMenuItem key={i.title}>
                 <HeaderNavListItemLink
                   className="flex-col text-base font-bold text-dark lg:flex-row lg:gap-4"
-                  key={i.title}
                   to={i.href}
                   title={isMobile ? undefined : i.title}
                   icon={i.icon}

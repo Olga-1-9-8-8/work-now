@@ -16,8 +16,8 @@ export const HeaderNavListDesktop = ({ items }: HeaderNavListDesktopProps) => {
       <NavigationMenuList className="gap-2 pl-2 lg:gap-8">
         {items.map((item) => {
           return (
-            <NavigationMenuItem>
-              <HeaderNavListItemDesktop key={item.title} item={item} />
+            <NavigationMenuItem key={item.title}>
+              <HeaderNavListItemDesktop item={item} />
             </NavigationMenuItem>
           );
         })}

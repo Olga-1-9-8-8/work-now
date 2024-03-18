@@ -1,5 +1,6 @@
 import { Pencil } from "lucide-react";
 import { Avatar } from "../../../../shared/components/avatar";
+import { getGenderTitle } from "../../../../shared/components/user";
 import { User } from "../../../../shared/components/user/types/User";
 import { Button } from "../../../../shared/ui/buttons/Button";
 import { DrawerDialogResponsive } from "../../../../shared/ui/drawer-dialog/DrawerDialogResponsive";
@@ -26,10 +27,12 @@ export const LkDetailsPersonalDataCard = ({ user }: LkDetailsPersonalDataCardPro
             }
             title="Изменить данные профиля"
           >
-            <LkDetailsForm />
+            <LkDetailsForm user={user} />
           </DrawerDialogResponsive>
         </div>
-        <p className="font-medium text-muted-foreground">Пол: {user.gender || "Не указан"} </p>
+        <p className="font-medium text-muted-foreground">
+          Пол: {(user.gender && getGenderTitle(user.gender)) || "Не указан"}
+        </p>
         <p className="font-medium text-muted-foreground">Телефон: {user.phone || "Не указан"}</p>
       </section>
     </LkDetailsCard>

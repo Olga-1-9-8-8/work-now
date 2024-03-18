@@ -1,6 +1,8 @@
+import { GenderType } from "./GenderType";
+
 export interface User {
   name: string;
-  image: string;
-  gender: "Мужской" | "Женский";
+  image?: File;
+  gender: GenderType;
   phone: string;
 }

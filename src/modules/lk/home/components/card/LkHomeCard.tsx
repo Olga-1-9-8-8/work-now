@@ -18,7 +18,10 @@ export const LkHomeCard = ({ item, className }: LkHomeCardProps) => {
     <Card
       variant="clickable"
       onClick={() => navigate(item.href)}
-      className={cn("mt-6 flex min-h-56 w-2/5 flex-col justify-between p-8 pb-0", className)}
+      className={cn(
+        "mt-6 flex min-h-56 w-full flex-col justify-between p-8 pb-0 lg:w-2/5",
+        className,
+      )}
     >
       <CardHeader className="flex flex-row items-center gap-6">
         <Avatar className="h-20 w-20" icon={item.icon} />
