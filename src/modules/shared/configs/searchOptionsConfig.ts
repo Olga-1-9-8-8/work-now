@@ -1,11 +1,11 @@
-interface SearchOptionsItemOptions {
+export interface SearchOptionsItemOption {
   title: string;
   value: string;
 }
 
-interface SearchOptionsItem {
+export interface SearchOptionsItem {
   title: string;
-  options: SearchOptionsItemOptions[];
+  options: SearchOptionsItemOption[];
 }
 
 export type SearchOptions = {
