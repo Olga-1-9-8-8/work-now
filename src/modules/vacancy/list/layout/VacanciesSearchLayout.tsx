@@ -14,7 +14,7 @@ export const VacanciesSearchLayout = () => {
   return (
     <PageContainer>
       <div className="flex flex-col gap-6 border-b-2 border-primary py-4">
-        <div className="flex justify-between">
+        <div className="flex flex-col items-start justify-between gap-4 md:flex-row">
           <h2 className="text-xl font-semibold">
             {position} в {city}, найдено {total} вакансий
           </h2>

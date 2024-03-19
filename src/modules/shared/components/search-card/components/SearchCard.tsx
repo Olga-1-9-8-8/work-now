@@ -23,7 +23,7 @@ export const SearchCard = ({ data, image, onClick }: SearchCardProps) => {
   return (
     <Card variant="clickable" onClick={() => onClick(id)}>
       <CardHeader>
-        <div className="flex justify-between">
+        <div className="flex flex-col justify-between gap-4 md:flex-row">
           <div className="flex flex-col gap-1">
             <div className="flex items-center gap-4">
               <Avatar className="h-16 w-16" user={{ image, name: fullName }} />

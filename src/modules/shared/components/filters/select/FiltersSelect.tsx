@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { SearchOptionsItemOption } from "../../../configs/searchOptionsConfig";
 import {
   Select,
@@ -14,10 +15,11 @@ interface FiltersSelectProps {
 }
 
 export const FiltersSelect = ({ title, options }: FiltersSelectProps) => {
+  const [value, setValue] = useState("");
   return (
-    <Select>
-      <SelectTrigger className="w-[280px]">
-        <SelectValue placeholder={title} />
+    <Select value={value} onValueChange={setValue}>
+      <SelectTrigger className="w-full sm:w-[280px]">
+        <SelectValue placeholder={title} aria-label={value} />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>

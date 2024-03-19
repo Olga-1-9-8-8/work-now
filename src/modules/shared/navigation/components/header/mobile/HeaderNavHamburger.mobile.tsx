@@ -15,10 +15,10 @@ interface HeaderNavHamburgerMobileProps {
 
 export const HeaderNavHamburgerMobile = ({ items }: HeaderNavHamburgerMobileProps) => {
   return (
-    <NavigationMenu delayDuration={100}>
+    <NavigationMenu delayDuration={100} className="justify-end">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>
+          <NavigationMenuTrigger className="mr-10 sm:mr-5">
             <Menu size={46} className="text-white" />
           </NavigationMenuTrigger>
           <NavigationMenuContent>

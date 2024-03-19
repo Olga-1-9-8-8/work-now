@@ -14,7 +14,9 @@ export const SwitchWithLabel = React.forwardRef<HTMLDivElement, InputLabeledProp
     return (
       <div className={cn("flex items-center space-x-2", className)} ref={ref}>
         <Switch id={id} {...props} />
-        <Label htmlFor={id}>{label}</Label>
+        <Label htmlFor={id} className="text-nowrap">
+          {label}
+        </Label>
       </div>
     );
   },

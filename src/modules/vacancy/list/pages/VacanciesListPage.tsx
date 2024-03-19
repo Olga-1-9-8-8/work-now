@@ -15,7 +15,7 @@ const VacanciesListPage = () => {
   }
 
   return (
-    <div className="p-4">
+    <div className="py-4">
       {vacancies ? (
         <VacanciesList vacancies={vacancies} />
       ) : (
