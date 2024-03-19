@@ -16,10 +16,10 @@ import {
   FormMessage,
 } from "../../../ui/form/Form";
 import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSeparator,
-  InputOTPSlot,
+  InputOtp,
+  InputOtpGroup,
+  InputOtpSeparator,
+  InputOtpSlot,
 } from "../../../ui/inputs/InputOTP";
 import { InputWithLabel } from "../../../ui/inputs/InputWithLabel";
 import { PageContainer } from "../../../ui/layout";
@@ -88,26 +88,26 @@ export const AuthLoginPage = () => {
                 <FormItem>
                   <FormLabel>Укажите номер телефона</FormLabel>
                   <FormControl>
-                    <InputOTP maxLength={10} {...field} className="">
-                      <InputOTPGroup>
-                        <InputOTPSlot index={0} />
-                        <InputOTPSlot index={1} />
-                        <InputOTPSlot index={2} />
-                      </InputOTPGroup>
-                      {!isMobile && <InputOTPSeparator />}
-                      <InputOTPGroup>
-                        <InputOTPSlot index={3} />
-                        <InputOTPSlot index={4} />
-                        <InputOTPSlot index={5} />
-                      </InputOTPGroup>
-                      {!isMobile && <InputOTPSeparator />}
-                      <InputOTPGroup>
-                        <InputOTPSlot index={6} />
-                        <InputOTPSlot index={7} />
-                        <InputOTPSlot index={8} />
-                        <InputOTPSlot index={9} />
-                      </InputOTPGroup>
-                    </InputOTP>
+                    <InputOtp maxLength={10} {...field} className="">
+                      <InputOtpGroup>
+                        <InputOtpSlot index={0} />
+                        <InputOtpSlot index={1} />
+                        <InputOtpSlot index={2} />
+                      </InputOtpGroup>
+                      {!isMobile && <InputOtpSeparator />}
+                      <InputOtpGroup>
+                        <InputOtpSlot index={3} />
+                        <InputOtpSlot index={4} />
+                        <InputOtpSlot index={5} />
+                      </InputOtpGroup>
+                      {!isMobile && <InputOtpSeparator />}
+                      <InputOtpGroup>
+                        <InputOtpSlot index={6} />
+                        <InputOtpSlot index={7} />
+                        <InputOtpSlot index={8} />
+                        <InputOtpSlot index={9} />
+                      </InputOtpGroup>
+                    </InputOtp>
                   </FormControl>
                   <FormDescription>Вам будет выслан пароль на телефон.</FormDescription>
                   <FormMessage />
