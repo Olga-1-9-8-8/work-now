@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import { userSearchConfig } from "../../../../shared/configs/usersSearchConfig";
+import { userSearchConfig } from "../../../../shared/configs";
 import { HomeSearchBarSearchersItem } from "./item/HomeSearchBarSearchersItem";
 
 export const HomeSearchBarSearchers = () => {

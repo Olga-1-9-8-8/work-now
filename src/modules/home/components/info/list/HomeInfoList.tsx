@@ -1,4 +1,4 @@
-import { userSearchConfig } from "../../../../shared/configs/usersSearchConfig";
+import { userSearchConfig } from "../../../../shared/configs";
 import { HomeInfoListItems } from "./items/HomeInfoListItems";
 
 export const HomeInfoList = () => {
