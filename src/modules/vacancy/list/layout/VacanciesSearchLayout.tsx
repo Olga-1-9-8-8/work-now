@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { SearchFiltersBar } from "../../../shared/components/filters";
 import { SideBar } from "../../../shared/components/side-bar";
+import { userSearchConfig } from "../../../shared/configs";
 import { Button } from "../../../shared/ui/buttons/Button";
 import { PageContainer } from "../../../shared/ui/layout/components/containers/PageContainer";
 
@@ -23,7 +24,7 @@ export const VacanciesSearchLayout = () => {
         </div>
         <SearchFiltersBar />
       </div>
-      <SideBar />
+      <SideBar items={userSearchConfig} />
     </PageContainer>
   );
 };

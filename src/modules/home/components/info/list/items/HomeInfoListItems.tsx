@@ -15,7 +15,7 @@ export const HomeInfoListItems = ({ title, items }: HomeInfoListItemsProps) => {
           return (
             // eslint-disable-next-line react/no-array-index-key
             <li key={index} className="text-nowrap font-medium opacity-65 hover:opacity-100">
-              <Link to="/home">{item.title}</Link>
+              <Link to={item.href}>{item.title}</Link>
             </li>
           );
         })}

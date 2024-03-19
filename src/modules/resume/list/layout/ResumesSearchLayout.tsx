@@ -1,5 +1,6 @@
 import { SearchFiltersBar } from "../../../shared/components/filters";
 import { SideBar } from "../../../shared/components/side-bar";
+import { userSearchConfig } from "../../../shared/configs";
 import { PageContainer } from "../../../shared/ui/layout/components/containers/PageContainer";
 
 export const ResumesSearchLayout = () => {
@@ -17,7 +18,7 @@ export const ResumesSearchLayout = () => {
         </div>
         <SearchFiltersBar />
       </div>
-      <SideBar />
+      <SideBar items={userSearchConfig} />
     </PageContainer>
   );
 };
