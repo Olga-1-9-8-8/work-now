@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
 import { TypographyH5 } from "../../../shared/ui/typography/TypographyH5";
 import { getVacancies } from "../api/apiVacancies";
-import { VacanciesList } from "../components/JobSearchList";
+import { VacanciesList } from "../components/VacanciesList";
 
 const VacanciesListPage = () => {
   const { isLoading, data: vacancies } = useQuery({
