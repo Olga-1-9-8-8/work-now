@@ -15,7 +15,7 @@ export const LkDetailsDeleteAccountCard = () => {
           {/* // TODO : Реализовать удаление аккаунта */}
           <Button
             onClick={() => {
-              navigate("/logout");
+              navigate("/login");
             }}
             variant="link"
             size="lg"

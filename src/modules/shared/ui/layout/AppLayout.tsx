@@ -5,7 +5,7 @@ import { AppLayoutHeader } from "./header/AppLayoutHeader";
 
 export const AppLayout = () => {
   return (
-    <div className="grid min-h-dvh grid-rows-[auto_1fr_auto]">
+    <div className="grid min-h-dvh grid-rows-[auto_1fr_auto] overflow-x-hidden">
       <AppLayoutHeader>
         <HeaderNavigation />
       </AppLayoutHeader>

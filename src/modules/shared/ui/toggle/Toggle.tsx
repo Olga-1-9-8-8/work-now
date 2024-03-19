@@ -3,13 +3,15 @@ import { VariantProps, cva } from "class-variance-authority";
 import * as React from "react";
 import { cn } from "../../utils/cn";
 
-const toggleVariants = cva("", {
+const toggleVariants = cva("w-full rounded-md", {
   variants: {
     variant: {
       default: "",
+      outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
     },
     size: {
       default: "",
+      lg: "h-11 rounded-md px-8",
     },
   },
   defaultVariants: {
@@ -30,7 +32,7 @@ const ToggleGroup = React.forwardRef<
 >(({ className, variant, size, children, ...props }, ref) => (
   <ToggleGroupPrimitive.Root
     ref={ref}
-    className={cn("flex items-center justify-center gap-1", className)}
+    className={cn("flex items-center justify-center gap-1 ", className)}
     {...props}
   >
     <ToggleGroupContext.Provider value={React.useMemo(() => ({ variant, size }), [variant, size])}>

@@ -18,7 +18,7 @@ export const lkConfig: LkItem[] = [
     icon: UserRound,
     linkTitle: "Выйти",
     linkIcon: LogOut,
-    linkHref: "/",
+    linkHref: "/login",
   },
   {
     title: "Избранное",

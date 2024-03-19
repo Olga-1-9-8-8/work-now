@@ -75,7 +75,7 @@ export const mainNavConfig: MainNavItems = [
       },
       {
         title: "Выйти",
-        href: "/logout",
+        href: "/login",
         icon: LogOut,
         permission: UserRoles.Authorized,
       },

@@ -79,10 +79,6 @@ export const routes: RouteObject[] = [
         element: <AuthLoginPage />,
       },
       {
-        path: "/logout",
-        element: <AuthLoginPage />,
-      },
-      {
         path: "lk",
         element: <LkLayout />,
         children: [
