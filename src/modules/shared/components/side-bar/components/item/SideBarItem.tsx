@@ -16,10 +16,9 @@ export const SideBarItem = ({ items, pathname }: SideBarItemProps) => {
       <ItemsExpander
         items={items}
         render={(item, index) => (
-          <div className="flex items-center gap-3 ">
+          <div className="flex items-center gap-3" key={index}>
             <Checkbox />
             <Link
-              key={index}
               to="/#"
               className={cn("flex w-full items-center rounded-md py-2 hover:underline", {
                 "bg-muted": pathname === item.href,

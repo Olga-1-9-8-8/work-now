@@ -1,3 +1,4 @@
+import * as React from "react";
 import { ComponentPropsWithoutRef } from "react";
 import { cn } from "../../utils/cn";
 import { useFormField } from "../form/Form";
@@ -8,12 +9,14 @@ type TextareaLabeledProps = {
   label: string;
 } & ComponentPropsWithoutRef<"textarea">;
 
-export const TextareaWithLabel = ({ label, className, ...props }: TextareaLabeledProps) => {
-  const { id } = useFormField();
-  return (
-    <div className={cn("grid w-full gap-1.5", className)}>
-      <Label htmlFor={id}>{label}</Label>
-      <Textarea {...props} id={id} />
-    </div>
-  );
-};
+export const TextareaWithLabel = React.forwardRef<HTMLTextAreaElement, TextareaLabeledProps>(
+  ({ label, className, ...props }, ref) => {
+    const { id } = useFormField();
+    return (
+      <div className={cn("grid w-full gap-1.5", className)}>
+        <Label htmlFor={id}>{label}</Label>
+        <Textarea {...props} id={id} ref={ref} />
+      </div>
+    );
+  },
+);

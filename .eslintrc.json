@@ -60,7 +60,9 @@
           "err": true,
           "ref": true,
           "e": true,
-          "i": true
+          "i": true,
+          "searchParams": true,
+          "setSearchParams": true
         }
       }
     ],
