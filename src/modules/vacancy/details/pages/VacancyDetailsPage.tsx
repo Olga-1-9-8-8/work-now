@@ -1,3 +1,3 @@
 export const VacancyDetailsPage = () => {
-  <div> Страница деталей по вакансии</div>;
+  return <div> Страница деталей по вакансии</div>;
 };

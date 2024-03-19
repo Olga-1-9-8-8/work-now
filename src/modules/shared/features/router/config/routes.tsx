@@ -59,14 +59,13 @@ export const routes: RouteObject[] = [
         children: [],
       },
       {
-        path: "vacancies/:id",
-        element: <VacancyDetailsPage />,
+        path: "resumes/creation",
+        element: <ResumeCreationPage />,
         children: [],
       },
-
       {
-        path: "creation",
-        element: <ResumeCreationPage />,
+        path: "vacancies/:id",
+        element: <VacancyDetailsPage />,
         children: [],
       },
       {
