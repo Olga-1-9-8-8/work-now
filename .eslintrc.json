@@ -59,7 +59,8 @@
           "Ref": true,
           "err": true,
           "ref": true,
-          "e": true
+          "e": true,
+          "i": true
         }
       }
     ],

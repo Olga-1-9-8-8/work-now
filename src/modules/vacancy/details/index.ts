@@ -1,2 +1,1 @@
-// eslint-disable-next-line no-restricted-exports, import/no-default-export
-export { default } from "./pages/WorkerPersonalPage";
+export { VacancyDetailsPage } from "./pages/VacancyDetailsPage";

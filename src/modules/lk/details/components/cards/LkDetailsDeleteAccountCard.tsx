@@ -1,9 +1,11 @@
 import { TrashIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../../../shared/ui/buttons/Button";
 import { TypographyH3 } from "../../../../shared/ui/typography/TypographyH3";
 import { LkDetailsCard } from "../card/LkDetailsCard";
 
 export const LkDetailsDeleteAccountCard = () => {
+  const navigate = useNavigate();
   return (
     <LkDetailsCard title="Удаление аккаунта">
       <section className="flex flex-col gap-4">
@@ -13,7 +15,7 @@ export const LkDetailsDeleteAccountCard = () => {
           {/* // TODO : Реализовать удаление аккаунта */}
           <Button
             onClick={() => {
-              console.log(1);
+              navigate("/logout");
             }}
             variant="link"
             size="lg"

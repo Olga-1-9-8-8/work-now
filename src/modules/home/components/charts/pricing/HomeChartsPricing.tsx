@@ -26,7 +26,7 @@ export const HomeChartsPricing = () => {
               "Доступ к обширной базе соискателей",
               "Доступ к личному кабинету",
             ].map((item) => (
-              <HomeChartsPricingItem title={item} />
+              <HomeChartsPricingItem title={item} key={item} />
             ))}
           </ul>
         </div>
