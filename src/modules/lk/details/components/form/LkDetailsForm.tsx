@@ -44,7 +44,7 @@ export const LkDetailsForm = ({ user }: LkDetailsFormProps) => {
           name="userName"
           render={({ field }) => (
             <FormItem>
-              <FormControl>
+              <FormControl className="max-w-full">
                 <InputWithLabel
                   label="Укажите имя"
                   placeholder="Имя"

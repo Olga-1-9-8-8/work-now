@@ -37,7 +37,7 @@ export const DrawerDialogResponsive = ({
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>{button}</DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="lg:max-w-screen-lg">
           <DialogHeader>
             <DialogTitle>{title}</DialogTitle>
             {description && <DialogDescription>{description}</DialogDescription>}
