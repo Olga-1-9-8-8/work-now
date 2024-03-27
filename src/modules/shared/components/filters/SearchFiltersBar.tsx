@@ -1,6 +1,6 @@
 import { searchOptionsConfig } from "../../configs";
+import { FiltersSelect } from "../../ui/form-control";
 import { SwitchWithLabel } from "../../ui/switch/SwitchWithLabel";
-import { FiltersSelect } from "./select/FiltersSelect";
 
 export const SearchFiltersBar = () => {
   const { employment, schedule } = searchOptionsConfig;

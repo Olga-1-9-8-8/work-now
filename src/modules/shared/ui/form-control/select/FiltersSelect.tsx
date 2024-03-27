@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SelectProps } from "@radix-ui/react-select";
 import { SearchOptionsItemOption } from "../../../configs/searchOptionsConfig";
 import {
   Select,
@@ -7,17 +7,16 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../ui/select/Select";
+} from "../../select/Select";
 
-interface FiltersSelectProps {
+interface FiltersSelectProps extends SelectProps {
   title: string;
   options: SearchOptionsItemOption[];
 }
 
-export const FiltersSelect = ({ title, options }: FiltersSelectProps) => {
-  const [value, setValue] = useState("");
+export const FiltersSelect = ({ title, options, value, ...props }: FiltersSelectProps) => {
   return (
-    <Select value={value} onValueChange={setValue}>
+    <Select value={value} {...props}>
       <SelectTrigger className="w-full sm:w-[280px]">
         <SelectValue placeholder={title} aria-label={value} />
       </SelectTrigger>

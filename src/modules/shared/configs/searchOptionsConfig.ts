@@ -11,6 +11,7 @@ export interface SearchOptionsItem {
 export type SearchOptions = {
   schedule: SearchOptionsItem;
   employment: SearchOptionsItem;
+  education: SearchOptionsItem;
 };
 
 export const searchOptionsConfig: SearchOptions = {
@@ -69,6 +70,27 @@ export const searchOptionsConfig: SearchOptions = {
       {
         title: "Волонтерство",
         value: "volunteer",
+      },
+    ],
+  },
+  education: {
+    title: "Выберите образование",
+    options: [
+      {
+        title: "Среднее",
+        value: "secondary",
+      },
+      {
+        title: "Среднее специальное",
+        value: "secondarySpecial",
+      },
+      {
+        title: "Неоконченное высшее",
+        value: "higherUnfinished",
+      },
+      {
+        title: "Высшее",
+        value: "higher",
       },
     ],
   },

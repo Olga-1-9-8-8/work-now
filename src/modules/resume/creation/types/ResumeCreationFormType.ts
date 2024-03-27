@@ -1,4 +1,4 @@
 import { z } from "zod";
-import { ResumeCreationFormValidationSchema } from "../validation/ResumeCreationFormValidationSchema";
+import { resumeFormValidationSchema } from "../validation/resumeFormValidationSchema";
 
-export type ResumeCreationFormType = z.infer<typeof ResumeCreationFormValidationSchema>;
+export type ResumeCreationFormType = z.infer<typeof resumeFormValidationSchema>;
