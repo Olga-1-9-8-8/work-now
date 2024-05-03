@@ -1,7 +1,7 @@
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@radix-ui/react-collapsible";
-import { CalendarDays, ClipboardCheck, GraduationCap, UsersRound } from "lucide-react";
+import { Building, CalendarDays, ClipboardCheck, GraduationCap, UsersRound } from "lucide-react";
 import { ReactNode, useState } from "react";
-import { FaCircleChevronDown, FaCircleChevronUp } from "react-icons/fa6";
+import { FaCircleChevronDown, FaCircleChevronUp, FaPerson } from "react-icons/fa6";
 import { EducationType } from "../../../../../configs/searchOptionsConfig";
 import { Button } from "../../../../../ui/buttons/Button";
 import { CardDescription, CardHeader, CardTitle } from "../../../../../ui/card/Card";
@@ -12,9 +12,11 @@ import {
   capitalizeFirstLetter,
   formattedTimeString,
   getDayMonthYear,
+  getRightNounYearDeclension,
   truncateText,
 } from "../../../../../utils/helpers";
 import { Avatar } from "../../../../avatar";
+import { GenderType, getGenderTitle } from "../../../../user";
 import { educationValueToEducationTitle } from "../../../const/educationValueToEducationTitle";
 import { getBadgeVariantByStartDate } from "../../../utils/getBadgeVariantByStartDate";
 import { getDiapasonString } from "../../../utils/getDiapasonString";
@@ -25,12 +27,22 @@ interface SearchCardHeaderTitleProps {
   name: string;
   image?: string;
   position: string;
+  isHiring?: boolean;
 }
 
-export const SearchCardHeaderTitle = ({ name, image, position }: SearchCardHeaderTitleProps) => {
+export const SearchCardHeaderTitle = ({
+  name,
+  image,
+  position,
+  isHiring,
+}: SearchCardHeaderTitleProps) => {
   return (
     <div className="flex flex-col items-start gap-4 sm:flex-row">
-      <Avatar className="h-16 w-16" user={{ image, fullName: name }} />
+      <Avatar
+        className="h-16 w-16"
+        icon={isHiring ? Building : undefined}
+        user={{ image, fullName: name }}
+      />
 
       <div>
         <CardTitle className="text-xl md:text-2xl">{capitalizeFirstLetter(position)}</CardTitle>
@@ -54,23 +66,34 @@ interface SearchCardHeaderDetailsProps {
     lat: string;
     lng: string;
   };
+  age?: number;
+  gender?: GenderType;
 }
 export const SearchCardHeaderDetails = ({
   city,
   education,
   creationDate,
   coordinates,
+  age,
+  gender,
 }: SearchCardHeaderDetailsProps) => {
   return (
     <div className="flex flex-col gap-1">
       <div className="flex flex-col items-start gap-1 sm:flex-row sm:items-center">
         {city && <SearchCardHeaderDetailsLocation city={city} coordinates={coordinates} />}
         <SearchCardItemInsight
-          className="items-center gap-2"
+          className="items-center gap-2 text-primary-extraDark"
           icon={GraduationCap}
-          title={education ? educationValueToEducationTitle[education] : "Не указано"}
+          title={education ? educationValueToEducationTitle[education] ?? education : "Не указано"}
         />
       </div>
+      {(gender || age) && (
+        <SearchCardItemInsight
+          className="items-center gap-2 text-primary-extraDark "
+          icon={FaPerson}
+          title={`${gender ? getGenderTitle(gender) : "Пол не указан"}  ${age ? `/ ${getRightNounYearDeclension(String(age))}` : ""}`}
+        />
+      )}
       {creationDate && (
         <CardDescription className="pl-1 font-semibold text-muted-foreground opacity-85">
           Обновлено {formattedTimeString(creationDate)}

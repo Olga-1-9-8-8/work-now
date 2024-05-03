@@ -55,16 +55,18 @@ export const SearchCard = ({ data, image, onClick, isHiring = false }: SearchCar
             applicantsQuantity={applicantsQuantity}
           />
         </div>
-        <SearchCardHeaderBlock.SearchCardHeaderAdditionalInfo
-          content={
-            <Card className="bg-secondary px-6 py-2 pb-6">
-              <TypographyH5 className="py-3">
-                {isHiring ? "Чем предстоит заниматься:" : "Обо мне / Навыки / Задачи:"}
-              </TypographyH5>
-              {isHiring ? <ThirdPartyHtmlComponent markup={about} /> : about}
-            </Card>
-          }
-        />
+        {about && (
+          <SearchCardHeaderBlock.SearchCardHeaderAdditionalInfo
+            content={
+              <Card className="bg-secondary px-6 py-2 pb-6">
+                <TypographyH5 className="py-3">
+                  {isHiring ? "Чем предстоит заниматься:" : "Обо мне / Навыки / Задачи:"}
+                </TypographyH5>
+                {isHiring ? <ThirdPartyHtmlComponent markup={about} /> : about}
+              </Card>
+            }
+          />
+        )}
       </SearchCardHeaderBlock>
       <SearchCardDetailsBlock salary={salary} employment={employment} schedule={schedule} />
       <SearchCardOperationsFooterBlock onClick={onClick} phone={phone} id={id} />

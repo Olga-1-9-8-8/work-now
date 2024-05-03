@@ -3,6 +3,7 @@ import {
   EducationType,
   EmploymentType,
   ScheduleType,
+  WeekHoursType,
 } from "../../../shared/configs/searchOptionsConfig";
 
 export interface ResumesListItem {
@@ -14,7 +15,7 @@ export interface ResumesListItem {
   applicantsQuantity: number;
   employment?: EmploymentType[];
   salary?: number[];
-  schedule?: ScheduleType[];
+  schedule?: ScheduleType | WeekHoursType[];
   about?: string;
   education?: EducationType;
   employmentStartDate?: Date;

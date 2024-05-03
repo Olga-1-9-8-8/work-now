@@ -6,5 +6,6 @@ export {
   capitalizeFirstLetter,
   getQuantityDiapasonString,
   getRightNounWordDeclension,
+  getRightNounYearDeclension,
   truncateText,
 } from "./textHelper";
