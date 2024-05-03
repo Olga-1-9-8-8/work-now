@@ -12,12 +12,13 @@ export const LkDetailsFormValidationSchema = z.object({
     .min(2, {
       message: "Имя пользователя должно содержать хотя бы 2 буквы",
     }),
-  gender: z.enum(["male", "female", ""]),
+  gender: z.enum(["male", "female"]),
   image: z
     .instanceof(File)
     .refine((file) => file.size <= MAX_FILE_SIZE, "Файл должен быть меньше 3MB")
     .refine(
       (file) => ACCEPTED_FILE_TYPES.has(file.type),
       "Только .jpg, .jpeg, .png файлы доступны к загрузке",
-    ),
+    )
+    .nullable(),
 });

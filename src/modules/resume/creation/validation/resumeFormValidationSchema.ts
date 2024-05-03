@@ -7,7 +7,7 @@ export const resumeFormValidationSchema = z.object({
     .max(50, "Строка должна содержать максимум 50 букв"),
   employment: z.array(z.string()),
   schedule: z.array(z.string()),
-  salary: z.array(z.string()),
+  salary: z.array(z.number()),
   city: z.string(),
   education: z.string(),
   about: z.string(),

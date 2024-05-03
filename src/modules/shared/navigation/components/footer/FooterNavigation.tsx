@@ -1,3 +1,4 @@
+import { getYear } from "date-fns";
 import { Logo } from "../Logo";
 import { FooterNavigationList } from "./list/FooterNavigationList";
 
@@ -8,7 +9,7 @@ export const FooterNavigation = () => {
         <Logo isShort />
         <FooterNavigationList />
       </div>
-      <p className="text-nowrap text-sm text-white ">2024 - 2024 © WorkNow</p>
+      <p className="text-nowrap text-sm text-white ">2024 - {getYear(new Date())} © WorkNow</p>
     </div>
   );
 };

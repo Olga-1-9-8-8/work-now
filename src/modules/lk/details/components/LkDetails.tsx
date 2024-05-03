@@ -1,18 +1,16 @@
-import { User } from "../../../shared/components/user/types/User";
+import { Spinner } from "../../../shared/ui/spinner/Spinner";
+import { useLkDetails } from "../hooks/useLkDetails";
 import { LkDetailsDeleteAccountCard } from "./cards/LkDetailsDeleteAccountCard";
 import { LkDetailsPersonalDataCard } from "./cards/LkDetailsPersonalDataCard";
 
 export const LkDetails = () => {
-  // TODO : временно, получать из стора
-  const user: User = {
-    name: "Ольга",
-    gender: "female",
-    phone: "7(202) 456-78-45",
-  };
+  const { isLoading, settings } = useLkDetails();
+
+  if (isLoading) return <Spinner />;
 
   return (
     <div className="flex flex-col gap-16 py-10">
-      <LkDetailsPersonalDataCard user={user} />
+      <LkDetailsPersonalDataCard user={settings} />
       <LkDetailsDeleteAccountCard />
     </div>
   );

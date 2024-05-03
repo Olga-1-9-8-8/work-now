@@ -1,6 +1,7 @@
 import { mainNavConfig } from "../../../configs";
 import { useResponsiveContext } from "../../../responsive";
 import { UserRoles } from "../../../types";
+import { LanguagesSwitcherButton } from "../../../widgets/languages-switcher/components/LanguagesSwitcherButton";
 import { filterMainNavItems } from "../../utils/filterMainNavItems";
 import { Logo } from "../Logo";
 import { HeaderNavListDesktop } from "./desktop/HeaderNavList.desktop";
@@ -17,8 +18,12 @@ export const HeaderNavigation = () => {
   return (
     <div className="flex items-center justify-between">
       <Logo />
+
       {isMobile ? (
-        <HeaderNavHamburgerMobile items={visibleItems} />
+        <div className="flex items-center gap-8">
+          <LanguagesSwitcherButton />
+          <HeaderNavHamburgerMobile items={visibleItems} />
+        </div>
       ) : (
         <HeaderNavListDesktop items={visibleItems} />
       )}

@@ -4,7 +4,7 @@ import { AvatarBase, AvatarFallback, AvatarImage } from "../../../ui/avatar/Avat
 import { User } from "../../user/types/User";
 
 interface UserAvatarProps extends AvatarProps {
-  user?: Partial<Pick<User, "image" | "name">>;
+  user?: Partial<Pick<User, "image" | "fullName">>;
   icon?: React.ElementType;
 }
 
@@ -17,7 +17,7 @@ export const Avatar = ({ user, icon, ...props }: UserAvatarProps) => {
         <AvatarImage alt="Аватар" src={user.image} />
       ) : (
         <AvatarFallback className="border-2 border-primary text-3xl">
-          {user?.name && <span className="sr-only">{user?.name}</span>}
+          {user?.fullName && <span className="sr-only">{user?.fullName}</span>}
           <Icon className="h-2/4 w-2/4 stroke-primary" />
         </AvatarFallback>
       )}

@@ -1,0 +1,1 @@
+export const QUANTITY_OF_ITEMS_ON_ONE_PAGE = 3;

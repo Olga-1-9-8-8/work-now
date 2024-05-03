@@ -1,18 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import { Avatar } from "../../../../shared/components/avatar";
-import { LkItem } from "../../../../shared/configs";
+import { LkNavItems } from "../../../../shared/configs/lkNavConfig";
+import { useResponsiveContext } from "../../../../shared/responsive";
 import { Button } from "../../../../shared/ui/buttons/Button";
 import { Card, CardContent, CardFooter, CardHeader } from "../../../../shared/ui/card/Card";
 import { TypographyH2 } from "../../../../shared/ui/typography/TypographyH2";
 import { cn } from "../../../../shared/utils/cn";
 
 interface LkHomeCardProps {
-  item: LkItem;
+  item: LkNavItems;
   className?: string;
+  description?: string;
 }
 
-export const LkHomeCard = ({ item, className }: LkHomeCardProps) => {
+export const LkHomeCard = ({ item, description, className }: LkHomeCardProps) => {
   const navigate = useNavigate();
+
+  const isMobile = useResponsiveContext();
   const LinkIcon = item.linkIcon;
   return (
     <Card
@@ -23,16 +27,14 @@ export const LkHomeCard = ({ item, className }: LkHomeCardProps) => {
         className,
       )}
     >
-      <CardHeader className="flex flex-row items-center gap-6">
+      <CardHeader className="flex flex-col items-center gap-6 sm:flex-row">
         <Avatar className="h-20 w-20" icon={item.icon} />
         <TypographyH2 className="text-primary-extraDark">{item.title}</TypographyH2>
       </CardHeader>
-      {item.count && (
-        <CardContent className="flex font-medium text-muted-foreground">
-          Всего: {item.count}
-        </CardContent>
+      {description && (
+        <CardContent className="flex font-medium text-muted-foreground">{description}</CardContent>
       )}
-      <CardFooter className="flex justify-end pr-0">
+      <CardFooter className="flex sm:justify-end">
         <Button
           onClick={(e) => {
             if (item.linkHref) {
@@ -40,12 +42,12 @@ export const LkHomeCard = ({ item, className }: LkHomeCardProps) => {
               navigate(item.linkHref);
             }
           }}
-          variant="link"
+          variant={isMobile ? "default" : "link"}
           size="lg"
-          className="flex gap-2 text-base"
+          className="flex w-full gap-2 pr-0 text-base sm:w-auto sm:pr-6"
         >
           <span>{item.linkTitle}</span>
-          <LinkIcon className="h-2/4 w-2/4" />
+          {LinkIcon && <LinkIcon className="h-2/4 w-2/4" />}
         </Button>
       </CardFooter>
     </Card>

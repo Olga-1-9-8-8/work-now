@@ -1,13 +1,16 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import { AppRoutes } from "./modules/shared/features/router";
 import { ResponsiveProvider } from "./modules/shared/responsive";
+import { Spinner } from "./modules/shared/ui/spinner/Spinner";
 import { Toaster } from "./modules/shared/ui/toast/Toast";
 import { TooltipProvider } from "./modules/shared/ui/tooltip/TooltipPrimitive";
+// eslint-disable-next-line import/extensions
+import "./modules/shared/configs/internationalization/i18n";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -23,10 +26,12 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <ReactQueryDevtools />
       <ResponsiveProvider>
         <BrowserRouter>
-          <Toaster position="bottom-center" richColors />
-          <TooltipProvider delayDuration={200}>
-            <AppRoutes />
-          </TooltipProvider>
+          <Suspense fallback={<Spinner />}>
+            <Toaster position="bottom-center" richColors />
+            <TooltipProvider delayDuration={200}>
+              <AppRoutes />
+            </TooltipProvider>
+          </Suspense>
         </BrowserRouter>
       </ResponsiveProvider>
     </QueryClientProvider>
