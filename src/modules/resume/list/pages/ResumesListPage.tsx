@@ -1,21 +1,17 @@
-import { useQuery } from "@tanstack/react-query";
+import { NotFound } from "../../../shared/components/not-found/components";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
-import { TypographyH5 } from "../../../shared/ui/typography/TypographyH5";
-import { getResumes } from "../api/apiResumes";
 import { ResumesList } from "../components/ResumesList";
+import { useResumes } from "../hooks/useResumes";
 
 const ResumesListPage = () => {
-  const { isLoading, data: resumes } = useQuery({
-    queryKey: ["resumes"],
-    queryFn: getResumes,
-  });
+  const { isLoading, resumes, totalCount } = useResumes();
 
   if (isLoading) return <Spinner />;
 
   return resumes ? (
-    <ResumesList resumes={resumes} />
+    <ResumesList resumes={resumes} totalCount={totalCount} />
   ) : (
-    <TypographyH5 className="text-center">Резюме не найдены</TypographyH5>
+    <NotFound title="Резюме" description="Поменяйте фильтры или попробуйте еще раз" />
   );
 };
 

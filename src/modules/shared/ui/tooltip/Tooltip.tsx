@@ -1,5 +1,5 @@
-import { TooltipContentProps } from "@radix-ui/react-tooltip";
-import { ReactNode } from "react";
+import * as TooltipBase from "@radix-ui/react-tooltip";
+import React, { ReactNode } from "react";
 import { TooltipContent, TooltipPrimitive, TooltipTrigger } from "./TooltipPrimitive";
 
 interface TooltipProps {
@@ -10,20 +10,16 @@ interface TooltipProps {
   children: ReactNode;
 }
 
-export const Tooltip = ({
-  content,
-  open,
-  defaultOpen,
-  onOpenChange,
-  children,
-  ...props
-}: TooltipProps & TooltipContentProps & React.RefAttributes<HTMLDivElement>) => {
+export const Tooltip = React.forwardRef<
+  React.ElementRef<typeof TooltipBase.Content>,
+  TooltipProps & React.ComponentPropsWithoutRef<typeof TooltipBase.Content>
+>(({ className, content, open, defaultOpen, onOpenChange, children, ...props }, ref) => {
   return (
     <TooltipPrimitive open={open} defaultOpen={defaultOpen} onOpenChange={onOpenChange}>
       <TooltipTrigger asChild>{children}</TooltipTrigger>
-      <TooltipContent side="top" align="center" {...props}>
+      <TooltipContent ref={ref} side="top" align="center" className={className} {...props}>
         {content}
       </TooltipContent>
     </TooltipPrimitive>
   );
-};
+});

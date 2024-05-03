@@ -1,9 +1,11 @@
 export { chartOverviewConfig } from "./chartOverviewConfig";
+export { externalUrlsConfig } from "./externalUrlsConfig";
 export { homeDetailsConfig } from "./homeDetailsConfig";
-export { lkConfig } from "./lkConfig";
-export type { LkItem } from "./lkConfig";
 export { lkNavConfig } from "./lkNavConfig";
 export { mainNavConfig } from "./mainNavConfig";
-export { searchOptionsConfig } from "./searchOptionsConfig";
-export { siteConfig } from "./site";
+export {
+  popularSearchOptionsConfig,
+  searchOptionsConfig,
+  sortOptionsConfig,
+} from "./searchOptionsConfig";
 export { userSearchConfig } from "./usersSearchConfig";

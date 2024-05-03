@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
+import { NotFound } from "../../../shared/components/not-found/components";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
-import { TypographyH5 } from "../../../shared/ui/typography/TypographyH5";
 import { getVacancies } from "../api/apiVacancies";
 import { VacanciesList } from "../components/VacanciesList";
 
@@ -19,7 +19,7 @@ const VacanciesListPage = () => {
       {vacancies ? (
         <VacanciesList vacancies={vacancies} />
       ) : (
-        <TypographyH5 className="text-center">Вакансии не найдены</TypographyH5>
+        <NotFound title="Вакансии" description="Поменяйте фильтры или попробуйте еще раз" />
       )}
     </div>
   );

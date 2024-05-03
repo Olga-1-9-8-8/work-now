@@ -1,22 +1,23 @@
 import { ElementType } from "react";
 import { Badge } from "../../../../ui/badge/Badge";
 import { cn } from "../../../../utils/cn";
-import { WorkType } from "../../types/WorkType";
-import { getIconByType } from "../../utils/getIconByType";
+import { BadgeItem, BadgeType } from "../../types/BadgeType";
 
-interface SearchCardItemInsightProps {
+interface SearchCardItemInsightProps<T> {
   icon: ElementType;
   title: string;
-  badges?: { title?: string; variant?: WorkType }[];
+  badges?: BadgeItem<T>[];
+  getBadgeData?: (type?: T) => BadgeType;
   className?: string;
 }
 
-export const SearchCardItemInsight = ({
+export const SearchCardItemInsight = <T extends string>({
   icon,
   title,
   badges,
+  getBadgeData,
   className,
-}: SearchCardItemInsightProps) => {
+}: SearchCardItemInsightProps<T>) => {
   const Icon = icon;
   return (
     <div className={cn("flex gap-4 ", className)}>
@@ -26,14 +27,16 @@ export const SearchCardItemInsight = ({
         {badges && (
           <ul className="flex flex-wrap gap-2">
             {badges.map((badge, index) => {
-              const { badgeIcon, badgeVariant } = getIconByType(badge.variant);
+              const { badgeIcon, badgeVariant, badgeTitle } = getBadgeData?.(badge.title) ?? {
+                badgeVariant: "secondary",
+              };
               const BadgeIcon = badgeIcon;
               return (
                 // eslint-disable-next-line react/no-array-index-key
                 <li key={index}>
-                  <Badge className="flex gap-1" variant={badgeVariant} shape="square">
+                  <Badge className="flex gap-1 text-nowrap" variant={badgeVariant} shape="square">
                     {BadgeIcon && <BadgeIcon size={20} />}
-                    {badge?.title}
+                    <span>{badgeTitle || badge?.title}</span>
                   </Badge>
                 </li>
               );

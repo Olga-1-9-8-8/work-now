@@ -62,7 +62,9 @@
           "e": true,
           "i": true,
           "searchParams": true,
-          "setSearchParams": true
+          "setSearchParams": true,
+          "prev": true,
+          "str": true
         }
       }
     ],

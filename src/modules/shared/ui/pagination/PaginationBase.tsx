@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
 import * as React from "react";
 import { cn } from "../../utils/cn";
-import { ButtonProps, buttonVariants } from "../buttons/Button";
+import { Button, ButtonProps, buttonVariants } from "../buttons/Button";
 
 const PaginationBase = ({ className, ...props }: React.ComponentProps<"nav">) => (
   <nav
@@ -49,30 +49,43 @@ PaginationLink.displayName = "PaginationLink";
 
 const PaginationPrevious = ({
   className,
+  title,
+  disabled,
+  size,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) => (
-  <PaginationLink
-    aria-label="Go to previous page"
-    size="default"
-    className={cn("gap-1 pl-2.5", className)}
-    {...props}
-  >
-    <ChevronLeft className="h-4 w-4" />
-    <span>Предыдущая</span>
-  </PaginationLink>
+}: React.ComponentProps<typeof PaginationLink> & Pick<ButtonProps, "disabled" | "size">) => (
+  <Button variant="default" size={size} disabled={disabled}>
+    <PaginationLink
+      aria-label="Go to previous page"
+      size="default"
+      className={cn("gap-1 pl-2.5", className)}
+      {...props}
+    >
+      <ChevronLeft className="h-4 w-4" />
+      <span>{title}</span>
+    </PaginationLink>
+  </Button>
 );
 PaginationPrevious.displayName = "PaginationPrevious";
 
-const PaginationNext = ({ className, ...props }: React.ComponentProps<typeof PaginationLink>) => (
-  <PaginationLink
-    aria-label="Go to next page"
-    size="default"
-    className={cn("gap-1 pr-2.5", className)}
-    {...props}
-  >
-    <span>Следующая</span>
-    <ChevronRight className="h-4 w-4" />
-  </PaginationLink>
+const PaginationNext = ({
+  className,
+  title,
+  disabled,
+  size,
+  ...props
+}: React.ComponentProps<typeof PaginationLink> & Pick<ButtonProps, "disabled" | "size">) => (
+  <Button variant="default" size={size} disabled={disabled}>
+    <PaginationLink
+      aria-label="Go to next page"
+      size="default"
+      className={cn("gap-1 pr-2.5", className)}
+      {...props}
+    >
+      <span>{title}</span>
+      <ChevronRight className="h-4 w-4" />
+    </PaginationLink>
+  </Button>
 );
 PaginationNext.displayName = "PaginationNext";
 

@@ -1,7 +1,7 @@
-import { SelectProps } from "@radix-ui/react-select";
+import { SelectProps as SelectBaseProps } from "@radix-ui/react-select";
 import { SearchOptionsItemOption } from "../../../configs/searchOptionsConfig";
 import {
-  Select,
+  Select as SelectBase,
   SelectContent,
   SelectGroup,
   SelectItem,
@@ -9,14 +9,14 @@ import {
   SelectValue,
 } from "../../select/Select";
 
-interface FiltersSelectProps extends SelectProps {
+interface SelectProps extends SelectBaseProps {
   title: string;
-  options: SearchOptionsItemOption[];
+  options: SearchOptionsItemOption<string>[];
 }
 
-export const FiltersSelect = ({ title, options, value, ...props }: FiltersSelectProps) => {
+export const Select = ({ title, options, value, ...props }: SelectProps) => {
   return (
-    <Select value={value} {...props}>
+    <SelectBase value={value} {...props}>
       <SelectTrigger className="w-full sm:w-[280px]">
         <SelectValue placeholder={title} aria-label={value} />
       </SelectTrigger>
@@ -29,6 +29,6 @@ export const FiltersSelect = ({ title, options, value, ...props }: FiltersSelect
           ))}
         </SelectGroup>
       </SelectContent>
-    </Select>
+    </SelectBase>
   );
 };

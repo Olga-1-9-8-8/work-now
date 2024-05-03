@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 import { MainNavItem } from "../../../../../configs/mainNavConfig";
 import { Button } from "../../../../../ui/buttons/Button";
@@ -18,16 +19,18 @@ export const HeaderNavListItemDesktop = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a"> & HeaderNavListItemDesktopProps
 >(({ className, title, item, children, ...props }, ref) => {
+  const { t } = useTranslation("header");
+
   if (!item.items) {
     return item.type === "button" ? (
       <Button className="text-base" variant="outline" asChild>
-        <NavLink to={item.href}>{item.title}</NavLink>
+        <NavLink to={item.href}>{t(item.title)}</NavLink>
       </Button>
     ) : (
       <HeaderNavListItemLink
         icon={item.icon}
         to={item.href}
-        title={item.title}
+        title={t(item.title)}
         className={className}
         {...props}
         ref={ref}
@@ -41,7 +44,7 @@ export const HeaderNavListItemDesktop = React.forwardRef<
         <HeaderNavListItemLink
           icon={item.icon}
           to={item.href}
-          title={item.title}
+          title={t(item.title)}
           className={className}
           {...props}
           ref={ref}
@@ -56,7 +59,7 @@ export const HeaderNavListItemDesktop = React.forwardRef<
                 className="flex-row gap-4 text-base font-bold text-dark"
                 key={i.title}
                 to={i.href}
-                title={i.title}
+                title={t(i.title)}
                 icon={i.icon}
               />
             );

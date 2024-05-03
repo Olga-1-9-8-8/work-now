@@ -19,7 +19,7 @@ export const HeaderNavHamburgerMobile = ({ items }: HeaderNavHamburgerMobileProp
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger className="mr-10 sm:mr-5">
-            <Menu size={46} className="text-white" />
+            <Menu size={38} className="text-white" />
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="w-[300px] p-4">

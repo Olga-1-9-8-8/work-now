@@ -26,7 +26,7 @@ import { PageContainer } from "../../../ui/layout";
 import { TypographyH3 } from "../../../ui/typography/TypographyH3";
 
 const FormSchema = z.object({
-  tel: z.string().min(9, {
+  phone: z.string().min(9, {
     message: "Должно быть не менее 9 цифр.",
   }),
   userName: z
@@ -35,7 +35,9 @@ const FormSchema = z.object({
     })
     .min(2, {
       message: "Имя пользователя должно содержать хотя бы 2 буквы",
-    }),
+    })
+    .max(50, "Имя пользователя должно содержать максимум 50 букв"),
+  age: z.number().positive().optional(),
 });
 
 export const AuthLoginPage = () => {
@@ -45,15 +47,14 @@ export const AuthLoginPage = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      tel: "",
+      phone: "",
       userName: "",
     },
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data);
     navigate("/");
-    toast.success("Вы успешно вошли в свой аккаунт");
+    toast.success(`${data.userName},вы успешно вошли в свой аккаунт`);
   }
 
   return (
@@ -83,7 +84,7 @@ export const AuthLoginPage = () => {
             />
             <FormField
               control={form.control}
-              name="tel"
+              name="phone"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Укажите номер телефона</FormLabel>
