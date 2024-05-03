@@ -1,21 +1,44 @@
-import { searchOptionsConfig } from "../../configs";
-import { FiltersSelect } from "../../ui/form-control";
-import { SwitchWithLabel } from "../../ui/switch/SwitchWithLabel";
+import { popularSearchOptionsConfig, searchOptionsConfig, sortOptionsConfig } from "../../configs";
+import { FilterSelect } from "./FilterSelect";
+import { FilterSwitch } from "./FilterSwitch";
+import { FilteredDropdownMenu } from "./FilteredDropdownMenu";
 
 export const SearchFiltersBar = () => {
-  const { employment, schedule } = searchOptionsConfig;
-
   return (
-    <div className="flex flex-col flex-wrap gap-8 sm:flex-row sm:items-center">
-      <div className="flex flex-col gap-8 sm:flex-row">
-        <FiltersSelect title={employment.title} options={employment.options} />
-        <FiltersSelect title={schedule.title} options={schedule.options} />
+    <div>
+      <div className="flex flex-col flex-wrap gap-8 sm:flex-row sm:items-center ">
+        <ul className="flex flex-col flex-wrap gap-6 sm:flex-row">
+          {Object.entries(searchOptionsConfig).map(([title, option]) => (
+            <li key={title}>
+              <FilterSelect filteredField={title} title={option.title} options={option.options} />
+            </li>
+          ))}
+        </ul>
+
+        <ul className="flex flex-row flex-wrap gap-6 sm:flex-row ">
+          {Object.entries(popularSearchOptionsConfig).map(([title, item]) => {
+            return item.options.map((option) => (
+              <li key={option.value}>
+                <FilterSwitch filteredField={title} option={option} />
+              </li>
+            ));
+          })}
+        </ul>
       </div>
-      <div className="flex flex-col gap-8 sm:flex-row">
-        <SwitchWithLabel label="Высшее" />
-        <SwitchWithLabel label="Полная занятость" />
-        <SwitchWithLabel label="Стажировка" />
-      </div>
+
+      <ul className="flex flex-wrap gap-6 pt-8">
+        {Object.entries(sortOptionsConfig).map(([title, option]) => {
+          return (
+            <li key={title}>
+              <FilteredDropdownMenu
+                sortedField={title}
+                title={option.title}
+                options={option.options}
+              />
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };

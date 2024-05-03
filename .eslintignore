@@ -7,3 +7,5 @@ coverage
 # Ignore files
 
 /src/vite-env.d.ts
+
+.config/*
