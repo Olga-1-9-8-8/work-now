@@ -8,12 +8,11 @@ import { SearchCardHeaderBlock } from "./block/header/SearchCardHeaderBlock";
 
 interface SearchCardProps {
   data: SearchCardListItem;
-  image?: string;
   onClick: (id: number) => void;
   isHiring?: boolean;
 }
 
-export const SearchCard = ({ data, image, onClick, isHiring = false }: SearchCardProps) => {
+export const SearchCard = ({ data, onClick, isHiring = false }: SearchCardProps) => {
   const {
     position,
     about,
@@ -30,6 +29,9 @@ export const SearchCard = ({ data, image, onClick, isHiring = false }: SearchCar
     coordinates,
     views,
     applicantsQuantity,
+    age,
+    gender,
+    image,
   } = data;
 
   return (
@@ -41,12 +43,15 @@ export const SearchCard = ({ data, image, onClick, isHiring = false }: SearchCar
               name={name}
               position={position}
               image={image}
+              isHiring={isHiring}
             />
             <SearchCardHeaderBlock.SearchCardHeaderDetails
               city={city}
               education={education}
               creationDate={creationDate}
               coordinates={coordinates}
+              age={age}
+              gender={gender}
             />
           </div>
           <SearchCardHeaderBlock.SearchCardHeaderSideDetails

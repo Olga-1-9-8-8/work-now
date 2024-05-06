@@ -3,8 +3,6 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import Backend from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
 
-// TODO: import.meta.env.VITE_APP_IS_I18N_DEBUG_ON === "true",
-
 i18n
   .use(Backend)
   .use(LanguageDetector)
@@ -12,7 +10,7 @@ i18n
 
   .init({
     fallbackLng: "ru",
-    debug: true,
+    debug: import.meta.env.DEV === true,
     interpolation: {
       escapeValue: false,
     },
