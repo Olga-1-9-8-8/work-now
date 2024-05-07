@@ -15,6 +15,7 @@ export const FilterSelect = ({ title, options, filteredField, ...props }: Filter
 
   const handleChange = (value: string) => {
     searchParams.set(filteredField, value);
+    searchParams.set("offset", "1");
     setSearchParams(searchParams, { replace: true });
   };
 

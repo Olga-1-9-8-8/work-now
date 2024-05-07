@@ -14,6 +14,7 @@ export const FilterSwitch = ({ option, filteredField, ...props }: FilterSwitchPr
   const handleCheckedChange = (checked: boolean) => {
     if (checked) {
       searchParams.set(filteredField, option.value);
+      searchParams.set("offset", "1");
     } else {
       searchParams.delete(filteredField);
     }

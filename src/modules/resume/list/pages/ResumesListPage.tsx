@@ -11,7 +11,7 @@ const ResumesListPage = () => {
   return resumes ? (
     <ResumesList resumes={resumes} totalCount={totalCount} />
   ) : (
-    <NotFound title="Резюме" description="Поменяйте фильтры или попробуйте еще раз" />
+    <NotFound title="Резюме" />
   );
 };
 

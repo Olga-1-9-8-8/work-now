@@ -1,6 +1,13 @@
+export { concatNullableArrays, createEmptyArray } from "./arrayHelper";
+
 export { formatPhoneNumber } from "./phoneHelper";
 
-export { formattedTimeString, getDayMonthYear, parseDateFromString } from "./dateHelper";
+export {
+  formattedTimeString,
+  getDateFromUrlString,
+  getDayMonthYear,
+  parseDateFromString,
+} from "./dateHelper";
 
 export {
   capitalizeFirstLetter,

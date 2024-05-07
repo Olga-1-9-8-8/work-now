@@ -1,25 +1,15 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { toast } from "sonner";
-import { SearchCard, WorkListItem } from "../../../../shared/components/search-card";
-import { deleteResume } from "../../api/apiResumes";
+import { SearchCard } from "../../../../shared/components/search-card";
+import { ResumesListItem as ResumesListItemType } from "../../types/ResumesListType";
 
 interface ResumesListItemProps {
-  resume: WorkListItem;
+  resume: ResumesListItemType;
 }
 
 export const ResumesListItem = ({ resume }: ResumesListItemProps) => {
-  const queryClient = useQueryClient();
-
-  const { mutate } = useMutation({
-    mutationFn: deleteResume,
-    onSuccess: () => {
-      toast.success("Резюме успешно удалено");
-      queryClient.invalidateQueries({
-        queryKey: ["resumes"],
-      });
-    },
-    onError: (err) => toast.error(err.message),
-  });
+  // eslint-disable-next-line unicorn/consistent-function-scoping
+  const mutate = () => {
+    console.log("Написать функцию отклика ");
+  };
 
   return <SearchCard data={resume} onClick={mutate} />;
 };

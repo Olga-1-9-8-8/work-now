@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import { createEmptyArray } from "../../../utils/createEmptyArray";
+import { createEmptyArray } from "../../../utils/helpers";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../constants/pagination.constants";
 
 export const usePagination = (totalCount: number) => {

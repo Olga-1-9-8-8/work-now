@@ -17,8 +17,8 @@ export const educationTypes = [
 ] as const;
 export const weekHoursTypes = ["40", "20", "10"] as const;
 
-export const sortTypes = ["publication-desc", "salary-desc", "salary-asc"] as const;
-export const sortDateTypes = [
+export const sortTypes = ["creationDate-desc", "salary-desc", "salary-asc"] as const;
+export const creationDateTypes = [
   "allTime",
   "lastDay",
   "lastTwoDays",
@@ -32,7 +32,7 @@ export type ScheduleType = (typeof scheduleTypes)[number];
 export type EducationType = (typeof educationTypes)[number];
 export type WeekHoursType = (typeof weekHoursTypes)[number];
 export type SortType = (typeof sortTypes)[number];
-export type SortDateType = (typeof sortDateTypes)[number];
+export type CreationDateType = (typeof creationDateTypes)[number];
 
 export interface SearchOptionsItemOption<T> {
   title: string;
@@ -53,7 +53,7 @@ export type SearchOptions = {
 
 export type SortOptions = {
   sort: SearchOptionsItem<SortType>;
-  sortDate: SearchOptionsItem<SortDateType>;
+  creationDate: SearchOptionsItem<CreationDateType>;
 };
 
 export const searchOptionsConfig: SearchOptions = {
@@ -208,7 +208,7 @@ export const sortOptionsConfig: SortOptions = {
     options: [
       {
         title: "По дате",
-        value: "publication-desc",
+        value: "creationDate-desc",
       },
       {
         title: "По убыванию зарплаты",
@@ -220,7 +220,7 @@ export const sortOptionsConfig: SortOptions = {
       },
     ],
   },
-  sortDate: {
+  creationDate: {
     title: "Сортировать по времени",
     options: [
       {
