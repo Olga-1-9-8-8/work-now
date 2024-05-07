@@ -50,6 +50,7 @@
     "arrow-body-style": "off",
     "react/react-in-jsx-scope": "off",
     "unicorn/prefer-query-selector": "off",
+    "unicorn/no-array-for-each": "off",
     "unicorn/prevent-abbreviations": [
       "error",
       {
@@ -64,7 +65,9 @@
           "searchParams": true,
           "setSearchParams": true,
           "prev": true,
-          "str": true
+          "str": true,
+          "Param": true,
+          "Params": true
         }
       }
     ],
