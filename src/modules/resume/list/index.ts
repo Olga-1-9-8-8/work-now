@@ -1,3 +1,2 @@
-export { ResumesSearchLayout } from "./layout/ResumesSearchLayout";
 // eslint-disable-next-line no-restricted-exports, import/no-default-export
 export { default } from "./pages/ResumesListPage";

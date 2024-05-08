@@ -17,7 +17,7 @@ export interface ResumeWithUserType extends ResumeType {
 }
 
 export const mapResumes = (resumes: ResumeWithUserType[]): ResumesListType => {
-  return resumes?.map((resume) => {
+  return resumes.map((resume) => {
     const {
       creationDate,
       city,

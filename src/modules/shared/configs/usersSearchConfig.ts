@@ -1,6 +1,6 @@
 export type UserSearchItem = {
   title: string;
-  href: string;
+  value?: string;
 };
 
 export type UserSearchItems = {
@@ -14,35 +14,27 @@ export const userSearchConfig: UserSearchItems[] = [
     items: [
       {
         title: "Вожатый",
-        href: "text=Вожатый",
       },
       {
         title: "Водитель",
-        href: "text=Вожатый",
       },
       {
         title: "Официант",
-        href: "text=Вожатый",
       },
       {
         title: "Учитель",
-        href: "text=Вожатый",
       },
       {
         title: "Менеджер ",
-        href: "text=Вожатый",
       },
       {
         title: "Администратор",
-        href: "text=Вожатый",
       },
       {
         title: "Курьер",
-        href: "text=Вожатый",
       },
       {
         title: "Продавец",
-        href: "text=Вожатый",
       },
     ],
   },
@@ -51,35 +43,35 @@ export const userSearchConfig: UserSearchItems[] = [
     items: [
       {
         title: "Карелия",
-        href: "10",
+        value: "10",
       },
       {
-        title: "Республика Алтай",
-        href: "10",
+        title: "Москва",
+        value: "50",
       },
       {
         title: "Ленинградская область",
-        href: "47",
+        value: "47",
       },
       {
         title: "Мурманская область",
-        href: "51",
+        value: "51",
       },
       {
         title: "Байконур ",
-        href: "94",
+        value: "94",
       },
       {
         title: "Смоленская область",
-        href: "67",
+        value: "67",
       },
       {
         title: "Краснодарский край",
-        href: "23",
+        value: "23",
       },
       {
         title: "Забайкальский край",
-        href: "75",
+        value: "75",
       },
     ],
   },
@@ -88,35 +80,27 @@ export const userSearchConfig: UserSearchItems[] = [
     items: [
       {
         title: "Сбербанк",
-        href: "text=Сбербанк",
       },
       {
         title: "Роснефть",
-        href: "text=Роснефть",
       },
       {
         title: "Газпром",
-        href: "text=Газпром",
       },
       {
         title: "X5Group",
-        href: "text=X5Group",
       },
       {
         title: "Магнит",
-        href: "text=Магнит",
       },
       {
         title: "ПИК",
-        href: "text=ПИК",
       },
       {
         title: "Русгидро",
-        href: "text=Русгидро",
       },
       {
         title: "Полюс",
-        href: "text=Полюс",
       },
     ],
   },
@@ -126,35 +110,27 @@ export const userSearchConfig: UserSearchItems[] = [
     items: [
       {
         title: "Сбербанк",
-        href: "text=Сбербанк",
       },
       {
         title: "Менеджер",
-        href: "text=Менеджер",
       },
       {
         title: "Газпром",
-        href: "text=Газпром",
       },
       {
         title: "Курьер",
-        href: "text=Курьер",
       },
       {
         title: "Магнит",
-        href: "text=Магнит",
       },
       {
         title: "Официант",
-        href: "text=Официант",
       },
       {
         title: "Вожатый",
-        href: "text=Вожатый",
       },
       {
         title: "X5",
-        href: "text=X5",
       },
     ],
   },

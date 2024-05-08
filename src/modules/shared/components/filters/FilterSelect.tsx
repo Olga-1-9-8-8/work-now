@@ -1,6 +1,6 @@
 import { SelectProps } from "@radix-ui/react-select";
-import { useSearchParams } from "react-router-dom";
 import { SearchOptionsItemOption } from "../../configs/searchOptionsConfig";
+import { useUrl } from "../../hooks";
 import { Select } from "../../ui/form-control";
 
 interface FiltersSelectProps extends SelectProps {
@@ -10,18 +10,16 @@ interface FiltersSelectProps extends SelectProps {
 }
 
 export const FilterSelect = ({ title, options, filteredField, ...props }: FiltersSelectProps) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const fieldValue = searchParams.get(filteredField);
+  const { getParam, setParam } = useUrl();
 
   const handleChange = (value: string) => {
-    searchParams.set(filteredField, value);
-    searchParams.set("offset", "1");
-    setSearchParams(searchParams, { replace: true });
+    setParam(filteredField, value, { replace: true });
+    setParam("offset", "1");
   };
 
   return (
     <Select
-      value={fieldValue || undefined}
+      value={getParam(filteredField) || undefined}
       onValueChange={handleChange}
       title={title}
       options={options}

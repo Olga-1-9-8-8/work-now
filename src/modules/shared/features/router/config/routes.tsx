@@ -8,9 +8,7 @@ import { LkResumesPage } from "../../../../lk/resumes/pages/LkResumesPage";
 import { LkLayout } from "../../../../lk/shared/ui";
 import { ResumeCreationPage } from "../../../../resume/creation/pages/ResumeCreationPage";
 import { ResumeDetailsPage } from "../../../../resume/details";
-import { ResumesSearchLayout } from "../../../../resume/list";
 import { VacancyDetailsPage } from "../../../../vacancy/details";
-import { VacanciesSearchLayout } from "../../../../vacancy/list";
 import { AppLayout } from "../../../ui/layout";
 import { Spinner } from "../../../ui/spinner/Spinner";
 
@@ -40,24 +38,14 @@ export const routes: RouteObject[] = [
       },
 
       {
-        element: <VacanciesSearchLayout />,
-        children: [
-          {
-            path: "vacancies",
-            element: <VacanciesListPage />,
-            children: [],
-          },
-        ],
+        element: <VacanciesListPage />,
+        path: "vacancies",
+        children: [],
       },
       {
-        element: <ResumesSearchLayout />,
-        children: [
-          {
-            path: "resumes",
-            element: <ResumesListPage />,
-            children: [],
-          },
-        ],
+        element: <ResumesListPage />,
+        path: "resumes",
+        children: [],
       },
       {
         path: "resumes/:id",

@@ -67,7 +67,8 @@
           "prev": true,
           "str": true,
           "Param": true,
-          "Params": true
+          "Params": true,
+          "params": true
         }
       }
     ],

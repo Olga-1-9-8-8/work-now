@@ -1,27 +1,24 @@
-import { useQuery } from "@tanstack/react-query";
 import { NotFound } from "../../../shared/components/not-found/components";
+import { SearchList } from "../../../shared/components/search-list";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
-import { getVacancies } from "../api/apiVacancies";
 import { VacanciesList } from "../components/VacanciesList";
+import { useVacancies } from "../hooks/useVacancies";
 
 const VacanciesListPage = () => {
-  const { isLoading, data: vacancies } = useQuery({
-    queryKey: ["vacancies"],
-    queryFn: getVacancies,
-  });
+  const { isLoading, vacancies, totalCount } = useVacancies();
 
   if (isLoading) {
     return <Spinner />;
   }
 
   return (
-    <div className="py-4">
+    <SearchList total={totalCount} title="вакансий">
       {vacancies ? (
-        <VacanciesList vacancies={vacancies} />
+        <VacanciesList vacancies={vacancies} totalCount={totalCount} />
       ) : (
-        <NotFound title="Вакансии" description="Поменяйте фильтры или попробуйте еще раз" />
+        <NotFound title="Вакансии" />
       )}
-    </div>
+    </SearchList>
   );
 };
 

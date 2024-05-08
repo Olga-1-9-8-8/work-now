@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { NavigateOptions, useSearchParams } from "react-router-dom";
 
 export const useUrl = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -10,14 +10,14 @@ export const useUrl = () => {
   const getAllParams = () => {
     return [...searchParams.entries()];
   };
-  const setParam = (key: string, value: string | null) => {
+  const setParam = (key: string, value: string | null, options?: NavigateOptions) => {
     if (value === null) {
       searchParams.delete(key);
     } else {
       searchParams.set(key, value);
     }
 
-    setSearchParams(searchParams);
+    setSearchParams(searchParams, options);
   };
 
   const removeParam = (key: string) => {

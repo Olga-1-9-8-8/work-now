@@ -1,6 +1,6 @@
 import * as SwitchPrimitives from "@radix-ui/react-switch";
-import { useSearchParams } from "react-router-dom";
 import { SearchOptionsItemOption } from "../../configs/searchOptionsConfig";
+import { useUrl } from "../../hooks/useUrl";
 import { SwitchWithLabel } from "../../ui/switch/SwitchWithLabel";
 
 type FilterSwitchProps = {
@@ -9,21 +9,20 @@ type FilterSwitchProps = {
 } & React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>;
 
 export const FilterSwitch = ({ option, filteredField, ...props }: FilterSwitchProps) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { removeParam, setParam, getParam } = useUrl();
 
   const handleCheckedChange = (checked: boolean) => {
     if (checked) {
-      searchParams.set(filteredField, option.value);
-      searchParams.set("offset", "1");
+      setParam(filteredField, option.value, { replace: true });
+      setParam("offset", "1");
     } else {
-      searchParams.delete(filteredField);
+      removeParam(filteredField);
     }
-    setSearchParams(searchParams, { replace: true });
   };
 
   return (
     <SwitchWithLabel
-      checked={searchParams.get(filteredField) === option.value}
+      checked={getParam(filteredField) === option.value}
       onCheckedChange={handleCheckedChange}
       label={option.title}
       {...props}

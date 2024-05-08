@@ -1,4 +1,5 @@
 import { NotFound } from "../../../shared/components/not-found/components";
+import { SearchList } from "../../../shared/components/search-list";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
 import { ResumesList } from "../components/ResumesList";
 import { useResumes } from "../hooks/useResumes";
@@ -8,10 +9,14 @@ const ResumesListPage = () => {
 
   if (isLoading) return <Spinner />;
 
-  return resumes ? (
-    <ResumesList resumes={resumes} totalCount={totalCount} />
-  ) : (
-    <NotFound title="Резюме" />
+  return (
+    <SearchList total={totalCount} title="резюме">
+      {resumes ? (
+        <ResumesList resumes={resumes} totalCount={totalCount} />
+      ) : (
+        <NotFound title="Резюме" />
+      )}
+    </SearchList>
   );
 };
 
