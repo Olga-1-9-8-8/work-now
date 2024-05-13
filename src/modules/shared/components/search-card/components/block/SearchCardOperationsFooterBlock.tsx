@@ -23,10 +23,10 @@ export const SearchCardOperationsFooterBlock = ({
 
   const formattedPhone = phone ? formatPhoneNumber(phone) : undefined;
   return (
-    <CardFooter className="flex flex-col-reverse justify-between gap-5 md:flex-row">
+    <CardFooter className="flex flex-col-reverse justify-between gap-5 lg:flex-row">
       <div className="flex w-full flex-col gap-5 sm:flex-row">
         <Button
-          className="w-full md:w-auto"
+          className="w-full lg:w-auto"
           onClick={(e) => {
             e.stopPropagation();
             setIsApply((previous) => !previous);
@@ -37,7 +37,7 @@ export const SearchCardOperationsFooterBlock = ({
           {isApply ? "Вы откликнулись" : "Откликнуться"}
         </Button>
         <Button
-          className={`group w-full md:w-auto ${isFavorites && "border-2 border-destructive"}`}
+          className={`group w-full lg:w-auto ${isFavorites && "border-2 border-destructive"}`}
           variant={isFavorites ? "secondary" : "secondary"}
           onClick={(e) => {
             e.stopPropagation();
@@ -51,7 +51,7 @@ export const SearchCardOperationsFooterBlock = ({
         </Button>
       </div>
       {formattedPhone && (
-        <div className="flex w-full justify-around gap-5 md:w-auto">
+        <div className="flex w-full justify-around gap-5 lg:w-auto">
           <Button size="icon" variant="ghost" asChild>
             <Link to={`tel:${formattedPhone}`}>
               <FaSquarePhone size={38} className="rounded fill-primary-extraDark" />

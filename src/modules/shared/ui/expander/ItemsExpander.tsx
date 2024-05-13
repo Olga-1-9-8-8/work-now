@@ -20,13 +20,13 @@ export const ItemsExpander = <T extends {}>({
 
   const ButtonIcon = isExpand ? ChevronUp : ChevronDown;
   return (
-    <div>
+    <div className="flex flex-col gap-4 py-4">
       {visibleItems.map((element, index) => render(element, index))}
       {showExpandButton && (
         <Button
           variant="link"
           onClick={() => setIsExpand((previous) => !previous)}
-          className="w-full"
+          className="flex gap-2 text-primary-extraDark"
         >
           <ButtonIcon />
           {isExpand ? "Свернуть" : "Показать еще"}
