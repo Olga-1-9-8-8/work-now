@@ -1,7 +1,6 @@
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
-import React from "react";
+import React, { useId } from "react";
 import { cn } from "../../utils/cn";
-import { useFormField } from "../form/Form";
 import { Label } from "../labels/Label";
 import { Checkbox } from "./Checkbox";
 
@@ -13,11 +12,13 @@ export const CheckboxWithLabel = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
   InputLabeledProps
 >(({ label, className, ...props }, ref) => {
-  const { id } = useFormField();
+  const id = useId();
   return (
-    <div className={cn("flex items-center space-x-2", className)}>
+    <div className={cn("flex items-center space-x-3", className)}>
       <Checkbox id={id} {...props} ref={ref} />
-      <Label htmlFor={id}>{label}</Label>
+      <Label className="text-primary-extraDark" htmlFor={id}>
+        {label}
+      </Label>
     </div>
   );
 });

@@ -1,8 +1,8 @@
-import { ResumesFilterType } from "../../../../resume/list/types/ResumesFilterType";
-import { ResumesSortingType } from "../../../../resume/list/types/ResumesSortingType";
-import { CreationDateType } from "../../../configs/searchOptionsConfig";
-import { useUrl } from "../../../hooks";
-import { getDateFromUrlString } from "../../../utils/helpers";
+import { ResumesFilterType } from "../../../../../resume/list/types/ResumesFilterType";
+import { ResumesSortingType } from "../../../../../resume/list/types/ResumesSortingType";
+import { CreationDateType } from "../../../../configs/searchOptionsConfig";
+import { useUrl } from "../../../../hooks";
+import { getDateFromUrlString } from "../../../../utils/helpers";
 
 export const useFiltersParams = () => {
   const operatorsSupabase = {
@@ -11,6 +11,8 @@ export const useFiltersParams = () => {
     schedule: "cs",
     weekHours: "cs",
     creationDate: "gte",
+    position: "in",
+    city: "in",
   };
 
   const { getParam, getAllParams } = useUrl();

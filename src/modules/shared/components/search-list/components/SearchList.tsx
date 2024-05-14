@@ -6,7 +6,7 @@ import { SideBar } from "../../side-bar";
 import { SearchListHeader } from "./SearchListHeader";
 
 interface SearchListProps {
-  title: string;
+  title: "резюме" | "вакансии";
   total?: number;
   button?: ReactNode;
   children: ReactNode;
@@ -23,7 +23,7 @@ export const SearchList = ({ total, button, title, children }: SearchListProps) 
         <SearchFiltersBar />
       </div>
       <div className="flex gap-4 py-4">
-        <SideBar />
+        <SideBar title={title} />
         <div className="flex-1 ">
           <div className="flex flex-col gap-4">
             <SearchBar />

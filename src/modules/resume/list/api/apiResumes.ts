@@ -1,4 +1,5 @@
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagination";
+import { getFilterValue } from "../../../shared/features/filters/server-side/utils/getFilterValue";
 import { supabase } from "../../../shared/services/api/supabase";
 import { ResumesFilterType } from "../types/ResumesFilterType";
 import { ResumesListItem } from "../types/ResumesListType";
@@ -16,12 +17,9 @@ export const getResumes = async ({ filters, sortArr, page }: GetResumesProps) =>
   if (filters.length > 0) {
     filters.forEach((filter) => {
       const { column, operator, value } = filter;
+
       if (value) {
-        query = query.filter(
-          column,
-          operator,
-          Array.isArray(value) ? `{${value.join(",")}}` : value,
-        );
+        query = query.filter(column, operator, getFilterValue(value, operator));
       }
     });
   }

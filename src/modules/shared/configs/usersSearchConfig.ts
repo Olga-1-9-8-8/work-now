@@ -1,45 +1,36 @@
-export type UserSearchItem = {
+export type SearchItems = {
   title: string;
   value?: string;
 };
 
-export type UserSearchItems = {
+export type UserSearchItem = {
   title: string;
-  items: UserSearchItem[];
+  items: SearchItems[];
+  isVacancyOnly?: boolean;
 };
 
-export const userSearchConfig: UserSearchItems[] = [
-  {
-    title: "Вакансии по должности",
+export type UserSearchItems = {
+  position: UserSearchItem;
+  city: UserSearchItem;
+  company: UserSearchItem;
+};
+
+export const userSearchConfig: UserSearchItems = {
+  position: {
+    title: "по должности",
     items: [
-      {
-        title: "Вожатый",
-      },
-      {
-        title: "Водитель",
-      },
-      {
-        title: "Официант",
-      },
-      {
-        title: "Учитель",
-      },
-      {
-        title: "Менеджер ",
-      },
-      {
-        title: "Администратор",
-      },
-      {
-        title: "Курьер",
-      },
-      {
-        title: "Продавец",
-      },
+      { title: "Вожатый" },
+      { title: "Водитель" },
+      { title: "Официант" },
+      { title: "Учитель" },
+      { title: "Менеджер" },
+      { title: "Администратор" },
+      { title: "Курьер" },
+      { title: "Продавец" },
     ],
   },
-  {
-    title: "Вакансии по регионам",
+  city: {
+    title: "по регионам",
     items: [
       {
         title: "Карелия",
@@ -75,63 +66,18 @@ export const userSearchConfig: UserSearchItems[] = [
       },
     ],
   },
-  {
-    title: "Вакансии по компаниям",
+  company: {
+    title: "по компаниям",
+    isVacancyOnly: true,
     items: [
-      {
-        title: "Сбербанк",
-      },
-      {
-        title: "Роснефть",
-      },
-      {
-        title: "Газпром",
-      },
-      {
-        title: "X5Group",
-      },
-      {
-        title: "Магнит",
-      },
-      {
-        title: "ПИК",
-      },
-      {
-        title: "Русгидро",
-      },
-      {
-        title: "Полюс",
-      },
+      { title: "Сбербанк" },
+      { title: "Роснефть" },
+      { title: "Газпром" },
+      { title: "X5Group" },
+      { title: "Магнит" },
+      { title: "ПИК" },
+      { title: "Русгидро" },
+      { title: "Полюс" },
     ],
   },
-
-  {
-    title: "Популярная работа",
-    items: [
-      {
-        title: "Сбербанк",
-      },
-      {
-        title: "Менеджер",
-      },
-      {
-        title: "Газпром",
-      },
-      {
-        title: "Курьер",
-      },
-      {
-        title: "Магнит",
-      },
-      {
-        title: "Официант",
-      },
-      {
-        title: "Вожатый",
-      },
-      {
-        title: "X5",
-      },
-    ],
-  },
-];
+};

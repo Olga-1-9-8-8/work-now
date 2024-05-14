@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagination";
-import { useFiltersParams } from "../../../shared/features/filters/hooks/useFiltersParams";
+import { useFiltersParams } from "../../../shared/features/filters/server-side";
 import { getResumes } from "../api/apiResumes";
 import { mapResumes } from "../utils/mapResumes";
 
