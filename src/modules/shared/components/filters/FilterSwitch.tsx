@@ -13,7 +13,7 @@ export const FilterSwitch = ({ option, filteredField, ...props }: FilterSwitchPr
 
   const handleCheckedChange = (checked: boolean) => {
     if (checked) {
-      setParam(filteredField, option.value, { replace: true });
+      setParam(filteredField, option.value);
       setParam("offset", "1");
     } else {
       removeParam(filteredField);

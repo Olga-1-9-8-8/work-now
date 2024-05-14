@@ -13,7 +13,7 @@ export const FilterSelect = ({ title, options, filteredField, ...props }: Filter
   const { getParam, setParam } = useUrl();
 
   const handleChange = (value: string) => {
-    setParam(filteredField, value, { replace: true });
+    setParam(filteredField, value);
     setParam("offset", "1");
   };
 

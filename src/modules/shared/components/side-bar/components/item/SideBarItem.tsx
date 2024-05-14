@@ -17,7 +17,7 @@ export const SideBarItem = ({ items, title }: SideBarItemProps) => {
   const paramArr = getParam(title)?.split(",") || [];
 
   const setParams = (key: string, value: string) => {
-    setParam(key, value, { replace: true });
+    setParam(key, value);
     setParam("offset", "1");
   };
 
@@ -50,11 +50,11 @@ export const SideBarItem = ({ items, title }: SideBarItemProps) => {
         )}
         <ItemsExpander
           items={items}
-          render={(item) => {
+          render={(item, index) => {
             return (
               <CheckboxWithLabel
                 checked={getParam(title)?.split(",").includes(item.title) || false}
-                key={item.value}
+                key={index}
                 label={item.title}
                 onCheckedChange={(checked: boolean) => handleCheckedChange(item.title, checked)}
               />

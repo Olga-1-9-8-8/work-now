@@ -18,12 +18,12 @@ export const useUrl = () => {
       searchParams.delete(key);
     }
 
-    setSearchParams(searchParams, options);
+    setSearchParams(searchParams, { replace: true, ...options });
   };
 
   const removeParam = (key: string, options?: NavigateOptions) => {
     searchParams.delete(key);
-    setSearchParams(searchParams, options);
+    setSearchParams(searchParams, { replace: true, ...options });
   };
 
   return {
