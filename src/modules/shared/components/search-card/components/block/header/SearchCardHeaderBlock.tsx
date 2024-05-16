@@ -2,12 +2,14 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@radix-ui/r
 import { Building, CalendarDays, ClipboardCheck, GraduationCap, UsersRound } from "lucide-react";
 import { ReactNode, useState } from "react";
 import { FaCircleChevronDown, FaCircleChevronUp, FaPerson } from "react-icons/fa6";
-import { EducationType } from "../../../../../configs/searchOptionsConfig";
+import { educationValueToEducationTitle } from "../../../../../const/educationValueToEducationTitle";
+import { EducationType, GenderType, getGenderTitle } from "../../../../../types";
 import { Button } from "../../../../../ui/buttons/Button";
 import { CardDescription, CardHeader, CardTitle } from "../../../../../ui/card/Card";
 import { Separator } from "../../../../../ui/separator/Separator";
 import { Tooltip } from "../../../../../ui/tooltip/Tooltip";
 import { TypographyH5 } from "../../../../../ui/typography/TypographyH5";
+import { getBadgeDataByStartDate } from "../../../../../utils/getBadgeDataByStartDate";
 import {
   capitalizeFirstLetter,
   formattedTimeString,
@@ -16,9 +18,6 @@ import {
   truncateText,
 } from "../../../../../utils/helpers";
 import { Avatar } from "../../../../avatar";
-import { GenderType, getGenderTitle } from "../../../../user";
-import { educationValueToEducationTitle } from "../../../const/educationValueToEducationTitle";
-import { getBadgeVariantByStartDate } from "../../../utils/getBadgeVariantByStartDate";
 import { getDiapasonString } from "../../../utils/getDiapasonString";
 import { SearchCardItemInsight } from "../../item/SearchCardItemInsight";
 import { SearchCardHeaderDetailsLocation } from "./parts/SearchCardHeaderDetailsLocation";
@@ -121,7 +120,7 @@ export const SearchCardHeaderSideDetails = ({
         badges={[
           { title: employmentStartDate ? getDayMonthYear(employmentStartDate) : "immediately" },
         ]}
-        getBadgeData={getBadgeVariantByStartDate}
+        getBadgeData={getBadgeDataByStartDate}
       />
       <SearchCardItemInsight
         icon={UsersRound}
@@ -148,7 +147,7 @@ export const SearchCardHeaderAdditionalInfo = ({
     <Collapsible className="flex flex-col gap-4" open={open} onOpenChange={setOpen}>
       <div className="flex w-full justify-center">
         <CollapsibleTrigger asChild>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" onClick={(e) => e.stopPropagation()} size="icon">
             {open ? (
               <FaCircleChevronUp size={30} className="fill-primary-extraDark" />
             ) : (

@@ -1,13 +1,13 @@
 import { FaCircleXmark } from "react-icons/fa6";
-import { SearchItems } from "../../../../configs/usersSearchConfig";
 import { useUrl } from "../../../../hooks";
+import { UniversalItemType } from "../../../../types";
 import { Button } from "../../../../ui/buttons/Button";
 import { CardContent } from "../../../../ui/card/Card";
 import { CheckboxWithLabel } from "../../../../ui/checkbox/CheckboxWithLabel";
 import { ItemsExpander } from "../../../../ui/expander/ItemsExpander";
 
 interface SideBarItemProps {
-  items: SearchItems[];
+  items: UniversalItemType[];
   title: string;
 }
 
@@ -16,8 +16,8 @@ export const SideBarItem = ({ items, title }: SideBarItemProps) => {
 
   const paramArr = getParam(title)?.split(",") || [];
 
-  const setParams = (key: string, value: string) => {
-    setParam(key, value);
+  const setParams = (k: string, value: string) => {
+    setParam(k, value);
     setParam("offset", "1");
   };
 

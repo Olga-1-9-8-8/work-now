@@ -1,65 +1,22 @@
-export const employmentTypes = [
-  "summer",
-  "resort",
-  "graduation",
-  "volunteer",
-  "internship",
-  "summerInternship",
-  "full",
-  "part",
-] as const;
-export const scheduleTypes = ["fullDay", "scheduleShift", "flexible", "remote"] as const;
-export const educationTypes = [
-  "secondary",
-  "secondarySpecial",
-  "higherUnfinished",
-  "higher",
-] as const;
-export const weekHoursTypes = ["40", "20", "10"] as const;
+import {
+  EducationType,
+  EmploymentType,
+  ScheduleType,
+  UniversalItemsWithTitleType,
+  WeekHoursType,
+} from "../types";
 
-export const sortTypes = ["creationDate-desc", "salary-desc", "salary-asc"] as const;
-export const creationDateTypes = [
-  "allTime",
-  "lastDay",
-  "lastTwoDays",
-  "lastThreeDays",
-  "lastWeek",
-  "lastMonth",
-] as const;
-
-export type EmploymentType = (typeof employmentTypes)[number];
-export type ScheduleType = (typeof scheduleTypes)[number];
-export type EducationType = (typeof educationTypes)[number];
-export type WeekHoursType = (typeof weekHoursTypes)[number];
-export type SortType = (typeof sortTypes)[number];
-export type CreationDateType = (typeof creationDateTypes)[number];
-
-export interface SearchOptionsItemOption<T> {
-  title: string;
-  value: T;
-}
-
-export interface SearchOptionsItem<T> {
-  title: string;
-  options: SearchOptionsItemOption<T>[];
-}
-
-export type SearchOptions = {
-  schedule: SearchOptionsItem<ScheduleType>;
-  employment: SearchOptionsItem<EmploymentType>;
-  education: SearchOptionsItem<EducationType>;
-  weekHours: SearchOptionsItem<WeekHoursType>;
+export type FilterConfigType = {
+  schedule: UniversalItemsWithTitleType<ScheduleType>;
+  employment: UniversalItemsWithTitleType<EmploymentType>;
+  education: UniversalItemsWithTitleType<EducationType>;
+  weekHours: UniversalItemsWithTitleType<WeekHoursType>;
 };
 
-export type SortOptions = {
-  sort: SearchOptionsItem<SortType>;
-  creationDate: SearchOptionsItem<CreationDateType>;
-};
-
-export const searchOptionsConfig: SearchOptions = {
+export const filterConfig: FilterConfigType = {
   schedule: {
     title: "Выберите график работы",
-    options: [
+    items: [
       {
         title: "Полный день",
         value: "fullDay",
@@ -80,7 +37,7 @@ export const searchOptionsConfig: SearchOptions = {
   },
   employment: {
     title: "Выберите тип вакансии",
-    options: [
+    items: [
       {
         title: "Полная занятость",
         value: "full",
@@ -117,7 +74,7 @@ export const searchOptionsConfig: SearchOptions = {
   },
   education: {
     title: "Выберите образование",
-    options: [
+    items: [
       {
         title: "Среднее",
         value: "secondary",
@@ -138,7 +95,7 @@ export const searchOptionsConfig: SearchOptions = {
   },
   weekHours: {
     title: "Количество часов в неделю",
-    options: [
+    items: [
       {
         title: "40 часов (8 часов в день)",
         value: "40",
@@ -155,10 +112,10 @@ export const searchOptionsConfig: SearchOptions = {
   },
 };
 
-export const popularSearchOptionsConfig: SearchOptions = {
+export const popularFilterConfig: FilterConfigType = {
   schedule: {
     title: "Выберите график работы",
-    options: [
+    items: [
       {
         title: "Удаленная работа",
         value: "remote",
@@ -167,7 +124,7 @@ export const popularSearchOptionsConfig: SearchOptions = {
   },
   employment: {
     title: "Выберите тип вакансии",
-    options: [
+    items: [
       {
         title: "Полная занятость",
         value: "full",
@@ -184,7 +141,7 @@ export const popularSearchOptionsConfig: SearchOptions = {
   },
   education: {
     title: "Выберите образование",
-    options: [
+    items: [
       {
         title: "Высшее",
         value: "higher",
@@ -193,59 +150,10 @@ export const popularSearchOptionsConfig: SearchOptions = {
   },
   weekHours: {
     title: "Количество часов в неделю",
-    options: [
+    items: [
       {
         title: "20 ч в неделю (4 ч в день)",
         value: "20",
-      },
-    ],
-  },
-};
-
-export const sortOptionsConfig: SortOptions = {
-  sort: {
-    title: "Сортировать по",
-    options: [
-      {
-        title: "По дате",
-        value: "creationDate-desc",
-      },
-      {
-        title: "По убыванию зарплаты",
-        value: "salary-desc",
-      },
-      {
-        title: "По возрастанию зарплаты",
-        value: "salary-asc",
-      },
-    ],
-  },
-  creationDate: {
-    title: "Сортировать по времени",
-    options: [
-      {
-        title: "За все время",
-        value: "allTime",
-      },
-      {
-        title: "За сутки",
-        value: "lastDay",
-      },
-      {
-        title: "За последние два дня",
-        value: "lastTwoDays",
-      },
-      {
-        title: "За последние три дня",
-        value: "lastThreeDays",
-      },
-      {
-        title: "За последнюю неделю",
-        value: "lastWeek",
-      },
-      {
-        title: "За последний месяц",
-        value: "lastMonth",
       },
     ],
   },

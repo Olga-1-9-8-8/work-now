@@ -1,15 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import { SearchCard } from "../../../../shared/components/search-card";
-import { ResumesListItem as ResumesListItemType } from "../../types/ResumesListType";
+import { UniversalCardItemType } from "../../../../shared/types";
 
 interface ResumesListItemProps {
-  resume: ResumesListItemType;
+  resume: UniversalCardItemType;
 }
 
 export const ResumesListItem = ({ resume }: ResumesListItemProps) => {
-  // eslint-disable-next-line unicorn/consistent-function-scoping
-  const mutate = () => {
-    console.log("Написать функцию отклика ");
+  const navigate = useNavigate();
+  const handleCardClick = (id: number) => {
+    navigate(`/resumes/${id}`);
   };
 
-  return <SearchCard data={resume} onClick={mutate} />;
+  return <SearchCard data={resume} onClick={handleCardClick} />;
 };

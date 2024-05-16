@@ -1,0 +1,1 @@
+export { mapResume } from "./mapResume";

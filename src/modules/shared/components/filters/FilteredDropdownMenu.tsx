@@ -1,6 +1,6 @@
 import { ChevronDown } from "lucide-react";
-import { SearchOptionsItemOption } from "../../configs/searchOptionsConfig";
 import { useUrl } from "../../hooks";
+import { UniversalItemType } from "../../types";
 import { Button } from "../../ui/buttons/Button";
 import {
   DropdownMenu,
@@ -13,7 +13,7 @@ import {
 interface FilteredDropdownMenuProps {
   title: string;
   sortedField: string;
-  options: SearchOptionsItemOption<string>[];
+  options: Required<UniversalItemType<string>>[];
 }
 
 export const FilteredDropdownMenu = ({ sortedField, options }: FilteredDropdownMenuProps) => {

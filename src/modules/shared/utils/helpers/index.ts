@@ -1,3 +1,5 @@
+export { formatCurrency } from "./currencyHelper";
+
 export { concatNullableArrays, createEmptyArray } from "./arrayHelper";
 
 export { formatPhoneNumber } from "./phoneHelper";

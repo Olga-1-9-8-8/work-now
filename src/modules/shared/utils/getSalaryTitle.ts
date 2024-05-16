@@ -1,6 +1,6 @@
-import { formatCurrency } from "../../../utils/helpers/currencyHelper";
+import { formatCurrency } from "./helpers/currencyHelper";
 
-export const getSalaryBadge = (salary?: number[]) => {
+export const getSalaryTitle = (salary?: number[]) => {
   const salaryFrom = salary?.[0];
   const salaryTo = salary?.[1];
 

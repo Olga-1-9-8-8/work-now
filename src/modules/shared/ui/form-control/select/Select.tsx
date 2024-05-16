@@ -1,5 +1,6 @@
 import { SelectProps as SelectBaseProps } from "@radix-ui/react-select";
-import { SearchOptionsItemOption } from "../../../configs/searchOptionsConfig";
+
+import { UniversalItemType } from "../../../types";
 import {
   Select as SelectBase,
   SelectContent,
@@ -11,7 +12,7 @@ import {
 
 interface SelectProps extends SelectBaseProps {
   title: string;
-  options: SearchOptionsItemOption<string>[];
+  options: Required<UniversalItemType<string>>[];
 }
 
 export const Select = ({ title, options, value, ...props }: SelectProps) => {

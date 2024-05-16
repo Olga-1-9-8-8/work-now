@@ -1,0 +1,23 @@
+import { supabase } from "../../../shared/services/api/supabase";
+
+export const getResume = async (id: string) => {
+  const { data, error } = await supabase.from("resumes").select("*,users(*)").eq("id", id).single();
+
+  if (error) {
+    console.log(error);
+    throw new Error("Проблема с загрузкой резюме из базы данных");
+  }
+
+  return data;
+};
+
+export const updateResume = async (id: string, obj: any) => {
+  const { data, error } = await supabase.from("resumes").update(obj).eq("id", id).select().single();
+
+  if (error) {
+    console.log(error);
+    throw new Error("Резюме не может быть обновлено");
+  }
+
+  return data;
+};

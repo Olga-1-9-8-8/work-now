@@ -1,0 +1,1 @@
+export { educationValueToEducationTitle } from "./educationValueToEducationTitle";

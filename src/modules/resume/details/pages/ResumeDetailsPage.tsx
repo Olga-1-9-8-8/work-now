@@ -1,3 +1,5 @@
+import { ResumeDetails } from "../components/ResumeDetails";
+
 export const ResumeDetailsPage = () => {
-  return <div>Детали по резюме</div>;
+  return <ResumeDetails />;
 };

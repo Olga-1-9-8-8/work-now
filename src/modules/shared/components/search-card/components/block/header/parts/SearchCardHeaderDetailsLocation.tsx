@@ -24,6 +24,7 @@ export const SearchCardHeaderDetailsLocation = ({
       button={
         <Button
           variant="link"
+          onClick={(e) => e.stopPropagation()}
           className={`${coordinates ? "hover:underline" : "hover:no-underline"} p-0 text-primary-extraDark`}
         >
           <Tooltip content="Посмотреть на карте">

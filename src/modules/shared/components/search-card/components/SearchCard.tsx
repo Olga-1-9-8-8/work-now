@@ -1,13 +1,13 @@
+import { UniversalCardItemType } from "../../../types";
 import { Card } from "../../../ui/card/Card";
 import { TypographyH5 } from "../../../ui/typography/TypographyH5";
 import { ThirdPartyHtmlComponent } from "../../third-party-html";
-import { SearchCardListItem } from "../types/SearchCardList";
 import { SearchCardDetailsBlock } from "./block/SearchCardDetailsBlock";
 import { SearchCardOperationsFooterBlock } from "./block/SearchCardOperationsFooterBlock";
 import { SearchCardHeaderBlock } from "./block/header/SearchCardHeaderBlock";
 
 interface SearchCardProps {
-  data: SearchCardListItem;
+  data: UniversalCardItemType;
   onClick: (id: number) => void;
   isHiring?: boolean;
 }

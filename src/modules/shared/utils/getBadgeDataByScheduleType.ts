@@ -1,8 +1,8 @@
 import { Laptop } from "lucide-react";
-import { ScheduleType, WeekHoursType } from "../../../configs/searchOptionsConfig";
+import { ScheduleType, WeekHoursType } from "../types";
 import { BadgeType } from "../types/BadgeType";
 
-export const getBadgeVariantByScheduleType = (type?: ScheduleType | WeekHoursType): BadgeType => {
+export const getBadgeDataByScheduleType = (type?: ScheduleType | WeekHoursType): BadgeType => {
   switch (type) {
     case "fullDay": {
       return {

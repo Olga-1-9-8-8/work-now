@@ -1,14 +1,12 @@
 import { Briefcase, Clock, Coins } from "lucide-react";
-import {
-  EmploymentType,
-  ScheduleType,
-  WeekHoursType,
-} from "../../../../configs/searchOptionsConfig";
+import { EmploymentType, ScheduleType, WeekHoursType } from "../../../../types";
 import { CardContent } from "../../../../ui/card/Card";
-import { getBadgeVariantByEmploymentType } from "../../utils/getBadgeVariantByEmploymentType";
-import { getBadgeVariantByScheduleType } from "../../utils/getBadgeVariantByScheduleType";
-import { getBadgesTitle } from "../../utils/getBadgesTitle";
-import { getSalaryBadge } from "../../utils/getSalaryBadge";
+import {
+  getBadgeDataByEmploymentType,
+  getBadgeDataByScheduleType,
+  getSalaryTitle,
+} from "../../../../utils";
+import { getBadgesTitle } from "../../../../utils/getBadgesTitle";
 import { SearchCardItemInsight } from "../item/SearchCardItemInsight";
 
 interface SearchCardDetailsBlockProps {
@@ -28,7 +26,7 @@ export const SearchCardDetailsBlock = ({
         <li className="flex-1">
           <SearchCardItemInsight
             icon={Coins}
-            badges={[{ title: getSalaryBadge(salary) }]}
+            badges={[{ title: getSalaryTitle(salary) }]}
             title="Зарплата"
           />
         </li>
@@ -37,7 +35,7 @@ export const SearchCardDetailsBlock = ({
             <SearchCardItemInsight
               icon={Clock}
               badges={getBadgesTitle(schedule)}
-              getBadgeData={getBadgeVariantByScheduleType}
+              getBadgeData={getBadgeDataByScheduleType}
               title="График работы"
             />
           </li>
@@ -47,7 +45,7 @@ export const SearchCardDetailsBlock = ({
             <SearchCardItemInsight
               icon={Briefcase}
               badges={getBadgesTitle(employment)}
-              getBadgeData={getBadgeVariantByEmploymentType}
+              getBadgeData={getBadgeDataByEmploymentType}
               title="Тип работы"
             />
           </li>

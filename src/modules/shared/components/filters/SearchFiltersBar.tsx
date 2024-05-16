@@ -1,4 +1,6 @@
-import { popularSearchOptionsConfig, searchOptionsConfig, sortOptionsConfig } from "../../configs";
+import { sortConfig } from "../../configs";
+import { filterConfig, popularFilterConfig } from "../../configs/filterConfig";
+import { UniversalItemType } from "../../types";
 import { FilterSelect } from "./FilterSelect";
 import { FilterSwitch } from "./FilterSwitch";
 import { FilteredDropdownMenu } from "./FilteredDropdownMenu";
@@ -8,18 +10,25 @@ export const SearchFiltersBar = () => {
     <div>
       <div className="flex flex-col flex-wrap gap-8 sm:flex-row sm:items-center ">
         <ul className="flex flex-col flex-wrap gap-6 sm:flex-row">
-          {Object.entries(searchOptionsConfig).map(([title, option]) => (
+          {Object.entries(filterConfig).map(([title, option]) => (
             <li key={title}>
-              <FilterSelect filteredField={title} title={option.title} options={option.options} />
+              <FilterSelect
+                filteredField={title}
+                title={option.title}
+                options={option.items as Required<UniversalItemType<string>>[]}
+              />
             </li>
           ))}
         </ul>
 
         <ul className="flex flex-row flex-wrap gap-6 sm:flex-row ">
-          {Object.entries(popularSearchOptionsConfig).map(([title, item]) => {
-            return item.options.map((option) => (
+          {Object.entries(popularFilterConfig).map(([title, item]) => {
+            return item.items.map((option) => (
               <li key={option.value}>
-                <FilterSwitch filteredField={title} option={option} />
+                <FilterSwitch
+                  filteredField={title}
+                  option={option as Required<UniversalItemType<string>>}
+                />
               </li>
             ));
           })}
@@ -27,13 +36,13 @@ export const SearchFiltersBar = () => {
       </div>
 
       <ul className="flex flex-wrap gap-6 pt-8">
-        {Object.entries(sortOptionsConfig).map(([title, option]) => {
+        {Object.entries(sortConfig).map(([title, option]) => {
           return (
             <li key={title}>
               <FilteredDropdownMenu
                 sortedField={title}
                 title={option.title}
-                options={option.options}
+                options={option.items as Required<UniversalItemType<string>>[]}
               />
             </li>
           );

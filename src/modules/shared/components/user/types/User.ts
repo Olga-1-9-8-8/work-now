@@ -1,4 +1,4 @@
-import { GenderType } from "./GenderType";
+import { GenderType } from "../../../types";
 
 export interface User {
   fullName: string;

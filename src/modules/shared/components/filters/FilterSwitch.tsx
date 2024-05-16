@@ -1,11 +1,11 @@
 import * as SwitchPrimitives from "@radix-ui/react-switch";
-import { SearchOptionsItemOption } from "../../configs/searchOptionsConfig";
 import { useUrl } from "../../hooks/useUrl";
+import { UniversalItemType } from "../../types";
 import { SwitchWithLabel } from "../../ui/switch/SwitchWithLabel";
 
 type FilterSwitchProps = {
   filteredField: string;
-  option: SearchOptionsItemOption<string>;
+  option: Required<UniversalItemType<string>>;
 } & React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>;
 
 export const FilterSwitch = ({ option, filteredField, ...props }: FilterSwitchProps) => {

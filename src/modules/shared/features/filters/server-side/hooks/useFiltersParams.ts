@@ -1,6 +1,5 @@
 import { ResumesFilterType } from "../../../../../resume/list/types/ResumesFilterType";
 import { ResumesSortingType } from "../../../../../resume/list/types/ResumesSortingType";
-import { CreationDateType } from "../../../../configs/searchOptionsConfig";
 import { useUrl } from "../../../../hooks";
 import { getDateFromUrlString } from "../../../../utils/helpers";
 
@@ -42,7 +41,7 @@ export const useFiltersParams = () => {
       params.filters?.push({
         column: key,
         operator: operator || "eq",
-        value: isDateDiapason ? getDateFromUrlString(value as CreationDateType) : value.split(","),
+        value: isDateDiapason ? getDateFromUrlString(value) : value.split(","),
       });
     }
   });

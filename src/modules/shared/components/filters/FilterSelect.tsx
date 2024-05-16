@@ -1,12 +1,12 @@
 import { SelectProps } from "@radix-ui/react-select";
-import { SearchOptionsItemOption } from "../../configs/searchOptionsConfig";
 import { useUrl } from "../../hooks";
+import { UniversalItemType } from "../../types";
 import { Select } from "../../ui/form-control";
 
 interface FiltersSelectProps extends SelectProps {
   filteredField: string;
   title: string;
-  options: SearchOptionsItemOption<string>[];
+  options: Required<UniversalItemType<string>>[];
 }
 
 export const FilterSelect = ({ title, options, filteredField, ...props }: FiltersSelectProps) => {

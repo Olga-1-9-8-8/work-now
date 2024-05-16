@@ -1,21 +1,12 @@
-export type SearchItems = {
-  title: string;
-  value?: string;
+import { UniversalItemsWithTitleType } from "../types";
+
+export type SearchConfigType = {
+  position: UniversalItemsWithTitleType;
+  city: UniversalItemsWithTitleType;
+  company: UniversalItemsWithTitleType;
 };
 
-export type UserSearchItem = {
-  title: string;
-  items: SearchItems[];
-  isVacancyOnly?: boolean;
-};
-
-export type UserSearchItems = {
-  position: UserSearchItem;
-  city: UserSearchItem;
-  company: UserSearchItem;
-};
-
-export const userSearchConfig: UserSearchItems = {
+export const searchConfig: SearchConfigType = {
   position: {
     title: "по должности",
     items: [

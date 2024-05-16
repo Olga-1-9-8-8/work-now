@@ -1,8 +1,8 @@
 import { Building2, GraduationCap, HandHeart, Ship, SunMedium } from "lucide-react";
-import { EmploymentType } from "../../../configs/searchOptionsConfig";
+import { EmploymentType } from "../types";
 import { BadgeType } from "../types/BadgeType";
 
-export const getBadgeVariantByEmploymentType = (type?: EmploymentType): BadgeType => {
+export const getBadgeDataByEmploymentType = (type?: EmploymentType): BadgeType => {
   switch (type) {
     case "full": {
       return {

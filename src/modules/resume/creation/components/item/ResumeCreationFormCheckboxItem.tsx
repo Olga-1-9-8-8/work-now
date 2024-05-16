@@ -1,18 +1,18 @@
 import { useFormContext } from "react-hook-form";
-import { SearchOptionsItem } from "../../../../shared/configs/searchOptionsConfig";
+import { UniversalItemsWithTitleType } from "../../../../shared/types";
 import { Checkbox } from "../../../../shared/ui/checkbox/Checkbox";
 import { FormControl, FormField, FormItem, FormLabel } from "../../../../shared/ui/form/Form";
 import { Label } from "../../../../shared/ui/labels/Label";
 import { ResumeCreationFormType } from "../../types/ResumeCreationFormType";
 
-interface ResumeCreationFormCheckboxItemProps extends SearchOptionsItem {
+interface ResumeCreationFormCheckboxItemProps extends UniversalItemsWithTitleType {
   disabled: boolean;
   name: "employment" | "schedule";
 }
 
 export const ResumeCreationFormCheckboxItem = ({
   title,
-  options,
+  items,
   disabled,
   name,
 }: ResumeCreationFormCheckboxItemProps) => {
@@ -21,7 +21,7 @@ export const ResumeCreationFormCheckboxItem = ({
   return (
     <div className="flex flex-col space-y-4">
       <Label htmlFor="framework">{title}</Label>
-      {options.map((item) => (
+      {items.map((item) => (
         <FormField
           key={item.value}
           control={control}

@@ -1,6 +1,6 @@
 import { VariantProps } from "class-variance-authority";
 import { ElementType } from "react";
-import { badgeVariants } from "../../../ui/badge/Badge";
+import { badgeVariants } from "../ui/badge/Badge";
 
 export interface BadgeItem<T> {
   title?: T;

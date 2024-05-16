@@ -1,7 +1,7 @@
 import { ElementType } from "react";
+import { BadgeItem, BadgeType } from "../../../../types";
 import { Badge } from "../../../../ui/badge/Badge";
 import { cn } from "../../../../utils/cn";
-import { BadgeItem, BadgeType } from "../../types/BadgeType";
 
 interface SearchCardItemInsightProps<T> {
   icon: ElementType;
