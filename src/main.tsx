@@ -4,13 +4,13 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
+import { ScrollToTop } from "./modules/shared/components/scroll";
+import "./modules/shared/configs/internationalization/i18n";
 import { AppRoutes } from "./modules/shared/features/router";
 import { ResponsiveProvider } from "./modules/shared/responsive";
 import { Spinner } from "./modules/shared/ui/spinner/Spinner";
 import { Toaster } from "./modules/shared/ui/toast/Toast";
 import { TooltipProvider } from "./modules/shared/ui/tooltip/TooltipPrimitive";
-// eslint-disable-next-line import/extensions
-import "./modules/shared/configs/internationalization/i18n";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,6 +29,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Suspense fallback={<Spinner />}>
             <Toaster position="bottom-center" richColors />
             <TooltipProvider delayDuration={200}>
+              <ScrollToTop />
               <AppRoutes />
             </TooltipProvider>
           </Suspense>

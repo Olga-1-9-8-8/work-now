@@ -1,7 +1,5 @@
-import { useEffect } from "react";
 import { NotFound } from "../../../shared/components/not-found/components";
 import { Pagination } from "../../../shared/components/pagination";
-import { useUrl } from "../../../shared/hooks";
 import { ResumesListType } from "../types/ResumesListType";
 import { ResumesListItem } from "./item/ResumesListItem";
 
@@ -11,14 +9,6 @@ interface ResumesListProps {
 }
 
 export const ResumesList = ({ resumes, totalCount }: ResumesListProps) => {
-  const { getParam } = useUrl();
-
-  useEffect(() => {
-    if (getParam("offset")) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  }, [getParam]);
-
   if (!resumes) return <NotFound title="Резюме" />;
 
   return (

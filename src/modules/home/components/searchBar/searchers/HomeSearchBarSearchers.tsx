@@ -12,7 +12,7 @@ export const HomeSearchBarSearchers = () => {
           return (
             <Fragment key={title}>
               {item.items.map((i, index) => (
-                <HomeSearchBarSearchersItem title={i.title} key={index} />
+                <HomeSearchBarSearchersItem title={title} item={i} key={index} />
               ))}
             </Fragment>
           );

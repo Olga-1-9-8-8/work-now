@@ -12,7 +12,7 @@ const VacanciesListPage = () => {
   }
 
   return (
-    <SearchList total={totalCount} title="вакансий">
+    <SearchList total={totalCount} title="вакансии">
       {vacancies ? (
         <VacanciesList vacancies={vacancies} totalCount={totalCount} />
       ) : (

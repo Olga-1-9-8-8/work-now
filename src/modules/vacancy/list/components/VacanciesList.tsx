@@ -1,42 +1,26 @@
+import { NotFound } from "../../../shared/components/not-found/components";
 import { Pagination } from "../../../shared/components/pagination/components/Pagination";
-import { SearchBar } from "../../../shared/components/search-bar";
-import { SearchCard } from "../../../shared/components/search-card";
+import { VacanciesListType } from "../types/VacanciesListType";
+import { VacanciesListItem } from "./item/VacanciesListItem";
 
 interface VacanciesListProps {
-  vacancies: any;
+  vacancies: VacanciesListType;
+  totalCount?: number;
 }
 
-export const VacanciesList = ({ vacancies }: VacanciesListProps) => {
-  return (
-    <div className="flex flex-col gap-4 sm:p-4">
-      <SearchBar />
-      {vacancies.map((vacancy: any) => {
-        const vac = vacancy.vacancy;
-        const item = {
-          id: vac.id,
-          city: vac.region.name,
-          fullName: vac.company.name,
-          employment: vac.employment,
-          position: vac["job-name"],
-          salary: [vac.salary_min, vac.salary_max],
-          schedule: vac.schedule,
-          site: vac.company.site,
-          phone: vac.company.phone,
-          education: vac.requirement.education,
-          experience: vac.requirement.experience,
-        };
+export const VacanciesList = ({ vacancies, totalCount }: VacanciesListProps) => {
+  if (!vacancies) return <NotFound title="Вакансии" />;
 
-        return (
-          <SearchCard
-            key={item.id}
-            data={item}
-            onClick={() => {
-              console.log(1);
-            }}
-          />
-        );
-      })}
-      <Pagination />
-    </div>
+  return (
+    <>
+      {totalCount === 0 ? (
+        <NotFound title="Вакансии" description="Поменяйте фильтры или попробуйте еще раз" />
+      ) : (
+        vacancies.map((vacancy) => {
+          return <VacanciesListItem key={vacancy.id} vacancy={vacancy} />;
+        })
+      )}
+      {totalCount && <Pagination totalCount={totalCount} />}
+    </>
   );
 };
