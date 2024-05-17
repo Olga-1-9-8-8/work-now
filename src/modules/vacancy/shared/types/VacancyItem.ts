@@ -1,16 +1,15 @@
-import { EducationType, EmploymentType, ScheduleType, WeekHoursType } from "../../../shared/types";
-
 export interface VacancyItem {
-  id: number;
+  id: string;
+  companyCode: string;
   name: string;
   position: string;
   creationDate: Date;
   city?: string;
-  employment?: EmploymentType[];
+  employment?: string;
   salary?: number[];
-  schedule?: ScheduleType | WeekHoursType[];
+  schedule?: string;
   about?: string;
-  education?: EducationType;
+  education?: string;
   phone: string;
   coordinates?: {
     lat: string;

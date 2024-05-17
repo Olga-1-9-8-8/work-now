@@ -1,3 +1,5 @@
+import { VacancyDetails } from "../components/VacancyDetails";
+
 export const VacancyDetailsPage = () => {
-  return <div> Страница деталей по вакансии</div>;
+  return <VacancyDetails />;
 };

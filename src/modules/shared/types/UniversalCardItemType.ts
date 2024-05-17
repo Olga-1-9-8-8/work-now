@@ -5,17 +5,17 @@ import { ScheduleType } from "./ScheduleType";
 import { WeekHoursType } from "./WeekHoursType";
 
 export interface UniversalCardItemType {
-  id: number;
+  id: number | string;
   name: string;
   position: string;
   creationDate?: Date | null;
   city?: string;
   applicantsQuantity?: number;
-  employment?: EmploymentType[] | EmploymentType;
+  employment?: EmploymentType[] | EmploymentType | string;
   salary?: number[];
-  schedule?: ScheduleType | WeekHoursType[];
+  schedule?: ScheduleType | WeekHoursType[] | string;
   about?: string;
-  education?: EducationType;
+  education?: EducationType | string;
   employmentStartDate?: Date;
   views?: number;
   phone?: string;
@@ -26,4 +26,5 @@ export interface UniversalCardItemType {
     lat: string;
     lng: string;
   };
+  companyCode?: string;
 }

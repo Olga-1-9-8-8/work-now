@@ -6,13 +6,17 @@ import { SearchCardDetailsBlock } from "./block/SearchCardDetailsBlock";
 import { SearchCardOperationsFooterBlock } from "./block/SearchCardOperationsFooterBlock";
 import { SearchCardHeaderBlock } from "./block/header/SearchCardHeaderBlock";
 
-interface SearchCardProps {
+interface SearchCardProps<T extends number | string> {
   data: UniversalCardItemType;
-  onClick: (id: number) => void;
+  onClick: (id: T, companyCode?: string) => void;
   isHiring?: boolean;
 }
 
-export const SearchCard = ({ data, onClick, isHiring = false }: SearchCardProps) => {
+export const SearchCard = <T extends number | string>({
+  data,
+  onClick,
+  isHiring = false,
+}: SearchCardProps<T>) => {
   const {
     position,
     about,
@@ -21,6 +25,7 @@ export const SearchCard = ({ data, onClick, isHiring = false }: SearchCardProps)
     city,
     schedule,
     id,
+    companyCode,
     education,
     employmentStartDate,
     creationDate,
@@ -35,7 +40,7 @@ export const SearchCard = ({ data, onClick, isHiring = false }: SearchCardProps)
   } = data;
 
   return (
-    <Card variant="clickable" onClick={() => onClick(id)}>
+    <Card variant="clickable" onClick={() => onClick(id as T, companyCode)}>
       <SearchCardHeaderBlock>
         <div className="flex flex-col justify-between gap-4 xl:flex-row">
           <div className="flex flex-col gap-2">
@@ -74,7 +79,7 @@ export const SearchCard = ({ data, onClick, isHiring = false }: SearchCardProps)
         )}
       </SearchCardHeaderBlock>
       <SearchCardDetailsBlock salary={salary} employment={employment} schedule={schedule} />
-      <SearchCardOperationsFooterBlock onClick={onClick} phone={phone} id={id} />
+      <SearchCardOperationsFooterBlock<T> onClick={onClick} phone={phone} id={id as T} />
     </Card>
   );
 };
