@@ -4,15 +4,15 @@ import { CardContent } from "../../../../ui/card/Card";
 import {
   getBadgeDataByEmploymentType,
   getBadgeDataByScheduleType,
+  getBadgesTitle,
   getSalaryTitle,
 } from "../../../../utils";
-import { getBadgesTitle } from "../../../../utils/getBadgesTitle";
-import { SearchCardItemInsight } from "../item/SearchCardItemInsight";
+import { CardItemInsight } from "../../../card";
 
 interface SearchCardDetailsBlockProps {
   salary?: number[];
-  employment?: EmploymentType[] | EmploymentType;
-  schedule?: ScheduleType | WeekHoursType[];
+  employment?: EmploymentType[] | string;
+  schedule?: ScheduleType[] | WeekHoursType[] | string;
 }
 
 export const SearchCardDetailsBlock = ({
@@ -24,7 +24,7 @@ export const SearchCardDetailsBlock = ({
     <CardContent>
       <ul className="flex flex-col flex-wrap gap-8 lg:flex-row lg:gap-5">
         <li className="flex-1">
-          <SearchCardItemInsight
+          <CardItemInsight
             icon={Coins}
             badges={[{ title: getSalaryTitle(salary) }]}
             title="Зарплата"
@@ -32,7 +32,7 @@ export const SearchCardDetailsBlock = ({
         </li>
         {schedule && (
           <li className="flex-1">
-            <SearchCardItemInsight
+            <CardItemInsight
               icon={Clock}
               badges={getBadgesTitle(schedule)}
               getBadgeData={getBadgeDataByScheduleType}
@@ -42,7 +42,7 @@ export const SearchCardDetailsBlock = ({
         )}
         {employment && (
           <li className="flex-1">
-            <SearchCardItemInsight
+            <CardItemInsight
               icon={Briefcase}
               badges={getBadgesTitle(employment)}
               getBadgeData={getBadgeDataByEmploymentType}

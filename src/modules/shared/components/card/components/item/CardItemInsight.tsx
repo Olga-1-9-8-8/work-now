@@ -3,7 +3,7 @@ import { BadgeItem, BadgeType } from "../../../../types";
 import { Badge } from "../../../../ui/badge/Badge";
 import { cn } from "../../../../utils/cn";
 
-interface SearchCardItemInsightProps<T> {
+interface CardItemInsightProps<T> {
   icon: ElementType;
   title: string;
   badges?: BadgeItem<T>[];
@@ -11,13 +11,13 @@ interface SearchCardItemInsightProps<T> {
   className?: string;
 }
 
-export const SearchCardItemInsight = <T extends string>({
+export const CardItemInsight = <T extends string>({
   icon,
   title,
   badges,
   getBadgeData,
   className,
-}: SearchCardItemInsightProps<T>) => {
+}: CardItemInsightProps<T>) => {
   const Icon = icon;
   return (
     <div className={cn("flex gap-4 ", className)}>

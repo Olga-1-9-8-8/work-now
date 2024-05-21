@@ -11,9 +11,9 @@ export interface UniversalCardItemType {
   creationDate?: Date | null;
   city?: string;
   applicantsQuantity?: number;
-  employment?: EmploymentType[] | EmploymentType | string;
+  employment?: EmploymentType[] | string;
   salary?: number[];
-  schedule?: ScheduleType | WeekHoursType[] | string;
+  schedule?: ScheduleType[] | WeekHoursType[] | string;
   about?: string;
   education?: EducationType | string;
   employmentStartDate?: Date;

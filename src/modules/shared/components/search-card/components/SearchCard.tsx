@@ -3,7 +3,7 @@ import { Card } from "../../../ui/card/Card";
 import { TypographyH5 } from "../../../ui/typography/TypographyH5";
 import { ThirdPartyHtmlComponent } from "../../third-party-html";
 import { SearchCardDetailsBlock } from "./block/SearchCardDetailsBlock";
-import { SearchCardOperationsFooterBlock } from "./block/SearchCardOperationsFooterBlock";
+import { SearchCardOperationsFooterBlock } from "./block/footer/SearchCardOperationsFooterBlock";
 import { SearchCardHeaderBlock } from "./block/header/SearchCardHeaderBlock";
 
 interface SearchCardProps<T extends number | string> {
@@ -79,7 +79,7 @@ export const SearchCard = <T extends number | string>({
         )}
       </SearchCardHeaderBlock>
       <SearchCardDetailsBlock salary={salary} employment={employment} schedule={schedule} />
-      <SearchCardOperationsFooterBlock<T> onClick={onClick} phone={phone} id={id as T} />
+      <SearchCardOperationsFooterBlock<T> phone={phone} id={id as T} />
     </Card>
   );
 };

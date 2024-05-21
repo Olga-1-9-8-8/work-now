@@ -1,26 +1,26 @@
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@radix-ui/react-collapsible";
 import { Building, CalendarDays, ClipboardCheck, GraduationCap, UsersRound } from "lucide-react";
 import { ReactNode, useState } from "react";
 import { FaCircleChevronDown, FaCircleChevronUp, FaPerson } from "react-icons/fa6";
-import { educationValueToEducationTitle } from "../../../../../const/educationValueToEducationTitle";
 import { EducationType, GenderType, getGenderTitle } from "../../../../../types";
 import { Button } from "../../../../../ui/buttons/Button";
 import { CardDescription, CardHeader, CardTitle } from "../../../../../ui/card/Card";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "../../../../../ui/collapsible/Collapsible";
 import { Separator } from "../../../../../ui/separator/Separator";
-import { Tooltip } from "../../../../../ui/tooltip/Tooltip";
-import { TypographyH5 } from "../../../../../ui/typography/TypographyH5";
-import { getBadgeDataByStartDate } from "../../../../../utils/getBadgeDataByStartDate";
+import { getBadgeDataByStartDate } from "../../../../../utils";
 import {
   capitalizeFirstLetter,
   formattedTimeString,
   getDayMonthYear,
   getRightNounYearDeclension,
-  truncateText,
 } from "../../../../../utils/helpers";
 import { Avatar } from "../../../../avatar";
+import { CardItemInsight, CardTitleWithTooltip, getEducationTitle } from "../../../../card";
+import { MapBadge } from "../../../../map";
 import { getDiapasonString } from "../../../utils/getDiapasonString";
-import { SearchCardItemInsight } from "../../item/SearchCardItemInsight";
-import { SearchCardHeaderDetailsLocation } from "./parts/SearchCardHeaderDetailsLocation";
 
 interface SearchCardHeaderTitleProps {
   name: string;
@@ -42,16 +42,9 @@ export const SearchCardHeaderTitle = ({
         icon={isHiring ? Building : undefined}
         user={{ image, fullName: name }}
       />
-
       <div>
         <CardTitle className="text-xl md:text-2xl">{capitalizeFirstLetter(position)}</CardTitle>
-        <Tooltip content={name} className="max-w-96">
-          <span>
-            <TypographyH5 className="font-medium text-primary-extraDark">
-              {truncateText(name, 55)}
-            </TypographyH5>
-          </span>
-        </Tooltip>
+        <CardTitleWithTooltip title={name} />
       </div>
     </div>
   );
@@ -59,7 +52,7 @@ export const SearchCardHeaderTitle = ({
 
 interface SearchCardHeaderDetailsProps {
   city?: string;
-  education?: EducationType;
+  education?: EducationType | string;
   creationDate?: Date | null;
   coordinates?: {
     lat: string;
@@ -79,15 +72,15 @@ export const SearchCardHeaderDetails = ({
   return (
     <div className="flex flex-col gap-1">
       <div className="flex flex-col items-start gap-1 sm:flex-row sm:items-center">
-        {city && <SearchCardHeaderDetailsLocation city={city} coordinates={coordinates} />}
-        <SearchCardItemInsight
+        {city && <MapBadge city={city} coordinates={coordinates} />}
+        <CardItemInsight
           className="items-center gap-2 text-primary-extraDark"
           icon={GraduationCap}
-          title={education ? educationValueToEducationTitle[education] ?? education : "Не указано"}
+          title={getEducationTitle(education)}
         />
       </div>
       {(gender || age) && (
-        <SearchCardItemInsight
+        <CardItemInsight
           className="items-center gap-2 text-primary-extraDark "
           icon={FaPerson}
           title={`${gender ? getGenderTitle(gender) : "Пол не указан"}  ${age ? `/ ${getRightNounYearDeclension(String(age))}` : ""}`}
@@ -114,7 +107,7 @@ export const SearchCardHeaderSideDetails = ({
 }: SearchCardHeaderDatesDetailsProps) => {
   return (
     <div className="flex flex-col gap-3">
-      <SearchCardItemInsight
+      <CardItemInsight
         icon={CalendarDays}
         title="Дата выхода:"
         badges={[
@@ -122,12 +115,12 @@ export const SearchCardHeaderSideDetails = ({
         ]}
         getBadgeData={getBadgeDataByStartDate}
       />
-      <SearchCardItemInsight
+      <CardItemInsight
         icon={UsersRound}
         title={getDiapasonString(views, "просмотров")}
         className={`${views && "border-2 border-success"} items-center rounded-lg p-2 md:w-fit xl:w-full`}
       />
-      <SearchCardItemInsight
+      <CardItemInsight
         icon={ClipboardCheck}
         title={getDiapasonString(applicantsQuantity, "откликов")}
         className={`${applicantsQuantity && "border-2 border-success bg-success/5"} items-center rounded-lg p-2 md:w-fit xl:w-full `}

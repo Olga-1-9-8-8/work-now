@@ -11,8 +11,13 @@ export const getResume = async (id: string) => {
   return data;
 };
 
-export const updateResume = async (id: string, obj: any) => {
-  const { data, error } = await supabase.from("resumes").update(obj).eq("id", id).select().single();
+export const updateResume = async (id: number, applicantsQuantity: number) => {
+  const { data, error } = await supabase
+    .from("resumes")
+    .update({ applicantsQuantity })
+    .eq("id", id)
+    .select()
+    .single();
 
   if (error) {
     console.log(error);

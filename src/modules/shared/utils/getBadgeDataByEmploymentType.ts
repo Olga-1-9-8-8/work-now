@@ -2,7 +2,7 @@ import { Building2, GraduationCap, HandHeart, Ship, SunMedium } from "lucide-rea
 import { EmploymentType } from "../types";
 import { BadgeType } from "../types/BadgeType";
 
-export const getBadgeDataByEmploymentType = (type?: EmploymentType): BadgeType => {
+export const getBadgeDataByEmploymentType = (type?: EmploymentType | string): BadgeType => {
   switch (type) {
     case "full": {
       return {

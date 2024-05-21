@@ -1,8 +1,8 @@
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagination";
 import { getFilterValue } from "../../../shared/features/filters/server-side/utils/getFilterValue";
 import { supabase } from "../../../shared/services/api/supabase";
+import { ResumeItem } from "../../shared/types";
 import { ResumesFilterType } from "../types/ResumesFilterType";
-import { ResumesListItem } from "../types/ResumesListType";
 import { ResumesSortingType } from "../types/ResumesSortingType";
 
 interface GetResumesProps {
@@ -46,7 +46,7 @@ export const getResumes = async ({ filters, sortArr, page }: GetResumesProps) =>
   return { data, totalCount: count };
 };
 
-export const createEditResume = async (newResume: ResumesListItem) => {
+export const createEditResume = async (newResume: ResumeItem) => {
   let query: any = supabase.from("resumes");
 
   if (!newResume.id) {
