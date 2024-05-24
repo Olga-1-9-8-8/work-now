@@ -1,7 +1,7 @@
-import { NotFound } from "../../../shared/components/not-found/components";
+import { useResumes } from "../../../resume/list/hooks/useResumes";
+import { NotExist } from "../../../shared/components/not-found/components";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
 import { LkResumes } from "../components/LkResumes";
-import { useResumes } from "../hooks";
 
 export const LkResumesPage = () => {
   const { resumes, isLoading, totalCount } = useResumes();
@@ -11,6 +11,6 @@ export const LkResumesPage = () => {
   return resumes ? (
     <LkResumes resumes={resumes} totalCount={totalCount} />
   ) : (
-    <NotFound title="Резюме" />
+    <NotExist title="У вас пока нет резюме. Создайте резюме" />
   );
 };

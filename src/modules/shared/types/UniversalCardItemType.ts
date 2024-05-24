@@ -14,7 +14,8 @@ export interface UniversalCardItemType {
   applicantsQuantity?: number;
   employment?: EmploymentType[] | string;
   salary?: number[];
-  schedule?: ScheduleType[] | WeekHoursType[] | string;
+  schedule?: ScheduleType[] | string;
+  weekHours?: WeekHoursType[];
   about?: string;
   education?: EducationType | string;
   employmentStartDate?: Date;

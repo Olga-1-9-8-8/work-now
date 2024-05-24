@@ -1,6 +1,6 @@
 import * as React from "react";
+import { useResumes } from "../../../../resume/list/hooks/useResumes";
 import { createContext } from "../../../../shared/context";
-import { useResumes } from "../../../resumes/hooks";
 import { LkContextType } from "./types/LkContextType";
 
 export interface ResponsiveProviderProps {

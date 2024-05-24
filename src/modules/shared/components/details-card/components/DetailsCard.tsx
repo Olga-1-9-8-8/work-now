@@ -12,7 +12,7 @@ interface DetailsCardProps {
   className?: string;
   onApplyClick: (isApplied: boolean) => void;
   onFavoriteClick: (isFavorite: boolean) => void;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export const DetailsCard = ({

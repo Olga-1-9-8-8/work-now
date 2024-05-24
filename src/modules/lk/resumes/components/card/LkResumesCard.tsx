@@ -1,7 +1,7 @@
 import { Copy, MoreVertical, Pencil, TrashIcon } from "lucide-react";
 import { ResumeCreationForm } from "../../../../resume/creation";
 import { useCreateResume } from "../../../../resume/creation/hooks/useCreateResume";
-import { ResumesListItem } from "../../../../resume/list/types/ResumesListType";
+import { ResumeItem } from "../../../../resume/shared/types";
 import { DeleteConfirmation } from "../../../../shared/components/delete-cofirmation";
 import { useResponsiveContext } from "../../../../shared/responsive";
 import { Button } from "../../../../shared/ui/buttons/Button";
@@ -26,7 +26,7 @@ import { TypographyH6 } from "../../../../shared/ui/typography/TypographyH6";
 import { formattedTimeString } from "../../../../shared/utils/helpers";
 
 interface LkResumesCardProps {
-  resume: ResumesListItem;
+  resume: ResumeItem;
   isDeleting: boolean;
   onDelete: (id: number) => void;
 }
@@ -37,9 +37,8 @@ export const LkResumesCard = ({ resume, isDeleting, onDelete }: LkResumesCardPro
   const isMobile = useResponsiveContext();
 
   const handleDuplicate = () => {
-    const { id, creationDate, ...resumesValue } = resume;
     createResume({
-      ...resumesValue,
+      ...resume,
       position: `Копия - ${resume.position}`,
     });
   };
@@ -84,7 +83,7 @@ export const LkResumesCard = ({ resume, isDeleting, onDelete }: LkResumesCardPro
                     <DrawerTitle>Редактировать резюме</DrawerTitle>
                     <DrawerDescription>{resume.name}</DrawerDescription>
                   </DrawerHeader>
-                  <ResumeCreationForm resume={resume} />
+                  <ResumeCreationForm resume={resume} userId={resume.userId} />
                 </DrawerContent>
               </Drawer>
               <DropdownMenuSeparator />
@@ -121,7 +120,7 @@ export const LkResumesCard = ({ resume, isDeleting, onDelete }: LkResumesCardPro
                 title="Редактировать резюме"
                 description={resume.name}
               >
-                <ResumeCreationForm resume={resume} />
+                <ResumeCreationForm resume={resume} userId={resume.userId} />
               </DrawerDialogResponsive>
 
               <Button onClick={handleDuplicate} disabled={isCreating}>

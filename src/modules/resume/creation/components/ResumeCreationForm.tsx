@@ -1,10 +1,11 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
 import { z } from "zod";
-import { searchOptionsConfig } from "../../../shared/configs";
+import { filterConfig } from "../../../shared/configs";
+import { UniversalItemType } from "../../../shared/types";
 import { Button } from "../../../shared/ui/buttons/Button";
+import { DatePicker, Select } from "../../../shared/ui/form-control";
+
 import {
   Form,
   FormControl,
@@ -17,65 +18,73 @@ import {
 import { Input } from "../../../shared/ui/inputs/Input";
 import { Slider } from "../../../shared/ui/slider/Slider";
 import { TextareaWithLabel } from "../../../shared/ui/textarea/TextareaWithLabel";
-import { createResume } from "../../list/api/apiResumes";
-import { ResumeCreationFormValidationSchema } from "../validation/ResumeCreationFormValidationSchema";
+import { formatDateToStringUtc } from "../../../shared/utils/helpers";
+import { ResumeItem } from "../../shared/types";
+import { useCreateResume } from "../hooks/useCreateResume";
+import { useEditResume } from "../hooks/useEditResume";
+import { ResumeCreationFormType } from "../types/ResumeCreationFormType";
+import { resumeFormValidationSchema } from "../validation/resumeFormValidationSchema";
 import { ResumeCreationFormCheckboxItem } from "./item/ResumeCreationFormCheckboxItem";
 
-export const ResumeCreationForm = () => {
-  const queryClient = useQueryClient();
+interface ResumeCreationFormProps {
+  userId: string;
+  resume?: ResumeItem;
+}
 
-  const form = useForm<z.infer<typeof ResumeCreationFormValidationSchema>>({
-    resolver: zodResolver(ResumeCreationFormValidationSchema),
+export const ResumeCreationForm = ({ userId, resume }: ResumeCreationFormProps) => {
+  console.log(resume, userId);
+  const form = useForm<ResumeCreationFormType>({
+    resolver: zodResolver(resumeFormValidationSchema),
     defaultValues: {
-      fullName: "",
-      position: "",
-      city: "",
-      employment: [],
-      schedule: [],
-      salary: [20_000, 70_000],
-      about: "",
+      userId,
+      position: resume?.position ?? "",
+      city: resume?.city ?? "",
+      employment: resume?.employment ?? [],
+      schedule: resume?.schedule ?? [],
+      salary: resume?.salary ?? [0, 0],
+      education: resume?.education ?? undefined,
+      about: resume?.about ?? "",
+      employmentStartDate: resume?.employmentStartDate ?? undefined,
+      views: resume?.views ?? 0,
+      applicantsQuantity: resume?.applicantsQuantity ?? 0,
+      weekHours: resume?.weekHours ?? [],
     },
   });
 
-  const { mutate, isPending } = useMutation({
-    mutationFn: createResume,
-    onSuccess: () => {
-      toast.success("Новое резюме создано");
-      queryClient.invalidateQueries({ queryKey: ["resumes"] });
-      form.reset();
-    },
-    onError: (err) => toast.error(err.message),
-  });
+  const { createResume, isCreating } = useCreateResume();
+  const { editResume, isEditing } = useEditResume();
 
-  function onSubmit(values: z.infer<typeof ResumeCreationFormValidationSchema>) {
-    console.log(values);
-    mutate(values);
+  function onSubmit(values: z.infer<typeof resumeFormValidationSchema>) {
+    if (resume?.id) {
+      editResume(
+        { ...values, id: resume.id, creationDate: formatDateToStringUtc(new Date()) },
+        {
+          onSuccess: () => form.reset(),
+        },
+      );
+    } else {
+      createResume(values, {
+        onSuccess: () => form.reset(),
+      });
+    }
   }
 
-  const { employment, schedule } = searchOptionsConfig;
+  const { employment, schedule, education } = filterConfig;
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
-          name="fullName"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input placeholder="Имя" disabled={isPending} {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
           name="position"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="Желаемая должность" disabled={isPending} {...field} />
+                <Input
+                  placeholder="Укажите должность"
+                  disabled={isCreating || isEditing}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -87,22 +96,40 @@ export const ResumeCreationForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="Укажите регион поиска работы" disabled={isPending} {...field} />
+                <Input
+                  placeholder="Укажите регион поиска работы"
+                  disabled={isCreating || isEditing}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
+        <FormField
+          control={form.control}
+          name="education"
+          render={({ field }) => (
+            <FormItem>
+              <Select
+                options={education.items as Required<UniversalItemType<string>>[]}
+                title={education.title}
+                defaultValue={field.value}
+                onValueChange={field.onChange}
+              />
+            </FormItem>
+          )}
+        />
         <ResumeCreationFormCheckboxItem
-          disabled={isPending}
+          disabled={isCreating || isEditing}
           name="employment"
-          options={employment.options}
+          items={employment.items}
           title={employment.title}
         />
         <ResumeCreationFormCheckboxItem
-          disabled={isPending}
+          disabled={isCreating || isEditing}
           name="schedule"
-          options={schedule.options}
+          items={schedule.items}
           title={schedule.title}
         />
         <FormField
@@ -117,7 +144,7 @@ export const ResumeCreationForm = () => {
                 </FormLabel>
                 <FormControl>
                   <Slider
-                    disabled={isPending}
+                    disabled={isCreating || isEditing}
                     min={0}
                     max={500_000}
                     step={1000}
@@ -138,7 +165,7 @@ export const ResumeCreationForm = () => {
             <FormItem>
               <FormControl>
                 <TextareaWithLabel
-                  disabled={isPending}
+                  disabled={isCreating || isEditing}
                   label="Напиши о себе"
                   placeholder="Напиши про свои навыки"
                   {...field}
@@ -151,8 +178,19 @@ export const ResumeCreationForm = () => {
             </FormItem>
           )}
         />
-
-        <Button disabled={isPending} size="lg" type="submit">
+        <FormField
+          control={form.control}
+          name="employmentStartDate"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel>Дата начала работы</FormLabel>
+              <DatePicker {...field} />
+              <FormDescription>Дата предполагаемого выхода на работу.</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button disabled={isCreating || isEditing} size="lg" type="submit">
           Опубликовать резюме
         </Button>
       </form>

@@ -9,7 +9,7 @@ interface DetailsCardHeaderOperationsProps {
   onApplyClick: (isApplied: boolean) => void;
   onFavoriteClick: (isFavorite: boolean) => void;
   applicantsQuantity?: number;
-  disabled: boolean;
+  disabled?: boolean;
 }
 export const DetailsCardHeaderOperations = ({
   disabled,

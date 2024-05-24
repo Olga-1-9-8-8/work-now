@@ -1,8 +1,9 @@
+import { ReactNode } from "react";
 import { NoExistIcon } from "../../../ui/icons";
 import { TypographyH4 } from "../../../ui/typography/TypographyH4";
 
 interface NotExistProps {
-  title: string;
+  title: ReactNode;
 }
 
 export const NotExist = ({ title }: NotExistProps) => {

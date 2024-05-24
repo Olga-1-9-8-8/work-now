@@ -8,6 +8,7 @@ import {
 
 export interface ResumeItem {
   id: number;
+  userId: string;
   name: string;
   position: string;
   creationDate: Date;
@@ -15,7 +16,8 @@ export interface ResumeItem {
   applicantsQuantity: number;
   employment?: EmploymentType[];
   salary?: number[];
-  schedule?: ScheduleType | WeekHoursType[];
+  schedule?: ScheduleType[];
+  weekHours?: WeekHoursType[];
   about?: string;
   education?: EducationType;
   employmentStartDate?: Date;

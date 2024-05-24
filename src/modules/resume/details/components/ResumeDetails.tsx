@@ -5,7 +5,6 @@ import { useMoveBack } from "../../../shared/hooks/useMoveBack";
 import { Button } from "../../../shared/ui/buttons/Button";
 import { PageContainer } from "../../../shared/ui/layout";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
-import { useApplyFavoriteResume } from "../hooks/useApplyFavoriteResume";
 import { useApplyResume } from "../hooks/useApplyResume";
 import { useResume } from "../hooks/useResume";
 
@@ -14,7 +13,6 @@ export const ResumeDetails = () => {
   const moveBack = useMoveBack();
 
   const { applyResume, isApplyingResume } = useApplyResume();
-  const { applyFavoriteResume, isApplyingFavoriteResume } = useApplyFavoriteResume();
 
   const handleApplyClick = (isApplied: boolean) => {
     if (resume) {
@@ -24,10 +22,7 @@ export const ResumeDetails = () => {
 
   const handleFavoriteClick = (isFavorite: boolean) => {
     if (resume) {
-      applyFavoriteResume({
-        id: resume.id,
-        isFavorite,
-      });
+      console.log(isFavorite);
     }
   };
 
@@ -44,7 +39,7 @@ export const ResumeDetails = () => {
           data={resume}
           onApplyClick={handleApplyClick}
           onFavoriteClick={handleFavoriteClick}
-          disabled={isApplyingResume || isApplyingFavoriteResume}
+          disabled={isApplyingResume}
         />
       ) : (
         <NotFound title="Детали резюме" />

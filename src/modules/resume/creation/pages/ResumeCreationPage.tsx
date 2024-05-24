@@ -1,3 +1,8 @@
+import { useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
+import { NotExist } from "../../../shared/components/not-found/components";
+import { useUser } from "../../../shared/services/auth";
 import {
   Card,
   CardContent,
@@ -9,6 +14,20 @@ import { PageContainer } from "../../../shared/ui/layout";
 import { ResumeCreationForm } from "../components/ResumeCreationForm";
 
 export const ResumeCreationPage = () => {
+  const { user } = useUser();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, [navigate, user]);
+
+  if (!user) {
+    return <NotExist title="Чтобы создать резюме, нужно войти в аккаунт" />;
+  }
+
   return (
     <PageContainer>
       <Card className="mt-6">
@@ -17,7 +36,7 @@ export const ResumeCreationPage = () => {
           <CardDescription>Не забудь добавить фото к своему профилю.</CardDescription>
         </CardHeader>
         <CardContent>
-          <ResumeCreationForm />
+          <ResumeCreationForm userId={user.id} />
         </CardContent>
       </Card>
     </PageContainer>
