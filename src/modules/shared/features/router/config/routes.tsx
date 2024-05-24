@@ -1,16 +1,17 @@
 import { Suspense, lazy } from "react";
 import { Navigate, RouteObject } from "react-router-dom";
-import { LkApplicationsPage } from "../../../../lk/applications/pages/LkApplicationsPage";
-import { LkDetailsPage } from "../../../../lk/details/pages/LkDetailsPage";
-import { LkFavoritesPage } from "../../../../lk/favorites/pages/LkFavoritesPage";
-import { LkHomePage } from "../../../../lk/home/pages/LkHomePage";
-import { LkResumesPage } from "../../../../lk/resumes/pages/LkResumesPage";
+import { LkApplicationsPage } from "../../../../lk/applications";
+import { LkDetailsPage } from "../../../../lk/details";
+import { LkFavoritesPage } from "../../../../lk/favorites";
+import { LkHomePage } from "../../../../lk/home";
+import { LkResumesPage } from "../../../../lk/resumes";
 import { LkLayout } from "../../../../lk/shared/ui";
-import { ResumeCreationPage } from "../../../../resume/creation/pages/ResumeCreationPage";
+import { ResumeCreationPage } from "../../../../resume/creation";
 import { ResumeDetailsPage } from "../../../../resume/details";
 import { VacancyDetailsPage } from "../../../../vacancy/details";
 import { AppLayout } from "../../../ui/layout";
 import { Spinner } from "../../../ui/spinner/Spinner";
+import { ProtectedRoute } from "../components/ProtectedRoute";
 
 const HomePage = lazy(() => import("../../../../home"));
 const AuthLoginPage = lazy(() => import("../../../services"));
@@ -36,7 +37,6 @@ export const routes: RouteObject[] = [
         element: <HomePage />,
         children: [],
       },
-
       {
         element: <VacanciesListPage />,
         path: "vacancies",
@@ -68,7 +68,11 @@ export const routes: RouteObject[] = [
       },
       {
         path: "lk",
-        element: <LkLayout />,
+        element: (
+          <ProtectedRoute>
+            <LkLayout />
+          </ProtectedRoute>
+        ),
         children: [
           {
             index: true,

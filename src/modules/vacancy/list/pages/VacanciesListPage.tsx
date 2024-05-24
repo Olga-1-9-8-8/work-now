@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+import { CreateButton } from "../../../shared/components/buttons";
 import { NotFound } from "../../../shared/components/not-found/components";
 import { SearchList } from "../../../shared/components/search-list";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
@@ -6,13 +8,17 @@ import { useVacancies } from "../hooks/useVacancies";
 
 const VacanciesListPage = () => {
   const { isLoading, vacancies, totalCount } = useVacancies();
-
+  const navigate = useNavigate();
   if (isLoading) {
     return <Spinner />;
   }
 
   return (
-    <SearchList total={totalCount} title="вакансии">
+    <SearchList
+      total={totalCount}
+      title="вакансии"
+      button={<CreateButton title="новое резюме" onClick={() => navigate(`/resumes/creation`)} />}
+    >
       {vacancies ? (
         <VacanciesList vacancies={vacancies} totalCount={totalCount} />
       ) : (

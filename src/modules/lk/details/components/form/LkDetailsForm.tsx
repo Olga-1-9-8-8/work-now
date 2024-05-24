@@ -13,6 +13,7 @@ import {
 } from "../../../../shared/ui/form/Form";
 import { InputWithLabel } from "../../../../shared/ui/inputs/InputWithLabel";
 import { RadioGroup, RadioGroupItem } from "../../../../shared/ui/radio/RadioGroup";
+import { useUpdateLkDetail } from "../../hooks/useUpdateLkDetail";
 import { LkDetailsFormType } from "../../types/LkDetailsFormType";
 import { LkDetailsFormValidationSchema } from "../../validation/LkDetailsFormValidationSchema";
 import { LkDetailsFormAvatarBlock } from "./block/LkDetailsFormAvatarBlock";
@@ -22,17 +23,18 @@ interface LkDetailsFormProps {
 }
 
 export const LkDetailsForm = ({ user }: LkDetailsFormProps) => {
+  const { isUpdating, updateSetting } = useUpdateLkDetail();
+
   const form = useForm<LkDetailsFormType>({
     resolver: zodResolver(LkDetailsFormValidationSchema),
     defaultValues: {
-      userName: user.name || "",
-      gender: user.gender || "",
-      image: user.image || ({} as File),
+      userName: user.fullName || "",
+      gender: user.gender,
     },
   });
 
   const onSubmit = (data: LkDetailsFormType) => {
-    console.log(data);
+    updateSetting(data);
   };
 
   return (
@@ -86,7 +88,7 @@ export const LkDetailsForm = ({ user }: LkDetailsFormProps) => {
             </FormItem>
           )}
         />
-        <Button size="lg" type="submit" className="w-full">
+        <Button size="lg" disabled={isUpdating} type="submit" className="w-full">
           Сохранить
         </Button>
       </form>

@@ -25,6 +25,16 @@ export const parseDateFromString = (date: string): Date => {
 };
 
 /**
+
+ * @param date - date format
+ * @returns The formatted date string.
+ */
+
+export const formatDateToStringUtc = (date: Date): string => {
+  return format(date, "yyyy-MM-dd HH:mm:ss.SSS");
+};
+
+/**
  * @param {Date} date - The date to be formatted.
  * @example "2022-05-23T00:00:00.000Z" -> "23 марта ?2022"
  * @return {string} The formatted time string.

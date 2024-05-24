@@ -1,3 +1,5 @@
+import { LkFavorites } from "../components/LkFavorites";
+
 export const LkFavoritesPage = () => {
-  return <div>Страница в разработке</div>;
+  return <LkFavorites />;
 };

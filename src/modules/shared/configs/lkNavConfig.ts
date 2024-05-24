@@ -12,8 +12,8 @@ export type LkNavItems = {
   icon: ElementType;
   linkTitle?: string;
   linkIcon?: ElementType;
-  linkHref?: string;
   isMain?: boolean;
+  isExit?: boolean;
 };
 
 export const lkNavConfig: LkNavItems[] = [
@@ -31,7 +31,7 @@ export const lkNavConfig: LkNavItems[] = [
     icon: UserRound,
     linkTitle: "Выйти",
     linkIcon: LogOut,
-    linkHref: "/login",
+    isExit: true,
   },
   {
     title: "Избранное",

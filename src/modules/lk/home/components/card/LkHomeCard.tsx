@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Avatar } from "../../../../shared/components/avatar";
 import { LkNavItems } from "../../../../shared/configs/lkNavConfig";
 import { useResponsiveContext } from "../../../../shared/responsive";
+import { useLogout } from "../../../../shared/services/auth";
 import { Button } from "../../../../shared/ui/buttons/Button";
 import { Card, CardContent, CardFooter, CardHeader } from "../../../../shared/ui/card/Card";
 import { TypographyH2 } from "../../../../shared/ui/typography/TypographyH2";
@@ -15,6 +16,8 @@ interface LkHomeCardProps {
 
 export const LkHomeCard = ({ item, description, className }: LkHomeCardProps) => {
   const navigate = useNavigate();
+
+  const { logout, isLogout } = useLogout();
 
   const isMobile = useResponsiveContext();
   const LinkIcon = item.linkIcon;
@@ -37,11 +40,13 @@ export const LkHomeCard = ({ item, description, className }: LkHomeCardProps) =>
       <CardFooter className="flex sm:justify-end">
         <Button
           onClick={(e) => {
-            if (item.linkHref) {
-              e.stopPropagation();
-              navigate(item.linkHref);
+            e.stopPropagation();
+            if (item.isExit) {
+              logout();
             }
+            navigate(item.href);
           }}
+          disabled={isLogout}
           variant={isMobile ? "default" : "link"}
           size="lg"
           className="flex w-full gap-2 pr-0 text-base sm:w-auto sm:pr-6"

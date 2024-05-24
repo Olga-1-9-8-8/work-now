@@ -1,10 +1,10 @@
-import { WorkListItem } from "../../../shared/components/search-card";
+import { ResumeItem } from "../../../resume/shared/types";
 import { TypographyH2 } from "../../../shared/ui/typography/TypographyH2";
 import { useDeleteResume } from "../hooks";
 import { LkResumesCard } from "./card/LkResumesCard";
 
 interface LkResumesProps {
-  resumes: WorkListItem[];
+  resumes: ResumeItem[];
   totalCount?: number;
 }
 

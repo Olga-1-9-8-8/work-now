@@ -40,12 +40,12 @@ export const getRightNounWordDeclension = (
   wordEndings: string[],
 ) => {
   const getIndex = () => {
-    if (quantity === 1) return 1;
-    if (quantity > 1 && quantity < 5) return 2;
-    return 3;
+    if (quantity % 10 === 1 && quantity !== 11) return 0;
+    if (quantity > 1 && quantity < 5) return 1;
+    return 2;
   };
 
-  return word + wordEndings[getIndex()];
+  return `${quantity} ${word}${wordEndings[getIndex()]}`;
 };
 
 export const getRightNounYearDeclension = (quantity: string) => {

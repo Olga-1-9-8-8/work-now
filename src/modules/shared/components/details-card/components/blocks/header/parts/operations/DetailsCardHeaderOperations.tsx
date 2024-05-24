@@ -1,8 +1,7 @@
-import { ClipboardCheck, Heart, RefreshCw, Zap } from "lucide-react";
-import { useState } from "react";
-import { Button } from "../../../../../../../ui/buttons/Button";
+import { ClipboardCheck, RefreshCw } from "lucide-react";
 import { CardDescription } from "../../../../../../../ui/card/Card";
 import { formattedTimeString } from "../../../../../../../utils/helpers";
+import { AppliedButton, FavoriteButton } from "../../../../../../buttons";
 
 interface DetailsCardHeaderOperationsProps {
   isHiring?: boolean;
@@ -20,44 +19,11 @@ export const DetailsCardHeaderOperations = ({
   creationDate,
   applicantsQuantity,
 }: DetailsCardHeaderOperationsProps) => {
-  const [isApplied, setIsApplied] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  const handleFavoriteClick = () => {
-    setIsFavorite((prevIsFavorite) => {
-      onFavoriteClick(!prevIsFavorite);
-      return !prevIsFavorite;
-    });
-  };
-
-  const handleApplyClick = () => {
-    setIsApplied((prevIsApplied) => {
-      onApplyClick(!prevIsApplied);
-      return !prevIsApplied;
-    });
-  };
-
   return (
     <div className="flex flex-col gap-3">
       <div className="md:flex-start flex flex-row-reverse justify-end gap-8 md:flex-row">
-        <Button
-          className={`w-fix group px-2 ${isFavorite && "border-2 border-destructive"}`}
-          variant="outline"
-          disabled={disabled}
-          size="icon"
-          onClick={handleFavoriteClick}
-        >
-          <Heart
-            className={`stroke-destructive group-hover:fill-destructive ${isFavorite && "fill-destructive"}`}
-          />
-        </Button>
-
-        <Button onClick={handleApplyClick} variant={isApplied ? "destructive" : "success"}>
-          <Zap
-            className={`mr-3 stroke-white group-hover:fill-destructive ${isApplied && "fill-destructive"}`}
-          />
-          {isApplied ? "Вы откликнулись" : "Откликнуться"}
-        </Button>
+        <FavoriteButton onClick={onFavoriteClick} disabled={disabled} />
+        <AppliedButton onClick={onApplyClick} />
       </div>
       <p className="mt-2 flex gap-1 text-sm font-medium text-muted-foreground">
         <ClipboardCheck size={20} className="stroke-success" />

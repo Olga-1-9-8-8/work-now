@@ -5,6 +5,7 @@ export { concatNullableArrays, createEmptyArray } from "./arrayHelper";
 export { formatPhoneNumber } from "./phoneHelper";
 
 export {
+  formatDateToStringUtc,
   formattedTimeString,
   getDateFromUrlString,
   getDayMonthYear,
