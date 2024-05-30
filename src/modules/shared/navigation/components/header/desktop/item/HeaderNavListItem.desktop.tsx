@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { MainNavItem } from "../../../../../configs/mainNavConfig";
 import { Button } from "../../../../../ui/buttons/Button";
 import {
@@ -20,11 +20,17 @@ export const HeaderNavListItemDesktop = React.forwardRef<
   React.ComponentPropsWithoutRef<"a"> & HeaderNavListItemDesktopProps
 >(({ className, title, item, children, ...props }, ref) => {
   const { t } = useTranslation("header");
-
+  const navigate = useNavigate();
+  const Icon = item.icon;
   if (!item.items) {
     return item.type === "button" ? (
-      <Button className="text-base" variant="outline" asChild>
-        <NavLink to={item.href}>{t(item.title)}</NavLink>
+      <Button
+        onClick={() => navigate(`${item.href}`)}
+        className="flex h-full flex-col gap-2 font-bold text-white/80 hover:text-white/100"
+        variant="link"
+      >
+        <Icon size={20} />
+        {t(item.title)}
       </Button>
     ) : (
       <HeaderNavListItemLink
@@ -56,7 +62,7 @@ export const HeaderNavListItemDesktop = React.forwardRef<
           {item.items.map((i: MainNavItem) => {
             return (
               <HeaderNavListItemLink
-                className="flex-row gap-4 text-base font-bold text-dark"
+                className="flex-row gap-4 font-bold text-dark"
                 key={i.title}
                 to={i.href}
                 title={t(i.title)}

@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { UseFormReset } from "react-hook-form";
+
 import { useLogin } from "../../hooks/useLogin";
 import { LogInFormType } from "../../types/LogInFormType";
 import { authLogInFormValidationSchema } from "../../validation/authLogInFormValidationSchema";
@@ -8,11 +9,11 @@ import { AuthEmailField } from "./item/AuthEmailField";
 import { AuthPasswordField } from "./item/AuthPasswordField";
 
 export const AuthLoginForm = () => {
-  const { isLogin, login } = useLogin();
+  const { isLoginPending, login } = useLogin();
 
   const onSubmit = useCallback(
     (data: LogInFormType, reset: UseFormReset<LogInFormType>) => {
-      login({ email: data.email, password: data.password }, { onSettled: () => reset() });
+      login(data, { onSettled: () => reset() });
     },
     [login],
   );
@@ -22,19 +23,19 @@ export const AuthLoginForm = () => {
       title="Войти в аккаунт"
       schema={authLogInFormValidationSchema}
       onSubmit={onSubmit}
-      isLoading={isLogin}
+      isLoading={isLoginPending}
     >
       <AuthEmailField<LogInFormType>
         label="Укажите email"
         name="email"
         placeholder="Email"
-        disabled={isLogin}
+        disabled={isLoginPending}
       />
       <AuthPasswordField<LogInFormType>
         label="Укажите пароль"
         placeholder="Введите пароль"
         name="password"
-        disabled={isLogin}
+        disabled={isLoginPending}
       />
     </AuthFormWrapper>
   );

@@ -1,9 +1,9 @@
 /* eslint-disable no-underscore-dangle */
 import { z } from "zod";
 
-export function getDefaultsValuesFromValidationSchema<T extends z.ZodTypeAny>(
+export const getDefaultsValuesFromValidationSchema = <T extends z.ZodTypeAny>(
   schema: z.AnyZodObject | z.ZodEffects<any>,
-): z.infer<T> {
+): z.infer<T> => {
   if (schema instanceof z.ZodEffects) {
     if (schema.innerType() instanceof z.ZodEffects)
       return getDefaultsValuesFromValidationSchema(schema.innerType());
@@ -25,4 +25,4 @@ export function getDefaultsValuesFromValidationSchema<T extends z.ZodTypeAny>(
       return [key, getDefaultValue(value as z.ZodTypeAny)];
     }),
   );
-}
+};

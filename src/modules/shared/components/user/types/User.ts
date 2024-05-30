@@ -1,8 +1,8 @@
 import { GenderType } from "../../../types";
 
 export interface User {
-  fullName: string;
-  image?: string;
+  userName: string;
+  avatar?: File;
   gender?: GenderType;
   age?: number;
   phone: string;

@@ -1,94 +1,66 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-
 import { User } from "../../../../shared/components/user";
+import { useUpdateUser } from "../../../../shared/services/auth/hooks/useUpdateUser";
+import { UniversalItemType } from "../../../../shared/types";
 import { Button } from "../../../../shared/ui/buttons/Button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "../../../../shared/ui/form/Form";
-import { InputWithLabel } from "../../../../shared/ui/inputs/InputWithLabel";
-import { RadioGroup, RadioGroupItem } from "../../../../shared/ui/radio/RadioGroup";
-import { useUpdateLkDetail } from "../../hooks/useUpdateLkDetail";
+import { FormInputField, FormRadioGroup, FormSelect } from "../../../../shared/ui/form-control";
+import { Form } from "../../../../shared/ui/form/Form";
+import { createTitleValueArrayFromNumbersRange } from "../../../../shared/utils/helpers";
 import { LkDetailsFormType } from "../../types/LkDetailsFormType";
-import { LkDetailsFormValidationSchema } from "../../validation/LkDetailsFormValidationSchema";
+import { lkDetailsFormValidationSchema } from "../../validation/lkDetailsFormValidationSchema";
 import { LkDetailsFormAvatarBlock } from "./block/LkDetailsFormAvatarBlock";
 
 interface LkDetailsFormProps {
-  user: Partial<User>;
+  user: User;
 }
 
 export const LkDetailsForm = ({ user }: LkDetailsFormProps) => {
-  const { isUpdating, updateSetting } = useUpdateLkDetail();
+  const { isUpdatingUser, updateUser } = useUpdateUser();
 
   const form = useForm<LkDetailsFormType>({
-    resolver: zodResolver(LkDetailsFormValidationSchema),
+    resolver: zodResolver(lkDetailsFormValidationSchema),
     defaultValues: {
-      userName: user.fullName || "",
+      userName: user.userName || "",
       gender: user.gender,
+      avatar: user.avatar,
+      age: user.age,
     },
   });
 
   const onSubmit = (data: LkDetailsFormType) => {
-    updateSetting(data);
+    updateUser(data);
   };
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 py-4">
         <LkDetailsFormAvatarBlock user={user} />
-        <FormField
-          control={form.control}
+        <FormInputField<LkDetailsFormType>
+          label="Укажите имя"
           name="userName"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl className="max-w-full">
-                <InputWithLabel
-                  label="Укажите имя"
-                  placeholder="Имя"
-                  autoCorrect="off"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          placeholder="Имя"
+          disabled={isUpdatingUser}
         />
-        <FormField
-          control={form.control}
+        <FormRadioGroup<LkDetailsFormType>
+          label="Укажите пол"
           name="gender"
-          render={({ field }) => (
-            <FormItem className="space-y-3">
-              <FormLabel>Укажите пол</FormLabel>
-              <FormControl>
-                <RadioGroup
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                  className="flex space-x-1"
-                >
-                  <FormItem className="flex items-center space-x-3 space-y-0 ">
-                    <FormControl>
-                      <RadioGroupItem value="male" />
-                    </FormControl>
-                    <FormLabel className="text-lg">Муж.</FormLabel>
-                  </FormItem>
-                  <FormItem className="flex items-center space-x-3 space-y-0">
-                    <FormControl>
-                      <RadioGroupItem value="female" />
-                    </FormControl>
-                    <FormLabel className="text-lg">Жен.</FormLabel>
-                  </FormItem>
-                </RadioGroup>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          disabled={isUpdatingUser}
+          options={[
+            { value: "male", title: "Муж." },
+            { value: "female", title: "Жен." },
+          ]}
         />
-        <Button size="lg" disabled={isUpdating} type="submit" className="w-full">
+        <FormSelect<LkDetailsFormType>
+          label="Укажите возраст"
+          title="Добавить возраст"
+          disabled={isUpdatingUser}
+          name="age"
+          options={
+            createTitleValueArrayFromNumbersRange([14, 90]) as Required<UniversalItemType<string>>[]
+          }
+        />
+        <Button size="lg" disabled={isUpdatingUser} type="submit" className="w-full">
           Сохранить
         </Button>
       </form>

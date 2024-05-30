@@ -18,6 +18,7 @@ export type MainNavItem = {
   icon: ElementType;
   permission: UserRoles;
   type?: "button";
+  isExit?: boolean;
 };
 
 export type MainNavItems = (MainNavItem & {
@@ -78,12 +79,13 @@ export const mainNavConfig: MainNavItems = [
         href: "/login",
         icon: LogOut,
         permission: UserRoles.Authorized,
+        isExit: true,
       },
     ],
   },
 
   {
-    title: "Войти или создать профиль",
+    title: "Войти",
     href: "/login",
     icon: LogIn,
     type: "button",

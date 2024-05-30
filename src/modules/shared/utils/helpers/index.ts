@@ -1,8 +1,12 @@
 export { formatCurrency } from "./currencyHelper";
 
-export { concatNullableArrays, createEmptyArray } from "./arrayHelper";
+export {
+  concatNullableArrays,
+  createEmptyArray,
+  createTitleValueArrayFromNumbersRange,
+} from "./arrayHelper";
 
-export { formatPhoneNumber } from "./phoneHelper";
+export { formatPhoneNumber, maskPhoneNumber } from "./phoneHelper";
 
 export {
   formatDateToStringUtc,

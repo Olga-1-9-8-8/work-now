@@ -1,4 +1,4 @@
 import { z } from "zod";
-import { LkDetailsFormValidationSchema } from "../validation/LkDetailsFormValidationSchema";
+import { lkDetailsFormValidationSchema } from "../validation/lkDetailsFormValidationSchema";
 
-export type LkDetailsFormType = z.infer<typeof LkDetailsFormValidationSchema>;
+export type LkDetailsFormType = z.infer<typeof lkDetailsFormValidationSchema>;

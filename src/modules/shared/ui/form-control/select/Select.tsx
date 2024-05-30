@@ -1,5 +1,4 @@
 import { SelectProps as SelectBaseProps } from "@radix-ui/react-select";
-
 import { UniversalItemType } from "../../../types";
 import {
   Select as SelectBase,

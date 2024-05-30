@@ -17,10 +17,19 @@ interface LkHomeCardProps {
 export const LkHomeCard = ({ item, description, className }: LkHomeCardProps) => {
   const navigate = useNavigate();
 
-  const { logout, isLogout } = useLogout();
+  const { logout, isLogoutPending } = useLogout();
 
   const isMobile = useResponsiveContext();
   const LinkIcon = item.linkIcon;
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation();
+    if (item.isExit) {
+      logout();
+    }
+    navigate(item.href);
+  };
+
   return (
     <Card
       variant="clickable"
@@ -39,14 +48,8 @@ export const LkHomeCard = ({ item, description, className }: LkHomeCardProps) =>
       )}
       <CardFooter className="flex sm:justify-end">
         <Button
-          onClick={(e) => {
-            e.stopPropagation();
-            if (item.isExit) {
-              logout();
-            }
-            navigate(item.href);
-          }}
-          disabled={isLogout}
+          onClick={handleClick}
+          disabled={isLogoutPending}
           variant={isMobile ? "default" : "link"}
           size="lg"
           className="flex w-full gap-2 pr-0 text-base sm:w-auto sm:pr-6"

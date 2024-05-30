@@ -1,7 +1,8 @@
 import { mainNavConfig } from "../../../configs";
 import { useResponsiveContext } from "../../../responsive";
+import { useUser } from "../../../services/auth";
 import { UserRoles } from "../../../types";
-import { LanguagesSwitcherButton } from "../../../widgets/languages-switcher/components/LanguagesSwitcherButton";
+import { LanguagesSwitcherButton } from "../../../widgets/languages-switcher";
 import { filterMainNavItems } from "../../utils/filterMainNavItems";
 import { Logo } from "../Logo";
 import { HeaderNavListDesktop } from "./desktop/HeaderNavList.desktop";
@@ -10,8 +11,9 @@ import { HeaderNavHamburgerMobile } from "./mobile/HeaderNavHamburger.mobile";
 export const HeaderNavigation = () => {
   const isMobile = useResponsiveContext();
 
-  // TODO: получить значение
-  const role = UserRoles.Authorized;
+  const { isAuthenticated, isUserLoading } = useUser();
+
+  const role = isAuthenticated ? UserRoles.Authorized : UserRoles.NotAuthorized;
 
   const visibleItems = filterMainNavItems(mainNavConfig, role);
 
@@ -25,7 +27,7 @@ export const HeaderNavigation = () => {
           <HeaderNavHamburgerMobile items={visibleItems} />
         </div>
       ) : (
-        <HeaderNavListDesktop items={visibleItems} />
+        !isUserLoading && <HeaderNavListDesktop items={visibleItems} />
       )}
     </div>
   );

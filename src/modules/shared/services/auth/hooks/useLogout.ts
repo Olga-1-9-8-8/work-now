@@ -7,7 +7,7 @@ export const useLogout = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
-  const { mutate: logout, isPending: isLogout } = useMutation({
+  const { mutate: logout, isPending: isLogoutPending } = useMutation({
     mutationFn: logoutApi,
 
     onSuccess: () => {
@@ -17,5 +17,5 @@ export const useLogout = () => {
     },
   });
 
-  return { logout, isLogout };
+  return { logout, isLogoutPending };
 };
