@@ -13,7 +13,7 @@ export const lkDetailsFormValidationSchema = z.object({
       message: "Имя пользователя должно содержать хотя бы 2 буквы",
     }),
   gender: z.enum(["male", "female"]).optional(),
-  age: z.number().optional(),
+  age: z.string().optional(),
   avatar: z
     .instanceof(File)
     .refine((file) => file.size <= MAX_FILE_SIZE, "Файл должен быть меньше 3MB")

@@ -67,6 +67,7 @@ export const HeaderNavListItemDesktop = React.forwardRef<
                 to={i.href}
                 title={t(i.title)}
                 icon={i.icon}
+                isExit={i.isExit}
               />
             );
           })}

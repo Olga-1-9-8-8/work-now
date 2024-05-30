@@ -1,6 +1,6 @@
 import { AvatarProps } from "@radix-ui/react-avatar";
 import { UserRound } from "lucide-react";
-import { useUser } from "../../../services/auth";
+import { useAuthContext } from "../../../services/auth";
 import { AvatarBase, AvatarFallback, AvatarImage } from "../../../ui/avatar/AvatarBase";
 import { Spinner } from "../../../ui/spinner/Spinner";
 
@@ -9,7 +9,7 @@ interface UserAvatarProps extends AvatarProps {
 }
 
 export const Avatar = ({ icon, ...props }: UserAvatarProps) => {
-  const { user, isUserLoading } = useUser();
+  const { user, isUserLoading } = useAuthContext();
   const Icon = icon ?? UserRound;
 
   return isUserLoading ? (

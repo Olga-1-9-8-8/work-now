@@ -1,10 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { filterConfig } from "../../../shared/configs";
 import { UniversalItemType } from "../../../shared/types";
 import { Button } from "../../../shared/ui/buttons/Button";
-import { DatePicker, Select } from "../../../shared/ui/form-control";
+import { DatePicker, FormSelect } from "../../../shared/ui/form-control";
 
 import {
   Form,
@@ -32,7 +31,6 @@ interface ResumeCreationFormProps {
 }
 
 export const ResumeCreationForm = ({ userId, resume }: ResumeCreationFormProps) => {
-  console.log(resume, userId);
   const form = useForm<ResumeCreationFormType>({
     resolver: zodResolver(resumeFormValidationSchema),
     defaultValues: {
@@ -54,7 +52,7 @@ export const ResumeCreationForm = ({ userId, resume }: ResumeCreationFormProps) 
   const { createResume, isCreating } = useCreateResume();
   const { editResume, isEditing } = useEditResume();
 
-  function onSubmit(values: z.infer<typeof resumeFormValidationSchema>) {
+  function onSubmit(values: ResumeCreationFormType) {
     if (resume?.id) {
       editResume(
         { ...values, id: resume.id, creationDate: formatDateToStringUtc(new Date()) },
@@ -106,19 +104,11 @@ export const ResumeCreationForm = ({ userId, resume }: ResumeCreationFormProps) 
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
+        <FormSelect<ResumeCreationFormType>
+          label={education.title}
+          title={education.title}
           name="education"
-          render={({ field }) => (
-            <FormItem>
-              <Select
-                options={education.items as Required<UniversalItemType<string>>[]}
-                title={education.title}
-                defaultValue={field.value}
-                onValueChange={field.onChange}
-              />
-            </FormItem>
-          )}
+          options={education.items as Required<UniversalItemType<string>>[]}
         />
         <ResumeCreationFormCheckboxItem
           disabled={isCreating || isEditing}

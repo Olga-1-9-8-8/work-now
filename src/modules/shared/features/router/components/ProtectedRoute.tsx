@@ -1,6 +1,6 @@
 import { ReactNode, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../../../services/auth";
+import { useAuthContext } from "../../../services/auth";
 import { Spinner } from "../../../ui/spinner/Spinner";
 
 interface ProtectedRouteProps {
@@ -9,7 +9,7 @@ interface ProtectedRouteProps {
 
 export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   const navigate = useNavigate();
-  const { isUserLoading, isAuthenticated } = useUser();
+  const { isUserLoading, isAuthenticated } = useAuthContext();
 
   useEffect(() => {
     if (!isAuthenticated && !isUserLoading) navigate("/login");

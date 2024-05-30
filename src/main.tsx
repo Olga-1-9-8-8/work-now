@@ -8,6 +8,7 @@ import { ScrollToTop } from "./modules/shared/components/scroll";
 import "./modules/shared/configs/internationalization/i18n";
 import { AppRoutes } from "./modules/shared/features/router";
 import { ResponsiveProvider } from "./modules/shared/responsive";
+import { AuthProvider } from "./modules/shared/services/auth";
 import { ErrorBoundary, ErrorFallback } from "./modules/shared/ui/error-boundary";
 import { Spinner } from "./modules/shared/ui/spinner/Spinner";
 import { Toaster } from "./modules/shared/ui/toast/Toast";
@@ -32,7 +33,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               <Toaster position="bottom-center" richColors />
               <TooltipProvider delayDuration={200}>
                 <ScrollToTop />
-                <AppRoutes />
+                <AuthProvider>
+                  <AppRoutes />
+                </AuthProvider>
               </TooltipProvider>
             </Suspense>
           </BrowserRouter>

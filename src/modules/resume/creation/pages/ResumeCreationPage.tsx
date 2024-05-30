@@ -1,8 +1,7 @@
 import { useEffect } from "react";
-
 import { useNavigate } from "react-router-dom";
 import { NotExist } from "../../../shared/components/not-found/components";
-import { useUser } from "../../../shared/services/auth";
+import { useAuthContext } from "../../../shared/services/auth";
 import {
   Card,
   CardContent,
@@ -14,7 +13,7 @@ import { PageContainer } from "../../../shared/ui/layout";
 import { ResumeCreationForm } from "../components/ResumeCreationForm";
 
 export const ResumeCreationPage = () => {
-  const { user } = useUser();
+  const { user } = useAuthContext();
 
   const navigate = useNavigate();
 

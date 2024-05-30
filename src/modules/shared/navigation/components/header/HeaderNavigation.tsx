@@ -1,6 +1,6 @@
 import { mainNavConfig } from "../../../configs";
 import { useResponsiveContext } from "../../../responsive";
-import { useUser } from "../../../services/auth";
+import { useAuthContext } from "../../../services/auth";
 import { UserRoles } from "../../../types";
 import { LanguagesSwitcherButton } from "../../../widgets/languages-switcher";
 import { filterMainNavItems } from "../../utils/filterMainNavItems";
@@ -11,7 +11,7 @@ import { HeaderNavHamburgerMobile } from "./mobile/HeaderNavHamburger.mobile";
 export const HeaderNavigation = () => {
   const isMobile = useResponsiveContext();
 
-  const { isAuthenticated, isUserLoading } = useUser();
+  const { isAuthenticated, isUserLoading } = useAuthContext();
 
   const role = isAuthenticated ? UserRoles.Authorized : UserRoles.NotAuthorized;
 

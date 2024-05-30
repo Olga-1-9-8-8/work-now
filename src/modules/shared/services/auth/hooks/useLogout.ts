@@ -11,7 +11,7 @@ export const useLogout = () => {
     mutationFn: logoutApi,
 
     onSuccess: () => {
-      queryClient.removeQueries();
+      queryClient.setQueryData(["user"], null);
       navigate("/login", { replace: true });
       toast.error(`Вы вышли из своего аккаунта`);
     },
