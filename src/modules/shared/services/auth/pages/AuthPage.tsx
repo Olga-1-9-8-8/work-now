@@ -1,29 +1,28 @@
+import { useLocation } from "react-router-dom";
+import { Tabs } from "../../../components/tabs";
 import { Card } from "../../../ui/card/Card";
 import { PageContainer } from "../../../ui/layout";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../ui/tabs/Tabs";
 import { AuthLoginForm } from "../components/form/AuthLoginForm";
 import { AuthSignUpForm } from "../components/form/AuthSignUpForm";
 
 const AuthPage = () => {
+  const { state } = useLocation();
+
   return (
     <PageContainer className="flex justify-center">
-      <Card className="my-8 flex w-[452px] flex-col gap-8 p-4 md:mt-20 md:w-[530px] md:p-8 lg:w-[552px]">
-        <Tabs defaultValue="login" className="space-y-4">
-          <TabsList className="flex w-full">
-            <TabsTrigger className="grow font-bold" value="login">
-              Войти в Личный кабинет
-            </TabsTrigger>
-            <TabsTrigger className="grow font-bold" value="singUp">
-              Зарегистрироваться
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent value="login">
-            <AuthLoginForm />
-          </TabsContent>
-          <TabsContent value="singUp">
-            <AuthSignUpForm />
-          </TabsContent>
-        </Tabs>
+      <Card className="my-8 flex w-[452px] flex-col gap-8 p-4 md:mt-14 md:w-[530px] md:p-8 lg:w-[552px]">
+        <Tabs
+          tabs={[
+            {
+              value: "login",
+              title: "Войти в Личный кабинет",
+              content: <AuthLoginForm />,
+            },
+            { value: "singUp", title: "Зарегистрироваться", content: <AuthSignUpForm /> },
+          ]}
+          defaultValue={state?.tab ?? "login"}
+          isFullWidth
+        />
       </Card>
     </PageContainer>
   );

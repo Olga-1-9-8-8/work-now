@@ -3,7 +3,7 @@ import { VariantProps, cva } from "class-variance-authority";
 import * as React from "react";
 import { cn } from "../../utils/cn";
 
-const toggleVariants = cva("w-full rounded-md", {
+export const toggleVariants = cva("w-full rounded-md", {
   variants: {
     variant: {
       default: "",

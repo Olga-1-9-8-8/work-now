@@ -1,4 +1,3 @@
-export { chartOverviewConfig } from "./chartOverviewConfig";
 export { externalUrlsConfig } from "./externalUrlsConfig";
 export { filterConfig, popularFilterConfig } from "./filterConfig";
 export { homeDetailsConfig } from "./homeDetailsConfig";

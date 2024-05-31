@@ -1,4 +1,5 @@
 export { cn } from "./cn";
+export { getAverageSalary } from "./getAverageSalary";
 export { getBadgeDataByEmploymentType } from "./getBadgeDataByEmploymentType";
 export { getBadgeDataByScheduleType } from "./getBadgeDataByScheduleType";
 export { getBadgeDataByStartDate } from "./getBadgeDataByStartDate";
