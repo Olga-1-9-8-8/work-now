@@ -17,7 +17,7 @@ export const HomeChartsOverviewToggles = () => {
 
   return (
     <Toggles
-      className=" flex w-full flex-col gap-4  text-nowrap md:flex-row"
+      className="flex w-full flex-col gap-4  text-nowrap md:flex-row"
       variant="primary"
       type="single"
       options={[
@@ -25,7 +25,7 @@ export const HomeChartsOverviewToggles = () => {
         { value: "30", title: "За прошлый месяц" },
         { value: "365", title: "За прошлый год" },
       ]}
-      defaultValue="7"
+      defaultValue={getParam("last") ?? "7"}
       onValueChange={handleValueChange}
     />
   );

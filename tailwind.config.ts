@@ -1,7 +1,6 @@
-/* eslint-disable unicorn/prefer-module */
-/* eslint-disable global-require */
-// eslint-disable-next-line import/no-default-export
-export default {
+import tailwindcssAnimate from "tailwindcss-animate";
+
+const config = {
   darkMode: ["class"],
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
@@ -89,5 +88,9 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 };
+
+export default config;
+
+export const colors = config.theme.extend.colors;

@@ -8,7 +8,7 @@ import { getAverageResumeSalary } from "../utils/getAverageResumeSalary";
 export const useLastResumes = () => {
   const { getParam } = useUrl();
   const numDays = getParam("last") ? Number(getParam("last")) : 7;
-  const queryDate = subDays(new Date(), numDays).toISOString();
+  const queryDate = subDays(new Date(), numDays + 1).toISOString();
 
   const {
     isLoading,

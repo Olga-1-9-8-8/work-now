@@ -14,8 +14,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["testing-library__jest-dom", "vite-plugin-svgr/client"],
+    "types": ["testing-library__jest-dom", "vite-plugin-svgr/client", "node", "jest"],
+    "typeRoots": ["node_modules/@types"],
   },
-  "include": ["src", "tailwind.config.js"],
+  "include": ["src", "tailwind.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],
 }
