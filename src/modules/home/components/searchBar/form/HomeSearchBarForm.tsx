@@ -10,47 +10,36 @@ export const HomeSearchBarForm = () => {
   const [position, setPosition] = useState("");
   const [city, setCity] = useState("");
 
-  const handlePositionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPosition(e.target.value);
-  };
-
-  const handleLCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCity(e.target.value);
-  };
-
   const getPath = () => {
     return `${position ? `position=${position}` : ""}${position && city ? "&" : ""}${city ? `city=${city}` : ""}`;
   };
 
-  const handleButtonClick = () => {
+  const handleClick = () => {
     navigate(`/vacancies?${getPath()}`);
   };
 
   return (
     <div className="relative flex">
       <Input
-        className="h-14 rounded-none rounded-l-lg border-2 border-r-0 border-primary-extraDark focus-visible:ring-0 focus-visible:ring-offset-0"
+        className="h-14 grow rounded-none rounded-l-lg border-2 border-r-0 border-primary-extraDark focus-visible:ring-0 focus-visible:ring-offset-0"
         placeholder="Введите название работы"
         value={position}
-        onChange={handlePositionChange}
-        onKeyDown={(e) => e.key === "Enter" && handleButtonClick()}
+        onChange={(e) => setPosition(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && handleClick()}
       />
-      <div className="after:absolute after:top-2 after:h-10 after:w-[0.1rem] after:bg-primary-extraDark after:content-['']" />
+
       <Input
-        className="h-14 rounded-none rounded-r-lg border-2 border-l-0 border-primary-extraDark focus-visible:ring-0 focus-visible:ring-offset-0"
-        placeholder="Введите свое местоположение или “Удаленка”"
+        className="border-l-1 h-14 grow rounded-none rounded-r-lg border-2 border-primary-extraDark focus-visible:ring-0 focus-visible:ring-offset-0"
+        placeholder="Местоположение или “Удаленка”"
         value={city}
-        onChange={handleLCityChange}
-        onKeyDown={(e) => e.key === "Enter" && handleButtonClick()}
+        onChange={(e) => setCity(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && handleClick()}
+        iconAfter={
+          <Button onClick={handleClick} size="icon" type="submit">
+            <Search className="h-6 w-6" color="#fff" strokeWidth={2} />
+          </Button>
+        }
       />
-      <Button
-        onClick={handleButtonClick}
-        className="absolute inset-y-2 right-2"
-        size="icon"
-        type="submit"
-      >
-        <Search className="h-6 w-6" color="#fff" strokeWidth={2} />
-      </Button>
     </div>
   );
 };

@@ -1,9 +1,22 @@
-import { Link } from "react-router-dom";
-import { buttonVariants } from "../../../../shared/ui/buttons/Button";
-import { cn } from "../../../../shared/utils/cn";
+import { useNavigate } from "react-router-dom";
+import { homeInfoPricingConfig } from "../../../../shared/configs";
+import { Button } from "../../../../shared/ui/buttons/Button";
+import { formatCurrency } from "../../../../shared/utils/helpers";
 import { HomeChartsPricingItem } from "./item/HomeChartsPricingItem";
 
-export const HomeChartsPricing = () => {
+const PRICE_PER_MONTH = 700;
+
+interface HomeChartsPricingProps {
+  isAuthorized: boolean;
+}
+
+export const HomeChartsPricing = ({ isAuthorized }: HomeChartsPricingProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/login", { state: { tab: "singUp" } });
+  };
+
   return (
     <section className="container flex flex-col  gap-6  py-12 md:max-w-[64rem]">
       <div className="mx-auto flex w-full flex-col gap-4 md:max-w-[58rem]">
@@ -18,26 +31,21 @@ export const HomeChartsPricing = () => {
         <div className="grid gap-6">
           <h3 className="text-xl font-bold sm:text-2xl">Что включено в цену</h3>
           <ul className="grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
-            {[
-              "Неограниченный поиск",
-              "Неограниченное количество откликов",
-              "Личная доска аналитики",
-              "Круглосуточная Поддержка",
-              "Доступ к обширной базе соискателей",
-              "Доступ к личному кабинету",
-            ].map((item) => (
+            {homeInfoPricingConfig.map((item) => (
               <HomeChartsPricingItem title={item} key={item} />
             ))}
           </ul>
         </div>
         <div className="flex flex-col gap-4 text-center">
           <div>
-            <h4 className="text-7xl font-bold">700 &#8381;</h4>
+            <h4 className="text-7xl font-bold">{formatCurrency(PRICE_PER_MONTH)}</h4>
             <p className="text-sm font-medium text-muted-foreground">Ежемесячная плата</p>
           </div>
-          <Link to="/login" className={cn(buttonVariants({ size: "lg" }))}>
-            Зарегистрируйся
-          </Link>
+          {!isAuthorized && (
+            <Button onClick={handleClick} size="lg">
+              Зарегистрируйся
+            </Button>
+          )}
         </div>
       </div>
       <div className="mx-auto flex w-full max-w-[58rem] flex-col gap-4">

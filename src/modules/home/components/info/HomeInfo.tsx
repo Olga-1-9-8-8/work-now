@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   Accordion,
   AccordionContent,
@@ -13,6 +14,12 @@ interface HomeInfoProps {
 }
 
 export const HomeInfo = ({ isAuthorized }: HomeInfoProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/login", { state: { tab: "singUp" } });
+  };
+
   return (
     <Accordion type="single" collapsible>
       <AccordionItem value="item-1" className="flex flex-col items-center py-4">
@@ -27,7 +34,7 @@ export const HomeInfo = ({ isAuthorized }: HomeInfoProps) => {
           {!isAuthorized && (
             <div className="flex flex-col items-center gap-3 py-4">
               <h3 className="text-xl font-semibold">Зарегистрируйся на сайте сейчас</h3>
-              <Button>Создай профиль бесплатно</Button>
+              <Button onClick={handleClick}>Создай профиль бесплатно</Button>
             </div>
           )}
         </AccordionContent>

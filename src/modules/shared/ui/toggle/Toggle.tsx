@@ -8,6 +8,8 @@ export const toggleVariants = cva("w-full rounded-md", {
     variant: {
       default: "",
       outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+      primary:
+        "border border-input bg-primary hover:bg-success hover:text-white/70 py-2 px-4 text-white [&[data-state=on]]:bg-success ",
     },
     size: {
       default: "",

@@ -19,16 +19,13 @@ export const useLastResumes = () => {
     queryKey: ["resumes", `last-${numDays}`],
   });
 
-  const withHigherEducationQuantity = lastResumes?.filter(
-    (resume) => resume.education === "higher",
-  );
-
   return {
     isLoading,
     error,
-    lastResumesLength: lastResumes?.length ?? 0,
-    withHigherEducationQuantity: withHigherEducationQuantity?.length ?? 0,
+    lastResumes,
+    lastResumesWithHigherEducation: lastResumes?.filter((resume) => resume.education === "higher"),
     averageResumeSalary: lastResumes ? getAverageResumeSalary(lastResumes) : 0,
     averageApplicantsQuantity: lastResumes ? getAverageApplicantsQuantity(lastResumes) : 0,
+    numDays,
   };
 };

@@ -10,11 +10,16 @@ export const AuthPasswordField = <T extends FieldValues>({
 }: FormInputFieldProps<T>) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
+  const handleClick = () => {
+    setIsPasswordVisible((prev) => !prev);
+  };
+
   return (
     <FormInputField
       type={isPasswordVisible ? "text" : "password"}
-      iconAfter={isPasswordVisible ? Eye : EyeOff}
-      onIconClick={() => setIsPasswordVisible((prev) => !prev)}
+      iconAfter={
+        isPasswordVisible ? <Eye onClick={handleClick} /> : <EyeOff onClick={handleClick} />
+      }
       label={label}
       name={name}
       {...props}

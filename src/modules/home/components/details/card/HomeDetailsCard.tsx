@@ -1,11 +1,8 @@
-import { ArrowRight } from "lucide-react";
 import { ReactNode } from "react";
-import { Button } from "../../../../shared/ui/buttons/Button";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "../../../../shared/ui/card/Card";
@@ -18,7 +15,7 @@ interface HomeDetailsCardProps {
 
 export const HomeDetailsCard = ({ title, description, children }: HomeDetailsCardProps) => {
   return (
-    <Card className="flex w-[400px] flex-col justify-between md:w-[600px] lg:w-[500px]">
+    <Card className="flex w-[400px] flex-col justify-between pb-5 pt-2 md:w-[600px] lg:w-[500px]">
       <div>
         <CardHeader>
           <CardTitle>{title}</CardTitle>
@@ -28,12 +25,6 @@ export const HomeDetailsCard = ({ title, description, children }: HomeDetailsCar
           <div>{children}</div>
         </CardContent>
       </div>
-
-      <CardFooter>
-        <Button className="flex w-full gap-4">
-          Читай далее <ArrowRight className="mr-2 h-4 w-4" />
-        </Button>
-      </CardFooter>
     </Card>
   );
 };

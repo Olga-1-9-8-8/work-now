@@ -15,7 +15,7 @@ export const HomeInfoListItems = ({ title, items }: HomeInfoListItemsProps) => {
   };
 
   return (
-    <div className="flex flex-1 flex-col items-start gap-1 px-2">
+    <div className="flex flex-1 flex-col items-start gap-1 px-2 pl-8">
       <h4 className="text-nowrap font-semibold text-primary-dark">{`Вакансии ${items.title}`}</h4>
       <ul className="flex flex-col items-start gap-2">
         {items.items.map((item, index) => {
