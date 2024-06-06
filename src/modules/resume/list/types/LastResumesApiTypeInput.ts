@@ -1,6 +1,6 @@
-import { ResumeItem } from "../../shared/types";
+import { ResumeApiType } from "../../shared/types";
 
 export type LastResumesApiTypeInput = Pick<
-  ResumeItem,
+  ResumeApiType,
   "creationDate" | "salary" | "education" | "applicantsQuantity"
 >;
