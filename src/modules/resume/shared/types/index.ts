@@ -1,7 +1,7 @@
 export type { ResumeItem } from "./ResumeItem";
 
 export type {
+  ProfileApiTypeInput,
   ResumeApiType,
-  ResumeWithUserApiTypeInput,
-  UserApiTypeInput,
+  ResumeWithProfileApiTypeInput,
 } from "./api/ResumeApiType";

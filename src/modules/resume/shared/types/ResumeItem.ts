@@ -24,6 +24,6 @@ export interface ResumeItem {
   views: number;
   phone: string;
   gender?: GenderType;
-  age?: number;
-  image?: string;
+  age?: string;
+  avatar?: string;
 }

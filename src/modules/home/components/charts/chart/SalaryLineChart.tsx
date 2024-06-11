@@ -39,19 +39,18 @@ export const SalaryLineChart = ({ lastResumes, numDays }: LineChartProps) => {
         <AreaChart data={chartData}>
           <XAxis
             dataKey="title"
-            tick={{ fill: colors.primary.dark }}
+            tick={{ fill: colors.primary.dark, fontSize: 14 }}
             tickLine={{ stroke: colors.primary.dark }}
           />
           <YAxis
             unit="₽"
-            tick={{ fill: colors.primary.dark }}
+            tick={{ fill: colors.primary.dark, fontSize: 14 }}
             tickLine={{ stroke: colors.primary.dark }}
           />
           <CartesianGrid strokeDasharray="4" />
           <Tooltip
             contentStyle={{
-              backgroundColor: colors.secondary.DEFAULT,
-              opacity: 0.95,
+              opacity: 0.75,
               color: colors.primary.dark,
             }}
           />

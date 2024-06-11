@@ -2,6 +2,8 @@ import { BadgeRussianRuble, FileStack, GraduationCap, Mails } from "lucide-react
 import { useLastResumes } from "../../../../resume/list";
 import { Spinner } from "../../../../shared/ui/spinner/Spinner";
 import { formatCurrency } from "../../../../shared/utils/helpers";
+import { AgeBarChart } from "../chart/AgeBarChart";
+import { GenderChart } from "../chart/GenderChart";
 import { SalaryLineChart } from "../chart/SalaryLineChart";
 import { HomeChartsOverviewCard } from "./card/HomeChartsOverviewCard";
 import { HomeChartsOverviewToggles } from "./toggles/HomeChartsOverviewToggles";
@@ -58,7 +60,15 @@ export const HomeChartsOverview = () => {
           </li>
         ))}
       </ul>
-      {lastResumes && <SalaryLineChart lastResumes={lastResumes} numDays={numDays} />}
+      {lastResumes && (
+        <div className="flex flex-col gap-4">
+          <SalaryLineChart lastResumes={lastResumes} numDays={numDays} />
+          <div className="flex flex-col justify-between gap-4 lg:flex-row">
+            <GenderChart lastResumes={lastResumes} numDays={numDays} />
+            <AgeBarChart lastResumes={lastResumes} numDays={numDays} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -9,7 +9,7 @@ export const useFiltersParams = () => {
     employment: "cs",
     schedule: "cs",
     weekHours: "cs",
-    creationDate: "gte",
+    creation_date: "gte",
     position: "in",
     city: "in",
   };
@@ -22,7 +22,7 @@ export const useFiltersParams = () => {
     page: number;
   } = {
     page: 1,
-    sortArr: [{ column: "creationDate", direction: "desc" }],
+    sortArr: [{ column: "creation_date", direction: "desc" }],
     filters: [],
   };
 
@@ -36,7 +36,7 @@ export const useFiltersParams = () => {
     } else {
       const operator = operatorsSupabase[key as keyof typeof operatorsSupabase] || "eq";
 
-      const isDateDiapason = key === "creationDate";
+      const isDateDiapason = key === "creation_date";
 
       params.filters?.push({
         column: key,

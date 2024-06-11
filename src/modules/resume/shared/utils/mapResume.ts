@@ -5,17 +5,18 @@ import {
   ScheduleType,
   WeekHoursType,
 } from "../../../shared/types";
-import { concatNullableArrays } from "../../../shared/utils/helpers";
-import { ResumeItem, ResumeWithUserApiTypeInput } from "../types";
+import { ResumeItem, ResumeWithProfileApiTypeInput } from "../types";
 
-export const mapResume = (resume: ResumeWithUserApiTypeInput): ResumeItem => {
+export const mapResume = (resume: ResumeWithProfileApiTypeInput): ResumeItem => {
   const {
-    creationDate,
+    creation_date: creationDate,
+    applicants_quantity: applicantsQuantity,
+    user_Id: userId,
     city,
-    employmentStartDate,
+    employment_start_date: employmentStartDate,
     schedule,
-    users,
-    weekHours,
+    profiles,
+    week_hours: weekHours,
     employment,
     education,
     salary,
@@ -23,23 +24,25 @@ export const mapResume = (resume: ResumeWithUserApiTypeInput): ResumeItem => {
     ...resumeData
   } = resume;
 
-  const { fullName: name, phone, gender, age, image } = users!;
+  const { username: name, phone, gender, age, avatar } = profiles!;
 
   return {
     ...resumeData,
     employmentStartDate: employmentStartDate ? new Date(employmentStartDate) : undefined,
     creationDate: new Date(creationDate),
-    schedule:
-      (concatNullableArrays(schedule, weekHours) as ScheduleType | WeekHoursType[]) ?? undefined,
+    schedule: (schedule as ScheduleType[]) ?? undefined,
+    weekHours: (weekHours as WeekHoursType[]) ?? undefined,
     city: city ?? undefined,
     employment: (employment as EmploymentType[]) ?? undefined,
     education: (education as EducationType) ?? undefined,
     salary: salary ?? undefined,
     about: about ?? undefined,
+    applicantsQuantity,
+    userId,
     gender: (gender as GenderType) ?? undefined,
     name,
     phone,
     age: age ?? undefined,
-    image: image ?? undefined,
+    avatar: avatar ?? undefined,
   };
 };

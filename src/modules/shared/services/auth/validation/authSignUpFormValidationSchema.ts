@@ -3,7 +3,7 @@ import { emailSchema, passwordSchema, phoneSchema, userNameSchema } from "../../
 
 export const authSignUpFormValidationSchema = z
   .object({
-    userName: userNameSchema,
+    username: userNameSchema,
     email: emailSchema,
     password: passwordSchema,
     confirmPassword: passwordSchema,

@@ -1,7 +1,7 @@
 export { creationDateTypes } from "./CreationDateType";
 export { educationTypes } from "./EducationType";
 export { employmentTypes } from "./EmploymentType";
-export { getGenderTitle } from "./GenderType";
+export { genderTypes, getGenderTitle } from "./GenderType";
 export { scheduleTypes } from "./ScheduleType";
 export { sortTypes } from "./SortType";
 export { weekHoursTypes } from "./WeekHoursType";

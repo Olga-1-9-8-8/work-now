@@ -10,7 +10,7 @@ export const mapResumesToLineChartData = (resumes: LastResumesApiTypeInput[], nu
 
   return dates.map((date) => {
     const sameDateSalariesArr = resumes
-      .filter((resume) => isSameDay(date, new Date(resume.creationDate)))
+      .filter((resume) => isSameDay(date, new Date(resume.creation_date)))
       .map((resume) => resume.salary || [])
       .filter((item) => item.length > 0);
 

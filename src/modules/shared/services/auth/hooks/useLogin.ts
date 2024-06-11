@@ -13,7 +13,9 @@ export const useLogin = () => {
 
     onSuccess: (data) => {
       queryClient.setQueryData(["user"], data.user);
-      toast.success(`${data.user?.user_metadata?.userName},вы успешно вошли в свой аккаунт`);
+      toast.success(
+        `${data.user?.user_metadata?.username ?? "Аноним"}, вы успешно вошли в свой аккаунт`,
+      );
       navigate("/resumes", { replace: true });
     },
     onError: (error) => {

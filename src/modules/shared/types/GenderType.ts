@@ -3,8 +3,8 @@ const titles = {
   male: "Мужской",
 };
 
-const types = ["female", "male"] as const;
+export const genderTypes = ["female", "male"] as const;
 
-export type GenderType = (typeof types)[number];
+export type GenderType = (typeof genderTypes)[number];
 
 export const getGenderTitle = (value: GenderType) => titles[value];

@@ -1,7 +1,8 @@
+import { format } from "date-fns";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagination";
 import { getFilterValue } from "../../../shared/features/filters/server-side/utils/getFilterValue";
 import { supabase } from "../../../shared/services/api/supabase";
-import { ResumeItem } from "../../shared/types";
+import { ResumeApiType } from "../../shared/types";
 import { ResumesFilterType } from "../types/ResumesFilterType";
 import { ResumesSortingType } from "../types/ResumesSortingType";
 
@@ -12,8 +13,7 @@ interface GetResumesProps {
 }
 
 export const getResumes = async ({ filters, sortArr, page }: GetResumesProps) => {
-  let query = supabase.from("resumes").select("*,users(*)", { count: "exact" });
-
+  let query = supabase.from("resumes").select("*,profiles(*)", { count: "exact" });
   if (filters.length > 0) {
     filters.forEach((filter) => {
       const { column, operator, value } = filter;
@@ -46,7 +46,7 @@ export const getResumes = async ({ filters, sortArr, page }: GetResumesProps) =>
   return { data, totalCount: count };
 };
 
-export const createEditResume = async (newResume: ResumeItem) => {
+export const createEditResume = async (newResume: ResumeApiType) => {
   let query: any = supabase.from("resumes");
 
   if (!newResume.id) {
@@ -72,5 +72,20 @@ export const deleteResume = async (id: number) => {
     console.log(error);
     throw new Error("Ошибка удаления резюме");
   }
+  return data;
+};
+
+export const getResumesAfterDate = async (date: string) => {
+  const { data, error } = await supabase
+    .from("resumes")
+    .select("creation_date, salary, education, applicants_quantity, profiles(age, gender)")
+    .gte("creation_date", date)
+    .lte("creation_date", format(new Date(), "yyyy-MM-dd"));
+
+  if (error) {
+    console.log(error);
+    throw new Error("Проблема с загрузкой резюме из базы данных");
+  }
+
   return data;
 };

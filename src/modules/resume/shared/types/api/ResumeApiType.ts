@@ -1,8 +1,8 @@
 import { Database } from "../../../../shared/services";
 
-export type UserApiTypeInput = Database["public"]["Tables"]["users"]["Row"];
+export type ProfileApiTypeInput = Database["public"]["Tables"]["profiles"]["Row"];
 export type ResumeApiType = Database["public"]["Tables"]["resumes"]["Row"];
 
-export interface ResumeWithUserApiTypeInput extends ResumeApiType {
-  users: UserApiTypeInput | null;
+export interface ResumeWithProfileApiTypeInput extends ResumeApiType {
+  profiles: ProfileApiTypeInput;
 }
