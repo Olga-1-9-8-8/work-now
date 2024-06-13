@@ -1,28 +1,23 @@
 import { AvatarProps } from "@radix-ui/react-avatar";
 import { UserRound } from "lucide-react";
-import { useAuthContext } from "../../../services/auth";
 import { AvatarBase, AvatarFallback, AvatarImage } from "../../../ui/avatar/AvatarBase";
-import { Spinner } from "../../../ui/spinner/Spinner";
 
 interface UserAvatarProps extends AvatarProps {
   icon?: React.ElementType;
+  src?: string;
+  userName?: string;
 }
 
-export const Avatar = ({ icon, ...props }: UserAvatarProps) => {
-  const { user, isUserLoading } = useAuthContext();
+export const Avatar = ({ icon, src, userName, ...props }: UserAvatarProps) => {
   const Icon = icon ?? UserRound;
 
-  return isUserLoading ? (
-    <Spinner />
-  ) : (
+  return (
     <AvatarBase {...props}>
-      {user?.user_metadata.avatar ? (
-        <AvatarImage alt="Аватар" src={user?.user_metadata.avatar} />
+      {src ? (
+        <AvatarImage alt="Аватар" src={src} />
       ) : (
         <AvatarFallback className="border-2 border-primary text-3xl">
-          {user?.user_metadata.userName && (
-            <span className="sr-only">{user?.user_metadata.userName}</span>
-          )}
+          {userName && <span className="sr-only">{userName}</span>}
           <Icon className="h-2/4 w-2/4 stroke-primary" />
         </AvatarFallback>
       )}

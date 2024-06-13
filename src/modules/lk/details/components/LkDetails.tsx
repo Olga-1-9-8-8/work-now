@@ -1,10 +1,10 @@
 import { LkDetailsDeleteAccountCard } from "./cards/LkDetailsDeleteAccountCard";
-import { LkDetailsPersonalDataCard } from "./cards/LkDetailsPersonalDataCard";
+import { LkDetailsProfileDataCard } from "./cards/LkDetailsProfileDataCard";
 
 export const LkDetails = () => {
   return (
     <div className="flex flex-col gap-16 py-10">
-      <LkDetailsPersonalDataCard />
+      <LkDetailsProfileDataCard />
       <LkDetailsDeleteAccountCard />
     </div>
   );

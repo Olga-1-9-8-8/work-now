@@ -1,4 +1,27 @@
 import { supabase } from "../../api/supabase";
+import { SignUpFormType } from "../types/SignUpFormType";
+
+export const signUp = async ({ username, password, email, phone }: SignUpFormType) => {
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        username,
+        phone,
+        avatar: "",
+        gender: "",
+        age: "",
+      },
+    },
+  });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+};
 
 interface LogInProps {
   email: string;

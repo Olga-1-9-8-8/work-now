@@ -1,3 +1,4 @@
+import { UseMutateFunction } from "@tanstack/react-query";
 import { Camera } from "lucide-react";
 import { useRef } from "react";
 import { useFormContext } from "react-hook-form";
@@ -5,29 +6,31 @@ import { Button } from "../../../../../shared/ui/buttons/Button";
 import { FormControl, FormField, FormItem, FormMessage } from "../../../../../shared/ui/form/Form";
 import { Input } from "../../../../../shared/ui/inputs/Input";
 import { cn } from "../../../../../shared/utils/cn";
-import { useUpdateLkDetail } from "../../../hooks/useUpdateLkDetail";
+import { UpdateUserTypeProps } from "../../../api/apiProfiles";
 import { LkDetailsFormType } from "../../../types/LkDetailsFormType";
 
 interface LkDetailsFormAvatarBlockFileInputProps {
+  updateProfile: UseMutateFunction<
+    {
+      path: string;
+    } | null,
+    Error,
+    UpdateUserTypeProps,
+    unknown
+  >;
   className?: string;
 }
 
 export const LkDetailsFormAvatarBlockFileInput = ({
+  updateProfile,
   className,
 }: LkDetailsFormAvatarBlockFileInputProps) => {
-  const { control, register } = useFormContext<LkDetailsFormType>();
+  const { control } = useFormContext<LkDetailsFormType>();
   const inputRef = useRef<HTMLInputElement | null>(null);
-
-  const { updateSetting } = useUpdateLkDetail();
-
-  // TODO: объединить уже есть в 1н месте
-  const handleUpdate = (value: File | undefined, field: string) => {
-    updateSetting({ [field]: value });
-  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    if (file) handleUpdate(file, "image");
+    if (file) updateProfile({ avatarFile: file });
   };
 
   return (
@@ -43,16 +46,16 @@ export const LkDetailsFormAvatarBlockFileInput = ({
       </Button>
       <FormField
         control={control}
-        name="image"
-        render={() => (
+        name="avatar"
+        render={(field) => (
           <FormItem className="hidden">
             <FormControl>
               <Input
                 type="file"
                 accept="image/*"
-                {...register("image")}
                 ref={inputRef}
                 onChange={handleChange}
+                {...field}
               />
             </FormControl>
             <FormMessage />
