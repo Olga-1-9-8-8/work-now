@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { cloneElement, useState } from "react";
 import { useMediaQuery } from "../../responsive";
 import {
   Dialog,
@@ -20,7 +20,7 @@ import {
 interface DrawerDialogResponsiveProps {
   title: string;
   description?: string;
-  children: React.ReactNode;
+  children: React.ReactElement;
   button: React.ReactNode;
 }
 
@@ -42,7 +42,7 @@ export const DrawerDialogResponsive = ({
             <DialogTitle>{title}</DialogTitle>
             {description && <DialogDescription>{description}</DialogDescription>}
           </DialogHeader>
-          {children}
+          {cloneElement(children, { onModalClose: () => setOpen(false) })}
         </DialogContent>
       </Dialog>
     );
@@ -56,7 +56,7 @@ export const DrawerDialogResponsive = ({
           <DrawerTitle>{title}</DrawerTitle>
           {description && <DrawerDescription>{description}</DrawerDescription>}
         </DrawerHeader>
-        {children}
+        {cloneElement(children, { onModalClose: () => setOpen(false) })}
       </DrawerContent>
     </Drawer>
   );

@@ -7,7 +7,7 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
 } from "../../../../../shared/ui/nav-menu/NavigationMenu";
-import { useLkContext } from "../LkProvider";
+import { useLkContext } from "../../../context";
 
 export const LkLayoutNav = () => {
   const isMobile = useResponsiveContext();

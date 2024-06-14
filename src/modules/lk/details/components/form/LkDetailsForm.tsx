@@ -1,12 +1,11 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UseMutateFunction } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { GenderType, UniversalItemType } from "../../../../shared/types";
 import { Button } from "../../../../shared/ui/buttons/Button";
 import { FormInputField, FormRadioGroup, FormSelect } from "../../../../shared/ui/form-control";
 import { Form } from "../../../../shared/ui/form/Form";
 import { createTitleValueArrayFromNumbersRange } from "../../../../shared/utils/helpers";
-import { UpdateUserTypeProps } from "../../api/apiProfiles";
+import { useLkDetailsContext } from "../../context";
 import { LkDetailsFormType } from "../../types/LkDetailsFormType";
 import { lkDetailsFormValidationSchema } from "../../validation/lkDetailsFormValidationSchema";
 import { LkDetailsFormAvatarBlock } from "./block/LkDetailsFormAvatarBlock";
@@ -16,15 +15,7 @@ interface LkDetailsFormProps {
   gender?: GenderType;
   age?: string;
   avatar?: string;
-  updateProfile: UseMutateFunction<
-    {
-      path: string;
-    } | null,
-    Error,
-    UpdateUserTypeProps,
-    unknown
-  >;
-  isUpdatingProfile: boolean;
+  onModalClose?: () => void;
 }
 
 export const LkDetailsForm = ({
@@ -32,9 +23,10 @@ export const LkDetailsForm = ({
   gender,
   age,
   avatar,
-  updateProfile,
-  isUpdatingProfile,
+  onModalClose,
 }: LkDetailsFormProps) => {
+  const { updateUser, isUpdatingUser } = useLkDetailsContext();
+
   const form = useForm<LkDetailsFormType>({
     resolver: zodResolver(lkDetailsFormValidationSchema),
     defaultValues: {
@@ -46,23 +38,24 @@ export const LkDetailsForm = ({
   });
 
   const onSubmit = (data: LkDetailsFormType) => {
-    updateProfile(data);
+    updateUser(data);
+    onModalClose?.();
   };
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 py-4">
-        <LkDetailsFormAvatarBlock avatar={avatar} updateProfile={updateProfile} />
+        <LkDetailsFormAvatarBlock avatarSrc={avatar} />
         <FormInputField<LkDetailsFormType>
           label="Укажите имя"
           name="userName"
           placeholder="Имя"
-          disabled={isUpdatingProfile}
+          disabled={isUpdatingUser}
         />
         <FormRadioGroup<LkDetailsFormType>
           label="Укажите пол"
           name="gender"
-          disabled={isUpdatingProfile}
+          disabled={isUpdatingUser}
           options={[
             { value: "male", title: "Муж." },
             { value: "female", title: "Жен." },
@@ -71,13 +64,13 @@ export const LkDetailsForm = ({
         <FormSelect<LkDetailsFormType>
           label="Укажите возраст"
           title="Добавить возраст"
-          disabled={isUpdatingProfile}
+          disabled={isUpdatingUser}
           name="age"
           options={
             createTitleValueArrayFromNumbersRange([14, 90]) as Required<UniversalItemType<string>>[]
           }
         />
-        <Button size="lg" disabled={isUpdatingProfile} type="submit" className="w-full">
+        <Button size="lg" disabled={isUpdatingUser} type="submit" className="w-full">
           Сохранить
         </Button>
       </form>

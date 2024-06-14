@@ -1,17 +1,13 @@
 import { TrashIcon } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { DeleteConfirmation } from "../../../../shared/components/delete-cofirmation";
+import { useDeleteAccount } from "../../../../shared/services/auth/hooks/useDeleteAccount";
 import { Button } from "../../../../shared/ui/buttons/Button";
 import { DrawerDialogResponsive } from "../../../../shared/ui/drawer-dialog/DrawerDialogResponsive";
 import { TypographyH3 } from "../../../../shared/ui/typography/TypographyH3";
 import { LkDetailsCard } from "../card/LkDetailsCard";
 
 export const LkDetailsDeleteAccountCard = () => {
-  const navigate = useNavigate();
-  // TODO : Реализовать удаление аккаунта */
-  const handleDelete = () => {
-    navigate("/login");
-  };
+  const { deleteAccount, isAccountDeleting } = useDeleteAccount();
 
   return (
     <LkDetailsCard title="Удаление аккаунта">
@@ -21,14 +17,19 @@ export const LkDetailsDeleteAccountCard = () => {
         <div className="flex justify-end">
           <DrawerDialogResponsive
             button={
-              <Button variant="link" size="lg" className="flex gap-2 text-base text-destructive ">
+              <Button
+                variant="link"
+                size="lg"
+                className="flex gap-2 text-base text-destructive"
+                disabled={isAccountDeleting}
+              >
                 <TrashIcon className="h-2/4 w-2/4 stroke-destructive" />
                 <span>Удалить</span>
               </Button>
             }
             title="Удаление аккаунта"
           >
-            <DeleteConfirmation title="аккаунт" onDelete={handleDelete} />
+            <DeleteConfirmation title="аккаунт" onDelete={deleteAccount} />
           </DrawerDialogResponsive>
         </div>
       </section>

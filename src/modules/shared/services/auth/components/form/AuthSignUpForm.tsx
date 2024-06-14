@@ -19,8 +19,8 @@ export const AuthSignUpForm = () => {
       signUp(data, {
         onSuccess: () => {
           setIsPassedConfirmation(true);
+          reset();
         },
-        onSettled: () => reset(),
       });
     },
     [signUp],
@@ -45,7 +45,7 @@ export const AuthSignUpForm = () => {
     >
       <FormInputField<SignUpFormType>
         label="Укажите имя"
-        name="userName"
+        name="username"
         placeholder="Имя"
         disabled={isSignUpPending}
       />

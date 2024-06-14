@@ -10,14 +10,14 @@ import {
 import { TypographyH2 } from "../../../../shared/ui/typography/TypographyH2";
 import { TypographyH5 } from "../../../../shared/ui/typography/TypographyH5";
 import { formatPhoneNumber, maskPhoneNumber } from "../../../../shared/utils/helpers";
+import { useLkDetailsContext } from "../../context";
 import { useProfile } from "../../hooks/useProfile";
-import { useUpdateProfile } from "../../hooks/useUpdateProfile";
 import { LkDetailsCard } from "../card/LkDetailsCard";
 import { LkDetailsForm } from "../form/LkDetailsForm";
 
 export const LkDetailsProfileDataCard = () => {
   const { profile, isProfileLoading } = useProfile();
-  const { updateProfile, isUpdatingProfile } = useUpdateProfile();
+  const { updateUser, isUpdatingUser } = useLkDetailsContext();
 
   return (
     <LkDetailsCard title="Личные данные" isLoading={isProfileLoading}>
@@ -26,7 +26,7 @@ export const LkDetailsProfileDataCard = () => {
           <div className="flex items-center gap-6">
             <Avatar src={profile.avatar} userName={profile.userName} className="h-20 w-20" />
 
-            <TypographyH2 className="text-primary-extraDark">
+            <TypographyH2 className=" text-xl text-primary-extraDark lg:text-2xl">
               {profile.userName || "Аноним"}
             </TypographyH2>
             <DrawerDialogResponsive
@@ -42,17 +42,15 @@ export const LkDetailsProfileDataCard = () => {
                 gender={profile.gender}
                 age={profile.age}
                 avatar={profile.avatar}
-                updateProfile={updateProfile}
-                isUpdatingProfile={isUpdatingProfile}
               />
             </DrawerDialogResponsive>
           </div>
 
           <RadioGroupWithLabel
             label="Пол:"
-            disabled={isUpdatingProfile}
+            disabled={isUpdatingUser}
             value={profile.gender}
-            onValueChange={(value: GenderType) => updateProfile({ gender: value })}
+            onValueChange={(value: GenderType) => updateUser({ gender: value })}
           >
             <div className="flex gap-6 p-4">
               <RadioGroupItemWithLabel label="Муж." value="male" />
@@ -64,7 +62,7 @@ export const LkDetailsProfileDataCard = () => {
             Телефон: {maskPhoneNumber(formatPhoneNumber(profile.phone))}
           </p>
           <p className="font-medium text-muted-foreground">Email: {profile.email}</p>
-          <p className="font-medium text-muted-foreground">Возраст: {profile.age ?? "Не указан"}</p>
+          <p className="font-medium text-muted-foreground">Возраст: {profile.age || "Не указан"}</p>
         </section>
       ) : (
         <TypographyH5>

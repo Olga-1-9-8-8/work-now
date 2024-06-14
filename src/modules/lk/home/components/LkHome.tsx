@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/no-useless-undefined */
 import { lkNavConfig } from "../../../shared/configs";
 import { NavTypes } from "../../../shared/configs/lkNavConfig";
-import { useLkContext } from "../../shared/ui/layout/LkProvider";
+import { useLkContext } from "../../shared/context";
 import { LkHomeCard } from "./card/LkHomeCard";
 
 export const LkHome = () => {
