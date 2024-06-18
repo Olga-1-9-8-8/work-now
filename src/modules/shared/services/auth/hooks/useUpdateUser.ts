@@ -11,7 +11,7 @@ export const useUpdateUser = () => {
       toast.success("Личные данные успешно обновлены");
 
       queryClient.setQueryData(["user"], user);
-      queryClient.invalidateQueries({ queryKey: ["user"] });
+      queryClient.invalidateQueries({ queryKey: ["profile"] });
     },
     onError: (err) => toast.error(err.message),
   });

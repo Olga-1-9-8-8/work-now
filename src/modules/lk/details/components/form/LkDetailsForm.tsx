@@ -1,10 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { GenderType, UniversalItemType } from "../../../../shared/types";
+import { GenderType } from "../../../../shared/types";
 import { Button } from "../../../../shared/ui/buttons/Button";
-import { FormInputField, FormRadioGroup, FormSelect } from "../../../../shared/ui/form-control";
+import { FormInputField, FormRadioGroup } from "../../../../shared/ui/form-control";
+import { FormInputOptField } from "../../../../shared/ui/form-control/input/FormInputOptField";
 import { Form } from "../../../../shared/ui/form/Form";
-import { createTitleValueArrayFromNumbersRange } from "../../../../shared/utils/helpers";
 import { useLkDetailsContext } from "../../context";
 import { LkDetailsFormType } from "../../types/LkDetailsFormType";
 import { lkDetailsFormValidationSchema } from "../../validation/lkDetailsFormValidationSchema";
@@ -61,15 +61,7 @@ export const LkDetailsForm = ({
             { value: "female", title: "Жен." },
           ]}
         />
-        <FormSelect<LkDetailsFormType>
-          label="Укажите возраст"
-          title="Добавить возраст"
-          disabled={isUpdatingUser}
-          name="age"
-          options={
-            createTitleValueArrayFromNumbersRange([14, 90]) as Required<UniversalItemType<string>>[]
-          }
-        />
+        <FormInputOptField label="Укажите свой возраст" name="age" maxLength={2} />
         <Button size="lg" disabled={isUpdatingUser} type="submit" className="w-full">
           Сохранить
         </Button>

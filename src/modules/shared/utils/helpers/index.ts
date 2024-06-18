@@ -1,6 +1,6 @@
 export { formatCurrency } from "./currencyHelper";
 
-export { createEmptyArray, createTitleValueArrayFromNumbersRange } from "./arrayHelper";
+export { createEmptyArray } from "./arrayHelper";
 
 export { formatPhoneNumber, maskPhoneNumber } from "./phoneHelper";
 
