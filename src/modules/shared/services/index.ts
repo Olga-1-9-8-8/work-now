@@ -1,4 +1,6 @@
-// eslint-disable-next-line no-restricted-exports, import/no-default-export
-export { default } from "./auth/pages/AuthPage";
+/* eslint-disable import/no-default-export */
+/* eslint-disable no-restricted-exports */
 
+export { AuthLayout } from "./auth/layout/AuthLayout";
+export { default } from "./auth/pages/AuthPage";
 export type { Database } from "./types/database.types";

@@ -53,6 +53,7 @@ export const AuthSignUpForm = () => {
         label="Укажите email"
         name="email"
         placeholder="Email"
+        autoComplete="email"
         disabled={isSignUpPending}
       />
       <AuthPasswordField<SignUpFormType>

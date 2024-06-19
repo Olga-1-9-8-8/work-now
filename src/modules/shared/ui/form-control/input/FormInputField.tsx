@@ -21,7 +21,7 @@ export const FormInputField = <T extends FieldValues>({
         <FormItem>
           <FormLabel>{label}</FormLabel>
           <FormControl>
-            <Input autoComplete={name} autoCorrect="off" {...props} {...field} />
+            <Input autoComplete="off" autoCorrect="off" {...field} {...props} />
           </FormControl>
           <FormMessage />
         </FormItem>

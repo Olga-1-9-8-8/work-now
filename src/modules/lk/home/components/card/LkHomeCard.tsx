@@ -26,8 +26,9 @@ export const LkHomeCard = ({ item, description, className }: LkHomeCardProps) =>
     e.stopPropagation();
     if (item.isExit) {
       logout();
+    } else {
+      navigate(item.href);
     }
-    navigate(item.href);
   };
 
   return (

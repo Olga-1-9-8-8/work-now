@@ -18,6 +18,10 @@ export const signUp = async ({ username, password, email, phone }: SignUpFormTyp
     },
   });
 
+  if (data?.user && data.user.identities && data.user.identities.length === 0) {
+    throw new Error("Аккаунт с данным email уже существует");
+  }
+
   if (error) {
     throw new Error(error.message);
   }
@@ -43,6 +47,18 @@ export const login = async ({ email, password }: LogInProps) => {
   return data;
 };
 
+export const resetPassword = async ({ email }: { email: string }) => {
+  const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: "http://localhost:3000/reset-password",
+  });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+};
+
 export const logout = async () => {
   const { error } = await supabase.auth.signOut();
 
@@ -52,6 +68,18 @@ export const logout = async () => {
 };
 
 export const deleteAccount = async () => {
+  const { data } = await supabase.auth.getSession();
+
+  if (data.session?.user.user_metadata.avatar) {
+    const { error: storageError } = await supabase.storage
+      .from("avatars")
+      .remove([data.session.user.user_metadata.avatar]);
+
+    if (storageError) {
+      throw new Error(storageError.message);
+    }
+  }
+
   const { error } = await supabase.rpc("delete_user");
 
   if (error) {
@@ -61,7 +89,6 @@ export const deleteAccount = async () => {
 
 export const getUser = async () => {
   const { data } = await supabase.auth.getSession();
-
   if (!data.session) {
     return null;
   }

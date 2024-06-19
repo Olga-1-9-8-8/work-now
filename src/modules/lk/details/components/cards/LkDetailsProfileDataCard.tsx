@@ -11,17 +11,15 @@ import { TypographyH2 } from "../../../../shared/ui/typography/TypographyH2";
 import { TypographyH5 } from "../../../../shared/ui/typography/TypographyH5";
 import { formatPhoneNumber, maskPhoneNumber } from "../../../../shared/utils/helpers";
 import { useLkDetailsContext } from "../../context";
-import { useProfile } from "../../hooks/useProfile";
 import { LkDetailsCard } from "../card/LkDetailsCard";
 import { LkDetailsForm } from "../form/LkDetailsForm";
 
 export const LkDetailsProfileDataCard = () => {
-  const { profile, isProfileLoading } = useProfile();
-  const { updateUser, isUpdatingUser } = useLkDetailsContext();
+  const { updateUser, isUpdatingUser, profile, isProfileLoading } = useLkDetailsContext();
 
   return (
     <LkDetailsCard title="Личные данные" isLoading={isProfileLoading}>
-      {profile ? (
+      {profile && !isProfileLoading ? (
         <section className="flex flex-col gap-4">
           <div className="flex items-center gap-6">
             <Avatar src={profile.avatar} userName={profile.userName} className="h-20 w-20" />

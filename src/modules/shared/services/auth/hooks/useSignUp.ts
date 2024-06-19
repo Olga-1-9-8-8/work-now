@@ -8,12 +8,14 @@ export const useSignUp = () => {
     mutationFn: signUpApi,
     onSuccess: (data) => {
       toast.success(
-        `${data.user?.user_metadata.userName}, Вы успешно создали новый аккаунт.Мы выслали на Вашу почту ссылку для активации аккаунта`,
+        `${data.user?.user_metadata.username}, Вы успешно создали новый аккаунт.Мы выслали на Вашу почту ссылку для активации аккаунта`,
       );
     },
     onError: (error) => {
       console.log(error);
-      toast.error("Ошибка при создании аккаунта");
+      toast.error(
+        `Ошибка при создании аккаунта : ${error.message ? `[ ${error.message}  ]` : ""} `,
+      );
     },
   });
 

@@ -31,6 +31,7 @@ export const LkDetailsFormAvatarBlockFileInput = ({
         onClick={() => {
           inputRef?.current?.click();
         }}
+        type="button"
         size="icon"
         className="rounded-full"
         disabled={isUpdatingUser}

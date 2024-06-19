@@ -20,6 +20,7 @@ export const LkDetailsFormAvatarBlock = ({ avatarSrc }: LkDetailsFormAvatarBlock
       <div className=" flex flex-col items-center">
         <Button
           onClick={() => updateUser({ avatarFile: null })}
+          type="button"
           size="icon"
           className="rounded-full"
           disabled={isUpdatingUser}

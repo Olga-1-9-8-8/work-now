@@ -6,5 +6,7 @@ export const AuthEmailField = <T extends FieldValues>({
   name,
   ...props
 }: FormInputFieldProps<T>) => {
-  return <FormInputField autoComplete="email" label={label} name={name} {...props} />;
+  return (
+    <FormInputField<T> autoComplete="email" label={label} name={name} type="email" {...props} />
+  );
 };
