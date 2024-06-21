@@ -44,7 +44,7 @@ export const LkHomeCard = ({ item, description, className }: LkHomeCardProps) =>
         <Avatar className="h-20 w-20" icon={item.icon} />
         <TypographyH2 className="text-primary-extraDark">{item.title}</TypographyH2>
       </CardHeader>
-      {description && (
+      {description && !item.isExit && (
         <CardContent className="flex font-medium text-muted-foreground">{description}</CardContent>
       )}
       <CardFooter className="flex sm:justify-end">

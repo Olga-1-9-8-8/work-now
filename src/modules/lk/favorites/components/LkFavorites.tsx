@@ -3,26 +3,25 @@ import { NotExist } from "../../../shared/components/not-found/components/NotExi
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
 import { TypographyH3 } from "../../../shared/ui/typography/TypographyH3";
 import { getRightNounWordDeclension } from "../../../shared/utils/helpers";
-import { useFavorites } from "../hooks/useFavorites";
+import { useProfileFavorites } from "../../shared/hooks/useProfileFavorites";
 import { LkFavoritesItem } from "./item/LkFavoritesItem";
 
 export const LkFavorites = () => {
-  // TODO: получить userId
-  const userId = 5;
-  const { isLoading, favorites, totalCount } = useFavorites(userId);
+  const { profileFavorites, isProfileFavoritesLoading, totalProfileFavoritesCount } =
+    useProfileFavorites();
 
-  if (isLoading) return <Spinner />;
-  if (!favorites) return <NotFound title="Элементы в Избранном" />;
-  return totalCount ? (
+  if (isProfileFavoritesLoading) return <Spinner />;
+  if (!profileFavorites) return <NotFound title="Элементы в Избранном" />;
+  return totalProfileFavoritesCount ? (
     <div className="py-4">
       <TypographyH3>
         У Вас в Избранном{" "}
         <strong className="text-primary-extraDark">
-          {getRightNounWordDeclension(totalCount, "элемент", ["", "а", "ов"])}
-        </strong>{" "}
+          {getRightNounWordDeclension(totalProfileFavoritesCount, "элемент", ["", "а", "ов"])}
+        </strong>
       </TypographyH3>
       <div className="my-4 flex flex-col gap-4">
-        {favorites.map((item) => (
+        {profileFavorites.map((item) => (
           <LkFavoritesItem key={item.id} item={item} />
         ))}
       </div>

@@ -1,7 +1,7 @@
 import { UserAttributes } from "@supabase/supabase-js";
 import { GenderType } from "../../../types";
 import { supabase } from "../../api/supabase";
-import { SignUpFormType } from "../types/SignUpFormType";
+import { SignUpFormType } from "../types/form/SignUpFormType";
 
 export const signUp = async ({ username, password, email, phone }: SignUpFormType) => {
   const { data, error } = await supabase.auth.signUp({
@@ -49,7 +49,7 @@ export const login = async ({ email, password }: LogInProps) => {
 
 export const resetPassword = async ({ email }: { email: string }) => {
   const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: "http://localhost:3000/reset-password",
+    redirectTo: `${window.location.origin}/login/update`,
   });
 
   if (error) {

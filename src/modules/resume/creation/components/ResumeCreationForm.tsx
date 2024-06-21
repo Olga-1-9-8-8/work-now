@@ -4,7 +4,6 @@ import { filterConfig } from "../../../shared/configs";
 import { UniversalItemType } from "../../../shared/types";
 import { Button } from "../../../shared/ui/buttons/Button";
 import { DatePicker, FormSelect } from "../../../shared/ui/form-control";
-
 import {
   Form,
   FormControl,
@@ -18,7 +17,7 @@ import { Input } from "../../../shared/ui/inputs/Input";
 import { Slider } from "../../../shared/ui/slider/Slider";
 import { TextareaWithLabel } from "../../../shared/ui/textarea/TextareaWithLabel";
 import { formatDateToStringUtc } from "../../../shared/utils/helpers";
-import { ResumeItem } from "../../shared/types";
+import { ResumeType } from "../../shared/types";
 import { useCreateResume } from "../hooks/useCreateResume";
 import { useEditResume } from "../hooks/useEditResume";
 import { ResumeCreationFormType } from "../types/ResumeCreationFormType";
@@ -27,7 +26,7 @@ import { ResumeCreationFormCheckboxItem } from "./item/ResumeCreationFormCheckbo
 
 interface ResumeCreationFormProps {
   userId: string;
-  resume?: ResumeItem;
+  resume?: ResumeType;
 }
 
 export const ResumeCreationForm = ({ userId, resume }: ResumeCreationFormProps) => {
@@ -55,15 +54,32 @@ export const ResumeCreationForm = ({ userId, resume }: ResumeCreationFormProps) 
   function onSubmit(values: ResumeCreationFormType) {
     if (resume?.id) {
       editResume(
-        { ...values, id: resume.id, creationDate: formatDateToStringUtc(new Date()) },
+        { ...values, id: resume.id, updated_At: formatDateToStringUtc(new Date()) },
         {
           onSuccess: () => form.reset(),
         },
       );
     } else {
-      createResume(values, {
-        onSuccess: () => form.reset(),
-      });
+      createResume(
+        {
+          ...values,
+          creation_date: formatDateToStringUtc(new Date()),
+          about: values.about ?? null,
+          city: values.city ?? null,
+          employment: values.employment ?? null,
+          employment_start_date: values.employmentStartDate
+            ? formatDateToStringUtc(values.employmentStartDate)
+            : null,
+          applicants_quantity: values.applicantsQuantity,
+          user_Id: values.userId,
+          week_hours: values.weekHours ?? null,
+          education: values.education || null,
+          schedule: values.schedule as string[] | null,
+        },
+        {
+          onSuccess: () => form.reset(),
+        },
+      );
     }
   }
 

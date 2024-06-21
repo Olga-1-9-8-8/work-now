@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { passwordSchema } from "../../../shared/validation";
+import { passwordSchema } from "../../../validation";
 
-export const lkDetailsUpdatePasswordFormValidationSchema = z
+export const authUpdatePasswordFormValidationSchema = z
   .object({
     password: passwordSchema,
     confirmPassword: passwordSchema,

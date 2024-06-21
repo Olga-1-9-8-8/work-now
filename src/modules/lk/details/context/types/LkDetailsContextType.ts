@@ -1,7 +1,7 @@
 import { User } from "@supabase/supabase-js";
 import { UseMutateFunction } from "@tanstack/react-query";
+import { ProfileType } from "../../../../shared/services/auth";
 import { UpdateUserTypeProps } from "../../../../shared/services/auth/api/apiAuth";
-import { ProfileType } from "../../types/ProfileType";
 
 export interface LkDetailsContextType {
   isUpdatingUser: boolean;

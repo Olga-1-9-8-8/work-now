@@ -5,8 +5,8 @@ const AuthUpdatePasswordPage = () => {
   return (
     <>
       <CardTitle>
-        Введите новый пароль и подтвердите его?
-        <CardDescription>Напишите свой новый пароль</CardDescription>
+        Введите новый пароль
+        <CardDescription>Напишите свой новый пароль для входа в аккаунт</CardDescription>
       </CardTitle>
 
       <AuthUpdatePasswordForm />

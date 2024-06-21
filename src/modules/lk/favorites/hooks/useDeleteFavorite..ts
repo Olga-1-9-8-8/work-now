@@ -10,7 +10,7 @@ export const useDeleteFavorite = () => {
     onSuccess: () => {
       toast.error(`Успешно удалено из Избранного`);
       queryClient.invalidateQueries({
-        queryKey: ["favorites"],
+        queryKey: ["profileFavorites"],
       });
     },
     onError: (err) => toast.error(err.message),

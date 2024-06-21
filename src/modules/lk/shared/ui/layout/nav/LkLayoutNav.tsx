@@ -1,5 +1,5 @@
 /* eslint-disable unicorn/no-useless-undefined */
-import { NavTypes, lkNavConfig } from "../../../../../shared/configs/lkNavConfig";
+import { lkNavConfig } from "../../../../../shared/configs/lkNavConfig";
 import { HeaderNavListItemLink } from "../../../../../shared/navigation/components/header/link/HeaderNavListItemLink";
 import { useResponsiveContext } from "../../../../../shared/responsive";
 import {
@@ -7,28 +7,12 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
 } from "../../../../../shared/ui/nav-menu/NavigationMenu";
-import { useLkContext } from "../../../context";
+import { useProfileTotalCounts } from "../../../hooks/useProfileTotalCounts";
 
 export const LkLayoutNav = () => {
   const isMobile = useResponsiveContext();
 
-  const {
-    resumes: { totalCount: totalResumesCount },
-  } = useLkContext();
-
-  const getTotalCount = (value: NavTypes) => {
-    switch (value) {
-      case "applies": {
-        return undefined;
-      }
-      case "resumes": {
-        return totalResumesCount;
-      }
-      default: {
-        return undefined;
-      }
-    }
-  };
+  const { getTotalCount } = useProfileTotalCounts();
 
   return (
     <div className="flex justify-center">

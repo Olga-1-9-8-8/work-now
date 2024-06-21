@@ -1,7 +1,7 @@
 import { Copy, MoreVertical, Pencil, TrashIcon } from "lucide-react";
 import { ResumeCreationForm } from "../../../../resume/creation";
 import { useCreateResume } from "../../../../resume/creation/hooks/useCreateResume";
-import { ResumeItem } from "../../../../resume/shared/types";
+import { ResumeType } from "../../../../resume/shared/types";
 import { DeleteConfirmation } from "../../../../shared/components/delete-cofirmation";
 import { useResponsiveContext } from "../../../../shared/responsive";
 import { Button } from "../../../../shared/ui/buttons/Button";
@@ -26,7 +26,7 @@ import { TypographyH6 } from "../../../../shared/ui/typography/TypographyH6";
 import { formattedTimeString } from "../../../../shared/utils/helpers";
 
 interface LkResumesCardProps {
-  resume: ResumeItem;
+  resume: ResumeType;
   isDeleting: boolean;
   onDelete: (id: number) => void;
 }
@@ -38,6 +38,17 @@ export const LkResumesCard = ({ resume, isDeleting, onDelete }: LkResumesCardPro
 
   const handleDuplicate = () => {
     createResume({
+      user_Id: resume.userId,
+      about: resume.about ?? null,
+      applicants_quantity: resume.applicantsQuantity,
+      city: resume.city ?? null,
+      creation_date: resume.creationDate.toISOString(),
+      education: resume.education ?? null,
+      employment: resume.employment?.map((item) => item.toString()) ?? null,
+      employment_start_date: resume.employmentStartDate?.toISOString() ?? null,
+      week_hours: resume.weekHours ?? null,
+      salary: resume.salary ?? null,
+      schedule: resume.schedule ?? null,
       ...resume,
       position: `Копия - ${resume.position}`,
     });
@@ -80,8 +91,10 @@ export const LkResumesCard = ({ resume, isDeleting, onDelete }: LkResumesCardPro
 
                 <DrawerContent>
                   <DrawerHeader>
-                    <DrawerTitle>Редактировать резюме</DrawerTitle>
-                    <DrawerDescription>{resume.name}</DrawerDescription>
+                    <DrawerTitle>Редактировать резюме {resume.position}</DrawerTitle>
+                    <DrawerDescription>
+                      Последнее обновление {formattedTimeString(resume.creationDate)}
+                    </DrawerDescription>
                   </DrawerHeader>
                   <ResumeCreationForm resume={resume} userId={resume.userId} />
                 </DrawerContent>
@@ -117,8 +130,8 @@ export const LkResumesCard = ({ resume, isDeleting, onDelete }: LkResumesCardPro
             <div className="flex gap-4">
               <DrawerDialogResponsive
                 button={<Button>Редактировать</Button>}
-                title="Редактировать резюме"
-                description={resume.name}
+                title={`Редактировать резюме ${resume.position}`}
+                description={`Последнее обновление ${formattedTimeString(resume.creationDate)}`}
               >
                 <ResumeCreationForm resume={resume} userId={resume.userId} />
               </DrawerDialogResponsive>

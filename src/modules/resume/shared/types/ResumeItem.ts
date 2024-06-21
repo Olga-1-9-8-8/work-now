@@ -1,15 +1,9 @@
-import {
-  EducationType,
-  EmploymentType,
-  GenderType,
-  ScheduleType,
-  WeekHoursType,
-} from "../../../shared/types";
+import { ProfileType } from "../../../shared/services/auth";
+import { EducationType, EmploymentType, ScheduleType, WeekHoursType } from "../../../shared/types";
 
-export interface ResumeItem {
+export interface ResumeType {
   id: number;
   userId: string;
-  name: string;
   position: string;
   creationDate: Date;
   city?: string;
@@ -22,8 +16,7 @@ export interface ResumeItem {
   education?: EducationType;
   employmentStartDate?: Date;
   views: number;
-  phone: string;
-  gender?: GenderType;
-  age?: string;
-  avatar?: string;
+  updatedAt?: Date;
 }
+
+export interface ResumeItem extends Omit<ProfileType, "id" | "email">, ResumeType {}

@@ -46,7 +46,7 @@ export const getResumes = async ({ filters, sortArr, page }: GetResumesProps) =>
   return { data, totalCount: count };
 };
 
-export const createEditResume = async (newResume: ResumeApiType) => {
+export const createEditResume = async (newResume: Omit<ResumeApiType, "id"> & { id?: number }) => {
   let query: any = supabase.from("resumes");
 
   if (!newResume.id) {

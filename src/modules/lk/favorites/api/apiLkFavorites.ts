@@ -1,38 +1,23 @@
 import { supabase } from "../../../shared/services/api/supabase";
+import { FavoriteType } from "../../shared/types/FavoriteType";
 
-export const getFavorites = async (userId: number) => {
-  const { data, error, count } = await supabase
-    .from("favorites")
-    .select(`*, resumes(*),users(*)`, { count: "exact" })
-    .eq("userId", userId);
-
-  if (error) {
-    console.log(error);
-    throw new Error("Проблема с загрузкой избранного из базы данных");
-  }
-
-  return { data, totalCount: count };
-};
-
-export const addFavorite = async (resumeId: number, userId?: number) => {
+export const addFavorite = async (newFavorite: FavoriteType) => {
   const { data, error } = await supabase
-    .from("favorites")
-    .insert({
-      userId,
-      resumeId,
-    })
-    .select();
+    .from("profileFavorites")
+    .insert([newFavorite])
+    .select()
+    .single();
 
   if (error) {
     console.log(error);
-    throw new Error("Проблема с добавлением избранного в базу данных");
+    throw new Error("Проблема с добавлением в Избранное");
   }
 
   return data;
 };
 
 export const deleteFavorite = async (id: number) => {
-  const { data, error } = await supabase.from("favorites").delete().eq("id", id);
+  const { data, error } = await supabase.from("profileFavorites").delete().eq("id", id);
 
   if (error) {
     console.log(error);

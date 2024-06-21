@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { login as loginApi } from "../api/apiAuth";
-import { LogInFormType } from "../types/LogInFormType";
+import { LogInFormType } from "../types/form/LogInFormType";
 
 export const useLogin = () => {
   const queryClient = useQueryClient();

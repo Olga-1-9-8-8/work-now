@@ -1,4 +1,4 @@
-import { GenderType } from "../../../shared/types";
+import { GenderType } from "../../../types";
 
 export interface ProfileType {
   id: string;

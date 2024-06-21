@@ -24,7 +24,7 @@ export const mapResume = (resume: ResumeWithProfileApiTypeInput): ResumeItem => 
     ...resumeData
   } = resume;
 
-  const { username: name, phone, gender, age, avatar } = profiles!;
+  const { username: userName, phone, gender, age, avatar } = profiles!;
 
   return {
     ...resumeData,
@@ -40,7 +40,7 @@ export const mapResume = (resume: ResumeWithProfileApiTypeInput): ResumeItem => 
     applicantsQuantity,
     userId,
     gender: (gender as GenderType) ?? undefined,
-    name,
+    userName,
     phone,
     age: age ?? undefined,
     avatar: avatar ?? undefined,

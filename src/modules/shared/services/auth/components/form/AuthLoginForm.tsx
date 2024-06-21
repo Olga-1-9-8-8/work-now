@@ -1,10 +1,9 @@
 import { useCallback } from "react";
 import { UseFormReset } from "react-hook-form";
-
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../../../ui/buttons/Button";
 import { useLogin } from "../../hooks/useLogin";
-import { LogInFormType } from "../../types/LogInFormType";
+import { LogInFormType } from "../../types/form/LogInFormType";
 import { authLogInFormValidationSchema } from "../../validation/authLogInFormValidationSchema";
 import { AuthFormWrapper } from "./AuthFormWrapper";
 import { AuthEmailField } from "./item/AuthEmailField";
@@ -43,6 +42,7 @@ export const AuthLoginForm = () => {
       />
       <Button
         onClick={() => navigate("reset")}
+        type="button"
         variant="link"
         className="flex w-full justify-end p-0 text-primary"
       >
