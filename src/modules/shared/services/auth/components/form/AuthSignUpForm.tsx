@@ -1,9 +1,10 @@
 import { useCallback, useState } from "react";
 import { UseFormReset } from "react-hook-form";
 import { FormInputField } from "../../../../ui/form-control";
+import { FormCheckboxField } from "../../../../ui/form-control/checkbox/FormCheckboxField";
 import { TypographyH5 } from "../../../../ui/typography/TypographyH5";
 import { useSignUp } from "../../hooks/useSignUp";
-import { SignUpFormType } from "../../types/SignUpFormType";
+import { SignUpFormType } from "../../types/form/SignUpFormType";
 import { authSignUpFormValidationSchema } from "../../validation/authSignUpFormValidationSchema";
 import { AuthFormWrapper } from "./AuthFormWrapper";
 import { AuthPasswordField } from "./item/AuthPasswordField";
@@ -44,7 +45,7 @@ export const AuthSignUpForm = () => {
       isLoading={isSignUpPending}
     >
       <FormInputField<SignUpFormType>
-        label="Укажите имя"
+        label="Укажите имя / или название компании"
         name="username"
         placeholder="Имя"
         disabled={isSignUpPending}
@@ -71,6 +72,11 @@ export const AuthSignUpForm = () => {
       <AuthPhoneField<SignUpFormType>
         label="Укажите номер телефона"
         name="phone"
+        disabled={isSignUpPending}
+      />
+      <FormCheckboxField<SignUpFormType>
+        label="Вы будете нанимать? (Нажмите, если вы компания)"
+        name="isCompany"
         disabled={isSignUpPending}
       />
     </AuthFormWrapper>

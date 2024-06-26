@@ -23,14 +23,14 @@ import { MapBadge } from "../../../../map";
 import { getDiapasonString } from "../../../utils/getDiapasonString";
 
 interface SearchCardHeaderTitleProps {
-  name: string;
+  userName: string;
   image?: string;
   position: string;
   isHiring?: boolean;
 }
 
 export const SearchCardHeaderTitle = ({
-  name,
+  userName,
   image,
   position,
   isHiring,
@@ -40,11 +40,12 @@ export const SearchCardHeaderTitle = ({
       <Avatar
         className="h-16 w-16"
         icon={isHiring ? Building : undefined}
-        user={{ image, fullName: name }}
+        src={image}
+        userName={userName}
       />
       <div>
         <CardTitle className="text-xl md:text-2xl">{capitalizeFirstLetter(position)}</CardTitle>
-        <CardTitleWithTooltip title={name} />
+        <CardTitleWithTooltip title={userName} />
       </div>
     </div>
   );
@@ -58,7 +59,7 @@ interface SearchCardHeaderDetailsProps {
     lat: string;
     lng: string;
   };
-  age?: number;
+  age?: number | string;
   gender?: GenderType;
 }
 export const SearchCardHeaderDetails = ({

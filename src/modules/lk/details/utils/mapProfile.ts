@@ -1,6 +1,6 @@
 import { ProfileApiTypeInput } from "../../../resume/shared/types";
 import { ProfileType } from "../../../shared/services/auth";
-import { GenderType } from "../../../shared/types";
+import { GenderType, UserEntity } from "../../../shared/types";
 import { parseDateFromString } from "../../../shared/utils/helpers";
 
 export const mapProfile = (profile: ProfileApiTypeInput): ProfileType => {
@@ -12,6 +12,7 @@ export const mapProfile = (profile: ProfileApiTypeInput): ProfileType => {
     email: profile.email,
     userName: profile.username,
     phone: profile.phone,
+    role: profile.role as UserEntity,
     updatedAt: profile.updated_at ? parseDateFromString(profile.updated_at) : undefined,
   };
 };

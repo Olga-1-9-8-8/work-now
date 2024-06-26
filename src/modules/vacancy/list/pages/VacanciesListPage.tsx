@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { CreateButton } from "../../../shared/components/buttons";
-import { NotFound } from "../../../shared/components/not-found/components";
+import { NotFound } from "../../../shared/components/not-found";
 import { SearchList } from "../../../shared/components/search-list";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
 import { VacanciesList } from "../components/VacanciesList";

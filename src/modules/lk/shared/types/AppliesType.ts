@@ -4,4 +4,5 @@ export type AppliesType = {
   name?: string;
   position?: string;
   userId: string;
+  resumeId: number;
 };

@@ -20,4 +20,4 @@ export type { WeekHoursType } from "./WeekHoursType";
 
 export type { BadgeItem, BadgeType, BadgeVariant } from "./BadgeType";
 
-export { UserRoles } from "./UserRoles";
+export { UserEntity, UserRoles } from "./UserRoles";

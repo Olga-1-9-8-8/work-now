@@ -1,13 +1,23 @@
 import { AppliesApiType } from "../types/AppliesApiType";
 import { AppliesType } from "../types/AppliesType";
 
-export const mapProfileApply = (resume: AppliesApiType): AppliesType => {
+export const mapProfileApply = (apply: AppliesApiType): AppliesType => {
+  const {
+    created_at: createdAt,
+    user_id: userId,
+    name,
+    position,
+    resume_id: resumeId,
+    ...applyData
+  } = apply;
+
   return {
-    ...resume,
-    createdAt: new Date(resume.created_at),
-    userId: resume.user_Id,
-    name: resume.name ?? undefined,
-    position: resume.position ?? undefined,
+    createdAt: new Date(createdAt),
+    userId,
+    name: name ?? undefined,
+    position: position ?? undefined,
+    resumeId,
+    ...applyData,
   };
 };
 

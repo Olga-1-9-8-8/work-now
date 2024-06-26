@@ -1,14 +1,7 @@
-import {
-  EducationType,
-  EmploymentType,
-  GenderType,
-  ScheduleType,
-  UserEntity,
-  WeekHoursType,
-} from "../../../shared/types";
-import { ResumeItem, ResumeWithProfileApiTypeInput } from "../types";
+import { ResumeApiType, ResumeType } from "../../../resume/shared/types";
+import { EducationType, EmploymentType, ScheduleType, WeekHoursType } from "../../../shared/types";
 
-export const mapResume = (resume: ResumeWithProfileApiTypeInput): ResumeItem => {
+export const mapProfileResume = (resume: ResumeApiType): ResumeType => {
   const {
     creation_date: creationDate,
     applicants_quantity: applicantsQuantity,
@@ -16,7 +9,6 @@ export const mapResume = (resume: ResumeWithProfileApiTypeInput): ResumeItem => 
     city,
     employment_start_date: employmentStartDate,
     schedule,
-    profiles,
     week_hours: weekHours,
     employment,
     education,
@@ -24,8 +16,6 @@ export const mapResume = (resume: ResumeWithProfileApiTypeInput): ResumeItem => 
     about,
     ...resumeData
   } = resume;
-
-  const { username: userName, phone, gender, age, avatar, role } = profiles!;
 
   return {
     ...resumeData,
@@ -40,11 +30,9 @@ export const mapResume = (resume: ResumeWithProfileApiTypeInput): ResumeItem => 
     about: about ?? undefined,
     applicantsQuantity,
     userId,
-    gender: (gender as GenderType) ?? undefined,
-    userName,
-    phone,
-    role: role as UserEntity,
-    age: age ?? undefined,
-    avatar: avatar ?? undefined,
   };
+};
+
+export const mapProfileResumes = (resumes: ResumeApiType[]) => {
+  return resumes.map((resume) => mapProfileResume(resume));
 };

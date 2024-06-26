@@ -1,4 +1,4 @@
-import { NotFound } from "../../../shared/components/not-found/components";
+import { NotFound } from "../../../shared/components/not-found";
 import { Pagination } from "../../../shared/components/pagination/components/Pagination";
 import { VacanciesListType } from "../types/VacanciesListType";
 import { VacanciesListItem } from "./item/VacanciesListItem";

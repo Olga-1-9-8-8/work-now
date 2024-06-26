@@ -3,3 +3,9 @@ export enum UserRoles {
   NotAuthorized = "NotAuthorized",
   All = "All",
 }
+
+export enum UserEntity {
+  Company = "Company",
+  Person = "Person",
+  All = "All",
+}

@@ -1,4 +1,4 @@
-import { NotFound } from "../../../shared/components/not-found/components";
+import { NotFound } from "../../../shared/components/not-found";
 import { NotExist } from "../../../shared/components/not-found/components/NotExist";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
 import { TypographyH3 } from "../../../shared/ui/typography/TypographyH3";

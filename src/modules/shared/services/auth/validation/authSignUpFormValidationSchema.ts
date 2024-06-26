@@ -8,6 +8,7 @@ export const authSignUpFormValidationSchema = z
     password: passwordSchema,
     confirmPassword: passwordSchema,
     phone: phoneSchema,
+    isCompany: z.boolean().optional(),
   })
   .refine(({ password, confirmPassword }) => password === confirmPassword, {
     message: "Пароли не совпадают",

@@ -9,7 +9,7 @@ import { DetailsCardHeaderTitlePersonalData } from "./items/DetailsCardHeaderTit
 import { DetailsCardHeaderTitleViews } from "./items/DetailsCardHeaderTitleViews";
 
 interface DetailsCardHeaderTitleProps {
-  name: string;
+  userName: string;
   image?: string;
   views?: number;
   isHiring?: boolean;
@@ -19,12 +19,12 @@ interface DetailsCardHeaderTitleProps {
     lat: string;
     lng: string;
   };
-  age?: number;
+  age?: number | string;
   gender?: GenderType;
 }
 
 export const DetailsCardHeaderTitle = ({
-  name,
+  userName,
   image,
   views,
   isHiring,
@@ -40,9 +40,10 @@ export const DetailsCardHeaderTitle = ({
         <AvatarBase
           className="h-11 w-11"
           icon={isHiring ? Building : undefined}
-          user={{ image, fullName: name }}
+          src={image}
+          userName={userName}
         />
-        <CardTitleWithTooltip title={name} />
+        <CardTitleWithTooltip title={userName} />
         <DetailsCardHeaderTitleViews views={views} />
       </div>
       <div className="flex flex-col gap-2">

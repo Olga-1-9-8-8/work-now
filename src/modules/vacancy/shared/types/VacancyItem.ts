@@ -1,7 +1,7 @@
 export interface VacancyItem {
   id: string;
   companyCode: string;
-  name: string;
+  userName: string;
   position: string;
   creationDate: Date;
   city?: string;

@@ -1,7 +1,15 @@
-import { ArrowRight, FileText, Heart, Home, LogOut, Mails, UserRound } from "lucide-react";
+import { ArrowRight, Building2, FileText, Heart, Home, LogOut, Mails, User2 } from "lucide-react";
 import { ElementType } from "react";
+import { UserEntity } from "../types";
 
-export const navTypes = ["home", "profile", "favorites", "resumes", "applies"] as const;
+export const navTypes = [
+  "home",
+  "profile",
+  "favorites",
+  "resumes",
+  "applies",
+  "vacancies",
+] as const;
 
 export type NavTypes = (typeof navTypes)[number];
 
@@ -14,6 +22,7 @@ export type LkNavItems = {
   linkIcon?: ElementType;
   isMain?: boolean;
   isExit?: boolean;
+  role: UserEntity;
 };
 
 export const lkNavConfig: LkNavItems[] = [
@@ -23,15 +32,27 @@ export const lkNavConfig: LkNavItems[] = [
     href: "/lk",
     icon: Home,
     isMain: true,
+    role: UserEntity.All,
   },
   {
     title: "Профиль",
     value: "profile",
     href: "/lk/details",
-    icon: UserRound,
     linkTitle: "Выйти",
     linkIcon: LogOut,
     isExit: true,
+    icon: User2,
+    role: UserEntity.Person,
+  },
+  {
+    title: "Профиль",
+    value: "profile",
+    href: "/lk/details",
+    linkTitle: "Выйти",
+    linkIcon: LogOut,
+    isExit: true,
+    icon: Building2,
+    role: UserEntity.Company,
   },
   {
     title: "Избранное",
@@ -40,6 +61,7 @@ export const lkNavConfig: LkNavItems[] = [
     icon: Heart,
     linkTitle: "Перейти",
     linkIcon: ArrowRight,
+    role: UserEntity.All,
   },
   {
     title: "Мои резюме",
@@ -48,6 +70,16 @@ export const lkNavConfig: LkNavItems[] = [
     icon: FileText,
     linkTitle: "Перейти",
     linkIcon: ArrowRight,
+    role: UserEntity.Person,
+  },
+  {
+    title: "Мои вакансии",
+    value: "vacancies",
+    href: "/lk/vacancies",
+    icon: FileText,
+    linkTitle: "Перейти",
+    linkIcon: ArrowRight,
+    role: UserEntity.Company,
   },
 
   {
@@ -57,5 +89,6 @@ export const lkNavConfig: LkNavItems[] = [
     icon: Mails,
     linkTitle: "Перейти",
     linkIcon: ArrowRight,
+    role: UserEntity.All,
   },
 ];

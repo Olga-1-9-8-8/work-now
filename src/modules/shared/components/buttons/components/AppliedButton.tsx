@@ -1,13 +1,18 @@
 import { Zap } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../../../ui/buttons/Button";
 
 interface AppliedButtonProps {
+  isInApply?: boolean;
   onClick: (isApplied: boolean) => void;
   disabled?: boolean;
 }
-export const AppliedButton = ({ disabled, onClick }: AppliedButtonProps) => {
+export const AppliedButton = ({ disabled, onClick, isInApply }: AppliedButtonProps) => {
   const [isApplied, setIsApplied] = useState(false);
+
+  useEffect(() => {
+    if (isInApply) setIsApplied(isInApply);
+  }, [isInApply]);
 
   const handleApplyClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();

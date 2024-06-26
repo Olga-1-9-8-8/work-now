@@ -31,7 +31,7 @@ export const HeaderNavListItemLink = React.forwardRef<
       >
         <Icon />
         <div className="text-nowrap leading-none">{title}</div>
-        {totalCount && (
+        {totalCount !== undefined && (
           <div className="absolute right-0 top-0 flex h-4 w-4 items-center justify-center rounded-full bg-primary-dark">
             <span className="text-[0.6rem] text-white">{totalCount}</span>
           </div>

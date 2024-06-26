@@ -1,4 +1,4 @@
-import { GenderType } from "../../../types";
+import { GenderType, UserEntity } from "../../../types";
 
 export interface ProfileType {
   id: string;
@@ -9,4 +9,5 @@ export interface ProfileType {
   userName: string;
   phone: string;
   updatedAt?: Date;
+  role: UserEntity;
 }

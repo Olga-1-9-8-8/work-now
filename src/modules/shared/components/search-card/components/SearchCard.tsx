@@ -31,7 +31,7 @@ export const SearchCard = <T extends number | string>({
     employmentStartDate,
     creationDate,
     phone,
-    name,
+    userName,
     coordinates,
     views,
     applicantsQuantity,
@@ -46,7 +46,7 @@ export const SearchCard = <T extends number | string>({
         <div className="flex flex-col justify-between gap-4 xl:flex-row">
           <div className="flex flex-col gap-2">
             <SearchCardHeaderBlock.SearchCardHeaderTitle
-              name={name}
+              userName={userName}
               position={position}
               image={image}
               isHiring={isHiring}

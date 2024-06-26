@@ -4,4 +4,5 @@ export type FavoriteType = {
   name?: string;
   position?: string;
   userId: string;
+  resumeId: number;
 };

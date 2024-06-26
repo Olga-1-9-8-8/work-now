@@ -1,6 +1,6 @@
 import { BackButton } from "../../../shared/components/buttons";
 import { DetailsCard } from "../../../shared/components/details-card";
-import { NotFound } from "../../../shared/components/not-found/components";
+import { NotFound } from "../../../shared/components/not-found";
 import { PageContainer } from "../../../shared/ui/layout";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
 import { useApplyResume } from "../hooks/useApplyResume";

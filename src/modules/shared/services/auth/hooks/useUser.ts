@@ -11,5 +11,11 @@ export const useUser = () => {
     queryFn: getUser,
   });
 
-  return { user, isUserLoading, error, isAuthenticated: user?.role === "authenticated" };
+  return {
+    user,
+    isUserLoading,
+    error,
+    isAuthenticated: user?.role === "authenticated",
+    role: user?.user_metadata?.role,
+  };
 };

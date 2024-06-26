@@ -15,9 +15,9 @@ export const Logo = ({ isShort = false }: LogoProps) => {
       className="focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
       {isMobile || isShort ? (
-        <LogoIconSmall className="h-20 w-20" />
+        <LogoIconSmall className="h-20 w-28" />
       ) : (
-        <LogoIcon className="h-24 w-28 lg:w-40" />
+        <LogoIcon className="h-24 w-40" />
       )}
     </Link>
   );

@@ -12,16 +12,16 @@ const { ContextProvider: AuthContextProvider, useContext } = createContext<AuthC
 );
 
 export const useAuthContext = () => {
-  const { user, isUserLoading, isAuthenticated, error } = useContext();
-  return { user, isUserLoading, isAuthenticated, error };
+  const { user, isUserLoading, isAuthenticated, role, error } = useContext();
+  return { user, isUserLoading, isAuthenticated, role, error };
 };
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const { user, isUserLoading, isAuthenticated, error } = useUser();
+  const { user, isUserLoading, isAuthenticated, role, error } = useUser();
 
   const value = React.useMemo<AuthContextType>(
-    () => ({ user, isUserLoading, isAuthenticated, error }),
-    [user, isUserLoading, isAuthenticated, error],
+    () => ({ user, isUserLoading, isAuthenticated, role, error }),
+    [user, isUserLoading, isAuthenticated, role, error],
   );
 
   return <AuthContextProvider value={value}>{children}</AuthContextProvider>;

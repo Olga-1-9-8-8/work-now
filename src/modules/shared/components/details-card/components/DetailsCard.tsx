@@ -34,7 +34,7 @@ export const DetailsCard = ({
     employmentStartDate,
     creationDate,
     phone,
-    name,
+    userName,
     coordinates,
     views,
     applicantsQuantity,
@@ -47,7 +47,7 @@ export const DetailsCard = ({
     <Card className={className}>
       <DetailsCardHeaderBlock>
         <DetailsCardHeaderBlock.DetailsCardHeaderTitle
-          {...{ name, image, views, isHiring, position, city, coordinates, age, gender }}
+          {...{ userName, image, views, isHiring, position, city, coordinates, age, gender }}
         />
         <DetailsCardHeaderBlock.DetailsCardHeaderOperations
           {...{ onApplyClick, disabled, onFavoriteClick, creationDate, applicantsQuantity }}

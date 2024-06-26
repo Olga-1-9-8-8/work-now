@@ -1,6 +1,6 @@
 import { supabase } from "../../../shared/services/api/supabase";
 
-export const addResumesFavorite = async (id: number) => {
+export const addResumesApply = async (id: number) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -20,25 +20,25 @@ export const addResumesFavorite = async (id: number) => {
     throw new Error("Данное резюме не найдено в базе данных");
   }
 
-  const { data, error } = await supabase.from("favorites").insert({
+  const { data, error } = await supabase.from("applies").insert({
     user_id: session.user.id,
     resume_id: resumeData.id,
   });
 
   if (error) {
     console.log(error);
-    throw new Error("Проблема с добавлением резюме в Избранное");
+    throw new Error("Проблема с добавлением резюме в Отклики");
   }
 
   return data;
 };
 
-export const deleteFavorite = async (id: number) => {
-  const { data, error } = await supabase.from("favorites").delete().eq("id", id);
+export const deleteApply = async (id: number) => {
+  const { data, error } = await supabase.from("applies").delete().eq("id", id);
 
   if (error) {
     console.log(error);
-    throw new Error("Ошибка удаления отклика из Избранного");
+    throw new Error("Ошибка удаления элемента из Откликов");
   }
 
   return data;

@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom";
 import { mapResume } from "../../shared/utils";
 import { getResume } from "../api/apiResumesDetails";
 
-export const useResume = () => {
-  const { id } = useParams();
+export const useResume = (idResume?: number) => {
+  const { id: idParam } = useParams();
+  const id = idParam ?? String(idResume);
 
   const {
     isLoading,

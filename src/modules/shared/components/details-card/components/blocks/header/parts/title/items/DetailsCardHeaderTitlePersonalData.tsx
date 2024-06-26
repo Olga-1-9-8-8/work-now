@@ -4,7 +4,7 @@ import { getRightNounYearDeclension } from "../../../../../../../../utils/helper
 
 interface DetailsCardHeaderTitlePersonalDataProps {
   gender?: GenderType;
-  age?: number;
+  age?: number | string;
 }
 
 export const DetailsCardHeaderTitlePersonalData = ({

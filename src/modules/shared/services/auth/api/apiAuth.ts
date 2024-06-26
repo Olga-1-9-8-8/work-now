@@ -1,9 +1,9 @@
 import { UserAttributes } from "@supabase/supabase-js";
-import { GenderType } from "../../../types";
+import { GenderType, UserEntity } from "../../../types";
 import { supabase } from "../../api/supabase";
 import { SignUpFormType } from "../types/form/SignUpFormType";
 
-export const signUp = async ({ username, password, email, phone }: SignUpFormType) => {
+export const signUp = async ({ username, password, email, phone, isCompany }: SignUpFormType) => {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -14,7 +14,9 @@ export const signUp = async ({ username, password, email, phone }: SignUpFormTyp
         avatar: "",
         gender: "",
         age: "",
+        role: isCompany ? UserEntity.Company : UserEntity.Person,
       },
+      emailRedirectTo: `${window.location.origin}/lk/details`,
     },
   });
 

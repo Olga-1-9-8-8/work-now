@@ -1,6 +1,6 @@
-import { Pencil } from "lucide-react";
+import { Building2, Pencil } from "lucide-react";
 import { Avatar } from "../../../../shared/components/avatar";
-import { GenderType } from "../../../../shared/types";
+import { GenderType, UserEntity } from "../../../../shared/types";
 import { Button } from "../../../../shared/ui/buttons/Button";
 import { DrawerDialogResponsive } from "../../../../shared/ui/drawer-dialog/DrawerDialogResponsive";
 import {
@@ -22,7 +22,12 @@ export const LkDetailsProfileDataCard = () => {
       {profile && !isProfileLoading ? (
         <section className="flex flex-col gap-4">
           <div className="flex items-center gap-6">
-            <Avatar src={profile.avatar} userName={profile.userName} className="h-20 w-20" />
+            <Avatar
+              src={profile.avatar}
+              userName={profile.userName}
+              icon={profile.role === UserEntity.Company ? Building2 : undefined}
+              className="h-20 w-20"
+            />
 
             <TypographyH2 className=" text-xl text-primary-extraDark lg:text-2xl">
               {profile.userName || "Аноним"}
@@ -43,24 +48,29 @@ export const LkDetailsProfileDataCard = () => {
               />
             </DrawerDialogResponsive>
           </div>
-
-          <RadioGroupWithLabel
-            label="Пол:"
-            disabled={isUpdatingUser}
-            value={profile.gender}
-            onValueChange={(value: GenderType) => updateUser({ gender: value })}
-          >
-            <div className="flex gap-6 p-4">
-              <RadioGroupItemWithLabel label="Муж." value="male" />
-              <RadioGroupItemWithLabel label="Жен." value="female" />
-            </div>
-          </RadioGroupWithLabel>
-
+          {profile.role === UserEntity.Person && (
+            <RadioGroupWithLabel
+              label="Пол:"
+              disabled={isUpdatingUser}
+              value={profile.gender}
+              onValueChange={(value: GenderType) => updateUser({ gender: value })}
+            >
+              <div className="flex gap-6 p-4">
+                <RadioGroupItemWithLabel label="Муж." value="male" />
+                <RadioGroupItemWithLabel label="Жен." value="female" />
+              </div>
+            </RadioGroupWithLabel>
+          )}
           <p className="font-medium text-muted-foreground">
             Телефон: {maskPhoneNumber(formatPhoneNumber(profile.phone))}
           </p>
           <p className="font-medium text-muted-foreground">Email: {profile.email}</p>
-          <p className="font-medium text-muted-foreground">Возраст: {profile.age || "Не указан"}</p>
+          <p className="font-medium text-muted-foreground">
+            {profile.role === UserEntity.Company
+              ? "Количество лет организация на рынке :"
+              : "Возраст:"}{" "}
+            {profile.age || "Не указано"}
+          </p>
         </section>
       ) : (
         <TypographyH5>

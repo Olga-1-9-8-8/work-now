@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { NotExist } from "../../../shared/components/not-found/components";
+import { NotExist } from "../../../shared/components/not-found";
 import { useAuthContext } from "../../../shared/services/auth";
 import {
   Card,

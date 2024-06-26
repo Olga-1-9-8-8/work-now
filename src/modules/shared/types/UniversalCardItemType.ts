@@ -7,7 +7,7 @@ import { WeekHoursType } from "./WeekHoursType";
 export interface UniversalCardItemType {
   id: number | string;
   userId?: string;
-  name: string;
+  userName: string;
   position: string;
   creationDate?: Date | null;
   city?: string;
