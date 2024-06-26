@@ -3,9 +3,11 @@ import { NavTypes } from "../../../shared/configs/lkNavConfig";
 import { useProfileApplies } from "./useProfileApplies";
 import { useProfileFavorites } from "./useProfileFavorites";
 import { useProfileResumes } from "./useProfileResumes";
+import { useProfileVacancies } from "./useProfileVacancies";
 
 export function useProfileTotalCounts() {
   const { totalProfileResumesCount } = useProfileResumes();
+  const { totalProfileVacanciesCount } = useProfileVacancies();
   const { totalProfileAppliesCount } = useProfileApplies();
   const { totalProfileFavoritesCount } = useProfileFavorites();
 
@@ -16,6 +18,9 @@ export function useProfileTotalCounts() {
       }
       case "resumes": {
         return totalProfileResumesCount;
+      }
+      case "vacancies": {
+        return totalProfileVacanciesCount;
       }
       case "favorites": {
         return totalProfileFavoritesCount;

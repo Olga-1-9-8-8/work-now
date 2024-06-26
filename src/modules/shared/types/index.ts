@@ -5,6 +5,7 @@ export { genderTypes, getGenderTitle } from "./GenderType";
 export { scheduleTypes } from "./ScheduleType";
 export { sortTypes } from "./SortType";
 export { weekHoursTypes } from "./WeekHoursType";
+export type { ItemType } from "./item/ItemType";
 
 export type { UniversalCardItemType } from "./UniversalCardItemType";
 export type { UniversalItemType } from "./UniversalItemType";

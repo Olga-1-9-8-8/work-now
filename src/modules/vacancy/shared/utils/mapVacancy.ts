@@ -10,7 +10,7 @@ export const mapVacancy = (vacancy: VacancyApiTypeInput): VacancyItem => {
       lat: vacancy.addresses.address[0].lat,
       lng: vacancy.addresses.address[0].lng,
     },
-    name: vacancy.company.name,
+    userName: vacancy.company.name,
     employment: vacancy.employment,
     position: vacancy["job-name"],
     salary: [vacancy.salary_min, vacancy.salary_max],

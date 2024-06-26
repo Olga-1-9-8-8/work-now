@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { createEditResume } from "../../list/api/apiResumes";
+import { createEditResume } from "../../shared/api";
 
 export const useCreateResume = () => {
   const queryClient = useQueryClient();

@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { deleteResume as deleteResumeApi } from "../../../resume/list/api/apiResumes";
+import { deleteResume as deleteResumeApi } from "../../../resume/shared/api";
 
 export const useDeleteResume = () => {
   const queryClient = useQueryClient();

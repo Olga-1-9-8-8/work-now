@@ -6,8 +6,10 @@ import { LkFavoritesPage } from "../../../../lk/favorites";
 import { LkHomePage } from "../../../../lk/home";
 import { LkResumesPage } from "../../../../lk/resumes";
 import { LkLayout } from "../../../../lk/shared/ui";
+import { LkVacanciesPage } from "../../../../lk/vanancies";
 import { ResumeCreationPage } from "../../../../resume/creation";
 import { ResumeDetailsPage } from "../../../../resume/details";
+import { VacancyCreationPage } from "../../../../vacancy/creation";
 import { VacancyDetailsPage } from "../../../../vacancy/details";
 import { AuthLayout } from "../../../services";
 import { AppLayout } from "../../../ui/layout";
@@ -63,6 +65,11 @@ export const routes: RouteObject[] = [
         children: [],
       },
       {
+        path: "vacancies/creation",
+        element: <VacancyCreationPage />,
+        children: [],
+      },
+      {
         path: "vacancies/:companyCode/:id",
         element: <VacancyDetailsPage />,
         children: [],
@@ -110,6 +117,10 @@ export const routes: RouteObject[] = [
           {
             path: "resumes",
             element: <LkResumesPage />,
+          },
+          {
+            path: "vacancies",
+            element: <LkVacanciesPage />,
           },
           {
             path: "applications",
