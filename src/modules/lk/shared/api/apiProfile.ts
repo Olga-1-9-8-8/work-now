@@ -17,7 +17,7 @@ export const getProfileResumes = async ({ page }: GetProfileProps) => {
   let query = supabase
     .from("resumes")
     .select("*", { count: "exact" })
-    .eq("user_Id", session.user.id);
+    .eq("user_id", session.user.id);
 
   query = query.order("updated_At", { ascending: false });
 

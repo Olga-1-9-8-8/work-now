@@ -1,29 +1,30 @@
 import { ClipboardCheck, RefreshCw } from "lucide-react";
+import { AppliedButton } from "../../../../../../../features/applies";
+import { FavoriteButton } from "../../../../../../../features/favorites";
 import { CardDescription } from "../../../../../../../ui/card/Card";
 import { formattedTimeString } from "../../../../../../../utils/helpers";
-import { AppliedButton, FavoriteButton } from "../../../../../../buttons";
 
 interface DetailsCardHeaderOperationsProps {
+  id: number | string;
   isHiring?: boolean;
   creationDate?: Date | null;
-  onApplyClick: (isApplied: boolean) => void;
-  onFavoriteClick: (isFavorite: boolean) => void;
   applicantsQuantity?: number;
-  disabled?: boolean;
+  isInFavorites?: boolean;
+  isInApplies?: boolean;
 }
 export const DetailsCardHeaderOperations = ({
-  disabled,
+  id,
   isHiring,
-  onApplyClick,
-  onFavoriteClick,
   creationDate,
   applicantsQuantity,
+  isInFavorites,
+  isInApplies,
 }: DetailsCardHeaderOperationsProps) => {
   return (
     <div className="flex flex-col gap-3">
       <div className="md:flex-start flex flex-row-reverse justify-end gap-8 md:flex-row">
-        <FavoriteButton onClick={onFavoriteClick} disabled={disabled} />
-        <AppliedButton onClick={onApplyClick} />
+        <FavoriteButton id={id} isInFavorites={isInFavorites} />
+        <AppliedButton id={id} isInApplies={isInApplies} />
       </div>
       <p className="mt-2 flex gap-1 text-sm font-medium text-muted-foreground">
         <ClipboardCheck size={20} className="stroke-success" />

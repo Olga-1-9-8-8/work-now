@@ -8,27 +8,13 @@ import { useVacancy } from "../hooks/useVacancy";
 export const VacancyDetails = () => {
   const { vacancy, isLoading } = useVacancy();
 
-  const handleApplyClick = (isApplied: boolean) => {
-    console.log(isApplied, vacancy);
-  };
-
-  const handleFavoriteClick = (isFavorite: boolean) => {
-    console.log(isFavorite, vacancy);
-  };
-
   if (isLoading) return <Spinner />;
 
   return (
     <PageContainer>
       <BackButton />
       {vacancy ? (
-        <DetailsCard
-          className="mb-8 mt-4"
-          data={vacancy}
-          onApplyClick={handleApplyClick}
-          onFavoriteClick={handleFavoriteClick}
-          isHiring
-        />
+        <DetailsCard className="mb-8 mt-4" data={vacancy} isHiring />
       ) : (
         <NotFound title="Детали вакансии" />
       )}

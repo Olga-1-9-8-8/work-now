@@ -25,7 +25,6 @@ export const SearchCard = <T extends number | string>({
     city,
     schedule,
     id,
-    userId,
     companyCode,
     education,
     employmentStartDate,
@@ -38,6 +37,8 @@ export const SearchCard = <T extends number | string>({
     age,
     gender,
     image,
+    isInApplies,
+    isInFavorites,
   } = data;
 
   return (
@@ -80,7 +81,12 @@ export const SearchCard = <T extends number | string>({
         )}
       </SearchCardHeaderBlock>
       <SearchCardDetailsBlock salary={salary} employment={employment} schedule={schedule} />
-      <SearchCardOperationsFooterBlock phone={phone} id={id} userId={userId} />
+      <SearchCardOperationsFooterBlock
+        phone={phone}
+        id={id}
+        isInApplies={isInApplies}
+        isInFavorites={isInFavorites}
+      />
     </Card>
   );
 };

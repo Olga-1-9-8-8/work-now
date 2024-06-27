@@ -29,4 +29,6 @@ export interface UniversalCardItemType {
     lng: string;
   };
   companyCode?: string;
+  isInFavorites?: boolean;
+  isInApplies?: boolean;
 }

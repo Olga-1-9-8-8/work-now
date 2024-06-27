@@ -8,7 +8,7 @@ import { FormInputOptField } from "../../../../shared/ui/form-control/input/Form
 import { Form } from "../../../../shared/ui/form/Form";
 import { useLkDetailsContext } from "../../context";
 import { LkDetailsFormType } from "../../types/LkDetailsFormType";
-import { lkDetailsFormValidationSchema } from "../../validation/lkDetailsFormValidationSchema";
+import { getLkDetailsFormValidationSchema } from "../../validation/lkDetailsFormValidationSchema";
 import { LkDetailsFormAvatarBlock } from "./block/LkDetailsFormAvatarBlock";
 
 interface LkDetailsFormProps {
@@ -31,7 +31,7 @@ export const LkDetailsForm = ({
   const { role } = useAuthContext();
 
   const form = useForm<LkDetailsFormType>({
-    resolver: zodResolver(lkDetailsFormValidationSchema),
+    resolver: zodResolver(getLkDetailsFormValidationSchema(role)),
     defaultValues: {
       userName,
       gender,

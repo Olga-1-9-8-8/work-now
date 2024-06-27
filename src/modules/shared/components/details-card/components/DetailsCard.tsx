@@ -10,20 +10,11 @@ interface DetailsCardProps {
   data: UniversalCardItemType;
   isHiring?: boolean;
   className?: string;
-  onApplyClick: (isApplied: boolean) => void;
-  onFavoriteClick: (isFavorite: boolean) => void;
-  disabled?: boolean;
 }
 
-export const DetailsCard = ({
-  data,
-  isHiring = false,
-  onApplyClick,
-  onFavoriteClick,
-  disabled,
-  className,
-}: DetailsCardProps) => {
+export const DetailsCard = ({ data, isHiring = false, className }: DetailsCardProps) => {
   const {
+    id,
     position,
     about,
     salary,
@@ -41,6 +32,8 @@ export const DetailsCard = ({
     age,
     gender,
     image,
+    isInApplies,
+    isInFavorites,
   } = data;
 
   return (
@@ -50,7 +43,13 @@ export const DetailsCard = ({
           {...{ userName, image, views, isHiring, position, city, coordinates, age, gender }}
         />
         <DetailsCardHeaderBlock.DetailsCardHeaderOperations
-          {...{ onApplyClick, disabled, onFavoriteClick, creationDate, applicantsQuantity }}
+          {...{
+            id,
+            isInApplies,
+            isInFavorites,
+            creationDate,
+            applicantsQuantity,
+          }}
         />
       </DetailsCardHeaderBlock>
       <Separator />

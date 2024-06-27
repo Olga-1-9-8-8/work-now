@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { filterConfig } from "../../../shared/configs";
-import { UniversalItemType } from "../../../shared/types";
+import { ItemType, UniversalItemType } from "../../../shared/types";
 import { Button } from "../../../shared/ui/buttons/Button";
 import { DatePicker, FormSelect } from "../../../shared/ui/form-control";
 import {
@@ -17,7 +17,6 @@ import { Input } from "../../../shared/ui/inputs/Input";
 import { Slider } from "../../../shared/ui/slider/Slider";
 import { TextareaWithLabel } from "../../../shared/ui/textarea/TextareaWithLabel";
 import { formatDateToStringUtc } from "../../../shared/utils/helpers";
-import { ResumeType } from "../../shared/types";
 import { useCreateResume } from "../hooks/useCreateResume";
 import { useEditResume } from "../hooks/useEditResume";
 import { ResumeCreationFormType } from "../types/ResumeCreationFormType";
@@ -26,7 +25,7 @@ import { ResumeCreationFormCheckboxItem } from "./item/ResumeCreationFormCheckbo
 
 interface ResumeCreationFormProps {
   userId: string;
-  resume?: ResumeType;
+  resume?: ItemType;
 }
 
 export const ResumeCreationForm = ({ userId, resume }: ResumeCreationFormProps) => {
@@ -54,7 +53,21 @@ export const ResumeCreationForm = ({ userId, resume }: ResumeCreationFormProps) 
   function onSubmit(values: ResumeCreationFormType) {
     if (resume?.id) {
       editResume(
-        { ...values, id: resume.id, updated_At: formatDateToStringUtc(new Date()) },
+        {
+          ...values,
+          id: resume.id,
+          updated_at: formatDateToStringUtc(new Date()),
+          user_id: values.userId,
+          applicants_quantity: values.applicantsQuantity,
+          creation_date: formatDateToStringUtc(new Date()),
+          employment_start_date: values.employmentStartDate
+            ? formatDateToStringUtc(values.employmentStartDate)
+            : null,
+          week_hours: values.weekHours ?? [],
+          education: values.education || null,
+          employment: values.employment ?? null,
+          schedule: values.schedule as string[] | null,
+        },
         {
           onSuccess: () => form.reset(),
         },
@@ -63,6 +76,7 @@ export const ResumeCreationForm = ({ userId, resume }: ResumeCreationFormProps) 
       createResume(
         {
           ...values,
+          updated_at: formatDateToStringUtc(new Date()),
           creation_date: formatDateToStringUtc(new Date()),
           about: values.about ?? null,
           city: values.city ?? null,
@@ -71,7 +85,7 @@ export const ResumeCreationForm = ({ userId, resume }: ResumeCreationFormProps) 
             ? formatDateToStringUtc(values.employmentStartDate)
             : null,
           applicants_quantity: values.applicantsQuantity,
-          user_Id: values.userId,
+          user_id: values.userId,
           week_hours: values.weekHours ?? null,
           education: values.education || null,
           schedule: values.schedule as string[] | null,

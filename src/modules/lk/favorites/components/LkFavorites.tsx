@@ -1,5 +1,6 @@
 import { NotFound } from "../../../shared/components/not-found";
 import { NotExist } from "../../../shared/components/not-found/components/NotExist";
+import { Pagination } from "../../../shared/components/pagination";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
 import { TypographyH3 } from "../../../shared/ui/typography/TypographyH3";
 import { getRightNounWordDeclension } from "../../../shared/utils/helpers";
@@ -13,18 +14,21 @@ export const LkFavorites = () => {
   if (isProfileFavoritesLoading) return <Spinner />;
   if (!profileFavorites) return <NotFound title="Элементы в Избранном" />;
   return totalProfileFavoritesCount ? (
-    <div className="py-4">
-      <TypographyH3>
-        У Вас в Избранном{" "}
-        <strong className="text-primary-extraDark">
-          {getRightNounWordDeclension(totalProfileFavoritesCount, "элемент", ["", "а", "ов"])}
-        </strong>
-      </TypographyH3>
-      <div className="my-4 flex flex-col gap-4">
-        {profileFavorites.map((item) => (
-          <LkFavoritesItem key={item.id} item={item} />
-        ))}
+    <div className="pb-4">
+      <div className="py-4">
+        <TypographyH3>
+          У Вас в Избранном{" "}
+          <strong className="text-primary-extraDark">
+            {getRightNounWordDeclension(totalProfileFavoritesCount, "элемент", ["", "а", "ов"])}
+          </strong>
+        </TypographyH3>
+        <div className="my-4 flex flex-col gap-4">
+          {profileFavorites.map((item) => (
+            <LkFavoritesItem key={item.id} item={item} />
+          ))}
+        </div>
       </div>
+      <Pagination totalCount={totalProfileFavoritesCount} />
     </div>
   ) : (
     <NotExist title="Вы не добавили ни одного элемента в Избранное" />

@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { deleteApply as deleteApplyApi } from "../api/apiLkApplies";
+import { deleteApply as deleteApplyApi } from "../api/apiApplies";
 
 export const useDeleteApply = () => {
   const queryClient = useQueryClient();

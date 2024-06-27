@@ -1,4 +1,4 @@
-export type { ResumeItem, ResumeType } from "./ResumeItem";
+export type { ResumeItem } from "./ResumeItem";
 
 export type {
   ProfileApiTypeInput,

@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { addResumesFavorite as addFavoriteApi } from "../api/apiLkFavorites";
+import { addFavorite as addFavoriteApi } from "../api/apiFavorites";
 
 export const useAddFavorite = () => {
   const queryClient = useQueryClient();

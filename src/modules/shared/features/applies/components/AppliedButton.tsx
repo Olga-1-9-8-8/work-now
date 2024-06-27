@@ -1,23 +1,31 @@
 import { Zap } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Button } from "../../../ui/buttons/Button";
+import { useAddApply } from "../hooks/useAddApply";
+import { useDeleteApply } from "../hooks/useDeleteApply.";
 
 interface AppliedButtonProps {
-  isInApply?: boolean;
-  onClick: (isApplied: boolean) => void;
-  disabled?: boolean;
+  id: number | string;
+  isInApplies?: boolean;
 }
-export const AppliedButton = ({ disabled, onClick, isInApply }: AppliedButtonProps) => {
+export const AppliedButton = ({ id, isInApplies }: AppliedButtonProps) => {
   const [isApplied, setIsApplied] = useState(false);
+  const { deleteApply, isApplyDeleting } = useDeleteApply();
+  const { addApply, isApplyAdding } = useAddApply();
 
-  useEffect(() => {
-    if (isInApply) setIsApplied(isInApply);
-  }, [isInApply]);
+  useLayoutEffect(() => {
+    if (isInApplies) setIsApplied(isInApplies);
+  }, [isInApplies]);
 
   const handleApplyClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setIsApplied((prevIsApplied) => {
-      onClick(!prevIsApplied);
+      if (prevIsApplied) {
+        deleteApply(id);
+      } else {
+        addApply(id);
+      }
+
       return !prevIsApplied;
     });
   };
@@ -25,7 +33,7 @@ export const AppliedButton = ({ disabled, onClick, isInApply }: AppliedButtonPro
   return (
     <Button
       className="w-full lg:w-auto"
-      disabled={disabled}
+      disabled={isApplyDeleting || isApplyAdding}
       onClick={handleApplyClick}
       variant={isApplied ? "destructive" : "success"}
     >

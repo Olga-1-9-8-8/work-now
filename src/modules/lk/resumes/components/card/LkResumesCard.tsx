@@ -1,7 +1,7 @@
 import { Copy, MoreVertical, Pencil, TrashIcon } from "lucide-react";
 import { ResumeCreationForm } from "../../../../resume/creation";
 import { useCreateResume } from "../../../../resume/creation/hooks/useCreateResume";
-import { ResumeType } from "../../../../resume/shared/types";
+import { ResumeItem } from "../../../../resume/shared/types";
 import { DeleteConfirmation } from "../../../../shared/components/delete-cofirmation";
 import { useResponsiveContext } from "../../../../shared/responsive";
 import { Button } from "../../../../shared/ui/buttons/Button";
@@ -26,7 +26,7 @@ import { TypographyH6 } from "../../../../shared/ui/typography/TypographyH6";
 import { formattedTimeString } from "../../../../shared/utils/helpers";
 
 interface LkResumesCardProps {
-  resume: ResumeType;
+  resume: ResumeItem;
   isDeleting: boolean;
   onDelete: (id: number) => void;
 }
@@ -38,7 +38,8 @@ export const LkResumesCard = ({ resume, isDeleting, onDelete }: LkResumesCardPro
 
   const handleDuplicate = () => {
     createResume({
-      user_Id: resume.userId,
+      user_id: resume.userId,
+      updated_at: new Date().toISOString(),
       about: resume.about ?? null,
       applicants_quantity: resume.applicantsQuantity,
       city: resume.city ?? null,

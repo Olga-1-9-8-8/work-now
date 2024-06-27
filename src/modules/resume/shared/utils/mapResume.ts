@@ -12,7 +12,7 @@ export const mapResume = (resume: ResumeWithProfileApiTypeInput): ResumeItem => 
   const {
     creation_date: creationDate,
     applicants_quantity: applicantsQuantity,
-    user_Id: userId,
+    user_id: userId,
     city,
     employment_start_date: employmentStartDate,
     schedule,
@@ -22,6 +22,8 @@ export const mapResume = (resume: ResumeWithProfileApiTypeInput): ResumeItem => 
     education,
     salary,
     about,
+    isInFavorites,
+    isInApplies,
     ...resumeData
   } = resume;
 
@@ -46,5 +48,7 @@ export const mapResume = (resume: ResumeWithProfileApiTypeInput): ResumeItem => 
     role: role as UserEntity,
     age: age ?? undefined,
     avatar: avatar ?? undefined,
+    isInFavorites: isInFavorites ?? undefined,
+    isInApplies: isInApplies ?? undefined,
   };
 };

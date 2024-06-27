@@ -23,11 +23,11 @@ export const LkVacancies = ({ vacancies, totalCount }: LkVacanciesProps) => {
         </div>
 
         <div className="flex flex-col gap-4 py-8 sm:py-4">
-          {vacancies.map((resume, index: number) => (
+          {vacancies.map((vacancy, index: number) => (
             <LkVacanciesCard
               // eslint-disable-next-line react/no-array-index-key
               key={index}
-              resume={resume}
+              vacancy={vacancy}
               onDelete={deleteVacancy}
               isDeleting={isDeletingVacancy}
             />

@@ -1,11 +1,11 @@
-import { ResumeType } from "../../../resume/shared/types";
+import { ResumeItem } from "../../../resume/shared/types";
 import { Pagination } from "../../../shared/components/pagination";
 import { TypographyH2 } from "../../../shared/ui/typography/TypographyH2";
 import { useDeleteResume } from "../hooks";
 import { LkResumesCard } from "./card/LkResumesCard";
 
 interface LkResumesProps {
-  resumes: ResumeType[];
+  resumes: ResumeItem[];
   totalCount: number;
 }
 

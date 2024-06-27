@@ -1,29 +1,31 @@
 import { Heart } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Button } from "../../../ui/buttons/Button";
+import { useAddFavorite } from "../hooks/useAddFavorite";
+import { useDeleteFavorite } from "../hooks/useDeleteFavorite.";
 
 interface FavoriteButtonProps {
-  onClick: (isFavorite: boolean) => void;
-  disabled?: boolean;
+  id: number | string;
   withTitle?: boolean;
-  isInFavorite?: boolean;
+  isInFavorites?: boolean;
 }
-export const FavoriteButton = ({
-  disabled,
-  withTitle,
-  isInFavorite,
-  onClick,
-}: FavoriteButtonProps) => {
+export const FavoriteButton = ({ id, withTitle, isInFavorites }: FavoriteButtonProps) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const { deleteFavorite, isFavoriteDeleting } = useDeleteFavorite();
+  const { addFavorite, isFavoriteAdding } = useAddFavorite();
 
-  useEffect(() => {
-    if (isInFavorite) setIsFavorite(isInFavorite);
-  }, [isInFavorite]);
+  useLayoutEffect(() => {
+    if (isInFavorites) setIsFavorite(isInFavorites);
+  }, [isInFavorites]);
 
   const handleFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setIsFavorite((prevIsFavorite) => {
-      onClick(!prevIsFavorite);
+      if (prevIsFavorite) {
+        deleteFavorite(id);
+      } else {
+        addFavorite(id);
+      }
       return !prevIsFavorite;
     });
   };
@@ -32,7 +34,7 @@ export const FavoriteButton = ({
     <Button
       className={`group w-full px-2 lg:w-auto ${isFavorite && "border-2 border-destructive"}`}
       variant={withTitle ? "secondary" : "outline"}
-      disabled={disabled}
+      disabled={isFavoriteDeleting || isFavoriteAdding}
       size={withTitle ? "default" : "icon"}
       onClick={handleFavoriteClick}
     >

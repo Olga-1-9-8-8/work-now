@@ -1,11 +1,17 @@
-import { ResumeApiType, ResumeType } from "../../../resume/shared/types";
-import { EducationType, EmploymentType, ScheduleType, WeekHoursType } from "../../../shared/types";
+import { ResumeApiType } from "../../../resume/shared/types";
+import {
+  EducationType,
+  EmploymentType,
+  ItemType,
+  ScheduleType,
+  WeekHoursType,
+} from "../../../shared/types";
 
-export const mapProfileResume = (resume: ResumeApiType): ResumeType => {
+export const mapProfileResume = (resume: ResumeApiType): ItemType => {
   const {
     creation_date: creationDate,
     applicants_quantity: applicantsQuantity,
-    user_Id: userId,
+    user_id: userId,
     city,
     employment_start_date: employmentStartDate,
     schedule,
@@ -14,6 +20,7 @@ export const mapProfileResume = (resume: ResumeApiType): ResumeType => {
     education,
     salary,
     about,
+    updated_at: updatedAt,
     ...resumeData
   } = resume;
 
@@ -30,6 +37,7 @@ export const mapProfileResume = (resume: ResumeApiType): ResumeType => {
     about: about ?? undefined,
     applicantsQuantity,
     userId,
+    updatedAt: updatedAt ? new Date(updatedAt) : undefined,
   };
 };
 

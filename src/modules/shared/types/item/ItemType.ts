@@ -19,4 +19,6 @@ export interface ItemType {
   employmentStartDate?: Date;
   views: number;
   updatedAt?: Date;
+  isInFavorites?: boolean;
+  isInApplies?: boolean;
 }
