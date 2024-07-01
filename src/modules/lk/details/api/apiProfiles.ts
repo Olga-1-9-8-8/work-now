@@ -1,18 +1,12 @@
 import { supabase } from "../../../shared/services/api/supabase";
 
-export const getProfile = async () => {
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  if (!session) {
-    return null;
-  }
+export const getProfile = async (id?: string) => {
+  if (!id) return null;
 
   const { data: profileData, error } = await supabase
     .from("profiles")
     .select("*")
-    .eq("id", session.user.id)
+    .eq("id", id)
     .single();
 
   if (error) {

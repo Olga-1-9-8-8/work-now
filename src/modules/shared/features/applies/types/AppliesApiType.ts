@@ -1,3 +1,3 @@
-import { Database } from "../../../shared/services/types/database.types";
+import { Database } from "../../../services";
 
 export type AppliesApiType = Database["public"]["Tables"]["applies"]["Row"];

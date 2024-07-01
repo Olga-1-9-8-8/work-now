@@ -1,5 +1,38 @@
+import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../components/pagination";
 import { supabase } from "../../../services/api/supabase";
 import { UserEntity } from "../../../types";
+
+export const getFavorites = async (page: number) => {
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session) {
+    return null;
+  }
+
+  let query = supabase
+    .from("favorites")
+    .select("*", { count: "exact" })
+    .eq("user_id", session.user.id);
+
+  query = query.order("created_at", { ascending: false });
+
+  if (page) {
+    const from = (page - 1) * QUANTITY_OF_ITEMS_ON_ONE_PAGE;
+    const to = from + QUANTITY_OF_ITEMS_ON_ONE_PAGE - 1;
+    query = query.range(from, to);
+  }
+
+  const { data, error, count } = await query;
+
+  if (error) {
+    console.log(error);
+    throw new Error("Проблема с загрузкой избранного профиля из базы данных");
+  }
+
+  return { data, totalCount: count, role: session.user.user_metadata.role as UserEntity };
+};
 
 export const addFavorite = async (id: number | string) => {
   const {

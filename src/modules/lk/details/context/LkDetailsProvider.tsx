@@ -5,6 +5,7 @@ import { useProfile } from "../hooks/useProfile";
 import { LkDetailsContextType } from "./types/LkDetailsContextType";
 
 export interface ResponsiveProviderProps {
+  id?: string;
   children?: React.ReactNode;
 }
 
@@ -16,9 +17,9 @@ export const useLkDetailsContext = () => {
   return { updateUser, isUpdatingUser, profile, isProfileLoading };
 };
 
-export const LkDetailsProvider = ({ children }: ResponsiveProviderProps) => {
+export const LkDetailsProvider = ({ id, children }: ResponsiveProviderProps) => {
   const { updateUser, isUpdatingUser } = useUpdateUser();
-  const { profile, isProfileLoading } = useProfile();
+  const { profile, isProfileLoading } = useProfile(id);
 
   const value = React.useMemo<LkDetailsContextType>(
     () => ({ updateUser, isUpdatingUser, profile, isProfileLoading }),

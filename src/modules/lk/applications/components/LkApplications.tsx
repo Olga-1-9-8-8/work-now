@@ -1,34 +1,31 @@
-import { NotExist, NotFound } from "../../../shared/components/not-found";
 import { Pagination } from "../../../shared/components/pagination";
-import { Spinner } from "../../../shared/ui/spinner/Spinner";
+import { AppliesType } from "../../../shared/features/applies";
 import { TypographyH3 } from "../../../shared/ui/typography/TypographyH3";
 import { getRightNounWordDeclension } from "../../../shared/utils/helpers";
-import { useProfileApplies } from "../../shared/hooks/useProfileApplies";
-import { LkApplicationsItem } from "./item/LkApplicationsItem";
+import { LkCard } from "../../shared/components";
 
-export const LkApplications = () => {
-  const { profileApplies, totalProfileAppliesCount, isProfileAppliesLoading } = useProfileApplies();
+interface LkAppliesProps {
+  count: number;
+  applies: AppliesType[];
+}
 
-  if (isProfileAppliesLoading) return <Spinner />;
-  if (!profileApplies) return <NotFound title="Элементы в Откликах" />;
-  return totalProfileAppliesCount ? (
+export const LkApplications = ({ applies, count }: LkAppliesProps) => {
+  return (
     <div className="pb-10">
       <div className="py-4">
         <TypographyH3>
           У Вас в Откликах{" "}
           <strong className="text-primary-extraDark">
-            {getRightNounWordDeclension(totalProfileAppliesCount, "элемент", ["", "а", "ов"])}
+            {getRightNounWordDeclension(count, "элемент", ["", "а", "ов"])}
           </strong>
         </TypographyH3>
         <div className="my-4 flex flex-col gap-4">
-          {profileApplies.map((item) => (
-            <LkApplicationsItem key={item.id} item={item} />
+          {applies.map((data) => (
+            <LkCard key={data.id} resumeId={data.resumeId} vacancyId={data.vacancyId} />
           ))}
         </div>
       </div>
-      <Pagination totalCount={totalProfileAppliesCount} />
+      <Pagination totalCount={count} />
     </div>
-  ) : (
-    <NotExist title="Вы не добавили ни одного элемента в Отклики" />
   );
 };

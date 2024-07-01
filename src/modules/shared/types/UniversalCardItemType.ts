@@ -2,6 +2,7 @@ import { EducationType } from "./EducationType";
 import { EmploymentType } from "./EmploymentType";
 import { GenderType } from "./GenderType";
 import { ScheduleType } from "./ScheduleType";
+import { UserEntity } from "./UserRoles";
 import { WeekHoursType } from "./WeekHoursType";
 
 export interface UniversalCardItemType {
@@ -31,4 +32,6 @@ export interface UniversalCardItemType {
   companyCode?: string;
   isInFavorites?: boolean;
   isInApplies?: boolean;
+  avatar?: string;
+  role?: UserEntity;
 }

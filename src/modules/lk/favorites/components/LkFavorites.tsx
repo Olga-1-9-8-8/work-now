@@ -1,36 +1,31 @@
-import { NotFound } from "../../../shared/components/not-found";
-import { NotExist } from "../../../shared/components/not-found/components/NotExist";
 import { Pagination } from "../../../shared/components/pagination";
-import { Spinner } from "../../../shared/ui/spinner/Spinner";
+import { FavoriteType } from "../../../shared/features/favorites";
 import { TypographyH3 } from "../../../shared/ui/typography/TypographyH3";
 import { getRightNounWordDeclension } from "../../../shared/utils/helpers";
-import { useProfileFavorites } from "../../shared/hooks/useProfileFavorites";
-import { LkFavoritesItem } from "./item/LkFavoritesItem";
+import { LkCard } from "../../shared/components";
 
-export const LkFavorites = () => {
-  const { profileFavorites, isProfileFavoritesLoading, totalProfileFavoritesCount } =
-    useProfileFavorites();
+interface LkFavoritesProps {
+  count: number;
+  favorites: FavoriteType[];
+}
 
-  if (isProfileFavoritesLoading) return <Spinner />;
-  if (!profileFavorites) return <NotFound title="Элементы в Избранном" />;
-  return totalProfileFavoritesCount ? (
+export const LkFavorites = ({ favorites, count }: LkFavoritesProps) => {
+  return (
     <div className="pb-4">
       <div className="py-4">
         <TypographyH3>
           У Вас в Избранном{" "}
           <strong className="text-primary-extraDark">
-            {getRightNounWordDeclension(totalProfileFavoritesCount, "элемент", ["", "а", "ов"])}
+            {getRightNounWordDeclension(count, "элемент", ["", "а", "ов"])}
           </strong>
         </TypographyH3>
         <div className="my-4 flex flex-col gap-4">
-          {profileFavorites.map((item) => (
-            <LkFavoritesItem key={item.id} item={item} />
-          ))}
+          {favorites.map((data) => {
+            return <LkCard key={data.id} resumeId={data.resumeId} vacancyId={data.vacancyId} />;
+          })}
         </div>
       </div>
-      <Pagination totalCount={totalProfileFavoritesCount} />
+      <Pagination totalCount={count} />
     </div>
-  ) : (
-    <NotExist title="Вы не добавили ни одного элемента в Избранное" />
   );
 };

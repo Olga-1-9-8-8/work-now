@@ -10,7 +10,7 @@ export const useAddApply = () => {
     onSuccess: () => {
       toast.success(`Успешно добавлено в Отклики`);
       queryClient.invalidateQueries({
-        queryKey: ["profileApplies"],
+        queryKey: ["applies"],
       });
     },
     onError: (err) => toast.error(err.message),

@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { UserEntity } from "../../../types";
 import { login as loginApi } from "../api/apiAuth";
 import { LogInFormType } from "../types/form/LogInFormType";
 
@@ -16,7 +17,10 @@ export const useLogin = () => {
       toast.success(
         `${data.user?.user_metadata?.username ?? "Аноним"}, вы успешно вошли в свой аккаунт`,
       );
-      navigate("/resumes", { replace: true });
+      navigate(
+        `${data.user?.user_metadata?.role === UserEntity.Company ? `/resumes` : `/vacancies`}`,
+        { replace: true },
+      );
     },
     onError: (error) => {
       console.log(error);

@@ -10,7 +10,7 @@ export const useAddFavorite = () => {
     onSuccess: () => {
       toast.success(`Успешно добавлено в Избранное`);
       queryClient.invalidateQueries({
-        queryKey: ["profileFavorites"],
+        queryKey: ["favorites"],
       });
     },
     onError: (err) => toast.error(err.message),

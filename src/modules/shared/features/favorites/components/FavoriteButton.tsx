@@ -1,15 +1,17 @@
 import { Heart } from "lucide-react";
 import { useLayoutEffect, useState } from "react";
+import { UserEntity } from "../../../types";
 import { Button } from "../../../ui/buttons/Button";
 import { useAddFavorite } from "../hooks/useAddFavorite";
 import { useDeleteFavorite } from "../hooks/useDeleteFavorite.";
 
 interface FavoriteButtonProps {
   id: number | string;
+  role: UserEntity;
   withTitle?: boolean;
   isInFavorites?: boolean;
 }
-export const FavoriteButton = ({ id, withTitle, isInFavorites }: FavoriteButtonProps) => {
+export const FavoriteButton = ({ id, role, withTitle, isInFavorites }: FavoriteButtonProps) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const { deleteFavorite, isFavoriteDeleting } = useDeleteFavorite();
   const { addFavorite, isFavoriteAdding } = useAddFavorite();
@@ -22,9 +24,9 @@ export const FavoriteButton = ({ id, withTitle, isInFavorites }: FavoriteButtonP
     e.stopPropagation();
     setIsFavorite((prevIsFavorite) => {
       if (prevIsFavorite) {
-        deleteFavorite(id);
+        deleteFavorite({ id, role });
       } else {
-        addFavorite(id);
+        addFavorite({ id, role });
       }
       return !prevIsFavorite;
     });

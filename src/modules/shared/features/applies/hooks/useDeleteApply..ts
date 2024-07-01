@@ -10,7 +10,7 @@ export const useDeleteApply = () => {
     onSuccess: () => {
       toast.error(`Успешно удалено из Откликов`);
       queryClient.invalidateQueries({
-        queryKey: ["profileApplies"],
+        queryKey: ["applies"],
       });
     },
     onError: (err) => toast.error(err.message),

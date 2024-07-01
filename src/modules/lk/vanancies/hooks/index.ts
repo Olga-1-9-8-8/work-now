@@ -1,1 +1,0 @@
-export { useDeleteVacancy } from "./useDeleteVacancy";
