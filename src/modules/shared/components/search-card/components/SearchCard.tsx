@@ -36,7 +36,7 @@ export const SearchCard = <T extends number | string>({
     applicantsQuantity,
     age,
     gender,
-    image,
+    avatar,
     isInApplies,
     isInFavorites,
   } = data;
@@ -49,7 +49,7 @@ export const SearchCard = <T extends number | string>({
             <SearchCardHeaderBlock.SearchCardHeaderTitle
               userName={userName}
               position={position}
-              image={image}
+              avatar={avatar}
               isHiring={isHiring}
             />
             <SearchCardHeaderBlock.SearchCardHeaderDetails

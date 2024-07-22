@@ -1,3 +1,4 @@
+import { getAvatar } from "../../../shared/api";
 import { supabase } from "../../../shared/services/api/supabase";
 
 export const getProfile = async (id?: string) => {
@@ -14,14 +15,7 @@ export const getProfile = async (id?: string) => {
   }
   if (!profileData.avatar) return profileData;
 
-  const { data: avatarFile, error: avatarFileError } = await supabase.storage
-    .from("avatars")
-    .download(profileData.avatar);
+  const avatar = await getAvatar(profileData.avatar);
 
-  if (avatarFileError) {
-    throw new Error(avatarFileError.message);
-  }
-  const url = URL.createObjectURL(avatarFile);
-
-  return { ...profileData, avatar: url };
+  return { ...profileData, avatar };
 };

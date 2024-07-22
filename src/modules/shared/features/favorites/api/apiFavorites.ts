@@ -34,7 +34,14 @@ export const getFavorites = async (page: number) => {
   return { data, totalCount: count, role: session.user.user_metadata.role as UserEntity };
 };
 
-export const addFavorite = async (id: number | string) => {
+interface FavoriteProps {
+  id: number | string;
+  role: UserEntity;
+}
+
+export const addFavorite = async ({ id, role }: FavoriteProps) => {
+  const isCompanyRole = role === UserEntity.Company;
+
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -42,10 +49,11 @@ export const addFavorite = async (id: number | string) => {
   if (!session) {
     return null;
   }
-  const isCompanyRole = session.user.user_metadata.role === UserEntity.Company;
+
+  const column = isCompanyRole ? "vacancies" : "resumes";
 
   const { data: applicationData, error: applicationError } = await supabase
-    .from(`${isCompanyRole ? "vacancies" : "resumes"}`)
+    .from(column)
     .select("*")
     .eq("id", id)
     .single();
@@ -70,7 +78,7 @@ export const addFavorite = async (id: number | string) => {
   return data;
 };
 
-export const deleteFavorite = async (id: number | string) => {
+export const deleteFavorite = async ({ id, role }: FavoriteProps) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -79,13 +87,13 @@ export const deleteFavorite = async (id: number | string) => {
     return null;
   }
 
-  const isCompanyRole = session.user.user_metadata.role === UserEntity.Company;
-
+  const isCompanyRole = role === UserEntity.Company;
+  const column = isCompanyRole ? "vacancy_id" : "resume_id";
   const { data, error } = await supabase
     .from("favorites")
     .delete()
     .eq("user_id", session.user.id)
-    .eq(isCompanyRole ? "vacancy_id" : "resume_id", id);
+    .eq(column, id);
 
   if (error) {
     console.log(error);
@@ -93,4 +101,27 @@ export const deleteFavorite = async (id: number | string) => {
   }
 
   return data;
+};
+
+export const getFavorite = async (id: number) => {
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session) {
+    return null;
+  }
+
+  const { data: favoriteData, error: favoriteError } = await supabase
+    .from("favorites")
+    .select("*")
+    .eq("user_id", session.user.id)
+    .eq("resume_id", id)
+    .maybeSingle();
+
+  if (favoriteError) {
+    console.log(favoriteError);
+    throw new Error("Проблема с загрузкой избранного из базы данных");
+  }
+  return favoriteData;
 };

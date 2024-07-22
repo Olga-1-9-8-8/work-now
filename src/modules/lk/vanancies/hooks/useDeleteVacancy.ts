@@ -8,7 +8,7 @@ export const useDeleteVacancy = () => {
   const { isPending: isDeletingVacancy, mutate: deleteVacancy } = useMutation({
     mutationFn: deleteVacancyApi,
     onSuccess: () => {
-      toast.success("Вакансия успешно удалено");
+      toast.success("Вакансия успешно удалена");
       queryClient.invalidateQueries({
         queryKey: ["vacancies"],
       });

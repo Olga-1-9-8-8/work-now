@@ -8,7 +8,7 @@ export const useEditVacancy = () => {
   const { mutate: editVacancy, isPending: isEditing } = useMutation({
     mutationFn: createEditVacancy,
     onSuccess: () => {
-      toast.success("Вакансия успешно создана");
+      toast.success("Вакансия успешно отредактирована");
       queryClient.invalidateQueries({ queryKey: ["vacancies"] });
     },
     onError: (err) => toast.error(err.message),

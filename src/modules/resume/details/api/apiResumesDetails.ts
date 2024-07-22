@@ -1,6 +1,9 @@
+import { getAvatar } from "../../../shared/api";
+import { getApplies } from "../../../shared/features/applies/api/apiApplies";
+import { getFavorite } from "../../../shared/features/favorites/api/apiFavorites";
 import { supabase } from "../../../shared/services/api/supabase";
 
-export const getResume = async (id: string) => {
+export const getResume = async (id: number) => {
   const { data, error } = await supabase
     .from("resumes")
     .select("*,profiles(*)")
@@ -14,37 +17,14 @@ export const getResume = async (id: string) => {
 
   if (!data) return null;
 
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+  const favorite = await getFavorite(data.id);
+  const appliesData = await getApplies(data.id);
+  const avatar = data.profiles?.avatar ? await getAvatar(data.profiles.avatar) : null;
 
-  if (!session) {
-    return { ...data, isInFavorites: undefined, isInApplies: undefined };
-  }
-
-  const { data: favoritesData, error: favoritesError } = await supabase
-    .from("favorites")
-    .select("*")
-    .eq("user_id", session.user.id)
-    .eq("resume_id", data.id)
-    .maybeSingle();
-
-  if (favoritesError) {
-    console.log(favoritesError);
-    throw new Error("Проблема с загрузкой избранного из базы данных");
-  }
-
-  const { data: appliesData, error: appliesError } = await supabase
-    .from("applies")
-    .select("*")
-    .eq("user_id", session.user.id)
-    .eq("resume_id", data.id)
-    .maybeSingle();
-
-  if (appliesError) {
-    console.log(appliesError);
-    throw new Error("Проблема с загрузкой откликов из базы данных");
-  }
-
-  return { ...data, isInFavorites: !!favoritesData, isInApplies: !!appliesData };
+  return {
+    ...data,
+    isInFavorites: !!favorite,
+    isInApplies: !!appliesData,
+    profiles: { ...data.profiles, avatar },
+  };
 };

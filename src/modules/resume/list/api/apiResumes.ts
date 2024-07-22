@@ -1,5 +1,8 @@
 import { format } from "date-fns";
+import { getAvatar } from "../../../shared/api";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagination";
+import { getApply } from "../../../shared/features/applies";
+import { getFavorite } from "../../../shared/features/favorites";
 import { getFilterValue } from "../../../shared/features/filters/server-side/utils/getFilterValue";
 import { supabase } from "../../../shared/services/api/supabase";
 import { ResumesFilterType } from "../types/ResumesFilterType";
@@ -42,7 +45,24 @@ export const getResumes = async ({ filters, sortArr, page }: GetResumesProps) =>
     throw new Error("Проблема с загрузкой резюме из базы данных");
   }
 
-  return { data, totalCount: count };
+  if (data.length === 0) return { data, totalCount: count };
+
+  const resumesData = await Promise.all(
+    data.map(async (resume) => {
+      const favorite = await getFavorite(resume.id);
+      const appliesData = await getApply(resume.id);
+      const avatar = resume.profiles?.avatar ? await getAvatar(resume.profiles.avatar) : null;
+
+      return {
+        ...resume,
+        isInFavorites: !!favorite,
+        isInApplies: !!appliesData,
+        profiles: { ...resume.profiles, avatar },
+      };
+    }),
+  );
+
+  return { data: resumesData, totalCount: count };
 };
 
 export const getResumesAfterDate = async (date: string) => {

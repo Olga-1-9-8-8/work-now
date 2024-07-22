@@ -2,38 +2,6 @@ export const capitalizeFirstLetter = (str: string) => {
   return str[0].toUpperCase() + str.slice(1);
 };
 
-export const getQuantityDiapasonString = (number: number) => {
-  switch (true) {
-    case number === 0: {
-      return 0;
-    }
-    case number < 5: {
-      return "Меньше пяти";
-    }
-    case number < 10: {
-      return "Меньше десяти";
-    }
-    case number < 20: {
-      return "Меньше двадцати";
-    }
-    case number < 40: {
-      return "Меньше сорока";
-    }
-    case number < 100: {
-      return "Меньше ста";
-    }
-    case number >= 100: {
-      return "Больше ста";
-    }
-    case number > 1000: {
-      return "Больше тысячи";
-    }
-    default: {
-      return "Не известное количество";
-    }
-  }
-};
-
 export const getRightNounWordDeclension = (
   quantity: number,
   word: string,
@@ -41,7 +9,7 @@ export const getRightNounWordDeclension = (
 ) => {
   const getIndex = () => {
     if (quantity % 10 === 1 && quantity !== 11) return 0;
-    if (quantity > 1 && quantity < 5) return 1;
+    if ((quantity > 1 && quantity < 5) || (quantity % 10 > 1 && quantity % 10 < 5)) return 1;
     return 2;
   };
 

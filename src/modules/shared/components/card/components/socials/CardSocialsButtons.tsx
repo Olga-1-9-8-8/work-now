@@ -12,7 +12,8 @@ interface CardSocialsButtonsProps {
 export const CardSocialsButtons = ({ phone }: CardSocialsButtonsProps) => {
   const formattedPhone = phone ? formatPhoneNumber(phone) : undefined;
 
-  if (!formattedPhone) return <Badge className="text-nowrap">Телефон: {phone}</Badge>;
+  if (!formattedPhone)
+    return <Badge className="text-nowrap">Телефон: {phone ?? "Не указан"}</Badge>;
 
   return (
     <div className="flex w-full justify-around gap-5 lg:w-auto">

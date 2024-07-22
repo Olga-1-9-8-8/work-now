@@ -2,7 +2,7 @@ import { Building } from "lucide-react";
 import { GenderType } from "../../../../../../../types";
 import { TypographyH2 } from "../../../../../../../ui/typography/TypographyH2";
 import { capitalizeFirstLetter } from "../../../../../../../utils/helpers";
-import { Avatar as AvatarBase } from "../../../../../../avatar";
+import { Avatar } from "../../../../../../avatar";
 import { CardTitleWithTooltip } from "../../../../../../card";
 import { MapBadge } from "../../../../../../map";
 import { DetailsCardHeaderTitlePersonalData } from "./items/DetailsCardHeaderTitlePersonalData";
@@ -10,7 +10,7 @@ import { DetailsCardHeaderTitleViews } from "./items/DetailsCardHeaderTitleViews
 
 interface DetailsCardHeaderTitleProps {
   userName: string;
-  image?: string;
+  avatar?: string;
   views?: number;
   isHiring?: boolean;
   position: string;
@@ -25,7 +25,7 @@ interface DetailsCardHeaderTitleProps {
 
 export const DetailsCardHeaderTitle = ({
   userName,
-  image,
+  avatar,
   views,
   isHiring,
   position,
@@ -37,10 +37,10 @@ export const DetailsCardHeaderTitle = ({
   return (
     <div className="flex flex-col gap-3">
       <div className="flex items-center gap-2">
-        <AvatarBase
-          className="h-11 w-11"
+        <Avatar
+          className="h-20 w-20 rounded-full border-2"
           icon={isHiring ? Building : undefined}
-          src={image}
+          src={avatar}
           userName={userName}
         />
         <CardTitleWithTooltip title={userName} />

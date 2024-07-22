@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { resetPassword as resetPasswordApi } from "../api/apiAuth";
-import { ResetPasswordFormType } from "../types/ResetPasswordFormType";
+import { ResetPasswordFormType } from "../types/form/ResetPasswordFormType";
 
 export const useResetPassword = () => {
   const { mutate: resetPassword, isPending: isResetPasswordPending } = useMutation({

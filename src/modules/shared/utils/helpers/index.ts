@@ -14,7 +14,6 @@ export {
 
 export {
   capitalizeFirstLetter,
-  getQuantityDiapasonString,
   getRightNounWordDeclension,
   getRightNounYearDeclension,
   truncateText,

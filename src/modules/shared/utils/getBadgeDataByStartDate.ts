@@ -7,7 +7,7 @@ export const getBadgeDataByStartDate = (type?: string | "immediately"): BadgeTyp
       return {
         badgeIcon: Flame,
         badgeVariant: "destructive",
-        badgeTitle: "Как можно скорее",
+        badgeTitle: "Срочно",
       };
     }
     default: {

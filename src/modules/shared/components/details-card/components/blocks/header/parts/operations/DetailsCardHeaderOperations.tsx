@@ -1,6 +1,8 @@
 import { ClipboardCheck, RefreshCw } from "lucide-react";
 import { AppliedButton } from "../../../../../../../features/applies";
 import { FavoriteButton } from "../../../../../../../features/favorites";
+import { useUser } from "../../../../../../../services/auth";
+import { UserEntity } from "../../../../../../../types";
 import { CardDescription } from "../../../../../../../ui/card/Card";
 import { formattedTimeString } from "../../../../../../../utils/helpers";
 
@@ -20,11 +22,30 @@ export const DetailsCardHeaderOperations = ({
   isInFavorites,
   isInApplies,
 }: DetailsCardHeaderOperationsProps) => {
+  const { isAuthenticated, role } = useUser();
+
+  const isDisabled = !isAuthenticated || !!isHiring === (role === UserEntity.Company);
+
+  const getTooltipContent = () => {
+    return `Войдите как ${isHiring ? "кандидат" : "компания"}, чтобы добавить ${isHiring ? "вакансию" : "резюме"}`;
+  };
+
   return (
     <div className="flex flex-col gap-3">
       <div className="md:flex-start flex flex-row-reverse justify-end gap-8 md:flex-row">
-        <FavoriteButton id={id} isInFavorites={isInFavorites} />
-        <AppliedButton id={id} isInApplies={isInApplies} />
+        <FavoriteButton
+          id={id}
+          role={role}
+          isInFavorites={isInFavorites}
+          tooltipContent={isDisabled ? `${getTooltipContent()} в Избранное` : undefined}
+          disabled={isDisabled}
+        />
+        <AppliedButton
+          id={id}
+          isInApplies={isInApplies}
+          disabled={isDisabled}
+          tooltipContent={isDisabled ? `${getTooltipContent()} в Отклики` : undefined}
+        />
       </div>
       <p className="mt-2 flex gap-1 text-sm font-medium text-muted-foreground">
         <ClipboardCheck size={20} className="stroke-success" />

@@ -1,9 +1,8 @@
 import { UniversalCardItemType } from "../../../types";
-import { Card, CardFooter } from "../../../ui/card/Card";
+import { Card } from "../../../ui/card/Card";
 import { Separator } from "../../../ui/separator/Separator";
-import { TypographyH4 } from "../../../ui/typography/TypographyH4";
-import { CardSocialsButtons } from "../../card";
 import { DetailsCardContentBlock } from "./blocks/content/DetailsCardContentBlock";
+import { DetailsCardFooterBlock } from "./blocks/footer/DetailsCardFooterBlock";
 import { DetailsCardHeaderBlock } from "./blocks/header/DetailsCardHeaderBlock";
 
 interface DetailsCardProps {
@@ -31,7 +30,7 @@ export const DetailsCard = ({ data, isHiring = false, className }: DetailsCardPr
     applicantsQuantity,
     age,
     gender,
-    image,
+    avatar,
     isInApplies,
     isInFavorites,
   } = data;
@@ -40,7 +39,7 @@ export const DetailsCard = ({ data, isHiring = false, className }: DetailsCardPr
     <Card className={className}>
       <DetailsCardHeaderBlock>
         <DetailsCardHeaderBlock.DetailsCardHeaderTitle
-          {...{ userName, image, views, isHiring, position, city, coordinates, age, gender }}
+          {...{ userName, avatar, views, isHiring, position, city, coordinates, age, gender }}
         />
         <DetailsCardHeaderBlock.DetailsCardHeaderOperations
           {...{
@@ -62,10 +61,9 @@ export const DetailsCard = ({ data, isHiring = false, className }: DetailsCardPr
         <Separator />
         <DetailsCardContentBlock.DetailsCardContentAbout {...{ about, isHiring }} />
       </DetailsCardContentBlock>
-      <CardFooter className="flex flex-col items-start gap-4">
-        <TypographyH4 className="py-3">Способы связи:</TypographyH4>
-        <CardSocialsButtons phone={phone} />
-      </CardFooter>
+      <DetailsCardFooterBlock>
+        <DetailsCardFooterBlock.DetailsCardFooterSocials {...{ phone }} />
+      </DetailsCardFooterBlock>
     </Card>
   );
 };

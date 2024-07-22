@@ -24,7 +24,6 @@ export interface UniversalCardItemType {
   phone?: string;
   gender?: GenderType;
   age?: string;
-  image?: string;
   coordinates?: {
     lat: string;
     lng: string;
