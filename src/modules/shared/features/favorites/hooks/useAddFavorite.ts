@@ -7,10 +7,15 @@ export const useAddFavorite = () => {
 
   const { isPending: isFavoriteAdding, mutate: addFavorite } = useMutation({
     mutationFn: addFavoriteApi,
-    onSuccess: () => {
-      toast.success(`Успешно добавлено в Избранное`);
+    onSuccess: (data) => {
+      toast.success(
+        `${data?.isCompanyRole ? "Резюме" : "Вакансия"} ${data?.position} успешно добавлено в Избранное`,
+      );
       queryClient.invalidateQueries({
         queryKey: ["favorites"],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [data?.isCompanyRole ? "resumes" : "vacancies", data?.id],
       });
     },
     onError: (err) => toast.error(err.message),

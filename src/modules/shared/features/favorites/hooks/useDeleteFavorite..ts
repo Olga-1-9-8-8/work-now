@@ -7,10 +7,15 @@ export const useDeleteFavorite = () => {
 
   const { isPending: isFavoriteDeleting, mutate: deleteFavorite } = useMutation({
     mutationFn: deleteFavoriteApi,
-    onSuccess: () => {
-      toast.error(`Успешно удалено из Избранного`);
+    onSuccess: (data) => {
+      toast.error(
+        `${data?.isCompanyRole ? "Резюме" : "Вакансия"} ${data?.position} успешно удалено из Избранного`,
+      );
       queryClient.invalidateQueries({
         queryKey: ["favorites"],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [data?.isCompanyRole ? "resumes" : "vacancies", data?.id],
       });
     },
     onError: (err) => toast.error(err.message),

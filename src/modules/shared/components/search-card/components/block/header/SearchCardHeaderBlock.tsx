@@ -1,4 +1,4 @@
-import { Building, CalendarDays, ClipboardCheck, GraduationCap, UsersRound } from "lucide-react";
+import { Building, CalendarDays, ClipboardCheck, EyeIcon, GraduationCap } from "lucide-react";
 import { ReactNode, useState } from "react";
 import { FaCircleChevronDown, FaCircleChevronUp, FaPerson } from "react-icons/fa6";
 import { EducationType, GenderType, getGenderTitle } from "../../../../../types";
@@ -15,32 +15,32 @@ import {
   capitalizeFirstLetter,
   formattedTimeString,
   getDayMonthYear,
+  getRightNounWordDeclension,
   getRightNounYearDeclension,
 } from "../../../../../utils/helpers";
 import { Avatar } from "../../../../avatar";
 import { CardItemInsight, CardTitleWithTooltip, getEducationTitle } from "../../../../card";
 import { MapBadge } from "../../../../map";
-import { getDiapasonString } from "../../../utils/getDiapasonString";
 
 interface SearchCardHeaderTitleProps {
   userName: string;
-  image?: string;
+  avatar?: string;
   position: string;
   isHiring?: boolean;
 }
 
 export const SearchCardHeaderTitle = ({
   userName,
-  image,
+  avatar,
   position,
   isHiring,
 }: SearchCardHeaderTitleProps) => {
   return (
     <div className="flex flex-col items-start gap-4 sm:flex-row">
       <Avatar
-        className="h-16 w-16"
+        className="h-16 w-16 border-2"
         icon={isHiring ? Building : undefined}
-        src={image}
+        src={avatar}
         userName={userName}
       />
       <div>
@@ -117,14 +117,20 @@ export const SearchCardHeaderSideDetails = ({
         getBadgeData={getBadgeDataByStartDate}
       />
       <CardItemInsight
-        icon={UsersRound}
-        title={getDiapasonString(views, "просмотров")}
-        className={`${views && "border-2 border-success"} items-center rounded-lg p-2 md:w-fit xl:w-full`}
+        icon={EyeIcon}
+        title={
+          views ? getRightNounWordDeclension(views, "просмотр", ["", "а", "ов"]) : "Нет просмотров"
+        }
+        className="items-center rounded-lg  md:w-fit xl:w-full"
       />
       <CardItemInsight
         icon={ClipboardCheck}
-        title={getDiapasonString(applicantsQuantity, "откликов")}
-        className={`${applicantsQuantity && "border-2 border-success bg-success/5"} items-center rounded-lg p-2 md:w-fit xl:w-full `}
+        title={
+          applicantsQuantity
+            ? getRightNounWordDeclension(applicantsQuantity, "отклик", ["", "а", "ов"])
+            : "Нет откликов"
+        }
+        className={`items-center rounded-lg  md:w-fit xl:w-full `}
       />
     </div>
   );

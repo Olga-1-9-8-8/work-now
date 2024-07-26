@@ -81,7 +81,6 @@ export const lkNavConfig: LkNavItems[] = [
     linkIcon: ArrowRight,
     role: UserEntity.Company,
   },
-
   {
     title: "Мои Отклики",
     value: "applies",

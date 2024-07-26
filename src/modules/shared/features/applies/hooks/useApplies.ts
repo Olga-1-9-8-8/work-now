@@ -16,7 +16,22 @@ export const useApplies = () => {
     error,
   } = useQuery({
     queryKey: ["applies", page],
-    queryFn: () => getApplies(page),
+    queryFn: async () => {
+      const appliesData = await getApplies(page);
+      if (appliesData?.data?.resumes) {
+        appliesData.data.resumes.forEach((resume) => {
+          queryClient.setQueryData(["resume", String(resume.id)], resume);
+        });
+      }
+
+      if (appliesData?.data.vacancies) {
+        appliesData.data.vacancies.forEach((vacancy) => {
+          queryClient.setQueryData(["vacancy", String(vacancy.id)], vacancy);
+        });
+      }
+
+      return appliesData;
+    },
   });
 
   if (applies?.totalCount && page < Math.ceil(applies.totalCount / QUANTITY_OF_ITEMS_ON_ONE_PAGE)) {
@@ -36,7 +51,7 @@ export const useApplies = () => {
   return {
     isAppliesLoading: isLoading,
     appliesError: error,
-    applies: applies ? mapApplies(applies.data, applies.role) : undefined,
+    applies: applies ? mapApplies(applies.data) : undefined,
     totalAppliesCount: applies?.totalCount ?? undefined,
   };
 };

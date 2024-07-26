@@ -6,11 +6,15 @@ import { DrawerDialogResponsive } from "../../../../shared/ui/drawer-dialog/Draw
 import { TypographyH3 } from "../../../../shared/ui/typography/TypographyH3";
 import { LkDetailsCard } from "../card/LkDetailsCard";
 
-export const LkDetailsDeleteAccountCard = () => {
+interface LkDetailsDeleteAccountCardProps {
+  isLoading?: boolean;
+}
+
+export const LkDetailsDeleteAccountCard = ({ isLoading }: LkDetailsDeleteAccountCardProps) => {
   const { deleteAccount, isAccountDeleting } = useDeleteAccount();
 
   return (
-    <LkDetailsCard title="Удаление аккаунта">
+    <LkDetailsCard title="Удаление аккаунта" isLoading={isLoading}>
       <section className="flex flex-col gap-4">
         <TypographyH3>Вы уверены что хотите удалить аккаунт?</TypographyH3>
         <p className="font-medium text-muted-foreground">Восстановить аккаунт будет невозможно</p>

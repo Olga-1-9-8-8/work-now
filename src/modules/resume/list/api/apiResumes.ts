@@ -1,8 +1,6 @@
 import { format } from "date-fns";
-import { getAvatar } from "../../../shared/api";
+import { getApply, getAvatar, getFavorite } from "../../../shared/api";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagination";
-import { getApply } from "../../../shared/features/applies";
-import { getFavorite } from "../../../shared/features/favorites";
 import { getFilterValue } from "../../../shared/features/filters/server-side/utils/getFilterValue";
 import { supabase } from "../../../shared/services/api/supabase";
 import { ResumesFilterType } from "../types/ResumesFilterType";

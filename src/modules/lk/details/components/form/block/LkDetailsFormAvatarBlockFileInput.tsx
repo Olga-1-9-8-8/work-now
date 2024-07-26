@@ -1,11 +1,11 @@
 import { Camera } from "lucide-react";
 import { useRef } from "react";
 import { useFormContext } from "react-hook-form";
+import { useUpdateUser } from "../../../../../shared/services/auth";
 import { Button } from "../../../../../shared/ui/buttons/Button";
 import { FormControl, FormField, FormItem, FormMessage } from "../../../../../shared/ui/form/Form";
 import { Input } from "../../../../../shared/ui/inputs/Input";
 import { cn } from "../../../../../shared/utils/cn";
-import { useLkDetailsContext } from "../../../context";
 import { LkDetailsFormType } from "../../../types/LkDetailsFormType";
 
 interface LkDetailsFormAvatarBlockFileInputProps {
@@ -15,7 +15,7 @@ interface LkDetailsFormAvatarBlockFileInputProps {
 export const LkDetailsFormAvatarBlockFileInput = ({
   className,
 }: LkDetailsFormAvatarBlockFileInputProps) => {
-  const { updateUser, isUpdatingUser } = useLkDetailsContext();
+  const { updateUser, isUpdatingUser } = useUpdateUser();
 
   const { control } = useFormContext<LkDetailsFormType>();
   const inputRef = useRef<HTMLInputElement | null>(null);

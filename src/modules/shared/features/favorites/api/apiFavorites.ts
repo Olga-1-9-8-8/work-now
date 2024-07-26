@@ -1,6 +1,32 @@
+import { ResumeWithProfileApiTypeInput } from "../../../../resume/shared/types";
+import { VacancyWithProfileApiTypeInput } from "../../../../vacancy/shared/types/api/VacancyApiType";
+import { getApply, getAvatar } from "../../../api";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../components/pagination";
 import { supabase } from "../../../services/api/supabase";
 import { UserEntity } from "../../../types";
+
+const processItemsWithFavoriteApplyStatusAndDownloadAvatar = async (
+  items: (ResumeWithProfileApiTypeInput | VacancyWithProfileApiTypeInput | null)[],
+) => {
+  const filteredItems = items.filter((item) => item !== null);
+
+  return Promise.all(
+    filteredItems.map(async (item) => {
+      const applies = await getApply(item.id);
+      const profiles = {
+        ...item.profiles,
+        avatar: item.profiles?.avatar ? await getAvatar(item.profiles.avatar) : null,
+      };
+
+      return {
+        ...item,
+        isInFavorites: true,
+        isInApplies: !!applies,
+        profiles,
+      };
+    }),
+  );
+};
 
 export const getFavorites = async (page: number) => {
   const {
@@ -13,10 +39,9 @@ export const getFavorites = async (page: number) => {
 
   let query = supabase
     .from("favorites")
-    .select("*", { count: "exact" })
-    .eq("user_id", session.user.id);
-
-  query = query.order("created_at", { ascending: false });
+    .select("*,resumes(*,profiles(*)),vacancies(*,profiles(*))", { count: "exact" })
+    .eq("user_id", session.user.id)
+    .order("created_at", { ascending: false });
 
   if (page) {
     const from = (page - 1) * QUANTITY_OF_ITEMS_ON_ONE_PAGE;
@@ -28,20 +53,22 @@ export const getFavorites = async (page: number) => {
 
   if (error) {
     console.log(error);
-    throw new Error("Проблема с загрузкой избранного профиля из базы данных");
+    throw new Error("Проблема с загрузкой избранного из базы данных");
   }
 
-  return { data, totalCount: count, role: session.user.user_metadata.role as UserEntity };
+  const favoritesData = {
+    vacancies: await processItemsWithFavoriteApplyStatusAndDownloadAvatar(
+      data.flatMap((item) => item.vacancies),
+    ),
+    resumes: await processItemsWithFavoriteApplyStatusAndDownloadAvatar(
+      data.flatMap((item) => item.resumes),
+    ),
+  };
+
+  return { data: favoritesData, totalCount: count };
 };
 
-interface FavoriteProps {
-  id: number | string;
-  role: UserEntity;
-}
-
-export const addFavorite = async ({ id, role }: FavoriteProps) => {
-  const isCompanyRole = role === UserEntity.Company;
-
+export const addFavorite = async (id: number | string) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -50,35 +77,30 @@ export const addFavorite = async ({ id, role }: FavoriteProps) => {
     return null;
   }
 
-  const column = isCompanyRole ? "vacancies" : "resumes";
+  const isCompanyRole = session.user.user_metadata.role === UserEntity.Company;
 
-  const { data: applicationData, error: applicationError } = await supabase
-    .from(column)
-    .select("*")
-    .eq("id", id)
+  const { data, error } = await supabase
+    .from("favorites")
+    .insert({
+      user_id: session.user.id,
+      [isCompanyRole ? "resume_id" : "vacancy_id"]: id,
+    })
+    .select("resumes(*),vacancies(*)")
     .single();
-
-  if (applicationError) {
-    console.log(applicationError);
-    throw new Error(
-      `${isCompanyRole ? "Данная вакансия не найдена в базе данных" : "Данное резюме не найдено в базе данных"}`,
-    );
-  }
-
-  const { data, error } = await supabase.from("favorites").insert({
-    user_id: session.user.id,
-    [isCompanyRole ? "vacancy_id" : "resume_id"]: applicationData.id,
-  });
 
   if (error) {
     console.log(error);
-    throw new Error(`Проблема с добавлением ${isCompanyRole ? "вакансии" : "резюме"} в Избранное`);
+    throw new Error(
+      `Проблема с добавлением ${isCompanyRole ? "резюме" : " вакансии "} в Избранное`,
+    );
   }
 
-  return data;
+  const applicationData = isCompanyRole ? data.resumes : data.vacancies;
+
+  return { ...applicationData, isCompanyRole };
 };
 
-export const deleteFavorite = async ({ id, role }: FavoriteProps) => {
+export const deleteFavorite = async (id: number | string) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -87,41 +109,22 @@ export const deleteFavorite = async ({ id, role }: FavoriteProps) => {
     return null;
   }
 
-  const isCompanyRole = role === UserEntity.Company;
-  const column = isCompanyRole ? "vacancy_id" : "resume_id";
+  const isCompanyRole = session.user.user_metadata.role === UserEntity.Company;
+
   const { data, error } = await supabase
     .from("favorites")
     .delete()
     .eq("user_id", session.user.id)
-    .eq(column, id);
+    .eq(isCompanyRole ? "resume_id" : "vacancy_id", id)
+    .select("resumes(*),vacancies(*)")
+    .single();
 
   if (error) {
     console.log(error);
     throw new Error("Ошибка удаления элемента из Избранного");
   }
 
-  return data;
-};
+  const applicationData = isCompanyRole ? data.resumes : data.vacancies;
 
-export const getFavorite = async (id: number) => {
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  if (!session) {
-    return null;
-  }
-
-  const { data: favoriteData, error: favoriteError } = await supabase
-    .from("favorites")
-    .select("*")
-    .eq("user_id", session.user.id)
-    .eq("resume_id", id)
-    .maybeSingle();
-
-  if (favoriteError) {
-    console.log(favoriteError);
-    throw new Error("Проблема с загрузкой избранного из базы данных");
-  }
-  return favoriteData;
+  return { ...applicationData, isCompanyRole };
 };

@@ -1,6 +1,5 @@
-import { NotExist } from "../../../shared/components/not-found";
+import { NotExist, NotFound } from "../../../shared/components/not-found";
 import { useApplies } from "../../../shared/features/applies/hooks/useApplies";
-import { NotFound } from "../../../shared/ui/icons";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
 import { LkApplications } from "../components/LkApplications";
 

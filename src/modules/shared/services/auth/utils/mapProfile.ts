@@ -1,7 +1,7 @@
-import { ProfileApiTypeInput } from "../../../resume/shared/types";
-import { ProfileType } from "../../../shared/services/auth";
-import { GenderType, UserEntity } from "../../../shared/types";
-import { parseDateFromString } from "../../../shared/utils/helpers";
+import { GenderType, UserEntity } from "../../../types";
+import { parseDateFromString } from "../../../utils/helpers";
+import { ProfileApiTypeInput } from "../types/ProfileApiType";
+import { ProfileType } from "../types/ProfileType";
 
 export const mapProfile = (profile: ProfileApiTypeInput): ProfileType => {
   return {

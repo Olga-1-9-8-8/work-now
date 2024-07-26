@@ -7,10 +7,15 @@ export const useAddApply = () => {
 
   const { isPending: isApplyAdding, mutate: addApply } = useMutation({
     mutationFn: addApplyApi,
-    onSuccess: () => {
-      toast.success(`Успешно добавлено в Отклики`);
+    onSuccess: (data) => {
+      toast.success(
+        `${data?.isCompanyRole ? "Резюме" : "Вакансия"} ${data?.position} успешно добавлено в Отклики`,
+      );
       queryClient.invalidateQueries({
         queryKey: ["applies"],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [data?.isCompanyRole ? "resumes" : "vacancies", data?.id],
       });
     },
     onError: (err) => toast.error(err.message),

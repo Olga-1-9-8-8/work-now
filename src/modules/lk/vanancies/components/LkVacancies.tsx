@@ -1,7 +1,7 @@
 import { Pagination } from "../../../shared/components/pagination";
 import { TypographyH2 } from "../../../shared/ui/typography/TypographyH2";
 import { VacancyItemType } from "../../../vacancy/shared/types/VacancyItemType";
-import { useDeleteVacancy } from "../hooks";
+import { useDeleteVacancy } from "../hooks/useDeleteVacancy";
 import { LkVacanciesCard } from "./card/LkVacanciesCard";
 
 interface LkVacanciesProps {

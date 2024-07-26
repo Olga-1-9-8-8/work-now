@@ -7,10 +7,15 @@ export const useDeleteApply = () => {
 
   const { isPending: isApplyDeleting, mutate: deleteApply } = useMutation({
     mutationFn: deleteApplyApi,
-    onSuccess: () => {
-      toast.error(`Успешно удалено из Откликов`);
+    onSuccess: (data) => {
+      toast.error(
+        `${data?.isCompanyRole ? "Резюме" : "Вакансия"} ${data?.position} успешно удалено из Откликов`,
+      );
       queryClient.invalidateQueries({
         queryKey: ["applies"],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [data?.isCompanyRole ? "resumes" : "vacancies", data?.id],
       });
     },
     onError: (err) => toast.error(err.message),

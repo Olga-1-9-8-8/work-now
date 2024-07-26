@@ -1,26 +1,20 @@
-import { UserEntity } from "../../../types";
-import { AppliesApiType } from "../types/AppliesApiType";
-import { AppliesType } from "../types/AppliesType";
+import { ResumeWithProfileApiTypeInput } from "../../../../resume/shared/types";
+import { VacancyWithProfileApiTypeInput } from "../../../../vacancy/shared/types/api/VacancyApiType";
+import { UniversalCardItemType } from "../../../types";
+import { mapUniversalItem } from "../../../utils";
 
-export const mapApply = (apply: AppliesApiType, role: UserEntity): AppliesType => {
-  const {
-    created_at: createdAt,
-    user_id: userId,
-    resume_id: resumeId,
-    vacancy_id: vacancyId,
-    ...applyData
-  } = apply;
+export interface AppliesApiFullType {
+  resumes: ResumeWithProfileApiTypeInput[] | [];
+  vacancies: VacancyWithProfileApiTypeInput[] | [];
+}
 
-  return {
-    createdAt: new Date(createdAt),
-    userId,
-    resumeId: resumeId ?? undefined,
-    vacancyId: vacancyId ?? undefined,
-    role,
-    ...applyData,
-  };
-};
+export const mapApplies = (applies: AppliesApiFullType): UniversalCardItemType[] => {
+  if (applies.resumes.length > 0) {
+    return applies.resumes.map((resume) => mapUniversalItem(resume));
+  }
 
-export const mapApplies = (applies: AppliesApiType[], role: UserEntity) => {
-  return applies.map((apply) => mapApply(apply, role));
+  if (applies.vacancies.length > 0) {
+    return applies.vacancies.map((vacancy) => mapUniversalItem(vacancy));
+  }
+  return [];
 };

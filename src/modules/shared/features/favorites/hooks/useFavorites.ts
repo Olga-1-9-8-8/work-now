@@ -16,7 +16,22 @@ export const useFavorites = () => {
     error,
   } = useQuery({
     queryKey: ["favorites", page],
-    queryFn: () => getFavorites(page),
+    queryFn: async () => {
+      const favoritesData = await getFavorites(page);
+      if (favoritesData?.data?.resumes) {
+        favoritesData.data.resumes.forEach((resume) => {
+          queryClient.setQueryData(["resume", String(resume.id)], resume);
+        });
+      }
+
+      if (favoritesData?.data.vacancies) {
+        favoritesData.data.vacancies.forEach((vacancy) => {
+          queryClient.setQueryData(["vacancy", String(vacancy.id)], vacancy);
+        });
+      }
+
+      return favoritesData;
+    },
   });
 
   if (
@@ -39,7 +54,7 @@ export const useFavorites = () => {
   return {
     isFavoritesLoading: isLoading,
     favoritesError: error,
-    favorites: favorites ? mapFavorites(favorites.data, favorites.role) : undefined,
+    favorites: favorites ? mapFavorites(favorites.data) : undefined,
     totalFavoritesCount: favorites?.totalCount ?? undefined,
   };
 };

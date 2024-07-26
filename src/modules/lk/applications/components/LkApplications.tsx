@@ -1,12 +1,12 @@
 import { Pagination } from "../../../shared/components/pagination";
-import { AppliesType } from "../../../shared/features/applies";
+import { UniversalCardItemType } from "../../../shared/types";
 import { TypographyH3 } from "../../../shared/ui/typography/TypographyH3";
 import { getRightNounWordDeclension } from "../../../shared/utils/helpers";
 import { LkCard } from "../../shared/components";
 
 interface LkAppliesProps {
   count: number;
-  applies: AppliesType[];
+  applies: UniversalCardItemType[];
 }
 
 export const LkApplications = ({ applies, count }: LkAppliesProps) => {
@@ -21,7 +21,7 @@ export const LkApplications = ({ applies, count }: LkAppliesProps) => {
         </TypographyH3>
         <div className="my-4 flex flex-col gap-4">
           {applies.map((data) => (
-            <LkCard key={data.id} resumeId={data.resumeId} vacancyId={data.vacancyId} />
+            <LkCard key={data.id} data={data} />
           ))}
         </div>
       </div>

@@ -1,6 +1,4 @@
-import { getAvatar } from "../../../shared/api";
-import { getApplies } from "../../../shared/features/applies/api/apiApplies";
-import { getFavorite } from "../../../shared/features/favorites/api/apiFavorites";
+import { getApply, getAvatar, getFavorite } from "../../../shared/api";
 import { supabase } from "../../../shared/services/api/supabase";
 
 export const getResume = async (id: number) => {
@@ -17,9 +15,11 @@ export const getResume = async (id: number) => {
 
   if (!data) return null;
 
-  const favorite = await getFavorite(data.id);
-  const appliesData = await getApplies(data.id);
-  const avatar = data.profiles?.avatar ? await getAvatar(data.profiles.avatar) : null;
+  const [favorite, appliesData, avatar] = await Promise.all([
+    getFavorite(data.id),
+    getApply(data.id),
+    data.profiles?.avatar ? getAvatar(data.profiles.avatar) : null,
+  ]);
 
   return {
     ...data,

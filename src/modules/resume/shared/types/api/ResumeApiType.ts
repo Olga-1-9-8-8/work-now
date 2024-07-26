@@ -1,6 +1,6 @@
 import { Database } from "../../../../shared/services";
+import { ProfileApiTypeInput } from "../../../../shared/services/auth";
 
-export type ProfileApiTypeInput = Database["public"]["Tables"]["profiles"]["Row"];
 export type ResumeApiType = Database["public"]["Tables"]["resumes"]["Row"] & {
   isInFavorites?: boolean;
   isInApplies?: boolean;

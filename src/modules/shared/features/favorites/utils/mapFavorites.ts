@@ -1,26 +1,20 @@
-import { UserEntity } from "../../../types";
-import { FavoriteApiType } from "../types/FavoriteApiType";
-import { FavoriteType } from "../types/FavoriteType";
+import { ResumeWithProfileApiTypeInput } from "../../../../resume/shared/types";
+import { VacancyWithProfileApiTypeInput } from "../../../../vacancy/shared/types";
+import { UniversalCardItemType } from "../../../types";
+import { mapUniversalItem } from "../../../utils";
 
-export const mapFavorite = (favorite: FavoriteApiType, role: UserEntity): FavoriteType => {
-  const {
-    created_at: createdAt,
-    user_id: userId,
-    resume_id: resumeId,
-    vacancy_id: vacancyId,
-    ...favoriteData
-  } = favorite;
+export interface AppliesApiFullType {
+  resumes: ResumeWithProfileApiTypeInput[] | [];
+  vacancies: VacancyWithProfileApiTypeInput[] | [];
+}
 
-  return {
-    createdAt: new Date(createdAt),
-    userId,
-    resumeId: resumeId ?? undefined,
-    vacancyId: vacancyId ?? undefined,
-    role,
-    ...favoriteData,
-  };
-};
+export const mapFavorites = (favorites: AppliesApiFullType): UniversalCardItemType[] => {
+  if (favorites.resumes.length > 0) {
+    return favorites.resumes.map((resume) => mapUniversalItem(resume));
+  }
 
-export const mapFavorites = (favorites: FavoriteApiType[], role: UserEntity) => {
-  return favorites.map((favorite) => mapFavorite(favorite, role));
+  if (favorites.vacancies.length > 0) {
+    return favorites.vacancies.map((vacancy) => mapUniversalItem(vacancy));
+  }
+  return [];
 };

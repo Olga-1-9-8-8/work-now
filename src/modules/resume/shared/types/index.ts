@@ -1,7 +1,2 @@
 export type { ResumeItem } from "./ResumeItem";
-
-export type {
-  ProfileApiTypeInput,
-  ResumeApiType,
-  ResumeWithProfileApiTypeInput,
-} from "./api/ResumeApiType";
+export type { ResumeApiType, ResumeWithProfileApiTypeInput } from "./api/ResumeApiType";

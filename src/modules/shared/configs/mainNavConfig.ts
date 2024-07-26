@@ -45,6 +45,12 @@ export const mainNavConfig: MainNavItems = [
     permission: UserRoles.Authorized,
   },
   {
+    title: "Отклики",
+    href: "/lk/applications",
+    icon: Mails,
+    permission: UserRoles.Authorized,
+  },
+  {
     title: "Профиль",
     href: "/lk",
     icon: UserRound,

@@ -1,6 +1,5 @@
-import { NotExist } from "../../../shared/components/not-found";
+import { NotExist, NotFound } from "../../../shared/components/not-found";
 import { useFavorites } from "../../../shared/features/favorites/hooks/useFavorites";
-import { NotFound } from "../../../shared/ui/icons";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
 import { LkFavorites } from "../components/LkFavorites";
 

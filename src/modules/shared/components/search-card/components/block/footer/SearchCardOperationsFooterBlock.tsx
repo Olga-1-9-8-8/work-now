@@ -1,9 +1,7 @@
-import { useNavigate } from "react-router-dom";
 import { AppliedButton } from "../../../../../features/applies";
 import { FavoriteButton } from "../../../../../features/favorites";
-import { useAuthContext } from "../../../../../services/auth";
+import { useUser } from "../../../../../services/auth";
 import { UserEntity } from "../../../../../types";
-import { Badge } from "../../../../../ui/badge/Badge";
 import { CardFooter } from "../../../../../ui/card/Card";
 import { CardSocialsButtons } from "../../../../card";
 
@@ -20,34 +18,18 @@ export const SearchCardOperationsFooterBlock = ({
   isInApplies,
   isInFavorites,
 }: SearchCardOperationsFooterBlockProps) => {
-  const { role, isAuthenticated } = useAuthContext();
+  const { role, isAuthenticated } = useUser();
 
-  const navigate = useNavigate();
-
-  if (role === UserEntity.Company && isAuthenticated) {
-    return (
+  return (
+    role === UserEntity.Company &&
+    isAuthenticated && (
       <CardFooter className="flex flex-col-reverse justify-between gap-5 lg:flex-row">
         <div className="flex w-full flex-col gap-5 sm:flex-row">
           <AppliedButton id={id} isInApplies={isInApplies} />
-          <FavoriteButton withTitle id={id} isInFavorites={isInFavorites} />
+          <FavoriteButton withTitle id={id} isInFavorites={isInFavorites} role={role} />
         </div>
         <CardSocialsButtons phone={phone} />
       </CardFooter>
-    );
-  }
-
-  return (
-    <CardFooter className="justify-end">
-      <Badge
-        onClick={(e) => {
-          e.stopPropagation();
-          navigate("/login");
-        }}
-        variant="warning"
-        shape="square"
-      >
-        Войдите под аккаунтом компании, чтобы посмотреть контакты и откликнутся на резюме
-      </Badge>
-    </CardFooter>
+    )
   );
 };

@@ -1,5 +1,5 @@
-import { Building2, Pencil } from "lucide-react";
-import { Avatar } from "../../../../shared/components/avatar";
+import { Pencil } from "lucide-react";
+import { ProfileType, useUpdateUser } from "../../../../shared/services/auth";
 import { GenderType, UserEntity } from "../../../../shared/types";
 import { Button } from "../../../../shared/ui/buttons/Button";
 import { DrawerDialogResponsive } from "../../../../shared/ui/drawer-dialog/DrawerDialogResponsive";
@@ -8,26 +8,25 @@ import {
   RadioGroupWithLabel,
 } from "../../../../shared/ui/radio/RadioGroupWithLabel";
 import { TypographyH2 } from "../../../../shared/ui/typography/TypographyH2";
-import { TypographyH5 } from "../../../../shared/ui/typography/TypographyH5";
 import { formatPhoneNumber, maskPhoneNumber } from "../../../../shared/utils/helpers";
-import { useLkDetailsContext } from "../../context";
+import { LkDetailsFormAvatar } from "../avatar/LkDetailsFormAvatar";
 import { LkDetailsCard } from "../card/LkDetailsCard";
 import { LkDetailsForm } from "../form/LkDetailsForm";
 
-export const LkDetailsProfileDataCard = () => {
-  const { updateUser, isUpdatingUser, profile, isProfileLoading } = useLkDetailsContext();
+interface LkDetailsProfileDataCardProps {
+  profile?: ProfileType;
+  isLoading: boolean;
+}
+
+export const LkDetailsProfileDataCard = ({ profile, isLoading }: LkDetailsProfileDataCardProps) => {
+  const { updateUser, isUpdatingUser } = useUpdateUser();
 
   return (
-    <LkDetailsCard title="Личные данные" isLoading={isProfileLoading}>
-      {profile && !isProfileLoading ? (
+    <LkDetailsCard title="Личные данные" isLoading={isLoading}>
+      {profile && (
         <section className="flex flex-col gap-4">
           <div className="flex items-center gap-6">
-            <Avatar
-              src={profile.avatar}
-              userName={profile.userName}
-              icon={profile.role === UserEntity.Company ? Building2 : undefined}
-              className="h-20 w-20"
-            />
+            <LkDetailsFormAvatar avatarSrc={profile.avatar} role={profile.role} />
 
             <TypographyH2 className=" text-xl text-primary-extraDark lg:text-2xl">
               {profile.userName || "Аноним"}
@@ -40,12 +39,7 @@ export const LkDetailsProfileDataCard = () => {
               }
               title="Изменить данные профиля"
             >
-              <LkDetailsForm
-                userName={profile.userName}
-                gender={profile.gender}
-                age={profile.age}
-                avatar={profile.avatar}
-              />
+              <LkDetailsForm profile={profile} />
             </DrawerDialogResponsive>
           </div>
           {profile.role === UserEntity.Person && (
@@ -55,7 +49,7 @@ export const LkDetailsProfileDataCard = () => {
               value={profile.gender}
               onValueChange={(value: GenderType) => updateUser({ gender: value })}
             >
-              <div className="flex gap-6 p-4">
+              <div className="flex gap-6 p-2">
                 <RadioGroupItemWithLabel label="Муж." value="male" />
                 <RadioGroupItemWithLabel label="Жен." value="female" />
               </div>
@@ -72,10 +66,6 @@ export const LkDetailsProfileDataCard = () => {
             {profile.age || "Не указано"}
           </p>
         </section>
-      ) : (
-        <TypographyH5>
-          Попробуйте войти в свой аккаунт еще раз или обратитесь в техническую поддержку.
-        </TypographyH5>
       )}
     </LkDetailsCard>
   );

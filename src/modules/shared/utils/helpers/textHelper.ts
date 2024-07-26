@@ -9,7 +9,7 @@ export const getRightNounWordDeclension = (
 ) => {
   const getIndex = () => {
     if (quantity % 10 === 1 && quantity !== 11) return 0;
-    if ((quantity > 1 && quantity < 5) || (quantity % 10 > 1 && quantity % 10 < 5)) return 1;
+    if ((quantity > 1 && quantity < 5) || (quantity % 20 > 1 && quantity % 20 < 5)) return 1;
     return 2;
   };
 

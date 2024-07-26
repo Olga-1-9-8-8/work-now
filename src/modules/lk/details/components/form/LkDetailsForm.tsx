@@ -1,42 +1,33 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useAuthContext } from "../../../../shared/services/auth";
-import { GenderType, UserEntity } from "../../../../shared/types";
+import { useAuthContext, useUpdateUser } from "../../../../shared/services/auth";
+import { ProfileType } from "../../../../shared/services/auth/types/ProfileType";
+import { UserEntity } from "../../../../shared/types";
 import { Button } from "../../../../shared/ui/buttons/Button";
 import { FormInputField, FormRadioGroup } from "../../../../shared/ui/form-control";
 import { FormInputOptField } from "../../../../shared/ui/form-control/input/FormInputOptField";
 import { Form } from "../../../../shared/ui/form/Form";
-import { useLkDetailsContext } from "../../context";
 import { LkDetailsFormType } from "../../types/LkDetailsFormType";
 import { getLkDetailsFormValidationSchema } from "../../validation/lkDetailsFormValidationSchema";
 import { LkDetailsFormAvatarBlock } from "./block/LkDetailsFormAvatarBlock";
 
 interface LkDetailsFormProps {
-  userName: string;
-  gender?: GenderType;
-  age?: string;
-  avatar?: string;
+  profile: ProfileType;
   onModalClose?: () => void;
 }
 
-export const LkDetailsForm = ({
-  userName,
-  gender,
-  age,
-  avatar,
-  onModalClose,
-}: LkDetailsFormProps) => {
-  const { updateUser, isUpdatingUser } = useLkDetailsContext();
+export const LkDetailsForm = ({ profile, onModalClose }: LkDetailsFormProps) => {
+  const { updateUser, isUpdatingUser } = useUpdateUser();
 
   const { role } = useAuthContext();
 
   const form = useForm<LkDetailsFormType>({
     resolver: zodResolver(getLkDetailsFormValidationSchema(role)),
     defaultValues: {
-      userName,
-      gender,
-      avatar,
-      age,
+      userName: profile.userName,
+      gender: profile.gender,
+      avatar: profile.avatar,
+      age: profile.age,
     },
   });
 
@@ -48,7 +39,7 @@ export const LkDetailsForm = ({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 py-4">
-        <LkDetailsFormAvatarBlock avatarSrc={avatar} />
+        <LkDetailsFormAvatarBlock avatarSrc={profile.avatar} role={role} />
         <FormInputField<LkDetailsFormType>
           label={`${role === UserEntity.Company ? "Укажите название компании" : "Укажите имя"}`}
           name="userName"

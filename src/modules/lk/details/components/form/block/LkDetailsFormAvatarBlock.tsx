@@ -1,21 +1,22 @@
-/* eslint-disable unicorn/no-useless-undefined */
 import { Trash2Icon } from "lucide-react";
-import { Avatar } from "../../../../../shared/components/avatar";
+import { useUpdateUser } from "../../../../../shared/services/auth";
+import { UserEntity } from "../../../../../shared/types";
 import { Button } from "../../../../../shared/ui/buttons/Button";
-import { useLkDetailsContext } from "../../../context";
+import { LkDetailsFormAvatar } from "../../avatar/LkDetailsFormAvatar";
 import { LkDetailsFormAvatarBlockFileInput } from "./LkDetailsFormAvatarBlockFileInput";
 
 interface LkDetailsFormAvatarBlockProps {
   avatarSrc?: string;
+  role: UserEntity;
 }
 
-export const LkDetailsFormAvatarBlock = ({ avatarSrc }: LkDetailsFormAvatarBlockProps) => {
-  const { updateUser, isUpdatingUser } = useLkDetailsContext();
+export const LkDetailsFormAvatarBlock = ({ avatarSrc, role }: LkDetailsFormAvatarBlockProps) => {
+  const { updateUser, isUpdatingUser } = useUpdateUser();
 
   return avatarSrc ? (
     <div className="flex items-center justify-evenly gap-4">
       <LkDetailsFormAvatarBlockFileInput />
-      <Avatar src={avatarSrc} className="h-20 w-20" />
+      <LkDetailsFormAvatar avatarSrc={avatarSrc} role={role} />
 
       <div className=" flex flex-col items-center">
         <Button
@@ -32,7 +33,7 @@ export const LkDetailsFormAvatarBlock = ({ avatarSrc }: LkDetailsFormAvatarBlock
     </div>
   ) : (
     <div className="flex flex-col items-center gap-4">
-      <Avatar className="h-20 w-20" />
+      <LkDetailsFormAvatar avatarSrc={avatarSrc} role={role} />
       <LkDetailsFormAvatarBlockFileInput className="flex-row gap-2" />
     </div>
   );

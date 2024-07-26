@@ -1,6 +1,5 @@
 import { Heart } from "lucide-react";
 import { useLayoutEffect, useState } from "react";
-import { UserEntity } from "../../../types";
 import { Button, ButtonProps } from "../../../ui/buttons/Button";
 import { Tooltip } from "../../../ui/tooltip/Tooltip";
 import { useAddFavorite } from "../hooks/useAddFavorite";
@@ -8,7 +7,6 @@ import { useDeleteFavorite } from "../hooks/useDeleteFavorite.";
 
 type FavoriteButtonProps = {
   id: number | string;
-  role: UserEntity;
   withTitle?: boolean;
   isInFavorites?: boolean;
   tooltipContent?: string;
@@ -16,7 +14,6 @@ type FavoriteButtonProps = {
 
 export const FavoriteButton = ({
   id,
-  role,
   withTitle,
   isInFavorites,
   tooltipContent,
@@ -34,9 +31,9 @@ export const FavoriteButton = ({
     e.stopPropagation();
     setIsFavorite((prevIsFavorite) => {
       if (prevIsFavorite) {
-        deleteFavorite({ id, role });
+        deleteFavorite(id);
       } else {
-        addFavorite({ id, role });
+        addFavorite(id);
       }
       return !prevIsFavorite;
     });

@@ -7,6 +7,7 @@ import {
   NavigationMenuContent,
   NavigationMenuTrigger,
 } from "../../../../../ui/nav-menu/NavigationMenu";
+import { cn } from "../../../../../utils";
 import { HeaderNavListItemLink } from "../../link/HeaderNavListItemLink";
 
 interface HeaderNavListItemDesktopProps {
@@ -21,12 +22,13 @@ export const HeaderNavListItemDesktop = React.forwardRef<
 >(({ className, title, item, children, ...props }, ref) => {
   const { t } = useTranslation("header");
   const navigate = useNavigate();
+
   const Icon = item.icon;
   if (!item.items) {
     return item.type === "button" ? (
       <Button
         onClick={() => navigate(`${item.href}`)}
-        className="flex h-full flex-col gap-2 font-bold text-white/80 hover:text-white/100"
+        className="flex h-full flex-col gap-2 text-xs font-bold text-white/80 hover:text-white/100 lg:text-sm"
         variant="link"
       >
         <Icon size={20} />
@@ -37,7 +39,7 @@ export const HeaderNavListItemDesktop = React.forwardRef<
         icon={item.icon}
         to={item.href}
         title={t(item.title)}
-        className={className}
+        className={cn("text-xs lg:text-sm", className)}
         {...props}
         ref={ref}
       />
@@ -51,7 +53,7 @@ export const HeaderNavListItemDesktop = React.forwardRef<
           icon={item.icon}
           to={item.href}
           title={t(item.title)}
-          className={className}
+          className={cn("text-xs lg:text-sm", className)}
           {...props}
           ref={ref}
         />

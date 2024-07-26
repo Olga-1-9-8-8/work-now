@@ -14,7 +14,7 @@ interface HeaderNavListDesktopProps {
 export const HeaderNavListDesktop = ({ items }: HeaderNavListDesktopProps) => {
   return (
     <NavigationMenu delayDuration={100} className="justify-end">
-      <NavigationMenuList className="pl-2 lg:gap-8">
+      <NavigationMenuList className="pl-2 lg:gap-2">
         {items.map((item) => {
           return (
             <NavigationMenuItem key={item.title}>

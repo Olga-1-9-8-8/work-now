@@ -1,5 +1,5 @@
-import { getAvatar } from "../../../shared/api";
-import { supabase } from "../../../shared/services/api/supabase";
+import { getAvatar } from "../../../api";
+import { supabase } from "../../api/supabase";
 
 export const getProfile = async (id?: string) => {
   if (!id) return null;

@@ -4,6 +4,7 @@ export { AuthUpdatePasswordForm } from "./components/form/AuthUpdatePasswordForm
 export { AuthPasswordField } from "./components/form/item/AuthPasswordField";
 export { useLogin } from "./hooks/useLogin";
 export { useLogout } from "./hooks/useLogout";
+export { useProfile } from "./hooks/useProfile";
 export { useUpdateUser } from "./hooks/useUpdateUser";
 export { useUser } from "./hooks/useUser";
-export type { ProfileType } from "./types/ProfileType";
+export type { ProfileApiTypeInput } from "./types/ProfileApiType";
