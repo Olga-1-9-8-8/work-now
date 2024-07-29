@@ -1,6 +1,6 @@
+import { ProfileApiTypeInput } from "../../../api";
 import { GenderType, UserEntity } from "../../../types";
 import { parseDateFromString } from "../../../utils/helpers";
-import { ProfileApiTypeInput } from "../types/ProfileApiType";
 import { ProfileType } from "../types/ProfileType";
 
 export const mapProfile = (profile: ProfileApiTypeInput): ProfileType => {

@@ -7,7 +7,7 @@ export { sortTypes } from "./SortType";
 export { weekHoursTypes } from "./WeekHoursType";
 export type { ItemType } from "./item/ItemType";
 
-export type { UniversalCardItemType } from "./UniversalCardItemType";
+export type { UniversalCardItemType, UniversalJobType } from "./UniversalCardItemType";
 export type { UniversalItemType } from "./UniversalItemType";
 export type { UniversalItemsWithTitleType } from "./UniversalItemsWithTitleType";
 

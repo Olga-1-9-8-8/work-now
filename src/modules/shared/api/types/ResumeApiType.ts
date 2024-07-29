@@ -1,5 +1,5 @@
-import { Database } from "../../../../shared/services";
-import { ProfileApiTypeInput } from "../../../../shared/services/auth";
+import { Database } from "./database.types";
+import { ProfileApiTypeInput } from "./ProfileApiType";
 
 export type ResumeApiType = Database["public"]["Tables"]["resumes"]["Row"] & {
   isInFavorites?: boolean;

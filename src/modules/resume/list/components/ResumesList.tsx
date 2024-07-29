@@ -1,10 +1,10 @@
 import { NotFound } from "../../../shared/components/not-found";
 import { Pagination } from "../../../shared/components/pagination";
-import { ResumesListType } from "../types/ResumesListType";
+import { UniversalCardItemType } from "../../../shared/types";
 import { ResumesListItem } from "./item/ResumesListItem";
 
 interface ResumesListProps {
-  resumes?: ResumesListType;
+  resumes?: UniversalCardItemType[];
   totalCount?: number;
 }
 

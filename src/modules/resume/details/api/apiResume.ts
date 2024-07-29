@@ -1,7 +1,8 @@
 import { getApply, getAvatar, getFavorite } from "../../../shared/api";
-import { supabase } from "../../../shared/services/api/supabase";
+import { supabase } from "../../../shared/services";
 
-export const getResume = async (id: number) => {
+export const getResume = async (id?: number) => {
+  if (!id) return null;
   const { data, error } = await supabase
     .from("resumes")
     .select("*,profiles(*)")
@@ -25,6 +26,6 @@ export const getResume = async (id: number) => {
     ...data,
     isInFavorites: !!favorite,
     isInApplies: !!appliesData,
-    profiles: { ...data.profiles, avatar },
+    profiles: data.profiles ? { ...data.profiles, avatar } : null,
   };
 };

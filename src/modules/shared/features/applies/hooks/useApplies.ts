@@ -1,8 +1,8 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../components/pagination";
 import { useUrl } from "../../../hooks";
+import { mapResumeVacancyItem } from "../../../utils";
 import { getApplies } from "../api/apiApplies";
-import { mapApplies } from "../utils/mapApplies";
 
 export const useApplies = () => {
   const queryClient = useQueryClient();
@@ -20,13 +20,13 @@ export const useApplies = () => {
       const appliesData = await getApplies(page);
       if (appliesData?.data?.resumes) {
         appliesData.data.resumes.forEach((resume) => {
-          queryClient.setQueryData(["resume", String(resume.id)], resume);
+          queryClient.setQueryData(["resume", resume.id], resume);
         });
       }
 
       if (appliesData?.data.vacancies) {
         appliesData.data.vacancies.forEach((vacancy) => {
-          queryClient.setQueryData(["vacancy", String(vacancy.id)], vacancy);
+          queryClient.setQueryData(["vacancy", vacancy.id], vacancy);
         });
       }
 
@@ -51,7 +51,7 @@ export const useApplies = () => {
   return {
     isAppliesLoading: isLoading,
     appliesError: error,
-    applies: applies ? mapApplies(applies.data) : undefined,
+    applies: applies?.data ? mapResumeVacancyItem(applies.data) : undefined,
     totalAppliesCount: applies?.totalCount ?? undefined,
   };
 };

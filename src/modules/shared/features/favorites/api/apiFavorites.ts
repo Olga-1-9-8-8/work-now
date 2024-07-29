@@ -1,6 +1,5 @@
-import { ResumeWithProfileApiTypeInput } from "../../../../resume/shared/types";
-import { VacancyWithProfileApiTypeInput } from "../../../../vacancy/shared/types/api/VacancyApiType";
-import { getApply, getAvatar } from "../../../api";
+import { getApply, getAvatar, ResumeWithProfileApiTypeInput } from "../../../api";
+import { VacancyWithProfileApiTypeInput } from "../../../api/types/VacancyApiType";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../components/pagination";
 import { supabase } from "../../../services/api/supabase";
 import { UserEntity } from "../../../types";
@@ -13,10 +12,12 @@ const processItemsWithFavoriteApplyStatusAndDownloadAvatar = async (
   return Promise.all(
     filteredItems.map(async (item) => {
       const applies = await getApply(item.id);
-      const profiles = {
-        ...item.profiles,
-        avatar: item.profiles?.avatar ? await getAvatar(item.profiles.avatar) : null,
-      };
+      const profiles = item.profiles
+        ? {
+            ...item.profiles,
+            avatar: item.profiles?.avatar ? await getAvatar(item.profiles.avatar) : null,
+          }
+        : null;
 
       return {
         ...item,

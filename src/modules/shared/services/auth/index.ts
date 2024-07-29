@@ -7,4 +7,5 @@ export { useLogout } from "./hooks/useLogout";
 export { useProfile } from "./hooks/useProfile";
 export { useUpdateUser } from "./hooks/useUpdateUser";
 export { useUser } from "./hooks/useUser";
-export type { ProfileApiTypeInput } from "./types/ProfileApiType";
+export type { ProfileType } from "./types/ProfileType";
+export { mapProfile } from "./utils/mapProfile";

@@ -1,7 +1,8 @@
 import { getApply, getAvatar, getFavorite } from "../../../shared/api";
-import { supabase } from "../../../shared/services/api/supabase";
+import { supabase } from "../../../shared/services";
 
-export const getVacancy = async (id: number) => {
+export const getVacancy = async (id?: number) => {
+  if (!id) return null;
   const { data, error } = await supabase
     .from("vacancies")
     .select("*,profiles(*)")
@@ -10,7 +11,7 @@ export const getVacancy = async (id: number) => {
 
   if (error) {
     console.log(error);
-    throw new Error("Проблема с загрузкой вакансий из базы данных");
+    throw new Error("Проблема с загрузкой вакансии из базы данных");
   }
 
   if (!data) return null;
@@ -25,6 +26,6 @@ export const getVacancy = async (id: number) => {
     ...data,
     isInFavorites: !!favorite,
     isInApplies: !!appliesData,
-    profiles: { ...data.profiles, avatar },
+    profiles: data.profiles ? { ...data.profiles, avatar } : null,
   };
 };

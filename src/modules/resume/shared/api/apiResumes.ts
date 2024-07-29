@@ -1,5 +1,5 @@
+import { ResumeApiType } from "../../../shared/api";
 import { supabase } from "../../../shared/services/api/supabase";
-import { ResumeApiType } from "../types";
 
 export const createEditResume = async (newResume: Omit<ResumeApiType, "id"> & { id?: number }) => {
   let query: any = supabase.from("resumes");

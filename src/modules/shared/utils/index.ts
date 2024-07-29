@@ -6,3 +6,7 @@ export { getBadgeDataByStartDate } from "./getBadgeDataByStartDate";
 export { getBadgeDataByWeekHours } from "./getBadgeDataByWeekHours";
 export { getBadgesTitle } from "./getBadgesTitle";
 export { getSalaryTitle } from "./getSalaryTitle";
+export { mapResumeVacancyItem } from "./mappers/mapResumeVacancyItem";
+export { mapUniversalItem } from "./mappers/mapUniversalItem";
+export { mapUniversalItemWithProfile } from "./mappers/mapUniversalItemWithProfile";
+export { mapUniversalItems } from "./mappers/mapUniversalItems";

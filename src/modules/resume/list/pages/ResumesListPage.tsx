@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { CreateButton } from "../../../shared/components/buttons/components/CreateButton";
+import { CreateButton } from "../../../shared/components/buttons";
 import { SearchList } from "../../../shared/components/search-list";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
 import { ResumesList } from "../components/ResumesList";

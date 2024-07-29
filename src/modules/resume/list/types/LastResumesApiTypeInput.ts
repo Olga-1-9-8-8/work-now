@@ -1,4 +1,4 @@
-import { ResumeApiType } from "../../shared/types";
+import { ResumeApiType } from "../../../shared/api";
 
 export type LastResumesApiTypeInput = Pick<
   ResumeApiType,

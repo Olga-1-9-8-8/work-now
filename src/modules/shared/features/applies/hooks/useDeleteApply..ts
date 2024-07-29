@@ -15,6 +15,9 @@ export const useDeleteApply = () => {
         queryKey: ["applies"],
       });
       queryClient.invalidateQueries({
+        queryKey: ["favorites"],
+      });
+      queryClient.invalidateQueries({
         queryKey: [data?.isCompanyRole ? "resumes" : "vacancies", data?.id],
       });
     },

@@ -1,8 +1,8 @@
 import { format } from "date-fns";
 import { getApply, getAvatar, getFavorite } from "../../../shared/api";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagination";
-import { getFilterValue } from "../../../shared/features/filters/server-side/utils/getFilterValue";
-import { supabase } from "../../../shared/services/api/supabase";
+import { getFilterValue } from "../../../shared/features/filters/server-side";
+import { supabase } from "../../../shared/services";
 import { ResumesFilterType } from "../types/ResumesFilterType";
 import { ResumesSortingType } from "../types/ResumesSortingType";
 
@@ -49,13 +49,14 @@ export const getResumes = async ({ filters, sortArr, page }: GetResumesProps) =>
     data.map(async (resume) => {
       const favorite = await getFavorite(resume.id);
       const appliesData = await getApply(resume.id);
+
       const avatar = resume.profiles?.avatar ? await getAvatar(resume.profiles.avatar) : null;
 
       return {
         ...resume,
         isInFavorites: !!favorite,
         isInApplies: !!appliesData,
-        profiles: { ...resume.profiles, avatar },
+        profiles: resume.profiles ? { ...resume.profiles, avatar } : null,
       };
     }),
   );

@@ -1,6 +1,5 @@
-/* eslint-disable unicorn/no-useless-undefined */
 import { lkNavConfig } from "../../../../../shared/configs/lkNavConfig";
-import { HeaderNavListItemLink } from "../../../../../shared/navigation/components/header/link/HeaderNavListItemLink";
+import { HeaderNavListItemLink } from "../../../../../shared/navigation";
 import { useResponsiveContext } from "../../../../../shared/responsive";
 import { useAuthContext } from "../../../../../shared/services/auth";
 import { UserEntity } from "../../../../../shared/types";

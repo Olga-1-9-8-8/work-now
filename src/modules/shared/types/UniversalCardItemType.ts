@@ -5,10 +5,18 @@ import { ScheduleType } from "./ScheduleType";
 import { UserEntity } from "./UserRoles";
 import { WeekHoursType } from "./WeekHoursType";
 
-export interface UniversalCardItemType {
+interface UniversalProfileType {
+  userName?: string;
+  phone?: string;
+  gender?: GenderType;
+  age?: string;
+  avatar?: string;
+  role?: UserEntity;
+}
+
+export interface UniversalJobType {
   id: number | string;
   userId?: string;
-  userName: string;
   position: string;
   creationDate?: Date | null;
   city?: string;
@@ -21,9 +29,6 @@ export interface UniversalCardItemType {
   education?: EducationType | string;
   employmentStartDate?: Date;
   views?: number;
-  phone?: string;
-  gender?: GenderType;
-  age?: string;
   coordinates?: {
     lat: string;
     lng: string;
@@ -31,6 +36,6 @@ export interface UniversalCardItemType {
   companyCode?: string;
   isInFavorites?: boolean;
   isInApplies?: boolean;
-  avatar?: string;
-  role?: UserEntity;
 }
+
+export interface UniversalCardItemType extends UniversalProfileType, UniversalJobType {}

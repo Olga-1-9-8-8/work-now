@@ -9,7 +9,7 @@ import { DetailsCardHeaderTitlePersonalData } from "./items/DetailsCardHeaderTit
 import { DetailsCardHeaderTitleViews } from "./items/DetailsCardHeaderTitleViews";
 
 interface DetailsCardHeaderTitleProps {
-  userName: string;
+  userName?: string;
   avatar?: string;
   views?: number;
   isHiring?: boolean;
@@ -43,7 +43,7 @@ export const DetailsCardHeaderTitle = ({
           src={avatar}
           userName={userName}
         />
-        <CardTitleWithTooltip title={userName} />
+        <CardTitleWithTooltip title={userName ?? "Аноним"} />
         <DetailsCardHeaderTitleViews views={views} />
       </div>
       <div className="flex flex-col gap-2">

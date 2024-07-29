@@ -1,5 +1,5 @@
-import { supabase } from "../../../shared/services/api/supabase";
-import { VacancyApiType } from "../types/api/VacancyApiType";
+import { VacancyApiType } from "../../../shared/api";
+import { supabase } from "../../../shared/services";
 
 export const createEditVacancy = async (
   newVacancy: Omit<VacancyApiType, "id"> & { id?: number },
