@@ -1,1 +1,1 @@
-export { createEditResume, deleteResume } from "./apiResumes";
+export { createEditResume } from "./apiResumes";

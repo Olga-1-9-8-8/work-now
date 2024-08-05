@@ -1,1 +1,0 @@
-export { useDeleteResume } from "./useDeleteResume";

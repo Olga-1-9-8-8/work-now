@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { NotExist } from "../../../shared/components/not-found";
+import { NotExist, NotFound } from "../../../shared/components/not-found";
 import { Button } from "../../../shared/ui/buttons/Button";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
 import { useProfileVacancies } from "../../shared/hooks/useProfileVacancies";
@@ -10,9 +10,15 @@ export const LkVacanciesPage = () => {
   const { profileVacancies, isProfileVacanciesLoading, totalProfileVacanciesCount } =
     useProfileVacancies();
 
-  if (isProfileVacanciesLoading) return <Spinner />;
+  if (isProfileVacanciesLoading) {
+    return <Spinner />;
+  }
 
-  return profileVacancies && totalProfileVacanciesCount ? (
+  if (!profileVacancies) {
+    return <NotFound title="Резюме" />;
+  }
+
+  return totalProfileVacanciesCount ? (
     <LkVacancies vacancies={profileVacancies} totalCount={totalProfileVacanciesCount} />
   ) : (
     <NotExist

@@ -26,7 +26,11 @@ export const LkDetailsProfileDataCard = ({ profile, isLoading }: LkDetailsProfil
       {profile && (
         <section className="flex flex-col gap-4">
           <div className="flex items-center gap-6">
-            <LkDetailsFormAvatar avatarSrc={profile.avatar} role={profile.role} />
+            <LkDetailsFormAvatar
+              key={profile.avatar}
+              avatarSrc={profile.avatar}
+              role={profile.role}
+            />
 
             <TypographyH2 className=" text-xl text-primary-extraDark lg:text-2xl">
               {profile.userName || "Аноним"}

@@ -7,8 +7,8 @@ export const useEditResume = () => {
 
   const { mutate: editResume, isPending: isEditing } = useMutation({
     mutationFn: createEditResume,
-    onSuccess: () => {
-      toast.success("Резюме успешно отредактировано");
+    onSuccess: ({ position }) => {
+      toast.success(`Резюме ${position} успешно отредактировано`);
       queryClient.invalidateQueries({ queryKey: ["resumes"] });
     },
     onError: (err) => toast.error(err.message),

@@ -22,6 +22,7 @@ export const mapUniversalItem = (item: UniversalItemApiTypeInput): UniversalJobT
     about,
     isInFavorites,
     isInApplies,
+    updated_at: updatedAt,
     ...resumeData
   } = item;
 
@@ -29,6 +30,7 @@ export const mapUniversalItem = (item: UniversalItemApiTypeInput): UniversalJobT
     ...resumeData,
     employmentStartDate: employmentStartDate ? new Date(employmentStartDate) : undefined,
     creationDate: new Date(creationDate),
+    updatedAt: updatedAt ? new Date(updatedAt) : undefined,
     schedule: (schedule as ScheduleType[]) ?? undefined,
     weekHours: (weekHours as WeekHoursType[]) ?? undefined,
     city: city ?? undefined,

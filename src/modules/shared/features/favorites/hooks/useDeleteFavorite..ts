@@ -18,7 +18,7 @@ export const useDeleteFavorite = () => {
         queryKey: ["applies"],
       });
       queryClient.invalidateQueries({
-        queryKey: [data?.isCompanyRole ? "resumes" : "vacancies", data?.id],
+        queryKey: [data?.isCompanyRole ? "resume" : "vacancy", data?.id],
       });
     },
     onError: (err) => toast.error(err.message),

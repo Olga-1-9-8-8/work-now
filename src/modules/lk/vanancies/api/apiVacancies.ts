@@ -29,3 +29,18 @@ export const getVacancy = async (id?: number) => {
     profiles: data.profiles ? { ...data.profiles, avatar } : null,
   };
 };
+
+export const deleteVacancy = async (id: number) => {
+  const { data, error } = await supabase
+    .from("vacancies")
+    .delete()
+    .eq("id", id)
+    .select("*")
+    .single();
+
+  if (error) {
+    console.log(error);
+    throw new Error("Ошибка удаления вакансии");
+  }
+  return data;
+};

@@ -23,7 +23,7 @@ import { CardItemInsight, CardTitleWithTooltip, getEducationTitle } from "../../
 import { MapBadge } from "../../../../map";
 
 interface SearchCardHeaderTitleProps {
-  userName: string;
+  userName?: string;
   avatar?: string;
   position: string;
   isHiring?: boolean;
@@ -45,7 +45,7 @@ export const SearchCardHeaderTitle = ({
       />
       <div>
         <CardTitle className="text-xl md:text-2xl">{capitalizeFirstLetter(position)}</CardTitle>
-        <CardTitleWithTooltip title={userName} />
+        <CardTitleWithTooltip title={userName ?? "Аноним"} />
       </div>
     </div>
   );

@@ -5,7 +5,6 @@ export { createEmptyArray } from "./arrayHelper";
 export { formatPhoneNumber, maskPhoneNumber } from "./phoneHelper";
 
 export {
-  formatDateToStringUtc,
   formattedTimeString,
   getDateFromUrlString,
   getDayMonthYear,

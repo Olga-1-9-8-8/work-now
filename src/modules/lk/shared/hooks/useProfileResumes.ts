@@ -1,8 +1,8 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagination";
 import { useUrl } from "../../../shared/hooks";
+import { mapUniversalItem } from "../../../shared/utils";
 import { getProfileResumes } from "../api/apiProfile";
-import { mapProfileResumes } from "../utils/mapProfileResumes";
 
 export const useProfileResumes = () => {
   const queryClient = useQueryClient();
@@ -15,8 +15,17 @@ export const useProfileResumes = () => {
     data: profileResumes,
     error,
   } = useQuery({
-    queryKey: ["profileResumes", page],
-    queryFn: () => getProfileResumes({ page }),
+    queryKey: ["resumes", page],
+    queryFn: async () => {
+      const resumesData = await getProfileResumes(page);
+      if (resumesData) {
+        resumesData.data.forEach((resumeData) => {
+          const { id } = resumeData;
+          queryClient.setQueryData(["resumes", id], resumeData);
+        });
+      }
+      return resumesData;
+    },
   });
 
   if (
@@ -24,22 +33,22 @@ export const useProfileResumes = () => {
     page < Math.ceil(profileResumes.totalCount / QUANTITY_OF_ITEMS_ON_ONE_PAGE)
   ) {
     queryClient.prefetchQuery({
-      queryKey: ["profileResumes", page + 1],
-      queryFn: () => getProfileResumes({ page: page + 1 }),
+      queryKey: ["resumes", page + 1],
+      queryFn: () => getProfileResumes(page + 1),
     });
   }
 
   if (page > 1) {
     queryClient.prefetchQuery({
-      queryKey: ["profileResumes", page - 1],
-      queryFn: () => getProfileResumes({ page: page - 1 }),
+      queryKey: ["resumes", page - 1],
+      queryFn: () => getProfileResumes(page - 1),
     });
   }
 
   return {
     isProfileResumesLoading: isLoading,
     profileResumesError: error,
-    profileResumes: profileResumes ? mapProfileResumes(profileResumes.data) : undefined,
+    profileResumes: profileResumes?.data.map((resume) => mapUniversalItem(resume)),
     totalProfileResumesCount: profileResumes?.totalCount ?? undefined,
   };
 };

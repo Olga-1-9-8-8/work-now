@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { BackButton } from "../../../shared/components/buttons";
 import { NotExist } from "../../../shared/components/not-found";
 import { useAuthContext } from "../../../shared/services/auth";
 import {
@@ -29,7 +30,8 @@ export const ResumeCreationPage = () => {
 
   return (
     <PageContainer>
-      <Card className="mt-6">
+      <BackButton />
+      <Card className="my-6">
         <CardHeader>
           <CardTitle>Создай резюме</CardTitle>
           <CardDescription>Не забудь добавить фото к своему профилю.</CardDescription>

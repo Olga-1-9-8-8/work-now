@@ -15,10 +15,11 @@ interface UniversalProfileType {
 }
 
 export interface UniversalJobType {
-  id: number | string;
-  userId?: string;
+  id: number;
+  userId: string;
   position: string;
-  creationDate?: Date | null;
+  creationDate: Date;
+  updatedAt?: Date;
   city?: string;
   applicantsQuantity?: number;
   employment?: EmploymentType[] | string;

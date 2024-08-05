@@ -1,14 +1,14 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { deleteVacancy as deleteVacancyApi } from "../../../vacancy/shared/api/apiVacancies";
+import { deleteVacancy as deleteVacancyApi } from "../api/apiVacancies";
 
 export const useDeleteVacancy = () => {
   const queryClient = useQueryClient();
 
   const { isPending: isDeletingVacancy, mutate: deleteVacancy } = useMutation({
     mutationFn: deleteVacancyApi,
-    onSuccess: () => {
-      toast.success("Вакансия успешно удалена");
+    onSuccess: (data) => {
+      toast.success(`Вакансия ${data.position} успешно удалена`);
       queryClient.invalidateQueries({
         queryKey: ["vacancies"],
       });

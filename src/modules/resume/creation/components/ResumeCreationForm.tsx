@@ -1,216 +1,104 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { filterConfig } from "../../../shared/configs";
-import { ItemType, UniversalItemType } from "../../../shared/types";
+import { UniversalItemType, UniversalJobType } from "../../../shared/types";
 import { Button } from "../../../shared/ui/buttons/Button";
-import { DatePicker, FormSelect } from "../../../shared/ui/form-control";
+import {
+  DatePicker,
+  FormCheckboxMultipleField,
+  FormInputField,
+  FormSelect,
+  FormSliderField,
+  FormTextareaField,
+} from "../../../shared/ui/form-control";
 import {
   Form,
-  FormControl,
   FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "../../../shared/ui/form/Form";
-import { Input } from "../../../shared/ui/inputs/Input";
-import { Slider } from "../../../shared/ui/slider/Slider";
-import { TextareaWithLabel } from "../../../shared/ui/textarea/TextareaWithLabel";
-import { formatDateToStringUtc } from "../../../shared/utils/helpers";
-import { useCreateResume } from "../hooks/useCreateResume";
-import { useEditResume } from "../hooks/useEditResume";
+import { getSalaryTitle } from "../../../shared/utils";
+import { useResumeForm } from "../hooks/useResumeForm";
 import { ResumeCreationFormType } from "../types/ResumeCreationFormType";
-import { resumeFormValidationSchema } from "../validation/resumeFormValidationSchema";
-import { ResumeCreationFormCheckboxItem } from "./item/ResumeCreationFormCheckboxItem";
 
 interface ResumeCreationFormProps {
   userId: string;
-  resume?: ItemType;
+  resume?: UniversalJobType;
+  onModalClose?: () => void;
 }
 
-export const ResumeCreationForm = ({ userId, resume }: ResumeCreationFormProps) => {
-  const form = useForm<ResumeCreationFormType>({
-    resolver: zodResolver(resumeFormValidationSchema),
-    defaultValues: {
-      userId,
-      position: resume?.position ?? "",
-      city: resume?.city ?? "",
-      employment: resume?.employment ?? [],
-      schedule: resume?.schedule ?? [],
-      salary: resume?.salary ?? [0, 0],
-      education: resume?.education ?? undefined,
-      about: resume?.about ?? "",
-      employmentStartDate: resume?.employmentStartDate ?? undefined,
-      views: resume?.views ?? 0,
-      applicantsQuantity: resume?.applicantsQuantity ?? 0,
-      weekHours: resume?.weekHours ?? [],
-    },
+export const ResumeCreationForm = ({ userId, resume, onModalClose }: ResumeCreationFormProps) => {
+  const { form, handleSubmit, isSubmitting } = useResumeForm({
+    resume,
+    userId,
+    onModalClose,
   });
-
-  const { createResume, isCreating } = useCreateResume();
-  const { editResume, isEditing } = useEditResume();
-
-  function onSubmit(values: ResumeCreationFormType) {
-    if (resume?.id) {
-      editResume(
-        {
-          ...values,
-          id: resume.id,
-          updated_at: formatDateToStringUtc(new Date()),
-          user_id: values.userId,
-          applicants_quantity: values.applicantsQuantity,
-          creation_date: formatDateToStringUtc(new Date()),
-          employment_start_date: values.employmentStartDate
-            ? formatDateToStringUtc(values.employmentStartDate)
-            : null,
-          week_hours: values.weekHours ?? [],
-          education: values.education || null,
-          employment: values.employment ?? null,
-          schedule: values.schedule as string[] | null,
-        },
-        {
-          onSuccess: () => form.reset(),
-        },
-      );
-    } else {
-      createResume(
-        {
-          ...values,
-          updated_at: formatDateToStringUtc(new Date()),
-          creation_date: formatDateToStringUtc(new Date()),
-          about: values.about ?? null,
-          city: values.city ?? null,
-          employment: values.employment ?? null,
-          employment_start_date: values.employmentStartDate
-            ? formatDateToStringUtc(values.employmentStartDate)
-            : null,
-          applicants_quantity: values.applicantsQuantity,
-          user_id: values.userId,
-          week_hours: values.weekHours ?? null,
-          education: values.education || null,
-          schedule: values.schedule as string[] | null,
-        },
-        {
-          onSuccess: () => form.reset(),
-        },
-      );
-    }
-  }
 
   const { employment, schedule, education } = filterConfig;
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
+        <FormInputField<ResumeCreationFormType>
+          label="Укажите должность"
           name="position"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  placeholder="Укажите должность"
-                  disabled={isCreating || isEditing}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          placeholder="Название вашего резюме"
+          disabled={isSubmitting}
         />
-        <FormField
-          control={form.control}
+        <FormInputField<ResumeCreationFormType>
+          label="Укажите регион поиска работы"
           name="city"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  placeholder="Укажите регион поиска работы"
-                  disabled={isCreating || isEditing}
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          placeholder="Место где хотите найти работу"
+          disabled={isSubmitting}
         />
         <FormSelect<ResumeCreationFormType>
+          disabled={isSubmitting}
           label={education.title}
           title={education.title}
           name="education"
           options={education.items as Required<UniversalItemType<string>>[]}
         />
-        <ResumeCreationFormCheckboxItem
-          disabled={isCreating || isEditing}
+        <FormCheckboxMultipleField<ResumeCreationFormType>
+          disabled={isSubmitting}
           name="employment"
-          items={employment.items}
-          title={employment.title}
+          items={employment.items as Required<UniversalItemType<string>>[]}
+          label={employment.title}
         />
-        <ResumeCreationFormCheckboxItem
-          disabled={isCreating || isEditing}
+
+        <FormCheckboxMultipleField<ResumeCreationFormType>
+          disabled={isSubmitting}
           name="schedule"
-          items={schedule.items}
-          title={schedule.title}
+          items={schedule.items as Required<UniversalItemType<string>>[]}
+          label={schedule.title}
         />
-        <FormField
-          control={form.control}
+        <FormSliderField<ResumeCreationFormType>
           name="salary"
-          render={({ field: { value, onChange } }) => {
-            const [salaryMin, salaryMax] = value;
-            return (
-              <FormItem>
-                <FormLabel className="text-lg">
-                  Зарплата : {salaryMin} &#8381; &mdash;{salaryMax} &#8381;
-                </FormLabel>
-                <FormControl>
-                  <Slider
-                    disabled={isCreating || isEditing}
-                    min={0}
-                    max={500_000}
-                    step={1000}
-                    defaultValue={[salaryMin, salaryMax]}
-                    onValueChange={onChange}
-                  />
-                </FormControl>
-                <FormDescription>Выберите диапазон зарплат.</FormDescription>
-                <FormMessage />
-              </FormItem>
-            );
-          }}
+          getLabel={(value) => `Зарплата: ${getSalaryTitle(value)} `}
+          disabled={isSubmitting}
+          description="Выберите диапазон зарплат"
         />
-        <FormField
-          control={form.control}
+
+        <FormTextareaField<ResumeCreationFormType>
+          disabled={isSubmitting}
           name="about"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <TextareaWithLabel
-                  disabled={isCreating || isEditing}
-                  label="Напиши о себе"
-                  placeholder="Напиши про свои навыки"
-                  {...field}
-                />
-              </FormControl>
-              <FormDescription>
-                Какой опыт вы приобрели благодаря получению образования.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
+          label="Напиши о себе"
+          placeholder="Напиши про свои навыки"
+          description="Какой опыт вы приобрели благодаря получению образования"
         />
         <FormField
           control={form.control}
           name="employmentStartDate"
+          disabled={isSubmitting}
           render={({ field }) => (
             <FormItem className="flex flex-col">
               <FormLabel>Дата начала работы</FormLabel>
               <DatePicker {...field} />
-              <FormDescription>Дата предполагаемого выхода на работу.</FormDescription>
+              <FormDescription>Дата предполагаемого выхода на работу</FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button disabled={isCreating || isEditing} size="lg" type="submit">
+        <Button disabled={isSubmitting} size="lg" type="submit">
           Опубликовать резюме
         </Button>
       </form>

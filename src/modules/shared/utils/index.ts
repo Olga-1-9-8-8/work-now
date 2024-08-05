@@ -1,4 +1,5 @@
 export { cn } from "./cn";
+export { getDefaultUniversalJobFormValues } from "./form/getDefaultUniversalJobFormValues";
 export { getAverageSalary } from "./getAverageSalary";
 export { getBadgeDataByEmploymentType } from "./getBadgeDataByEmploymentType";
 export { getBadgeDataByScheduleType } from "./getBadgeDataByScheduleType";
@@ -6,6 +7,7 @@ export { getBadgeDataByStartDate } from "./getBadgeDataByStartDate";
 export { getBadgeDataByWeekHours } from "./getBadgeDataByWeekHours";
 export { getBadgesTitle } from "./getBadgesTitle";
 export { getSalaryTitle } from "./getSalaryTitle";
+export { mapItemToApiType } from "./mappers/mapItemToApiType";
 export { mapResumeVacancyItem } from "./mappers/mapResumeVacancyItem";
 export { mapUniversalItem } from "./mappers/mapUniversalItem";
 export { mapUniversalItemWithProfile } from "./mappers/mapUniversalItemWithProfile";
