@@ -8,30 +8,31 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { colors } from "../../../../../../tailwind.config";
-import { LastResumesApiTypeInput } from "../../../../resume/list";
-import { homeChartSalaryConfig } from "../../../../shared/configs";
-import { mapResumesToLineChartData } from "../../../utils/mapResumesToLineChartData";
-import { LineChartHeader } from "./header/LineChartHeader";
+import { colors } from "../../../../../../../../tailwind.config";
+import { homeChartSalaryConfig } from "../../../../../../shared/configs";
+import { UniversalItemAnalyticsApiTypeInput } from "../../../../../types/UniversalItemAnalyticsApiTypeInput";
+import { mapItemsToSalaryLineChartData } from "../../../../../utils/mappers/mapItemsToSalaryLineChartData";
+import { LineChartHeader } from "../header/LineChartHeader";
 
 interface LineChartProps {
-  lastResumes: LastResumesApiTypeInput[];
+  title: string;
+  description?: string;
+  items: UniversalItemAnalyticsApiTypeInput[];
   numDays: number;
 }
 
-export const SalaryLineChart = ({ lastResumes, numDays }: LineChartProps) => {
-  const chartData = mapResumesToLineChartData(lastResumes, numDays);
+export const SalaryLineChart = ({ items, numDays, title, description }: LineChartProps) => {
+  const chartData = mapItemsToSalaryLineChartData(items, numDays);
 
   return (
     <div className="flex flex-col gap-6 rounded-xl bg-white bg-clip-border shadow-md">
       <LineChartHeader
         title={
           <span>
-            График желаемой зарплаты, указанной в опубликованных резюме по дням за период{" "}
-            <strong className="text-nowrap">( {numDays} дней )</strong>
+            {title} <strong className="text-nowrap">( {numDays} дней )</strong>
           </span>
         }
-        description="Указана средняя максимальная/минимальная/средняя зарплата за день по всем резюме"
+        description={description}
         icon={BadgeRussianRuble}
       />
 
@@ -43,7 +44,7 @@ export const SalaryLineChart = ({ lastResumes, numDays }: LineChartProps) => {
             tickLine={{ stroke: colors.primary.dark }}
           />
           <YAxis
-            unit="₽"
+            unit=" ₽"
             tick={{ fill: colors.primary.dark, fontSize: 14 }}
             tickLine={{ stroke: colors.primary.dark }}
           />

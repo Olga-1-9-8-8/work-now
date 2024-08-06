@@ -35,7 +35,7 @@ export const LkItemCardHeader = ({
           </CardTitle>
         </Link>
 
-        <Badge shape="square" variant="secondary">
+        <Badge shape="square" variant="destructive">
           {getSalaryTitle(salary)}
         </Badge>
       </div>

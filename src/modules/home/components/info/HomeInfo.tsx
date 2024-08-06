@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../../shared/services/auth";
 import {
   Accordion,
   AccordionContent,
@@ -9,11 +10,8 @@ import { Button } from "../../../shared/ui/buttons/Button";
 import { TypographyH3 } from "../../../shared/ui/typography/TypographyH3";
 import { HomeInfoList } from "./list/HomeInfoList";
 
-interface HomeInfoProps {
-  isAuthorized: boolean;
-}
-
-export const HomeInfo = ({ isAuthorized }: HomeInfoProps) => {
+export const HomeInfo = () => {
+  const { isAuthenticated } = useUser();
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -31,7 +29,7 @@ export const HomeInfo = ({ isAuthorized }: HomeInfoProps) => {
         </p>
         <AccordionContent className="w-full overflow-hidden py-4">
           <HomeInfoList />
-          {!isAuthorized && (
+          {!isAuthenticated && (
             <div className="flex flex-col items-center gap-3 py-4">
               <h3 className="text-xl font-semibold">Зарегистрируйся на сайте сейчас</h3>
               <Button onClick={handleClick}>Создай профиль бесплатно</Button>

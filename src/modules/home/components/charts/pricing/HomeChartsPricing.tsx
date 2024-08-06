@@ -1,17 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { homeInfoPricingConfig } from "../../../../shared/configs";
+import { useUser } from "../../../../shared/services/auth";
 import { Button } from "../../../../shared/ui/buttons/Button";
 import { formatCurrency } from "../../../../shared/utils/helpers";
 import { HomeChartsPricingItem } from "./item/HomeChartsPricingItem";
 
-const PRICE_PER_MONTH = 700;
-
-interface HomeChartsPricingProps {
-  isAuthorized: boolean;
-}
-
-export const HomeChartsPricing = ({ isAuthorized }: HomeChartsPricingProps) => {
+export const HomeChartsPricing = () => {
   const navigate = useNavigate();
+  const { isAuthenticated } = useUser();
 
   const handleClick = () => {
     navigate("/login", { state: { tab: "singUp" } });
@@ -38,10 +34,12 @@ export const HomeChartsPricing = ({ isAuthorized }: HomeChartsPricingProps) => {
         </div>
         <div className="flex flex-col gap-4 text-center">
           <div>
-            <h4 className="text-7xl font-bold">{formatCurrency(PRICE_PER_MONTH)}</h4>
+            <h4 className="text-7xl font-bold">
+              {formatCurrency(import.meta.env.VITE_PRICE_PER_MONTH)}
+            </h4>
             <p className="text-sm font-medium text-muted-foreground">Ежемесячная плата</p>
           </div>
-          {!isAuthorized && (
+          {!isAuthenticated && (
             <Button onClick={handleClick} size="lg">
               Зарегистрируйся
             </Button>
@@ -49,7 +47,7 @@ export const HomeChartsPricing = ({ isAuthorized }: HomeChartsPricingProps) => {
         </div>
       </div>
       <div className="mx-auto flex w-full max-w-[58rem] flex-col gap-4">
-        <p className="max-w-[85%] leading-normal text-muted-foreground sm:leading-7">
+        <p className="leading-normal text-muted-foreground sm:leading-7 lg:max-w-[85%]">
           <strong>Первые два месяца использование приложения бесплатно для новой компании.</strong>
         </p>
       </div>

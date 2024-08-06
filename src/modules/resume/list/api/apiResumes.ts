@@ -1,4 +1,3 @@
-import { format } from "date-fns";
 import { getApply, getAvatar, getFavorite } from "../../../shared/api";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagination";
 import { getFilterValue } from "../../../shared/features/filters/server-side";
@@ -62,19 +61,4 @@ export const getResumes = async ({ filters, sortArr, page }: GetResumesProps) =>
   );
 
   return { data: resumesData, totalCount: count };
-};
-
-export const getResumesAfterDate = async (date: string) => {
-  const { data, error } = await supabase
-    .from("resumes")
-    .select("creation_date, salary, education, applicants_quantity, profiles(age, gender)")
-    .gte("creation_date", date)
-    .lte("creation_date", format(new Date(), "yyyy-MM-dd"));
-
-  if (error) {
-    console.log(error);
-    throw new Error("Проблема с загрузкой резюме из базы данных");
-  }
-
-  return data;
 };

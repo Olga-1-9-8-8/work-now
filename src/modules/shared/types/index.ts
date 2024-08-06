@@ -1,3 +1,4 @@
+export { ageTypes, getAgeTitle, getAgeValue } from "./AgeType";
 export { creationDateTypes } from "./CreationDateType";
 export { educationTypes } from "./EducationType";
 export { employmentTypes } from "./EmploymentType";
@@ -10,6 +11,7 @@ export type { UniversalCardItemType, UniversalJobType } from "./UniversalCardIte
 export type { UniversalItemType } from "./UniversalItemType";
 export type { UniversalItemsWithTitleType } from "./UniversalItemsWithTitleType";
 
+export type { AgeType } from "./AgeType";
 export type { CreationDateType } from "./CreationDateType";
 export type { EducationType } from "./EducationType";
 export type { EmploymentType } from "./EmploymentType";

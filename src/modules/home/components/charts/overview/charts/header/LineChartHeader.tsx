@@ -1,5 +1,5 @@
 import { ElementType, ReactNode } from "react";
-import { TypographyH6 } from "../../../../../shared/ui/typography/TypographyH6";
+import { TypographyH6 } from "../../../../../../shared/ui/typography/TypographyH6";
 
 interface LineChartHeaderProps {
   title: ReactNode;

@@ -1,17 +1,20 @@
 import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
 import { ru } from "date-fns/locale";
-import { LastResumesApiTypeInput } from "../../resume/list";
+import { UniversalItemAnalyticsApiTypeInput } from "../../types/UniversalItemAnalyticsApiTypeInput";
 
-export const mapResumesToLineChartData = (resumes: LastResumesApiTypeInput[], numDays: number) => {
+export const mapItemsToSalaryLineChartData = (
+  items: UniversalItemAnalyticsApiTypeInput[],
+  numDays: number,
+) => {
   const dates = eachDayOfInterval({
     start: subDays(new Date(), numDays),
-    end: subDays(new Date(), 1),
+    end: subDays(new Date(), 0),
   });
 
   return dates.map((date) => {
-    const sameDateSalariesArr = resumes
-      .filter((resume) => isSameDay(date, new Date(resume.creation_date)))
-      .map((resume) => resume.salary || [])
+    const sameDateSalariesArr = items
+      .filter((item) => isSameDay(date, new Date(item.creation_date)))
+      .map((item) => item.salary || [])
       .filter((item) => item.length > 0);
 
     const getSalaryAverage = () => {

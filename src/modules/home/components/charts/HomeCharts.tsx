@@ -2,11 +2,7 @@ import { Tabs } from "../../../shared/components/tabs";
 import { HomeChartsOverview } from "./overview/HomeChartsOverview";
 import { HomeChartsPricing } from "./pricing/HomeChartsPricing";
 
-interface HomeChartsProps {
-  isAuthorized: boolean;
-}
-
-export const HomeCharts = ({ isAuthorized }: HomeChartsProps) => {
+export const HomeCharts = () => {
   return (
     <Tabs
       tabs={[
@@ -18,7 +14,7 @@ export const HomeCharts = ({ isAuthorized }: HomeChartsProps) => {
         {
           value: "pricing",
           title: "Цена для компаний",
-          content: <HomeChartsPricing isAuthorized={isAuthorized} />,
+          content: <HomeChartsPricing />,
         },
       ]}
       defaultValue="overview"

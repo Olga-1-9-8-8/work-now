@@ -1,20 +1,22 @@
 import { FaPeopleArrows } from "react-icons/fa6";
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import { PieSectorDataItem } from "recharts/types/polar/Pie";
-import { colors } from "../../../../../../tailwind.config";
-import { LastResumesApiTypeInput } from "../../../../resume/list";
-import { mapResumesToGenderChartData } from "../../../utils/mapResumesToGenderChartData";
-import { LineChartHeader } from "./header/LineChartHeader";
+import { colors } from "../../../../../../../../tailwind.config";
+import { UniversalItemAnalyticsApiTypeInput } from "../../../../../types/UniversalItemAnalyticsApiTypeInput";
+import { mapItemsToGenderChartData } from "../../../../../utils/mappers/mapItemsToGenderChartData";
+import { LineChartHeader } from "../header/LineChartHeader";
 
 const RADIAN = Math.PI / 180;
 
 interface LineChartProps {
-  lastResumes: LastResumesApiTypeInput[];
+  title: string;
+  description?: string;
+  items: UniversalItemAnalyticsApiTypeInput[];
   numDays: number;
 }
 
-export const GenderChart = ({ lastResumes, numDays }: LineChartProps) => {
-  const chartData = mapResumesToGenderChartData(lastResumes);
+export const GenderChart = ({ items, numDays, title, description }: LineChartProps) => {
+  const chartData = mapItemsToGenderChartData(items);
 
   const renderCustomizedLabel = ({
     cx,
@@ -46,11 +48,10 @@ export const GenderChart = ({ lastResumes, numDays }: LineChartProps) => {
       <LineChartHeader
         title={
           <span>
-            Соотношение полов в опубликованных резюме за период в{" "}
-            <strong className="text-nowrap">{numDays} дней</strong>
+            {title} <strong className="text-nowrap">{numDays} дней</strong>
           </span>
         }
-        description="Соотношение мужчин и женщин в последних резюме"
+        description={description}
         icon={FaPeopleArrows}
       />
 
