@@ -1,42 +1,38 @@
 import { BadgeRussianRuble } from "lucide-react";
-import {
-  Area,
-  AreaChart,
-  CartesianGrid,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { Area, AreaChart, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts";
 import { colors } from "../../../../../../../../tailwind.config";
 import { homeChartSalaryConfig } from "../../../../../../shared/configs";
 import { UniversalItemAnalyticsApiTypeInput } from "../../../../../types/UniversalItemAnalyticsApiTypeInput";
 import { mapItemsToSalaryLineChartData } from "../../../../../utils/mappers/mapItemsToSalaryLineChartData";
-import { LineChartHeader } from "../header/LineChartHeader";
+import { ChartNotExist } from "./blocks/ChartNotExist";
+import { ChartWrapper } from "./blocks/ChartWrapper";
 
 interface LineChartProps {
   title: string;
   description?: string;
-  items: UniversalItemAnalyticsApiTypeInput[];
+  items?: UniversalItemAnalyticsApiTypeInput[];
   numDays: number;
+  isLoading?: boolean;
 }
 
-export const SalaryLineChart = ({ items, numDays, title, description }: LineChartProps) => {
-  const chartData = mapItemsToSalaryLineChartData(items, numDays);
+export const SalaryLineChart = ({
+  items,
+  numDays,
+  title,
+  description,
+  isLoading,
+}: LineChartProps) => {
+  const chartData = items ? mapItemsToSalaryLineChartData(items, numDays) : null;
 
   return (
-    <div className="flex flex-col gap-6 rounded-xl bg-white bg-clip-border shadow-md">
-      <LineChartHeader
-        title={
-          <span>
-            {title} <strong className="text-nowrap">( {numDays} дней )</strong>
-          </span>
-        }
-        description={description}
-        icon={BadgeRussianRuble}
-      />
-
-      <ResponsiveContainer height={300} className="px-6">
+    <ChartWrapper
+      icon={BadgeRussianRuble}
+      title={title}
+      description={description}
+      isLoading={isLoading}
+      numDays={numDays}
+    >
+      {chartData ? (
         <AreaChart data={chartData}>
           <XAxis
             dataKey="title"
@@ -69,7 +65,9 @@ export const SalaryLineChart = ({ items, numDays, title, description }: LineChar
             />
           ))}
         </AreaChart>
-      </ResponsiveContainer>
-    </div>
+      ) : (
+        <ChartNotExist />
+      )}
+    </ChartWrapper>
   );
 };

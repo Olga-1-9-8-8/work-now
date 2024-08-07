@@ -1,22 +1,24 @@
 import { FaPeopleArrows } from "react-icons/fa6";
-import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
+import { Cell, Legend, Pie, PieChart, Tooltip } from "recharts";
 import { PieSectorDataItem } from "recharts/types/polar/Pie";
 import { colors } from "../../../../../../../../tailwind.config";
 import { UniversalItemAnalyticsApiTypeInput } from "../../../../../types/UniversalItemAnalyticsApiTypeInput";
 import { mapItemsToGenderChartData } from "../../../../../utils/mappers/mapItemsToGenderChartData";
-import { LineChartHeader } from "../header/LineChartHeader";
+import { ChartNotExist } from "./blocks/ChartNotExist";
+import { ChartWrapper } from "./blocks/ChartWrapper";
 
 const RADIAN = Math.PI / 180;
 
 interface LineChartProps {
   title: string;
   description?: string;
-  items: UniversalItemAnalyticsApiTypeInput[];
+  items?: UniversalItemAnalyticsApiTypeInput[];
   numDays: number;
+  isLoading?: boolean;
 }
 
-export const GenderChart = ({ items, numDays, title, description }: LineChartProps) => {
-  const chartData = mapItemsToGenderChartData(items);
+export const GenderChart = ({ items, numDays, title, description, isLoading }: LineChartProps) => {
+  const chartData = items ? mapItemsToGenderChartData(items) : null;
 
   const renderCustomizedLabel = ({
     cx,
@@ -44,18 +46,14 @@ export const GenderChart = ({ items, numDays, title, description }: LineChartPro
   };
 
   return (
-    <div className="flex flex-col gap-6 rounded-xl bg-white bg-clip-border shadow-md ">
-      <LineChartHeader
-        title={
-          <span>
-            {title} <strong className="text-nowrap">{numDays} дней</strong>
-          </span>
-        }
-        description={description}
-        icon={FaPeopleArrows}
-      />
-
-      <ResponsiveContainer height={300} className="px-6">
+    <ChartWrapper
+      icon={FaPeopleArrows}
+      title={title}
+      description={description}
+      isLoading={isLoading}
+      numDays={numDays}
+    >
+      {chartData ? (
         <PieChart>
           <Pie
             dataKey="value"
@@ -72,7 +70,9 @@ export const GenderChart = ({ items, numDays, title, description }: LineChartPro
           <Tooltip />
           <Legend iconType="circle" />
         </PieChart>
-      </ResponsiveContainer>
-    </div>
+      ) : (
+        <ChartNotExist />
+      )}
+    </ChartWrapper>
   );
 };

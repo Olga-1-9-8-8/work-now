@@ -27,7 +27,7 @@ export const HomeChartsOverviewCard = ({
           <div className="flex justify-center text-xl font-bold">
             {isLoading ? (
               <LucideLoader2
-                size={35}
+                size={28}
                 className="animate-spin text-center text-primary-extraDark"
               />
             ) : (

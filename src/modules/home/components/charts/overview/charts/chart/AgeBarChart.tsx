@@ -1,34 +1,31 @@
 import { FaPeopleRoof } from "react-icons/fa6";
-import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, Tooltip, XAxis, YAxis } from "recharts";
 import { colors } from "../../../../../../../../tailwind.config";
 import { UniversalItemAnalyticsApiTypeInput } from "../../../../../types/UniversalItemAnalyticsApiTypeInput";
 import { mapItemsToAgeChartData } from "../../../../../utils/mappers/mapItemsToAgeChartData";
-import { LineChartHeader } from "../header/LineChartHeader";
+import { ChartNotExist } from "./blocks/ChartNotExist";
+import { ChartWrapper } from "./blocks/ChartWrapper";
 
 interface LineChartProps {
   title: string;
   description?: string;
-  items: UniversalItemAnalyticsApiTypeInput[];
+  items?: UniversalItemAnalyticsApiTypeInput[];
   numDays: number;
+  isLoading?: boolean;
 }
 
-export const AgeBarChart = ({ items, numDays, title, description }: LineChartProps) => {
-  const chartData = mapItemsToAgeChartData(items);
+export const AgeBarChart = ({ items, numDays, title, description, isLoading }: LineChartProps) => {
+  const chartData = items ? mapItemsToAgeChartData(items) : null;
 
   return (
-    <div className="flex flex-col gap-6 rounded-xl bg-white bg-clip-border shadow-md ">
-      <LineChartHeader
-        title={
-          <span>
-            {title}
-            <strong className="text-nowrap"> {numDays} дней</strong>
-          </span>
-        }
-        description={description}
-        icon={FaPeopleRoof}
-      />
-
-      <ResponsiveContainer height={300} className="px-6">
+    <ChartWrapper
+      icon={FaPeopleRoof}
+      title={title}
+      description={description}
+      isLoading={isLoading}
+      numDays={numDays}
+    >
+      {chartData ? (
         <BarChart data={chartData}>
           <XAxis
             dataKey="title"
@@ -48,7 +45,9 @@ export const AgeBarChart = ({ items, numDays, title, description }: LineChartPro
           />
           <Bar dataKey="value" name="Кол-во" fill={colors.primary.extraDark} unit=" чел." />
         </BarChart>
-      </ResponsiveContainer>
-    </div>
+      ) : (
+        <ChartNotExist />
+      )}
+    </ChartWrapper>
   );
 };

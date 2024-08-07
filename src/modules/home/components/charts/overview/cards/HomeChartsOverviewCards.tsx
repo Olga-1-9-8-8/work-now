@@ -1,5 +1,4 @@
 import { BadgeRussianRuble, FileStack, GraduationCap, Mails } from "lucide-react";
-import { NotFound } from "../../../../../shared/components/not-found";
 import { useLastResumesAnalytics } from "../../../../hooks/useLastResumesAnalytics";
 import { getApplicantsWithHighEducation } from "../../../../utils/getApplicantsWithHighEducation";
 import { getAverageApplicantsQuantity } from "../../../../utils/getAverageApplicantsQuantity";
@@ -9,12 +8,9 @@ import { HomeChartsOverviewCard } from "./card/HomeChartsOverviewCard";
 export const HomeChartsOverviewCards = () => {
   const { lastResumes, isLoading } = useLastResumesAnalytics();
 
-  if (!lastResumes && !isLoading)
-    return <NotFound title="Графики аналитики" description="Попробуйте вернуться позже" />;
-
   const chartCards = [
     {
-      value: lastResumes?.length ?? 0,
+      value: lastResumes ? lastResumes.length : "Нет данных",
       icon: FileStack,
       title: "Всего резюме за этот период",
     },

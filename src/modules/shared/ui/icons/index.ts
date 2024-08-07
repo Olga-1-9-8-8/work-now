@@ -1,3 +1,4 @@
+export { default as AnalyticsIcon } from "./analytics.svg?react";
 export { default as LogoIcon } from "./logo.svg?react";
 export { default as LogoIconSmall } from "./logoSmall.svg?react";
 export { default as NoExistIcon } from "./noExist.svg?react";
