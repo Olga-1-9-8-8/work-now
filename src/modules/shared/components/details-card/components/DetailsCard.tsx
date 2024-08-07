@@ -23,6 +23,7 @@ export const DetailsCard = ({ data, isHiring = false, className }: DetailsCardPr
     education,
     employmentStartDate,
     creationDate,
+    updatedAt,
     phone,
     userName,
     coordinates,
@@ -47,7 +48,9 @@ export const DetailsCard = ({ data, isHiring = false, className }: DetailsCardPr
             isInApplies,
             isInFavorites,
             creationDate,
+            updatedAt,
             applicantsQuantity,
+            isHiring,
           }}
         />
       </DetailsCardHeaderBlock>
@@ -62,7 +65,7 @@ export const DetailsCard = ({ data, isHiring = false, className }: DetailsCardPr
         <DetailsCardContentBlock.DetailsCardContentAbout {...{ about, isHiring }} />
       </DetailsCardContentBlock>
       <DetailsCardFooterBlock>
-        <DetailsCardFooterBlock.DetailsCardFooterSocials {...{ phone }} />
+        <DetailsCardFooterBlock.DetailsCardFooterSocials {...{ phone, isHiring }} />
       </DetailsCardFooterBlock>
     </Card>
   );

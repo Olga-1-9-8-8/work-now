@@ -1,13 +1,7 @@
 import { UniversalItemApiTypeInput } from "../../api";
-import {
-  EducationType,
-  EmploymentType,
-  ScheduleType,
-  UniversalJobType,
-  WeekHoursType,
-} from "../../types";
+import { EducationType, EmploymentType, ScheduleType, WeekHoursType } from "../../types";
 
-export const mapUniversalItem = (item: UniversalItemApiTypeInput): UniversalJobType => {
+export const mapUniversalItem = (item: UniversalItemApiTypeInput) => {
   const {
     creation_date: creationDate,
     applicants_quantity: applicantsQuantity,

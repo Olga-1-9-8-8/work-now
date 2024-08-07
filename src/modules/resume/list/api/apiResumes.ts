@@ -1,13 +1,16 @@
 import { getApply, getAvatar, getFavorite } from "../../../shared/api";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagination";
-import { getFilterValue } from "../../../shared/features/filters/server-side";
+import {
+  FilterType,
+  SortingType,
+  getFilterValue,
+} from "../../../shared/features/filters/server-side";
+
 import { supabase } from "../../../shared/services";
-import { ResumesFilterType } from "../types/ResumesFilterType";
-import { ResumesSortingType } from "../types/ResumesSortingType";
 
 interface GetResumesProps {
-  filters: ResumesFilterType[];
-  sortArr: ResumesSortingType[];
+  filters: FilterType[];
+  sortArr: SortingType[];
   page: number;
 }
 

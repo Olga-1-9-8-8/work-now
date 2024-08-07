@@ -1,7 +1,7 @@
-import { ResumesFilterType } from "../../../../../resume/list/types/ResumesFilterType";
-import { ResumesSortingType } from "../../../../../resume/list/types/ResumesSortingType";
 import { useUrl } from "../../../../hooks";
 import { getDateFromUrlString } from "../../../../utils/helpers";
+import { FilterType } from "../types/FilterType";
+import { SortingType } from "../types/SortingType";
 
 export const useFiltersParams = () => {
   const operatorsSupabase = {
@@ -17,8 +17,8 @@ export const useFiltersParams = () => {
   const { getParam, getAllParams } = useUrl();
 
   const params: {
-    filters: ResumesFilterType[];
-    sortArr: ResumesSortingType[];
+    filters: FilterType[];
+    sortArr: SortingType[];
     page: number;
   } = {
     page: 1,

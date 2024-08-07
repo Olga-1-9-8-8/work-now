@@ -1,7 +1,10 @@
 import { Building } from "lucide-react";
 import { GenderType } from "../../../../../../../types";
 import { TypographyH2 } from "../../../../../../../ui/typography/TypographyH2";
-import { capitalizeFirstLetter } from "../../../../../../../utils/helpers";
+import {
+  capitalizeFirstLetter,
+  getRightNounYearDeclension,
+} from "../../../../../../../utils/helpers";
 import { Avatar } from "../../../../../../avatar";
 import { CardTitleWithTooltip } from "../../../../../../card";
 import { MapBadge } from "../../../../../../map";
@@ -43,7 +46,15 @@ export const DetailsCardHeaderTitle = ({
           src={avatar}
           userName={userName}
         />
-        <CardTitleWithTooltip title={userName ?? "Аноним"} />
+        <div className="flex flex-col ">
+          <CardTitleWithTooltip title={userName ?? "Аноним"} />
+          {isHiring && (
+            <p className="text-sm font-medium text-muted-foreground">
+              {getRightNounYearDeclension(String(age))} на рынке
+            </p>
+          )}
+        </div>
+
         <DetailsCardHeaderTitleViews views={views} />
       </div>
       <div className="flex flex-col gap-2">
@@ -51,7 +62,11 @@ export const DetailsCardHeaderTitle = ({
 
         <div className="flex items-center gap-4 text-muted-foreground">
           {city && <MapBadge city={city} coordinates={coordinates} />}
-          <DetailsCardHeaderTitlePersonalData gender={gender} age={age} />
+          <DetailsCardHeaderTitlePersonalData
+            gender={gender}
+            age={isHiring ? undefined : age}
+            isHiring={isHiring}
+          />
         </div>
       </div>
     </div>

@@ -14,7 +14,9 @@ const ResumesListPage = () => {
     <SearchList
       total={totalCount}
       title="резюме"
-      button={<CreateButton title="новое резюме" onClick={() => navigate(`/resumes/creation`)} />}
+      button={
+        <CreateButton title="Создать новое резюме" onClick={() => navigate(`/resumes/creation`)} />
+      }
     >
       {isLoading ? <Spinner /> : <ResumesList resumes={resumes} totalCount={totalCount} />}
     </SearchList>

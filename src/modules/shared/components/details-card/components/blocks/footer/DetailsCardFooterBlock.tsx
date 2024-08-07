@@ -8,18 +8,23 @@ import { CardSocialsButtons } from "../../../../card";
 
 interface DetailsCardFooterSocialsProps {
   phone?: string;
+  isHiring?: boolean;
 }
 
-const DetailsCardFooterSocials = ({ phone }: DetailsCardFooterSocialsProps) => {
+const DetailsCardFooterSocials = ({ phone, isHiring }: DetailsCardFooterSocialsProps) => {
   const { isAuthenticated, role } = useUser();
+
+  const canShow = isAuthenticated && role === (isHiring ? UserEntity.Person : UserEntity.Company);
+
   return (
     <>
       <TypographyH4 className="py-3">Способы связи:</TypographyH4>
-      {role === UserEntity.Company && isAuthenticated ? (
+      {canShow ? (
         <CardSocialsButtons phone={phone} />
       ) : (
         <Badge className="hover:bg-warning" variant="warning" shape="square">
-          Войдите под аккаунтом компании, чтобы посмотреть контакты и откликнутся на резюме
+          Войдите под аккаунтом {isHiring ? "кандидата " : "компании"}, чтобы посмотреть контакты и
+          откликнутся на {isHiring ? "вакансию" : "резюме"}
         </Badge>
       )}
     </>

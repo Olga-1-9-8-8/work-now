@@ -1,4 +1,4 @@
-export interface ResumesSortingType {
+export interface SortingType {
   column: string;
   direction: "asc" | "desc";
 }

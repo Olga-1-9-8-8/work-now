@@ -1,10 +1,10 @@
 import { NotFound } from "../../../shared/components/not-found";
 import { Pagination } from "../../../shared/components/pagination/components/Pagination";
-import { VacanciesListType } from "../types/VacanciesListType";
+import { UniversalCardItemType } from "../../../shared/types";
 import { VacanciesListItem } from "./item/VacanciesListItem";
 
 interface VacanciesListProps {
-  vacancies: VacanciesListType;
+  vacancies?: UniversalCardItemType[];
   totalCount?: number;
 }
 

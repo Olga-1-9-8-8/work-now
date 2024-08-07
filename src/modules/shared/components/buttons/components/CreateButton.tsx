@@ -9,8 +9,8 @@ interface CreateButtonProps {
 export const CreateButton = ({ title, disabled, onClick }: CreateButtonProps) => {
   return (
     <Button className="w-full md:w-auto" disabled={disabled} onClick={onClick} variant="success">
-      <Plus className="} mr-3 stroke-white group-hover:fill-destructive" />
-      Создать {title}
+      <Plus className="mr-3 stroke-white group-hover:fill-destructive" />
+      {title}
     </Button>
   );
 };
