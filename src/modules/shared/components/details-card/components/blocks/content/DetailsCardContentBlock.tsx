@@ -25,7 +25,7 @@ const DetailsCardContentEducation = ({ education, isHiring }: DetailsCardContent
   return (
     <div className="flex flex-col gap-4">
       <TypographyH4>{isHiring ? "Требуемое" : "Мое"} образование:</TypographyH4>
-      <Badge className="flex w-fit gap-1 text-nowrap" shape="square">
+      <Badge variant="secondary" className="flex w-fit gap-1 text-nowrap" shape="square">
         <GraduationCap size={17} />
         <span>
           <span>{getEducationTitle(education)}</span>
@@ -37,33 +37,42 @@ const DetailsCardContentEducation = ({ education, isHiring }: DetailsCardContent
 
 interface DetailsCardContentSalaryProps {
   salary?: number[];
+}
+
+const DetailsCardContentSalary = ({ salary }: DetailsCardContentSalaryProps) => {
+  return (
+    <div className="flex flex-col gap-4">
+      <div>
+        <Card className="rounded-md bg-secondary p-4">
+          <TypographyH4>Диапазон оплаты труда</TypographyH4>
+          <TypographyH5 className="text-success"> {getSalaryTitle(salary)}</TypographyH5>
+        </Card>
+      </div>
+    </div>
+  );
+};
+
+interface DetailsCardContentEmploymentProps {
   employment?: EmploymentType[] | string;
 }
 
-const DetailsCardContentSalary = ({ salary, employment }: DetailsCardContentSalaryProps) => {
+const DetailsCardContentEmployment = ({ employment }: DetailsCardContentEmploymentProps) => {
   return (
     <div>
-      <TypographyH4>Диапазон оплаты труда</TypographyH4>
-      <Card className="rounded-md bg-secondary p-4">
-        <TypographyH5 className="text-success">Зарплата {getSalaryTitle(salary)}</TypographyH5>
-        <ul className="mt-4 flex flex-wrap gap-4">
-          {getBadgesTitle(employment).map((badge, index) => {
-            const { badgeTitle } = getBadgeDataByEmploymentType(badge?.title);
-            return (
-              // eslint-disable-next-line react/no-array-index-key
-              <li key={index}>
-                <Badge
-                  className="flex gap-1 text-nowrap bg-white text-muted-foreground"
-                  variant="outline"
-                  shape="square"
-                >
-                  <span>{badgeTitle || badge?.title}</span>
-                </Badge>
-              </li>
-            );
-          })}
-        </ul>
-      </Card>
+      <TypographyH4>Тип работы</TypographyH4>
+      <ul className="mt-4 flex flex-wrap gap-4">
+        {getBadgesTitle(employment).map((badge, index) => {
+          const { badgeTitle } = getBadgeDataByEmploymentType(badge?.title);
+          return (
+            // eslint-disable-next-line react/no-array-index-key
+            <li key={index}>
+              <Badge className="flex gap-1 text-nowrap bg-white" variant="outline" shape="square">
+                <span>{badgeTitle || badge?.title}</span>
+              </Badge>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };
@@ -87,7 +96,7 @@ const DetailsCardContentSchedule = ({
           return (
             // eslint-disable-next-line react/no-array-index-key
             <li key={index}>
-              <Badge className="flex gap-1 text-nowrap" variant="success" shape="square">
+              <Badge className="flex gap-1 text-nowrap" variant="outline" shape="square">
                 <span>{badgeTitle || badge?.title}</span>
               </Badge>
             </li>
@@ -95,7 +104,7 @@ const DetailsCardContentSchedule = ({
         })}
       </ul>
 
-      <div className="flex items-baseline gap-2">
+      <div className="flex items-baseline gap-2 pt-4">
         <TypographyH6 className="text-muted-foreground">Дата начала работы : </TypographyH6>
         <Badge className="flex gap-1 text-nowrap" variant="destructive" shape="square">
           <span>
@@ -134,5 +143,6 @@ export const DetailsCardContentBlock = ({ children }: DetailsCardHeaderBlockProp
 
 DetailsCardContentBlock.DetailsCardContentEducation = DetailsCardContentEducation;
 DetailsCardContentBlock.DetailsCardContentSalary = DetailsCardContentSalary;
+DetailsCardContentBlock.DetailsCardContentEmployment = DetailsCardContentEmployment;
 DetailsCardContentBlock.DetailsCardContentSchedule = DetailsCardContentSchedule;
 DetailsCardContentBlock.DetailsCardContentAbout = DetailsCardContentAbout;

@@ -18,6 +18,7 @@ export const LkVacanciesCard = ({ vacancy }: LkVacanciesCardProps) => {
       isItemDeleting={isDeletingVacancy}
       onCreateItem={createVacancy}
       isItemDuplicating={isCreatingVacancy}
+      isHiring
     >
       <VacancyCreationForm vacancy={vacancy} userId={vacancy.userId} />
     </LkItemCard>

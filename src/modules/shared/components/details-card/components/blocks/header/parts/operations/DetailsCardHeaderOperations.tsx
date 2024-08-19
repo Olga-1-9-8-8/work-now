@@ -63,7 +63,7 @@ export const DetailsCardHeaderOperations = ({
         <ClipboardCheck size={20} className="stroke-success" />
         {getApplicantsQuantityText()}
       </p>
-      <div className="flex gap-4 md:flex-col md:gap-2">
+      <div className="flex flex-wrap gap-4 md:flex-col md:gap-2">
         <CardDescription className="mt-2 flex gap-1 font-semibold text-muted-foreground opacity-85">
           <FilePlus2 size={20} className="stroke-success" />
           Создано {formattedTimeString(creationDate)}

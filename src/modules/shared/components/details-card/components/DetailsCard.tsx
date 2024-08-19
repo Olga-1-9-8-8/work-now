@@ -56,8 +56,9 @@ export const DetailsCard = ({ data, isHiring = false, className }: DetailsCardPr
       </DetailsCardHeaderBlock>
       <Separator />
       <DetailsCardContentBlock>
+        <DetailsCardContentBlock.DetailsCardContentSalary {...{ salary }} />
         <DetailsCardContentBlock.DetailsCardContentEducation {...{ education, isHiring }} />
-        <DetailsCardContentBlock.DetailsCardContentSalary {...{ salary, employment }} />
+        <DetailsCardContentBlock.DetailsCardContentEmployment {...{ employment }} />
         <DetailsCardContentBlock.DetailsCardContentSchedule
           {...{ schedule, employmentStartDate }}
         />

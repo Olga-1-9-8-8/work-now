@@ -8,13 +8,13 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
 } from "../../../../../shared/ui/nav-menu/NavigationMenu";
-import { useProfileTotalCounts } from "../../../hooks/useProfileTotalCounts";
+import { useLkCountsContext } from "../../../context/LkCountsProvider";
+import { getTotalCount } from "../../../utils/getTotalCount";
 
 export const LkLayoutNav = () => {
   const isMobile = useResponsiveContext();
   const { role } = useAuthContext();
-
-  const { getTotalCount } = useProfileTotalCounts();
+  const totalCounts = useLkCountsContext();
 
   return (
     <div className="flex justify-center">
@@ -22,6 +22,7 @@ export const LkLayoutNav = () => {
         <NavigationMenuList>
           {lkNavConfig.map((i, index) => {
             if (i.role !== role && i.role !== UserEntity.All) return null;
+
             return (
               // eslint-disable-next-line react/no-array-index-key
               <NavigationMenuItem key={index}>
@@ -30,7 +31,7 @@ export const LkLayoutNav = () => {
                   to={i.href}
                   title={isMobile ? undefined : i.title}
                   icon={i.icon}
-                  totalCount={getTotalCount(i.value)}
+                  totalCount={getTotalCount(i.value, totalCounts)}
                 />
               </NavigationMenuItem>
             );

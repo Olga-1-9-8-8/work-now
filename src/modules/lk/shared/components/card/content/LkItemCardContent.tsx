@@ -1,29 +1,37 @@
-import { Eye, Mail } from "lucide-react";
-import { CardItemInsight } from "../../../../../shared/components/card";
-import { getRightNounWordDeclension } from "../../../../../shared/utils/helpers";
+import { EyeIcon, Mail } from "lucide-react";
+import { getModalTitle } from "../../../utils/getModalTitle";
+import { LkItemCardContentItem } from "./item/LkItemCardContentItem";
+import { LkItemCardContentItemModal } from "./item/LkItemCardContentItemModal";
 
 interface LkItemCardContentProps {
+  isHiring?: boolean;
   views?: number;
   applicantsQuantity?: number;
 }
 
-export const LkItemCardContent = ({ views, applicantsQuantity }: LkItemCardContentProps) => {
+export const LkItemCardContent = ({
+  views,
+  applicantsQuantity,
+  isHiring,
+}: LkItemCardContentProps) => {
   return (
     <div className="flex gap-4">
-      <CardItemInsight
-        icon={Eye}
-        title={
-          views ? getRightNounWordDeclension(views, "просмотр", ["", "а", "ов"]) : "Нет просмотров"
-        }
-      />
-      <CardItemInsight
+      <LkItemCardContentItem
+        icon={EyeIcon}
+        title="просмотр"
+        count={views}
+        modalTitle={getModalTitle("просмотревших", isHiring)}
+      >
+        <LkItemCardContentItemModal />
+      </LkItemCardContentItem>
+      <LkItemCardContentItem
         icon={Mail}
-        title={
-          applicantsQuantity
-            ? getRightNounWordDeclension(applicantsQuantity, "отклик", ["", "а", "ов"])
-            : "Нет откликов"
-        }
-      />
+        count={applicantsQuantity}
+        title="отклик"
+        modalTitle={getModalTitle("откликнувшихся на", isHiring)}
+      >
+        <LkItemCardContentItemModal />
+      </LkItemCardContentItem>
     </div>
   );
 };

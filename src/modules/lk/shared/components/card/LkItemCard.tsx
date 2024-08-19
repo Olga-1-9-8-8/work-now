@@ -7,6 +7,7 @@ import { LkItemCardFooter } from "./footer/LkItemCardFooter";
 import { LkItemCardHeader } from "./header/LkItemCardHeader";
 
 interface LkItemCardProps {
+  isHiring?: boolean;
   item: UniversalJobType;
   onCreateItem: (item: Omit<UniversalItemApiTypeInput, "id"> & { id?: number }) => void;
   isItemDuplicating: boolean;
@@ -21,6 +22,7 @@ export const LkItemCard = ({
   onDeleteItem,
   isItemDuplicating,
   isItemDeleting,
+  isHiring,
   children,
 }: LkItemCardProps) => {
   const handleDuplicateItem = () => {
@@ -44,7 +46,11 @@ export const LkItemCard = ({
           updatedDate={item.updatedAt}
           id={item.id}
         />
-        <LkItemCardContent views={item.views} applicantsQuantity={item.applicantsQuantity} />
+        <LkItemCardContent
+          views={item.views}
+          applicantsQuantity={item.applicantsQuantity}
+          isHiring={isHiring}
+        />
       </div>
 
       <LkItemCardFooter

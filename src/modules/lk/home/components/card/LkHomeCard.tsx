@@ -16,10 +16,9 @@ interface LkHomeCardProps {
 
 export const LkHomeCard = ({ item, description, className }: LkHomeCardProps) => {
   const navigate = useNavigate();
-
   const { logout, isLogoutPending } = useLogout();
-
   const isMobile = useResponsiveContext();
+
   const LinkIcon = item.linkIcon;
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -45,7 +44,7 @@ export const LkHomeCard = ({ item, description, className }: LkHomeCardProps) =>
         <TypographyH2 className="text-primary-extraDark">{item.title}</TypographyH2>
       </CardHeader>
       {description && !item.isExit && (
-        <CardContent className="flex font-medium text-muted-foreground">{description}</CardContent>
+        <CardContent className="flex font-medium text-success">{description}</CardContent>
       )}
       <CardFooter className="flex sm:justify-end">
         <Button

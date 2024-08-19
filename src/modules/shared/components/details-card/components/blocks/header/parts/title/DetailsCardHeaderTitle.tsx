@@ -14,7 +14,7 @@ import { DetailsCardHeaderTitleViews } from "./items/DetailsCardHeaderTitleViews
 interface DetailsCardHeaderTitleProps {
   userName?: string;
   avatar?: string;
-  views?: number;
+  views: number;
   isHiring?: boolean;
   position: string;
   city?: string;
@@ -54,11 +54,12 @@ export const DetailsCardHeaderTitle = ({
             </p>
           )}
         </div>
-
-        <DetailsCardHeaderTitleViews views={views} />
       </div>
       <div className="flex flex-col gap-2">
-        <TypographyH2>{capitalizeFirstLetter(position)}</TypographyH2>
+        <div>
+          <TypographyH2>{capitalizeFirstLetter(position)}</TypographyH2>
+          <DetailsCardHeaderTitleViews views={views} isHiring={isHiring} />
+        </div>
 
         <div className="flex items-center gap-4 text-muted-foreground">
           {city && <MapBadge city={city} coordinates={coordinates} />}

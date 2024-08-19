@@ -29,7 +29,7 @@ export interface UniversalJobType {
   about?: string;
   education?: EducationType | string;
   employmentStartDate?: Date;
-  views?: number;
+  views: number;
   coordinates?: {
     lat: string;
     lng: string;
