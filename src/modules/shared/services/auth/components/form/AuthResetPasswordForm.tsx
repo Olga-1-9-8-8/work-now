@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import { UseFormReset } from "react-hook-form";
 import { TypographyH6 } from "../../../../ui/typography/TypographyH6";
 import { useResetPassword } from "../../hooks/useResetPassword";
-import { ResetPasswordFormType } from "../../types/ResetPasswordFormType";
+import { ResetPasswordFormType } from "../../types/form/ResetPasswordFormType";
 import { authResetPasswordFormValidationSchema } from "../../validation/authResetPasswordFormValidationSchema";
 import { AuthFormWrapper } from "./AuthFormWrapper";
 import { AuthEmailField } from "./item/AuthEmailField";

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { subDays } from "date-fns";
+import { useMemo } from "react";
 import { useUrl } from "../../shared/hooks";
 import { getResumesAnalyticsAfterDate } from "../api/apiResumesAnalytics";
 import { DEFAULT_LAST_DAYS } from "../const";
@@ -18,10 +19,13 @@ export const useLastResumesAnalytics = () => {
     queryKey: ["resumes", `last-${numDays}`],
   });
 
-  return {
-    isLoading,
-    error,
-    lastResumes,
-    numDays,
-  };
+  return useMemo(
+    () => ({
+      isLoading,
+      error,
+      lastResumes,
+      numDays,
+    }),
+    [isLoading, error, lastResumes, numDays],
+  );
 };

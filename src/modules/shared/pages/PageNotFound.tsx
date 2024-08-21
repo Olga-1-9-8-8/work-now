@@ -1,7 +1,7 @@
 import { NotFound } from "../ui/icons";
 import { TypographyH5 } from "../ui/typography/TypographyH5";
 
-const PageNotFound = () => {
+export const PageNotFound = () => {
   return (
     <div className="flex flex-col items-center gap-6 p-6">
       <NotFound className="h-80 w-80" />
@@ -9,6 +9,3 @@ const PageNotFound = () => {
     </div>
   );
 };
-
-// eslint-disable-next-line import/no-default-export
-export default PageNotFound;

@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { UserEntity } from "../../../types";
 import { getUser } from "../api/apiAuth";
 
 export const useUser = () => {
@@ -16,6 +17,6 @@ export const useUser = () => {
     isUserLoading,
     error,
     isAuthenticated: user?.role === "authenticated",
-    role: user?.user_metadata?.role,
+    role: user?.user_metadata?.role as UserEntity,
   };
 };

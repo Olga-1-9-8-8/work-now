@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { FaPeopleArrows } from "react-icons/fa6";
 import { Cell, Legend, Pie, PieChart, Tooltip } from "recharts";
 import { PieSectorDataItem } from "recharts/types/polar/Pie";
@@ -18,7 +19,10 @@ interface LineChartProps {
 }
 
 export const GenderChart = ({ items, numDays, title, description, isLoading }: LineChartProps) => {
-  const chartData = items ? mapItemsToGenderChartData(items) : null;
+  const chartData = useMemo(() => {
+    if (!items || items.length === 0) return null;
+    return mapItemsToGenderChartData(items);
+  }, [items]);
 
   const renderCustomizedLabel = ({
     cx,

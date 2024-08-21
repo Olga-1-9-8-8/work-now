@@ -12,10 +12,11 @@ import { DetailsCardHeaderTitlePersonalData } from "./items/DetailsCardHeaderTit
 import { DetailsCardHeaderTitleViews } from "./items/DetailsCardHeaderTitleViews";
 
 interface DetailsCardHeaderTitleProps {
+  id: number;
   userName?: string;
   avatar?: string;
   views: number;
-  isHiring?: boolean;
+  isHiring: boolean;
   position: string;
   city?: string;
   coordinates?: {
@@ -27,6 +28,7 @@ interface DetailsCardHeaderTitleProps {
 }
 
 export const DetailsCardHeaderTitle = ({
+  id,
   userName,
   avatar,
   views,
@@ -58,7 +60,7 @@ export const DetailsCardHeaderTitle = ({
       <div className="flex flex-col gap-2">
         <div>
           <TypographyH2>{capitalizeFirstLetter(position)}</TypographyH2>
-          <DetailsCardHeaderTitleViews views={views} isHiring={isHiring} />
+          <DetailsCardHeaderTitleViews views={views} isHiring={isHiring} id={id} />
         </div>
 
         <div className="flex items-center gap-4 text-muted-foreground">

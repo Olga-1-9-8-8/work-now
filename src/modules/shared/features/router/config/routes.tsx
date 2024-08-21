@@ -1,5 +1,6 @@
-import { Suspense, lazy } from "react";
+import { lazy } from "react";
 import { Navigate, RouteObject } from "react-router-dom";
+import { HomePage } from "../../../../home/pages/HomePage";
 import { LkApplicationsPage } from "../../../../lk/applications";
 import { LkDetailsPage } from "../../../../lk/details";
 import { LkFavoritesPage } from "../../../../lk/favorites";
@@ -7,33 +8,27 @@ import { LkHomePage } from "../../../../lk/home";
 import { LkResumesPage } from "../../../../lk/resumes";
 import { LkLayout } from "../../../../lk/shared/ui";
 import { LkVacanciesPage } from "../../../../lk/vanancies";
-import { ResumeCreationPage } from "../../../../resume/creation";
-import { ResumeDetailsPage } from "../../../../resume/details";
-import { VacancyCreationPage } from "../../../../vacancy/creation";
-import { VacancyDetailsPage } from "../../../../vacancy/details";
+import { PageNotFound } from "../../../pages";
 import { AuthLayout } from "../../../services";
 import { AppLayout } from "../../../ui/layout";
-import { Spinner } from "../../../ui/spinner/Spinner";
 import { ProtectedRoute } from "../components/ProtectedRoute";
 
-const HomePage = lazy(() => import("../../../../home"));
-const AuthLoginPage = lazy(() => import("../../../services"));
+const ResumesListPage = lazy(() => import("../../../../resume/list"));
+const ResumeCreationPage = lazy(() => import("../../../../resume/creation"));
+const ResumeDetailsPage = lazy(() => import("../../../../resume/details"));
+const VacanciesListPage = lazy(() => import("../../../../vacancy/list"));
+const VacancyCreationPage = lazy(() => import("../../../../vacancy/creation"));
+const VacancyDetailsPage = lazy(() => import("../../../../vacancy/details"));
+const AuthLoginPage = lazy(() => import("../../../services/auth/pages/AuthPage"));
 const AuthResetPage = lazy(() => import("../../../services/auth/pages/AuthResetPage"));
 const AuthUpdatePasswordPage = lazy(
   () => import("../../../services/auth/pages/AuthUpdatePasswordPage"),
 );
-const VacanciesListPage = lazy(() => import("../../../../vacancy/list"));
-const ResumesListPage = lazy(() => import("../../../../resume/list"));
-const PageNotFound = lazy(() => import("../../../pages"));
 
 export const routes: RouteObject[] = [
   {
     path: "/",
-    element: (
-      <Suspense fallback={<Spinner />}>
-        <AppLayout />
-      </Suspense>
-    ),
+    element: <AppLayout />,
     children: [
       {
         index: true,
@@ -42,38 +37,34 @@ export const routes: RouteObject[] = [
       {
         path: "/home",
         element: <HomePage />,
-        children: [],
-      },
-      {
-        element: <VacanciesListPage />,
-        path: "vacancies",
-        children: [],
       },
       {
         element: <ResumesListPage />,
         path: "resumes",
-        children: [],
       },
       {
         path: "resumes/:id",
         element: <ResumeDetailsPage />,
-        children: [],
       },
       {
         path: "resumes/creation",
         element: <ResumeCreationPage />,
+      },
+      {
+        element: <VacanciesListPage />,
+        path: "vacancies",
+      },
+      {
+        // TODO: Интегрировать с "vacancies/:companyCode/:id"
+        path: "vacancies/:id",
+        element: <VacancyDetailsPage />,
         children: [],
       },
       {
         path: "vacancies/creation",
         element: <VacancyCreationPage />,
-        children: [],
       },
-      {
-        path: "vacancies/:companyCode/:id",
-        element: <VacancyDetailsPage />,
-        children: [],
-      },
+
       {
         path: "/login",
         element: <AuthLayout />,
@@ -85,12 +76,10 @@ export const routes: RouteObject[] = [
           {
             path: "reset",
             element: <AuthResetPage />,
-            children: [],
           },
           {
             path: "update",
             element: <AuthUpdatePasswordPage />,
-            children: [],
           },
         ],
       },
@@ -133,6 +122,5 @@ export const routes: RouteObject[] = [
   {
     path: "*",
     element: <PageNotFound />,
-    children: [],
   },
 ];

@@ -6,17 +6,13 @@ import { SearchCardDetailsBlock } from "./block/SearchCardDetailsBlock";
 import { SearchCardOperationsFooterBlock } from "./block/footer/SearchCardOperationsFooterBlock";
 import { SearchCardHeaderBlock } from "./block/header/SearchCardHeaderBlock";
 
-interface SearchCardProps<T extends number | string> {
+interface SearchCardProps {
   data: UniversalCardItemType;
-  onClick: (id: T, companyCode?: string) => void;
+  onClick: () => void;
   isHiring?: boolean;
 }
 
-export const SearchCard = <T extends number | string>({
-  data,
-  onClick,
-  isHiring = false,
-}: SearchCardProps<T>) => {
+export const SearchCard = ({ data, onClick, isHiring = false }: SearchCardProps) => {
   const {
     position,
     about,
@@ -25,7 +21,6 @@ export const SearchCard = <T extends number | string>({
     city,
     schedule,
     id,
-    companyCode,
     education,
     employmentStartDate,
     creationDate,
@@ -42,7 +37,7 @@ export const SearchCard = <T extends number | string>({
   } = data;
 
   return (
-    <Card variant="clickable" onClick={() => onClick(id as T, companyCode)}>
+    <Card variant="clickable" onClick={onClick}>
       <SearchCardHeaderBlock>
         <div className="flex flex-col justify-between gap-4 xl:flex-row">
           <div className="flex flex-col gap-2">

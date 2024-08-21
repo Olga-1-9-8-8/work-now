@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { UniversalCardItemType } from "../../../types";
 import { Card } from "../../../ui/card/Card";
 import { Separator } from "../../../ui/separator/Separator";
@@ -11,7 +12,7 @@ interface DetailsCardProps {
   className?: string;
 }
 
-export const DetailsCard = ({ data, isHiring = false, className }: DetailsCardProps) => {
+export const DetailsCard = memo(({ data, isHiring = false, className }: DetailsCardProps) => {
   const {
     id,
     position,
@@ -40,7 +41,7 @@ export const DetailsCard = ({ data, isHiring = false, className }: DetailsCardPr
     <Card className={className}>
       <DetailsCardHeaderBlock>
         <DetailsCardHeaderBlock.DetailsCardHeaderTitle
-          {...{ userName, avatar, views, isHiring, position, city, coordinates, age, gender }}
+          {...{ userName, avatar, views, isHiring, position, city, coordinates, age, gender, id }}
         />
         <DetailsCardHeaderBlock.DetailsCardHeaderOperations
           {...{
@@ -70,4 +71,4 @@ export const DetailsCard = ({ data, isHiring = false, className }: DetailsCardPr
       </DetailsCardFooterBlock>
     </Card>
   );
-};
+});

@@ -4,7 +4,7 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
 } from "../../../../ui/nav-menu/NavigationMenu";
-import { LanguagesSwitcherButton } from "../../../../widgets/languages-switcher/components/LanguagesSwitcherButton";
+import { LanguagesSwitcherButton } from "../../../../widgets/languages-switcher";
 import { HeaderNavListItemDesktop } from "./item/HeaderNavListItem.desktop";
 
 interface HeaderNavListDesktopProps {

@@ -12,7 +12,7 @@ import {
 import { PageContainer } from "../../../shared/ui/layout";
 import { VacancyCreationForm } from "../components/VacancyCreationForm";
 
-export const VacancyCreationPage = () => {
+const VacancyCreationPage = () => {
   const { user } = useAuthContext();
 
   const navigate = useNavigate();
@@ -41,3 +41,6 @@ export const VacancyCreationPage = () => {
     </PageContainer>
   );
 };
+
+// eslint-disable-next-line import/no-default-export
+export default VacancyCreationPage;

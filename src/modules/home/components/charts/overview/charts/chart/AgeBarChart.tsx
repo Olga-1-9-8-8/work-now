@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { FaPeopleRoof } from "react-icons/fa6";
 import { Bar, BarChart, Tooltip, XAxis, YAxis } from "recharts";
 import { colors } from "../../../../../../../../tailwind.config";
@@ -15,7 +16,10 @@ interface LineChartProps {
 }
 
 export const AgeBarChart = ({ items, numDays, title, description, isLoading }: LineChartProps) => {
-  const chartData = items ? mapItemsToAgeChartData(items) : null;
+  const chartData = useMemo(() => {
+    if (!items || items.length === 0) return null;
+    return mapItemsToAgeChartData(items);
+  }, [items]);
 
   return (
     <ChartWrapper

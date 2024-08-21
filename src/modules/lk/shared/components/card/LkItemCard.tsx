@@ -22,7 +22,7 @@ export const LkItemCard = ({
   onDeleteItem,
   isItemDuplicating,
   isItemDeleting,
-  isHiring,
+  isHiring = false,
   children,
 }: LkItemCardProps) => {
   const handleDuplicateItem = () => {
@@ -47,6 +47,7 @@ export const LkItemCard = ({
           id={item.id}
         />
         <LkItemCardContent
+          id={item.id}
           views={item.views}
           applicantsQuantity={item.applicantsQuantity}
           isHiring={isHiring}

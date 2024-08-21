@@ -1,6 +1,6 @@
 import { VariantProps } from "class-variance-authority";
 import { Globe } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { memo } from "react";
 import { InternationalizationConfig } from "../../../configs/internationalization/InternationalizationConfig";
 import { Button, buttonVariants } from "../../../ui/buttons/Button";
 import {
@@ -10,21 +10,14 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "../../../ui/dropdown-menu/DropdownMenu";
+import { useLanguageSwitcher } from "../hooks/useLanguageSwitcher";
 
 interface LanguagesSwitcherButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {}
 
-export const LanguagesSwitcherButton = ({ ...props }: LanguagesSwitcherButtonProps) => {
-  const {
-    t,
-    i18n: { changeLanguage, language },
-  } = useTranslation("header");
-
-  const handleChange = (value: string) => {
-    changeLanguage(value);
-  };
-
+export const LanguagesSwitcherButton = memo(({ ...props }: LanguagesSwitcherButtonProps) => {
+  const { t, changeLanguage, language } = useLanguageSwitcher();
   return (
     <div>
       <DropdownMenu>
@@ -34,7 +27,7 @@ export const LanguagesSwitcherButton = ({ ...props }: LanguagesSwitcherButtonPro
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
-          <DropdownMenuRadioGroup value={language} onValueChange={handleChange}>
+          <DropdownMenuRadioGroup value={language} onValueChange={changeLanguage}>
             {InternationalizationConfig.map((item) => (
               <DropdownMenuRadioItem className="text-base" key={item.value} value={item.value}>
                 {t(item.title)}
@@ -45,4 +38,4 @@ export const LanguagesSwitcherButton = ({ ...props }: LanguagesSwitcherButtonPro
       </DropdownMenu>
     </div>
   );
-};
+});

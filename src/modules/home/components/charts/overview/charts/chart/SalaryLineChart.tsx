@@ -1,4 +1,5 @@
 import { BadgeRussianRuble } from "lucide-react";
+import { useMemo } from "react";
 import { Area, AreaChart, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts";
 import { colors } from "../../../../../../../../tailwind.config";
 import { homeChartSalaryConfig } from "../../../../../../shared/configs";
@@ -22,7 +23,10 @@ export const SalaryLineChart = ({
   description,
   isLoading,
 }: LineChartProps) => {
-  const chartData = items ? mapItemsToSalaryLineChartData(items, numDays) : null;
+  const chartData = useMemo(() => {
+    if (!items || items.length === 0) return null;
+    return mapItemsToSalaryLineChartData(items, numDays);
+  }, [items, numDays]);
 
   return (
     <ChartWrapper

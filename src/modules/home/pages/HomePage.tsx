@@ -9,7 +9,7 @@ interface HomeCardProps {
   Component: React.ReactNode;
 }
 
-const HomePage = () => {
+export const HomePage = () => {
   const cards: HomeCardProps[] = [
     { color: "secondary", Component: <HomeInfo /> },
     { color: "background", Component: <HomeSearchBar /> },
@@ -28,6 +28,3 @@ const HomePage = () => {
     </>
   );
 };
-
-// eslint-disable-next-line import/no-default-export
-export default HomePage;

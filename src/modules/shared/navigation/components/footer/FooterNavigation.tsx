@@ -4,8 +4,8 @@ import { FooterNavigationList } from "./list/FooterNavigationList";
 
 export const FooterNavigation = () => {
   return (
-    <div className="flex items-center">
-      <div className="flex grow  flex-row items-center gap-10 px-8 sm:gap-0 md:gap-2 md:px-0">
+    <div className="flex items-center justify-between pr-4 xl:pr-0">
+      <div className="flex items-center gap-4">
         <Logo isShort />
         <FooterNavigationList />
       </div>

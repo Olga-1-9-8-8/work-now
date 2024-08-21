@@ -13,7 +13,7 @@ import {
 import { PageContainer } from "../../../shared/ui/layout";
 import { ResumeCreationForm } from "../components/ResumeCreationForm";
 
-export const ResumeCreationPage = () => {
+const ResumeCreationPage = () => {
   const { user } = useAuthContext();
 
   const navigate = useNavigate();
@@ -43,3 +43,6 @@ export const ResumeCreationPage = () => {
     </PageContainer>
   );
 };
+
+// eslint-disable-next-line import/no-default-export
+export default ResumeCreationPage;

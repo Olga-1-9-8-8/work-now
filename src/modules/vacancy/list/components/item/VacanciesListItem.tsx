@@ -1,16 +1,18 @@
+import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { SearchCard } from "../../../../shared/components/search-card";
-import { VacancyItem } from "../../../shared/types";
+import { UniversalCardItemType } from "../../../../shared/types";
 
 interface VacanciesListItemProps {
-  vacancy: VacancyItem;
+  vacancy: UniversalCardItemType;
 }
 
 export const VacanciesListItem = ({ vacancy }: VacanciesListItemProps) => {
   const navigate = useNavigate();
-  const handleCardClick = (id: string, companyCode?: string) => {
-    navigate(`/vacancies/${companyCode}/${id}`);
-  };
+  const handleCardClick = useCallback(() => {
+    // TODO:  Интегрировать с `/vacancies/${companyCode}/${id}`
+    navigate(`/vacancies/${vacancy.id}`);
+  }, [navigate, vacancy.id]);
 
   return <SearchCard isHiring data={vacancy} onClick={handleCardClick} />;
 };

@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import { BackButton } from "../../../shared/components/buttons";
 import { DetailsCard } from "../../../shared/components/details-card";
 import { NotExist } from "../../../shared/components/not-found";
@@ -7,10 +6,7 @@ import { Spinner } from "../../../shared/ui/spinner/Spinner";
 import { useResume } from "../hooks/useResume";
 
 export const ResumeDetails = () => {
-  const { id } = useParams();
-
-  const { resume, isLoading } = useResume(Number(id));
-
+  const { resume, isLoading } = useResume();
   if (isLoading) return <Spinner />;
 
   return (

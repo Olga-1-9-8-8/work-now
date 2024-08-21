@@ -6,6 +6,6 @@ export const ChartNotExist = () => (
     <div className="w-full">
       <AnalyticsIcon className="h-36 w-full" />
     </div>
-    <TypographyH5>Нет данных для этого графика</TypographyH5>
+    <TypographyH5>Данные для графика отсутствуют</TypographyH5>
   </div>
 );

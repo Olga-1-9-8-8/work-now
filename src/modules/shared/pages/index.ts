@@ -1,2 +1,1 @@
-// eslint-disable-next-line no-restricted-exports, import/no-default-export
-export { default } from "./PageNotFound";
+export { PageNotFound } from "./PageNotFound";
