@@ -164,3 +164,24 @@ export const deleteApply = async (id: number | string) => {
 
   return { ...applicationData, isCompanyRole };
 };
+
+interface GetUserAppliesParams {
+  id: number;
+  isHiring: boolean;
+}
+
+export const getAllUserApplies = async ({ id, isHiring }: GetUserAppliesParams) => {
+  const columnName = isHiring ? "vacancy_id" : "resume_id";
+
+  const { data: applies, error: appliesError } = await supabase
+    .from("applies")
+    .select("created_at,profiles(username,id)")
+    .eq(columnName, id);
+
+  if (appliesError) {
+    console.error(appliesError);
+    throw new Error("Ошибка при получении просмотров");
+  }
+
+  return applies;
+};

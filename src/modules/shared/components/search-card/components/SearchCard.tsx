@@ -77,6 +77,7 @@ export const SearchCard = ({ data, onClick, isHiring = false }: SearchCardProps)
       </SearchCardHeaderBlock>
       <SearchCardDetailsBlock salary={salary} employment={employment} schedule={schedule} />
       <SearchCardOperationsFooterBlock
+        isHiring={isHiring}
         phone={phone}
         id={id}
         isInApplies={isInApplies}

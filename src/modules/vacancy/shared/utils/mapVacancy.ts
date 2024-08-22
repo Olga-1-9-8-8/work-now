@@ -1,7 +1,7 @@
 import { parseDateFromString } from "../../../shared/utils/helpers";
-import { VacancyApiTypeInput, VacancyItem } from "../types";
+import { VacancyApiTypeInput } from "../types";
 
-export const mapVacancy = (vacancy: VacancyApiTypeInput): VacancyItem => {
+export const mapVacancy = (vacancy: VacancyApiTypeInput) => {
   return {
     id: vacancy.id,
     companyCode: vacancy.company.companycode,

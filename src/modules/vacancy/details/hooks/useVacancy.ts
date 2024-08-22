@@ -1,23 +1,25 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { mapVacancy } from "../../shared/utils";
+import { mapUniversalItemWithProfile } from "../../../shared/utils";
 import { getVacancy } from "../api/apiVacancy";
 
 export const useVacancy = () => {
-  const { id, companyCode } = useParams();
+  const { id } = useParams();
+  const vacancyId = id ? Number(id) : undefined;
+
   const {
     isLoading,
     data: vacancy,
     error,
   } = useQuery({
-    queryKey: ["vacancy", id],
-    queryFn: () => getVacancy(id, companyCode),
+    queryKey: ["vacancy", vacancyId],
+    queryFn: () => getVacancy(vacancyId),
     retry: false,
   });
 
   return {
     isLoading,
     error,
-    vacancy: vacancy ? mapVacancy(vacancy) : undefined,
+    vacancy: vacancy ? mapUniversalItemWithProfile(vacancy) : undefined,
   };
 };

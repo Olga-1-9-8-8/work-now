@@ -1,23 +1,24 @@
-import { NotFound } from "../../../../../../shared/components/not-found";
-import { useViews } from "../../../../../../shared/features/views/hooks/useViews";
+import { NotExist } from "../../../../../../shared/components/not-found";
+import { UniversalEngagementType } from "../../../../../../shared/types";
 import { Badge } from "../../../../../../shared/ui/badge/Badge";
 import { Button } from "../../../../../../shared/ui/buttons/Button";
 import { Spinner } from "../../../../../../shared/ui/spinner/Spinner";
 import { formattedTimeString } from "../../../../../../shared/utils/helpers";
 
 interface LkItemCardContentItemModalProps {
-  id: number;
-  isHiring: boolean;
+  data?: UniversalEngagementType[];
+  isLoading: boolean;
 }
 
-export const LkItemCardContentItemModal = ({ id, isHiring }: LkItemCardContentItemModalProps) => {
-  const { views, isViewsLoading } = useViews(id, isHiring);
-
-  if (isViewsLoading) return <Spinner />;
-  if (!views) return <NotFound title="Просмотры" />;
+export const LkItemCardContentItemModal = ({
+  data,
+  isLoading,
+}: LkItemCardContentItemModalProps) => {
+  if (isLoading) return <Spinner />;
+  if (!data) return <NotExist title="Данные не найдены" />;
   return (
-    <ul className="list-disc pl-6">
-      {views.map((item) => (
+    <ul className="list-decimal pl-6">
+      {data.map((item) => (
         <li key={item.id} className="mb-2">
           <Button variant="ghost" size="sm" className="cursor-default font-bold text-dark">
             {item.userName}

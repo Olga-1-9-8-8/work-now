@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
+import { mapUniversalEngagement } from "../../../utils";
 import { getAllViews } from "../api/apiViews";
-import { mapViewsItem } from "../utils/mapViewsItem";
 
 export const useViews = (id: number, isHiring: boolean) => {
   const {
@@ -15,6 +15,7 @@ export const useViews = (id: number, isHiring: boolean) => {
   return {
     isViewsLoading,
     viewsError: error,
-    views: views && views.length > 0 ? views.map((view) => mapViewsItem(view)) : undefined,
+    viewsData:
+      views && views.length > 0 ? views.map((view) => mapUniversalEngagement(view)) : undefined,
   };
 };

@@ -5,6 +5,7 @@ export { employmentTypes } from "./EmploymentType";
 export { genderTypes, getGenderTitle } from "./GenderType";
 export { scheduleTypes } from "./ScheduleType";
 export { sortTypes } from "./SortType";
+export type { UniversalEngagementType } from "./UniversalEngagementType";
 export { weekHoursTypes } from "./WeekHoursType";
 
 export type { UniversalCardItemType, UniversalJobType } from "./UniversalCardItemType";
