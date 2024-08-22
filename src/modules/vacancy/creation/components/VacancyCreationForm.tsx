@@ -5,6 +5,7 @@ import {
   DatePicker,
   FormCheckboxMultipleField,
   FormInputField,
+  FormRadioGroup,
   FormSelect,
   FormSliderField,
   FormTextareaField,
@@ -103,6 +104,16 @@ export const VacancyCreationForm = ({
               <FormMessage />
             </FormItem>
           )}
+        />
+        <FormRadioGroup<VacancyCreationFormType>
+          label="Укажите требуемый пол"
+          name="gender"
+          disabled={isSubmitting}
+          options={[
+            { value: "_not_set", title: "Не задан" },
+            { value: "male", title: "Муж." },
+            { value: "female", title: "Жен." },
+          ]}
         />
         <Button disabled={isSubmitting} size="lg" type="submit">
           Опубликовать вакансию

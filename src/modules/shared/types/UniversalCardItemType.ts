@@ -35,6 +35,7 @@ export interface UniversalJobType {
     lng: string;
   };
   companyCode?: string;
+  gender?: GenderType;
   isInFavorites?: boolean;
   isInApplies?: boolean;
 }

@@ -27,17 +27,26 @@ export const useVacancyForm = ({ vacancy, userId, onModalClose }: UseVacancyForm
 
   const handleSubmit = useCallback(
     (values: VacancyCreationFormType) => {
+      const { gender, ...valuesData } = values;
       const isEdit = !!vacancy?.id;
 
       const formattedData = mapItemToApiType(
-        { ...values, creationDate: vacancy?.creationDate ?? new Date() },
+        {
+          ...valuesData,
+          creationDate: vacancy?.creationDate ?? new Date(),
+        },
         userId,
         vacancy?.id,
       );
 
       const mutationFn = isEdit ? editVacancy : createVacancy;
 
-      const mutationData = isEdit ? { ...formattedData, id: vacancy.id } : formattedData;
+      const commonData = {
+        ...formattedData,
+        gender: gender === "_not_set" ? null : gender,
+      };
+
+      const mutationData = isEdit ? { ...commonData, id: vacancy.id } : commonData;
 
       mutationFn(mutationData, {
         onSuccess: () => {

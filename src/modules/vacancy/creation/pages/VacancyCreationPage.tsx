@@ -10,18 +10,20 @@ import {
   CardTitle,
 } from "../../../shared/ui/card/Card";
 import { PageContainer } from "../../../shared/ui/layout";
+import { Spinner } from "../../../shared/ui/spinner/Spinner";
 import { VacancyCreationForm } from "../components/VacancyCreationForm";
 
 const VacancyCreationPage = () => {
-  const { user } = useAuthContext();
-
+  const { user, isUserLoading } = useAuthContext();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) {
+    if (!user && !isUserLoading) {
       navigate("/login");
     }
-  }, [navigate, user]);
+  }, [isUserLoading, navigate, user]);
+
+  if (isUserLoading) return <Spinner />;
 
   if (!user) {
     return <NotExist title="Чтобы создать вакансию, нужно войти в аккаунт" />;

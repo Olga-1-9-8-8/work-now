@@ -26,6 +26,7 @@ export const getDefaultUniversalJobFormValues = (
       education: item.education as EducationType,
       employmentStartDate: item.employmentStartDate,
       views: item.views || 0,
+      gender: item.gender ?? "_not_set",
     };
   }
 

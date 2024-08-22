@@ -1,7 +1,7 @@
 import { Building, CalendarDays, ClipboardCheck, EyeIcon, GraduationCap } from "lucide-react";
 import { ReactNode, useState } from "react";
 import { FaCircleChevronDown, FaCircleChevronUp, FaPerson } from "react-icons/fa6";
-import { EducationType, GenderType, getGenderTitle } from "../../../../../types";
+import { EducationType, GenderType } from "../../../../../types";
 import { Button } from "../../../../../ui/buttons/Button";
 import { CardDescription, CardHeader, CardTitle } from "../../../../../ui/card/Card";
 import {
@@ -16,11 +16,11 @@ import {
   formattedTimeString,
   getDayMonthYear,
   getRightNounWordDeclension,
-  getRightNounYearDeclension,
 } from "../../../../../utils/helpers";
 import { Avatar } from "../../../../avatar";
 import { CardItemInsight, CardTitleWithTooltip, getEducationTitle } from "../../../../card";
 import { MapBadge } from "../../../../map";
+import { getPersonalInfoTitle } from "../../../utils/getPersonalInfoTitle";
 
 interface SearchCardHeaderTitleProps {
   userName?: string;
@@ -59,9 +59,11 @@ interface SearchCardHeaderDetailsProps {
     lat: string;
     lng: string;
   };
-  age?: number | string;
+  age?: string;
   gender?: GenderType;
+  isHiring: boolean;
 }
+
 export const SearchCardHeaderDetails = ({
   city,
   education,
@@ -69,6 +71,7 @@ export const SearchCardHeaderDetails = ({
   coordinates,
   age,
   gender,
+  isHiring,
 }: SearchCardHeaderDetailsProps) => {
   return (
     <div className="flex flex-col gap-1">
@@ -84,7 +87,7 @@ export const SearchCardHeaderDetails = ({
         <CardItemInsight
           className="items-center gap-2 text-primary-extraDark "
           icon={FaPerson}
-          title={`${gender ? getGenderTitle(gender) : "Пол не указан"}  ${age ? `/ ${getRightNounYearDeclension(String(age))}` : ""}`}
+          title={getPersonalInfoTitle(age, gender, isHiring)}
         />
       )}
       {creationDate && (

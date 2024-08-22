@@ -54,6 +54,7 @@ export const SearchCard = ({ data, onClick, isHiring = false }: SearchCardProps)
               coordinates={coordinates}
               age={age}
               gender={gender}
+              isHiring={isHiring}
             />
           </div>
           <SearchCardHeaderBlock.SearchCardHeaderSideDetails

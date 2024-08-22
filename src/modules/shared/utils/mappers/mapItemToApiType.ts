@@ -1,11 +1,11 @@
-import { ResumeApiType } from "../../api";
+import { UniversalItemApiTypeInput } from "../../api";
 import { UniversalJobType } from "../../types";
 
 export const mapItemToApiType = (
   items: Omit<UniversalJobType, "id">,
   userId: string,
   id?: number,
-): Omit<ResumeApiType, "id"> & { id?: number } => {
+): Omit<UniversalItemApiTypeInput, "id"> & { id?: number } => {
   const isEditing = !!id;
 
   const {

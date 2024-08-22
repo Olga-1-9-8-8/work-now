@@ -5,6 +5,7 @@ import {
   scheduleTypes,
   weekHoursTypes,
 } from "../../../shared/types";
+import { genderTypes } from "../../../shared/types/GenderType";
 
 export const vacancyFormValidationSchema = z.object({
   userId: z.string(),
@@ -22,4 +23,5 @@ export const vacancyFormValidationSchema = z.object({
   education: z.enum(educationTypes).optional(),
   employmentStartDate: z.date().optional(),
   views: z.number().default(0),
+  gender: z.enum([...genderTypes, "_not_set"]).default("_not_set"),
 });

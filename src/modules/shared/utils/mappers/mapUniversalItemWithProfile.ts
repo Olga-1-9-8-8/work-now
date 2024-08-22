@@ -3,11 +3,12 @@ import { mapProfile } from "../../services/auth";
 import { mapUniversalItem } from "./mapUniversalItem";
 
 export const mapUniversalItemWithProfile = (item: UniversalItemWithProfileApiTypeInput) => {
-  const { profiles, ...resumeData } = item;
+  const { profiles, ...data } = item;
   const profileData = profiles ? mapProfile(profiles) : null;
   if (!profileData) {
-    return { ...mapUniversalItem(resumeData) };
+    return { ...mapUniversalItem(data) };
   }
 
-  return { ...profileData, ...mapUniversalItem(resumeData) };
+  const itemData = mapUniversalItem(data);
+  return { ...profileData, ...itemData, gender: profileData.gender || itemData.gender };
 };

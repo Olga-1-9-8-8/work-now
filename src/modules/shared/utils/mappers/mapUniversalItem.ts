@@ -1,5 +1,11 @@
 import { UniversalItemApiTypeInput } from "../../api";
-import { EducationType, EmploymentType, ScheduleType, WeekHoursType } from "../../types";
+import {
+  EducationType,
+  EmploymentType,
+  GenderType,
+  ScheduleType,
+  WeekHoursType,
+} from "../../types";
 
 export const mapUniversalItem = (item: UniversalItemApiTypeInput) => {
   const {
@@ -17,11 +23,12 @@ export const mapUniversalItem = (item: UniversalItemApiTypeInput) => {
     isInFavorites,
     isInApplies,
     updated_at: updatedAt,
-    ...resumeData
+    gender,
+    ...data
   } = item;
 
   return {
-    ...resumeData,
+    ...data,
     employmentStartDate: employmentStartDate ? new Date(employmentStartDate) : undefined,
     creationDate: new Date(creationDate),
     updatedAt: updatedAt ? new Date(updatedAt) : undefined,
@@ -34,6 +41,7 @@ export const mapUniversalItem = (item: UniversalItemApiTypeInput) => {
     about: about ?? undefined,
     applicantsQuantity,
     userId,
+    gender: gender ? (gender as GenderType) : undefined,
     isInFavorites: isInFavorites ?? undefined,
     isInApplies: isInApplies ?? undefined,
   };

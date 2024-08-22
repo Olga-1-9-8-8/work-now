@@ -4,10 +4,9 @@ import { truncateText } from "../../../utils/helpers";
 
 interface SearchListHeaderProps {
   title: string;
-  total?: number;
 }
 
-export const SearchListHeader = ({ title, total }: SearchListHeaderProps) => {
+export const SearchListHeader = ({ title }: SearchListHeaderProps) => {
   const { getParam } = useUrl();
 
   const position = getParam("position");
@@ -21,7 +20,7 @@ export const SearchListHeader = ({ title, total }: SearchListHeaderProps) => {
   return (
     <div className="flex justify-between">
       <h2 className="text-xl font-semibold">
-        Найдено {total} {title}
+        Найдено {title}
         {positionAndCity && (
           <Tooltip content={positionAndCity} className="w-96">
             <span> {truncateText(positionAndCity, 35)}</span>
