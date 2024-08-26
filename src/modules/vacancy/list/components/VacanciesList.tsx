@@ -20,7 +20,7 @@ export const VacanciesList = ({ vacancies, totalCount }: VacanciesListProps) => 
           return <VacanciesListItem key={vacancy.id} vacancy={vacancy} />;
         })
       )}
-      {totalCount && <Pagination totalCount={totalCount} />}
+      {!!totalCount && <Pagination totalCount={totalCount} />}
     </>
   );
 };

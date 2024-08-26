@@ -1,14 +1,14 @@
 import { ChevronDown } from "lucide-react";
-import { useUrl } from "../../hooks";
-import { UniversalItemType } from "../../types";
-import { Button } from "../../ui/buttons/Button";
+import { useUrl } from "../../../hooks";
+import { UniversalItemType } from "../../../types";
+import { Button } from "../../../ui/buttons/Button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from "../../ui/dropdown-menu/DropdownMenu";
+} from "../../../ui/dropdown-menu/DropdownMenu";
 
 interface FilteredDropdownMenuProps {
   title: string;

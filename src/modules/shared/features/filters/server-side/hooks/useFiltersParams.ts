@@ -10,7 +10,7 @@ export const useFiltersParams = () => {
     schedule: "cs",
     weekHours: "cs",
     creation_date: "gte",
-    position: "in",
+    position: "ilike",
     city: "in",
   };
 

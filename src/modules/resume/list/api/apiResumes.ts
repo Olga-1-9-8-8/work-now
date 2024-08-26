@@ -21,7 +21,10 @@ export const getResumes = async ({ filters, sortArr, page }: GetResumesProps) =>
       const { column, operator, value } = filter;
 
       if (value) {
-        query = query.filter(column, operator, getFilterValue(value, operator));
+        query =
+          Array.isArray(value) && operator === "ilike"
+            ? query.or(value.map((v) => `${column}.ilike.%${v}%`).join(","))
+            : query.filter(column, operator, getFilterValue(value, operator));
       }
     });
   }

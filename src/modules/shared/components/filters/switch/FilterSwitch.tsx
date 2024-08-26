@@ -1,7 +1,7 @@
 import * as SwitchPrimitives from "@radix-ui/react-switch";
-import { useUrl } from "../../hooks/useUrl";
-import { UniversalItemType } from "../../types";
-import { SwitchWithLabel } from "../../ui/switch/SwitchWithLabel";
+import { useUrl } from "../../../hooks/useUrl";
+import { UniversalItemType } from "../../../types";
+import { SwitchWithLabel } from "../../../ui/switch/SwitchWithLabel";
 
 type FilterSwitchProps = {
   filteredField: string;

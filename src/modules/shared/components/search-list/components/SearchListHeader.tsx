@@ -8,14 +8,10 @@ interface SearchListHeaderProps {
 
 export const SearchListHeader = ({ title }: SearchListHeaderProps) => {
   const { getParam } = useUrl();
-
   const position = getParam("position");
   const city = getParam("city");
 
-  const hasPositionOrCity = Boolean(position || city);
-  const positionAndCity = hasPositionOrCity
-    ? `${position ? `${position}` : ""}${city ? `,${city}` : ""}`
-    : "";
+  const positionAndCity = [position, city].filter(Boolean).join(", ");
 
   return (
     <div className="flex justify-between">

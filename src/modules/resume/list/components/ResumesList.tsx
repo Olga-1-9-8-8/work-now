@@ -10,7 +10,6 @@ interface ResumesListProps {
 
 export const ResumesList = ({ resumes, totalCount }: ResumesListProps) => {
   if (!resumes) return <NotFound title="Резюме" />;
-
   return (
     <>
       {totalCount === 0 ? (
@@ -20,7 +19,7 @@ export const ResumesList = ({ resumes, totalCount }: ResumesListProps) => {
           return <ResumesListItem key={resume.id} resume={resume} />;
         })
       )}
-      {totalCount && <Pagination totalCount={totalCount} />}
+      {!!totalCount && <Pagination totalCount={totalCount} />}
     </>
   );
 };

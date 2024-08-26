@@ -6,7 +6,7 @@ import { PageContainer } from "../../../ui/layout";
 import { getRightNounWordDeclension } from "../../../utils/helpers";
 import { CreateButton } from "../../buttons";
 import { SearchFiltersBar } from "../../filters";
-import { SearchBar } from "../../search-bar";
+import { SearchInput } from "../../search-bar/components/SearchInput";
 import { SideBar } from "../../side-bar";
 import { SearchListHeader } from "./SearchListHeader";
 
@@ -46,7 +46,7 @@ export const SearchList = ({ total, isHiring, children }: SearchListProps) => {
         <SideBar title={isHiring ? "вакансии" : "резюме"} />
         <div className="flex-1 ">
           <div className="flex flex-col gap-4">
-            <SearchBar />
+            <SearchInput />
             {children}
           </div>
         </div>
