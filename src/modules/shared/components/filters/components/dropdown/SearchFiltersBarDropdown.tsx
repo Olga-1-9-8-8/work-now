@@ -1,5 +1,5 @@
-import { sortConfig } from "../../../configs";
-import { UniversalItemType } from "../../../types";
+import { sortConfig } from "../../../../configs";
+import { UniversalItemType } from "../../../../types";
 import { FilteredDropdownMenu } from "./FilteredDropdownMenu";
 
 export const SearchFiltersBarDropdown = () => {
@@ -10,7 +10,6 @@ export const SearchFiltersBarDropdown = () => {
           <li key={title}>
             <FilteredDropdownMenu
               sortedField={title}
-              title={option.title}
               options={option.items as Required<UniversalItemType<string>>[]}
             />
           </li>

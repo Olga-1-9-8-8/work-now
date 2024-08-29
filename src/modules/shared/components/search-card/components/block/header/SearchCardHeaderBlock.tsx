@@ -2,8 +2,9 @@ import { Building, CalendarDays, ClipboardCheck, EyeIcon, GraduationCap } from "
 import { ReactNode, useState } from "react";
 import { FaCircleChevronDown, FaCircleChevronUp, FaPerson } from "react-icons/fa6";
 import { EducationType, GenderType } from "../../../../../types";
+import { Badge } from "../../../../../ui/badge/Badge";
 import { Button } from "../../../../../ui/buttons/Button";
-import { CardDescription, CardHeader, CardTitle } from "../../../../../ui/card/Card";
+import { CardHeader, CardTitle } from "../../../../../ui/card/Card";
 import {
   Collapsible,
   CollapsibleContent,
@@ -55,6 +56,7 @@ interface SearchCardHeaderDetailsProps {
   city?: string;
   education?: EducationType | string;
   creationDate?: Date | null;
+  updatedAt?: Date | null;
   coordinates?: {
     lat: string;
     lng: string;
@@ -68,6 +70,7 @@ export const SearchCardHeaderDetails = ({
   city,
   education,
   creationDate,
+  updatedAt,
   coordinates,
   age,
   gender,
@@ -75,6 +78,14 @@ export const SearchCardHeaderDetails = ({
 }: SearchCardHeaderDetailsProps) => {
   return (
     <div className="flex flex-col gap-1">
+      <div className="mt-1 flex gap-1">
+        {creationDate && (
+          <Badge shape="square" variant="secondary" className="font-semibold text-muted-foreground">
+            От {formattedTimeString(creationDate)}{" "}
+            {updatedAt && `/ Обновлено ${formattedTimeString(updatedAt)}`}
+          </Badge>
+        )}
+      </div>
       <div className="flex flex-col items-start gap-1 sm:flex-row sm:items-center">
         {city && <MapBadge city={city} coordinates={coordinates} />}
         <CardItemInsight
@@ -89,11 +100,6 @@ export const SearchCardHeaderDetails = ({
           icon={FaPerson}
           title={getPersonalInfoTitle(age, gender, isHiring)}
         />
-      )}
-      {creationDate && (
-        <CardDescription className="pl-1 font-semibold text-muted-foreground opacity-85">
-          Обновлено {formattedTimeString(creationDate)}
-        </CardDescription>
       )}
     </div>
   );

@@ -18,7 +18,7 @@ export const HeaderNavListDesktop = ({ items }: HeaderNavListDesktopProps) => {
         {items.map((item) => {
           return (
             <NavigationMenuItem key={item.title}>
-              <HeaderNavListItemDesktop item={item} />
+              <HeaderNavListItemDesktop item={item} className="p-1 lg:p-3" />
             </NavigationMenuItem>
           );
         })}

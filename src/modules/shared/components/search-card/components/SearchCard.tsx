@@ -22,8 +22,10 @@ export const SearchCard = ({ data, onClick, isHiring = false }: SearchCardProps)
     schedule,
     id,
     education,
+    weekHours,
     employmentStartDate,
     creationDate,
+    updatedAt,
     phone,
     userName,
     coordinates,
@@ -51,6 +53,7 @@ export const SearchCard = ({ data, onClick, isHiring = false }: SearchCardProps)
               city={city}
               education={education}
               creationDate={creationDate}
+              updatedAt={updatedAt}
               coordinates={coordinates}
               age={age}
               gender={gender}
@@ -76,7 +79,12 @@ export const SearchCard = ({ data, onClick, isHiring = false }: SearchCardProps)
           />
         )}
       </SearchCardHeaderBlock>
-      <SearchCardDetailsBlock salary={salary} employment={employment} schedule={schedule} />
+      <SearchCardDetailsBlock
+        salary={salary}
+        employment={employment}
+        schedule={schedule}
+        weekHours={weekHours}
+      />
       <SearchCardOperationsFooterBlock
         isHiring={isHiring}
         phone={phone}

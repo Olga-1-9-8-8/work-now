@@ -4,7 +4,7 @@ import { HeaderNavigation } from "./HeaderNavigation";
 
 export const Header = memo(() => {
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex min-h-24 items-center justify-between">
       <Logo />
       <HeaderNavigation />
     </div>

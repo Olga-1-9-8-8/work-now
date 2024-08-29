@@ -7,7 +7,7 @@ const ResumesListPage = () => {
   const { isLoading, resumes, totalCount } = useResumes();
 
   return (
-    <SearchList total={totalCount}>
+    <SearchList total={totalCount} isLoading={isLoading}>
       {isLoading ? <Spinner /> : <ResumesList resumes={resumes} totalCount={totalCount} />}
     </SearchList>
   );

@@ -7,7 +7,7 @@ const VacanciesListPage = () => {
   const { isLoading, vacancies, totalCount } = useVacancies();
 
   return (
-    <SearchList total={totalCount} isHiring>
+    <SearchList total={totalCount} isLoading={isLoading} isHiring>
       {isLoading ? <Spinner /> : <VacanciesList vacancies={vacancies} totalCount={totalCount} />}
     </SearchList>
   );

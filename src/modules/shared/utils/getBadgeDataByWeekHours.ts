@@ -9,6 +9,12 @@ export const getBadgeDataByWeekHours = (type?: WeekHoursType): BadgeType => {
         badgeTitle: "40 часов (8 часов в день)",
       };
     }
+    case "30": {
+      return {
+        badgeVariant: "secondary",
+        badgeTitle: "30 часов (6 часов в день)",
+      };
+    }
     case "20": {
       return {
         badgeVariant: "warning",

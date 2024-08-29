@@ -8,7 +8,7 @@ export const useFiltersParams = () => {
     education: "eq",
     employment: "cs",
     schedule: "cs",
-    weekHours: "cs",
+    week_hours: "cs",
     creation_date: "gte",
     position: "ilike",
     city: "in",

@@ -1,4 +1,4 @@
-import { GraduationCap } from "lucide-react";
+import { Clock8, GraduationCap } from "lucide-react";
 import { ReactNode } from "react";
 import { EducationType, EmploymentType, ScheduleType, WeekHoursType } from "../../../../../types";
 import { Badge } from "../../../../../ui/badge/Badge";
@@ -78,13 +78,15 @@ const DetailsCardContentEmployment = ({ employment }: DetailsCardContentEmployme
 };
 
 interface DetailsCardContentScheduleProps {
-  schedule?: ScheduleType[] | WeekHoursType[] | string;
+  schedule?: ScheduleType[] | string;
+  weekHours?: WeekHoursType[];
   employmentStartDate?: Date;
 }
 
 const DetailsCardContentSchedule = ({
   schedule,
   employmentStartDate,
+  weekHours,
 }: DetailsCardContentScheduleProps) => {
   return (
     <div className="flex flex-col gap-4">
@@ -112,6 +114,16 @@ const DetailsCardContentSchedule = ({
           </span>
         </Badge>
       </div>
+      {weekHours !== undefined && weekHours.length > 0 && (
+        <div className="flex gap-2">
+          {weekHours.map((weekHour) => (
+            <Badge key={weekHour} shape="square" variant="success" className="gap-2">
+              <Clock8 size={21} />
+              {weekHour} часов в неделю
+            </Badge>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

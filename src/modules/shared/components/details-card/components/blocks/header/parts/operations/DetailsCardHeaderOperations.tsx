@@ -41,7 +41,6 @@ export const DetailsCardHeaderOperations = ({
     const declension = getRightNounWordDeclension(applicantsQuantity, word, endings);
     return `${declension} уже ${getRightNounWordDeclension(applicantsQuantity, "откликнул", [`${isHiring ? "ся" : "ась"}`, "ись", "ись"]).slice(1)}`;
   };
-
   return (
     <div className="flex flex-col gap-3">
       <div className="md:flex-start flex flex-row-reverse justify-end gap-8 md:flex-row">
@@ -69,10 +68,10 @@ export const DetailsCardHeaderOperations = ({
           Создано {formattedTimeString(creationDate)}
         </CardDescription>
 
-        {!updatedAt && (
+        {updatedAt && (
           <CardDescription className="mt-2 flex gap-1 font-semibold text-muted-foreground opacity-85">
             <RefreshCw size={20} className="stroke-success" />
-            Обновлено {formattedTimeString(creationDate)}
+            Обновлено {formattedTimeString(updatedAt)}
           </CardDescription>
         )}
       </div>

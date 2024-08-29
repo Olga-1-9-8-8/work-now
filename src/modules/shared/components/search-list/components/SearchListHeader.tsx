@@ -1,28 +1,45 @@
-import { useUrl } from "../../../hooks";
-import { Tooltip } from "../../../ui/tooltip/Tooltip";
-import { truncateText } from "../../../utils/helpers";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../../../services/auth";
+import { UserEntity } from "../../../types";
+import { Skeleton } from "../../../ui/skeleton/Skeleton";
+import { getRightNounWordDeclension } from "../../../utils/helpers";
+import { CreateButton } from "../../buttons";
+import { SearchListTitle } from "./SearchListTitle";
 
 interface SearchListHeaderProps {
-  title: string;
+  isHiring?: boolean;
+  isLoading: boolean;
+  total?: number;
 }
 
-export const SearchListHeader = ({ title }: SearchListHeaderProps) => {
-  const { getParam } = useUrl();
-  const position = getParam("position");
-  const city = getParam("city");
+export const SearchListHeader = ({ total, isHiring, isLoading }: SearchListHeaderProps) => {
+  const navigate = useNavigate();
+  const { isAuthenticated, role, isUserLoading } = useUser();
 
-  const positionAndCity = [position, city].filter(Boolean).join(", ");
+  const canShowCreateButton =
+    !isUserLoading &&
+    (!isAuthenticated || role === (isHiring ? UserEntity.Person : UserEntity.Company));
+
+  const headerTitle = isHiring
+    ? getRightNounWordDeclension(total ?? 0, "ваканс", ["ия", "ии", "ий"])
+    : `${total ?? 0} резюме`;
 
   return (
-    <div className="flex justify-between">
-      <h2 className="text-xl font-semibold">
-        Найдено {title}
-        {positionAndCity && (
-          <Tooltip content={positionAndCity} className="w-96">
-            <span> {truncateText(positionAndCity, 35)}</span>
-          </Tooltip>
-        )}
-      </h2>
+    <div className="flex min-h-10 flex-col items-start justify-between gap-4 md:flex-row">
+      <SearchListTitle
+        title={
+          <>
+            Найдено{" "}
+            {isLoading ? <Skeleton className="h-7 w-[130px]" /> : <span>{headerTitle}</span>}
+          </>
+        }
+      />
+      {canShowCreateButton && (
+        <CreateButton
+          title={isHiring ? "Создать новое резюме" : "Создать новую вакансию"}
+          onClick={() => navigate(`/${isHiring ? "resumes" : "vacancies"}/creation`)}
+        />
+      )}
     </div>
   );
 };

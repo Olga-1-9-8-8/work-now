@@ -38,9 +38,19 @@ export const MultiSelect = ({
   const [selectWidth, setSelectWidth] = useState(0);
 
   useEffect(() => {
-    if (selectRef.current) {
-      setSelectWidth(selectRef.current.offsetWidth);
-    }
+    const handleResize = () => {
+      if (selectRef.current) {
+        setSelectWidth(selectRef.current.offsetWidth);
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   useEffect(() => {
@@ -137,11 +147,12 @@ export const MultiSelect = ({
                   (Выбрать все)
                 </span>
               </CommandItem>
-              {options.map((option) => {
+              {options.map((option, index) => {
                 const isSelected = selectedValues.includes(option.value);
                 return (
                   <CommandItem
-                    key={option.value}
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={index}
                     onSelect={() => toggleOption(option.value)}
                     className="cursor-pointer"
                   >
@@ -164,7 +175,7 @@ export const MultiSelect = ({
             <CommandGroup>
               <CommandItem
                 onSelect={() => setIsPopoverOpen(false)}
-                className="max-w-full flex-1 cursor-pointer justify-center bg-primary text-primary-foreground data-[selected='true']:bg-primary/85 data-[selected='true']:text-primary-foreground"
+                className="max-w-full flex-1 cursor-pointer justify-center bg-primary text-primary-foreground transition-colors delay-75 data-[selected='true']:bg-primary-extraDark data-[selected='true']:text-white"
               >
                 Готово
               </CommandItem>

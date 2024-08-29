@@ -2,7 +2,7 @@ import { CreationDateType, SortType, UniversalItemsWithTitleType } from "../type
 
 export type SortConfigType = {
   sort: UniversalItemsWithTitleType<SortType>;
-  creationDate: UniversalItemsWithTitleType<CreationDateType>;
+  creation_date: UniversalItemsWithTitleType<CreationDateType>;
 };
 
 export const sortConfig: SortConfigType = {
@@ -23,7 +23,7 @@ export const sortConfig: SortConfigType = {
       },
     ],
   },
-  creationDate: {
+  creation_date: {
     title: "Сортировать по времени",
     items: [
       {

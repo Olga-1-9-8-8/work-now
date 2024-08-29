@@ -10,7 +10,7 @@ export type FilterConfigType = {
   schedule: UniversalItemsWithTitleType<ScheduleType>;
   employment: UniversalItemsWithTitleType<EmploymentType>;
   education: UniversalItemsWithTitleType<EducationType>;
-  weekHours: UniversalItemsWithTitleType<WeekHoursType>;
+  week_hours: UniversalItemsWithTitleType<WeekHoursType>;
 };
 
 export const filterConfig: FilterConfigType = {
@@ -36,7 +36,7 @@ export const filterConfig: FilterConfigType = {
     ],
   },
   employment: {
-    title: "Выберите тип вакансии",
+    title: "Выберите тип работы",
     items: [
       {
         title: "Полная занятость",
@@ -93,12 +93,16 @@ export const filterConfig: FilterConfigType = {
       },
     ],
   },
-  weekHours: {
+  week_hours: {
     title: "Количество часов в неделю",
     items: [
       {
         title: "40 часов (8 часов в день)",
         value: "40",
+      },
+      {
+        title: "30 часов (6 часов в день)",
+        value: "30",
       },
       {
         title: "20 часов (4 часа в день)",
@@ -148,7 +152,7 @@ export const popularFilterConfig: FilterConfigType = {
       },
     ],
   },
-  weekHours: {
+  week_hours: {
     title: "Количество часов в неделю",
     items: [
       {

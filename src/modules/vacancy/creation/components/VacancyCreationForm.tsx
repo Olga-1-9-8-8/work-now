@@ -39,7 +39,7 @@ export const VacancyCreationForm = ({
     onModalClose,
   });
 
-  const { employment, schedule, education } = filterConfig;
+  const { employment, schedule, education, week_hours: weekHours } = filterConfig;
 
   return (
     <Form {...form}>
@@ -78,6 +78,12 @@ export const VacancyCreationForm = ({
           name="schedule"
           items={schedule.items as Required<UniversalItemType<string>>[]}
           label={schedule.title}
+        />
+        <FormCheckboxMultipleField<VacancyCreationFormType>
+          disabled={isSubmitting}
+          name="weekHours"
+          items={weekHours.items as Required<UniversalItemType<string>>[]}
+          label={weekHours.title}
         />
 
         <FormSliderField<VacancyCreationFormType>

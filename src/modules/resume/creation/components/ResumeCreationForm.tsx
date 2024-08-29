@@ -34,7 +34,7 @@ export const ResumeCreationForm = ({ userId, resume, onModalClose }: ResumeCreat
     onModalClose,
   });
 
-  const { employment, schedule, education } = filterConfig;
+  const { employment, schedule, education, week_hours: weekHours } = filterConfig;
 
   return (
     <Form {...form}>
@@ -70,6 +70,12 @@ export const ResumeCreationForm = ({ userId, resume, onModalClose }: ResumeCreat
           name="schedule"
           items={schedule.items as Required<UniversalItemType<string>>[]}
           label={schedule.title}
+        />
+        <FormCheckboxMultipleField<ResumeCreationFormType>
+          disabled={isSubmitting}
+          name="weekHours"
+          items={weekHours.items as Required<UniversalItemType<string>>[]}
+          label={weekHours.title}
         />
         <FormSliderField<ResumeCreationFormType>
           name="salary"

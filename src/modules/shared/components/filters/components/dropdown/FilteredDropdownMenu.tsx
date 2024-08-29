@@ -1,17 +1,18 @@
 import { ChevronDown } from "lucide-react";
-import { useUrl } from "../../../hooks";
-import { UniversalItemType } from "../../../types";
-import { Button } from "../../../ui/buttons/Button";
+import { useEffect, useState } from "react";
+import { useUrl } from "../../../../hooks";
+import { UniversalItemType } from "../../../../types";
+import { Button } from "../../../../ui/buttons/Button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from "../../../ui/dropdown-menu/DropdownMenu";
+} from "../../../../ui/dropdown-menu/DropdownMenu";
+import { getDropdownMenuTitle } from "../../utils/getDropdownMenuTitle";
 
 interface FilteredDropdownMenuProps {
-  title: string;
   sortedField: string;
   options: Required<UniversalItemType<string>>[];
 }
@@ -19,7 +20,15 @@ interface FilteredDropdownMenuProps {
 export const FilteredDropdownMenu = ({ sortedField, options }: FilteredDropdownMenuProps) => {
   const { getParam, setParam } = useUrl();
 
+  const initialValue = getParam(sortedField) || options[0].value;
+  const [currentValue, setCurrentValue] = useState(initialValue);
+
+  useEffect(() => {
+    setCurrentValue(initialValue);
+  }, [initialValue]);
+
   const handleChange = (value: string) => {
+    setCurrentValue(value);
     setParam(sortedField, value);
   };
 
@@ -27,14 +36,11 @@ export const FilteredDropdownMenu = ({ sortedField, options }: FilteredDropdownM
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="flex gap-1 p-2 text-primary-extraDark">
-          {options[0].title} <ChevronDown size={19} />
+          {getDropdownMenuTitle(currentValue, options)} <ChevronDown size={19} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        <DropdownMenuRadioGroup
-          value={getParam(sortedField) || options[0].value}
-          onValueChange={handleChange}
-        >
+        <DropdownMenuRadioGroup value={currentValue} onValueChange={handleChange}>
           {options.map((item) => (
             <DropdownMenuRadioItem key={item.value} value={item.value}>
               {item.title}

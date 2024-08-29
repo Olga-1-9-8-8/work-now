@@ -1,11 +1,13 @@
+/* eslint-disable unicorn/prefer-switch */
 import axios from "axios";
 import { getApply, getAvatar, getFavorite } from "../../../shared/api";
-import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagination";
 import {
   FilterType,
   SortingType,
-  getFilterValue,
+  buildFilterQuery,
+  buildSortQuery,
 } from "../../../shared/features/filters/server-side";
+import { buildPaginationQuery } from "../../../shared/features/filters/server-side/utils/buildPaginationQuery";
 import { supabase } from "../../../shared/services";
 import { API_URL } from "../../shared/api/const";
 
@@ -33,33 +35,21 @@ interface GetVacanciesProps {
 
 export const getVacancies = async ({ filters, sortArr, page }: GetVacanciesProps) => {
   let query = supabase.from("vacancies").select("*,profiles(*)", { count: "exact" });
-  if (filters.length > 0) {
-    filters.forEach((filter) => {
-      const { column, operator, value } = filter;
 
-      if (value) {
-        query =
-          Array.isArray(value) && operator === "ilike"
-            ? query.or(value.map((v) => `${column}.ilike.%${v}%`).join(","))
-            : query.filter(column, operator, getFilterValue(value, operator));
-      }
-    });
+  if (filters.length > 0) {
+    query = buildFilterQuery(filters, query);
   }
 
   if (sortArr.length > 0) {
-    sortArr.forEach((sort) => {
-      const { column, direction } = sort;
-      query = query.order(column, { ascending: direction === "asc" });
-    });
+    query = buildSortQuery(sortArr, query);
   }
 
   if (page) {
-    const from = (page - 1) * QUANTITY_OF_ITEMS_ON_ONE_PAGE;
-    const to = from + QUANTITY_OF_ITEMS_ON_ONE_PAGE - 1;
-    query = query.range(from, to);
+    query = buildPaginationQuery(page, query);
   }
 
   const { data, error, count } = await query;
+
   if (error) {
     console.log(error);
     throw new Error("Проблема с загрузкой вакансий из базы данных");

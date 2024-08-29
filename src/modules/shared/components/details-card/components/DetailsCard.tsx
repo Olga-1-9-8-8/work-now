@@ -21,6 +21,7 @@ export const DetailsCard = memo(({ data, isHiring = false, className }: DetailsC
     employment,
     city,
     schedule,
+    weekHours,
     education,
     employmentStartDate,
     creationDate,
@@ -61,7 +62,7 @@ export const DetailsCard = memo(({ data, isHiring = false, className }: DetailsC
         <DetailsCardContentBlock.DetailsCardContentEducation {...{ education, isHiring }} />
         <DetailsCardContentBlock.DetailsCardContentEmployment {...{ employment }} />
         <DetailsCardContentBlock.DetailsCardContentSchedule
-          {...{ schedule, employmentStartDate }}
+          {...{ schedule, employmentStartDate, weekHours }}
         />
         <Separator />
         <DetailsCardContentBlock.DetailsCardContentAbout {...{ about, isHiring }} />
