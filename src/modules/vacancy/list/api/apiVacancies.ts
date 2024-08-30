@@ -59,10 +59,16 @@ export const getVacancies = async ({ filters, sortArr, page }: GetVacanciesProps
 
   const vacanciesData = await Promise.all(
     data.map(async (vacancy) => {
-      const favorite = await getFavorite(vacancy.id);
-      const appliesData = await getApply(vacancy.id);
+      const [favorite, appliesData] = await Promise.all([
+        getFavorite(vacancy.id),
+        getApply(vacancy.id),
+      ]);
 
-      const avatar = vacancy.profiles?.avatar ? await getAvatar(vacancy.profiles.avatar) : null;
+      const avatarPromise = vacancy.profiles?.avatar
+        ? getAvatar(vacancy.profiles.avatar)
+        : Promise.resolve(null);
+
+      const avatar = await avatarPromise;
 
       return {
         ...vacancy,

@@ -5,12 +5,14 @@ import { Button } from "../../../ui/buttons/Button";
 import { Input } from "../../../ui/inputs/Input";
 
 export const SearchInput = () => {
-  const { setParam } = useUrl();
-  const [searchTerm, setSearchTerm] = useState("");
+  const { setParam, getParam } = useUrl();
+  const [searchTerm, setSearchTerm] = useState(getParam("position") || "");
   const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
   useEffect(() => {
-    setParam("position", debouncedSearchTerm || null);
+    if (debouncedSearchTerm) {
+      setParam("position", debouncedSearchTerm);
+    }
   }, [debouncedSearchTerm, setParam]);
 
   return (

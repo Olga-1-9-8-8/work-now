@@ -12,6 +12,7 @@ export const useFiltersParams = () => {
     creation_date: "gte",
     position: "ilike",
     city: "in",
+    username: "ilike",
   };
 
   const { getParam, getAllParams } = useUrl();

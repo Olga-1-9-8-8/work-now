@@ -36,7 +36,7 @@ export const HomeInfo = () => {
             </div>
           )}
         </AccordionContent>
-        <AccordionTrigger />
+        <AccordionTrigger iconClassName="stroke-success w-8 h-8" />
       </AccordionItem>
     </Accordion>
   );

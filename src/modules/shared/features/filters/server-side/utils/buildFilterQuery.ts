@@ -20,6 +20,12 @@ export const buildFilterQuery = (
             break;
           }
           case "ilike": {
+            if (column === "username") {
+              updatedQuery = query.or(value.map((v) => `${column}.ilike.%${v}%`).join(","), {
+                foreignTable: "profiles",
+              });
+              break;
+            }
             updatedQuery = query.or(value.map((v) => `${column}.ilike.%${v}%`).join(","));
             break;
           }

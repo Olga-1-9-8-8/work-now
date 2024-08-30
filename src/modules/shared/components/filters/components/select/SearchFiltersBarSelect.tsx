@@ -1,7 +1,7 @@
 import { filterConfig } from "../../../../configs";
 import { useUrl } from "../../../../hooks";
 import { UniversalItemType } from "../../../../types";
-import { MultiSelect } from "../../../../ui/form-control/select/MultiSelect";
+import { MultiSelect } from "../../../../ui/form-control/select/multi/MultiSelect";
 
 export const SearchFiltersBarSelect = () => {
   const { getParam, setParam } = useUrl();

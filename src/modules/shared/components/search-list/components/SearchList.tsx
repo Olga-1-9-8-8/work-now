@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { useResponsiveContext } from "../../../responsive";
 import { PageContainer } from "../../../ui/layout";
 import { SearchFiltersBar } from "../../filters";
 import { SearchInput } from "../../search-bar/components/SearchInput";
@@ -13,6 +14,7 @@ interface SearchListProps {
 }
 
 export const SearchList = ({ total, isHiring = false, isLoading, children }: SearchListProps) => {
+  const isMobile = useResponsiveContext();
   return (
     <PageContainer>
       <div className="flex flex-col gap-4 border-b-2 border-primary-extraDark py-4">
@@ -20,7 +22,7 @@ export const SearchList = ({ total, isHiring = false, isLoading, children }: Sea
         <SearchFiltersBar />
       </div>
       <div className="flex gap-4 py-4">
-        <SideBar isHiring={isHiring} />
+        {isMobile ? null : <SideBar isHiring={isHiring} />}
         <div className="flex-1">
           <div className="flex flex-col gap-4">
             <SearchInput />
