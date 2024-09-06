@@ -1,6 +1,6 @@
 import { searchConfig } from "../../../configs";
 import { UniversalItemType } from "../../../types";
-import { SideBarItem } from "./SideBarItem";
+import { SideBarItem } from "./item/SideBarItem";
 
 interface SideBarProps {
   isHiring?: boolean;

@@ -39,6 +39,14 @@ export const searchConfig: SearchConfigType = {
         value: "Экономист",
       },
       {
+        title: "Официант",
+        value: "Официант",
+      },
+      {
+        title: "Кулинар",
+        value: "Кулинар",
+      },
+      {
         title: "Финансист",
         value: "Финансист",
       },
@@ -896,6 +904,10 @@ export const searchConfig: SearchConfigType = {
       {
         title: "Лукойл",
         value: "Лукойл",
+      },
+      {
+        title: "Тортик",
+        value: "Тортик",
       },
       {
         title: "Магнит",

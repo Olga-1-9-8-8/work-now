@@ -24,6 +24,8 @@ export const buildFilterQuery = (
               updatedQuery = query.or(value.map((v) => `${column}.ilike.%${v}%`).join(","), {
                 foreignTable: "profiles",
               });
+              updatedQuery = updatedQuery.not("profiles", "is", null);
+
               break;
             }
             updatedQuery = query.or(value.map((v) => `${column}.ilike.%${v}%`).join(","));

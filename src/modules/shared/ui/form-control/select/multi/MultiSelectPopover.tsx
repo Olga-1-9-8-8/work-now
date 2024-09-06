@@ -5,7 +5,7 @@ import { Button } from "../../../buttons/Button";
 import { Popover, PopoverContent, PopoverTrigger } from "../../../popover/Popover";
 
 interface MultiSelectPopoverProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  placeholder: string;
+  placeholder?: string;
   children: React.ReactNode;
   count: number;
   isPopoverOpen: boolean;
@@ -58,7 +58,9 @@ export const MultiSelectPopover = ({
           )}
         >
           <div className=" mx-auto flex w-full items-center justify-between">
-            <span className="mx-3 text-sm text-muted-foreground">{placeholder}</span>
+            <span className="mx-3 text-sm text-muted-foreground">
+              {placeholder ?? "Выберите из списка"}
+            </span>
             <ChevronDown
               className={`mx-2 h-4 cursor-pointer text-muted-foreground transition-transform duration-200 ${isPopoverOpen ? "rotate-180" : ""}`}
             />

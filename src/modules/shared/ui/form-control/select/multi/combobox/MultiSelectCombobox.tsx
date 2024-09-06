@@ -1,25 +1,25 @@
-import { CheckIcon } from "lucide-react";
-import { UniversalItemType } from "../../../../types";
-import { cn } from "../../../../utils";
-import { Button } from "../../../buttons/Button";
+import { useState } from "react";
+import { UniversalItemType } from "../../../../../types";
+import { Button } from "../../../../buttons/Button";
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
-  CommandItem,
   CommandList,
-} from "../../../command/Command";
-import { ScrollArea } from "../../../scroll-area/ScrollArea";
+} from "../../../../command/Command";
+import { ScrollArea } from "../../../../scroll-area/ScrollArea";
+import { MultiSelectComboboxItem } from "./item/MultiSelectComboboxItem";
 
 interface MultiSelectComboboxProps {
   options: Required<UniversalItemType<string>>[];
   selectedValues: string[];
   onValueChange: (value: string[]) => void;
   onSelectedValuesChange: (value: string[]) => void;
-  withSearch?: boolean;
   onSetIsPopoverOpen?: (value: boolean) => void;
-  variant?: "popover" | "list";
+  expandable?: boolean;
+  visibleItemsCount?: number;
+  variant: "popover" | "list";
 }
 
 export const MultiSelectCombobox = ({
@@ -28,9 +28,15 @@ export const MultiSelectCombobox = ({
   onSelectedValuesChange,
   selectedValues,
   onSetIsPopoverOpen,
-  withSearch = false,
+  expandable,
+  visibleItemsCount = 7,
   variant,
 }: MultiSelectComboboxProps) => {
+  const [isExpand, setIsExpand] = useState(false);
+
+  const visibleItems = expandable && !isExpand ? options.slice(0, visibleItemsCount) : options;
+  const showExpandButton = expandable && options.length > visibleItemsCount && !isExpand;
+
   const handleInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       onSetIsPopoverOpen?.(true);
@@ -58,7 +64,7 @@ export const MultiSelectCombobox = ({
     if (selectedValues.length === options.length) {
       handleClear();
     } else {
-      const allValues = options.map((option) => option.value);
+      const allValues = options.map((option) => option.value.toLowerCase());
       onSelectedValuesChange(allValues);
       onValueChange(allValues);
     }
@@ -66,7 +72,7 @@ export const MultiSelectCombobox = ({
 
   return (
     <Command>
-      {withSearch && (
+      {isExpand && (
         <CommandInput
           inputClassName={`${variant === "list" ? "bg-secondary rounded-2xl" : ""}`}
           placeholder="Поиск..."
@@ -75,51 +81,44 @@ export const MultiSelectCombobox = ({
       )}
       <CommandList>
         <CommandEmpty>Результаты не найдены.</CommandEmpty>
-        <ScrollArea type="always" className="h-60">
+        <ScrollArea
+          type="always"
+          className={`${variant === "list" ? "h-72" : "flex max-h-[300px] flex-col"}`}
+        >
           <CommandGroup>
-            <CommandItem key="all" onSelect={toggleAll} className="cursor-pointer">
-              <div
-                className={cn(
-                  "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
-                  selectedValues.length === options.length
-                    ? "bg-primary text-primary-foreground"
-                    : "opacity-50 [&_svg]:invisible",
-                )}
-              >
-                <CheckIcon className="h-4 w-4" />
-              </div>
-              <span
-                className={` ${selectedValues.length !== options.length && "border-b border-dashed border-gray-400 opacity-75"}`}
-              >
-                (Выбрать все)
-              </span>
-            </CommandItem>
-            {options.map((option, index) => {
-              const isSelected = selectedValues.includes(option.value);
-              return (
-                <CommandItem
-                  // eslint-disable-next-line react/no-array-index-key
-                  key={index}
-                  onSelect={() => toggleOption(option.value)}
-                  className="cursor-pointer"
-                >
-                  <div
-                    className={cn(
-                      "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
-                      isSelected
-                        ? "bg-primary text-primary-foreground"
-                        : "opacity-50 [&_svg]:invisible",
-                    )}
-                  >
-                    <CheckIcon className="h-4 w-4" />
-                  </div>
-                  <span>{option.title}</span>
-                </CommandItem>
-              );
-            })}
+            {variant === "popover" && (
+              <MultiSelectComboboxItem
+                key="all"
+                onSelect={toggleAll}
+                title="(Выбрать все)"
+                isSelected={selectedValues.length === options.length}
+                variant={variant}
+                isAll
+              />
+            )}
+            {visibleItems.map((option, index) => (
+              <MultiSelectComboboxItem
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
+                onSelect={() => toggleOption(option.value.toLowerCase())}
+                title={option.title}
+                isSelected={selectedValues.includes(option.value.toLowerCase())}
+                variant={variant}
+              />
+            ))}
           </CommandGroup>
+          {showExpandButton && (
+            <Button
+              variant="link"
+              className=" text-primary-extraDark"
+              onClick={() => setIsExpand(true)}
+            >
+              Показать все
+            </Button>
+          )}
         </ScrollArea>
       </CommandList>
+
       {variant === "popover" && (
         <div className="flex gap-2 p-2">
           <Button size="sm" onClick={() => onSetIsPopoverOpen?.(false)} className="flex-1">
