@@ -12,7 +12,7 @@ export const HomeSearchBarSearchersItem = ({ title, item }: HomeSearchBarSearche
   return (
     <li>
       <Button asChild className="bg-primary-extraDark hover:bg-primary-extraDark/90">
-        <Link to={`/vacancies?${title}=${item.title}`} className="flex gap-2">
+        <Link to={`/vacancies?${title}=${item.value}`} className="flex gap-2">
           <Search className="stroke-success stroke-2" />
           <span className="font-semibold">{item.title}</span>
         </Link>

@@ -1,3 +1,4 @@
+import { CityType } from "./CityType";
 import { EducationType } from "./EducationType";
 import { EmploymentType } from "./EmploymentType";
 import { GenderType } from "./GenderType";
@@ -20,7 +21,7 @@ export interface UniversalJobType {
   position: string;
   creationDate: Date;
   updatedAt?: Date;
-  city?: string;
+  cities?: CityType[];
   applicantsQuantity: number;
   employment?: EmploymentType[] | string;
   salary?: number[];
@@ -30,10 +31,6 @@ export interface UniversalJobType {
   education?: EducationType | string;
   employmentStartDate?: Date;
   views: number;
-  coordinates?: {
-    lat: string;
-    lng: string;
-  };
   companyCode?: string;
   gender?: GenderType;
   isInFavorites?: boolean;

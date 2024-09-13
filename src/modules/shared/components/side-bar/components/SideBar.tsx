@@ -1,24 +1,17 @@
 import { searchConfig } from "../../../configs";
-import { UniversalItemType } from "../../../types";
-import { SideBarItem } from "./item/SideBarItem";
+import { UniversalItemsWithTitleType } from "../../../types";
 
 interface SideBarProps {
   isHiring?: boolean;
+  render: (key: string, items: UniversalItemsWithTitleType) => JSX.Element;
 }
 
-export const SideBar = ({ isHiring }: SideBarProps) => {
+export const SideBar = ({ isHiring, render }: SideBarProps) => {
   return (
     <aside className="flex-col gap-2 rounded-lg lg:w-[20rem]">
       {Object.entries(searchConfig).map(([key, item]) => {
         if (item.isVacancyOnly && !isHiring) return null;
-        return (
-          <SideBarItem
-            key={key}
-            value={key}
-            title={item.title}
-            items={item.items as Required<UniversalItemType<string>>[]}
-          />
-        );
+        return render(key, item);
       })}
     </aside>
   );

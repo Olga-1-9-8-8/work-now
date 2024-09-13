@@ -11,11 +11,11 @@ export const HomeSearchBarForm = () => {
   const [city, setCity] = useState("");
 
   const getPath = () => {
-    return `${position ? `position=${position}` : ""}${position && city ? "&" : ""}${city ? `city=${city}` : ""}`;
+    return `${position ? `position=${position}` : ""}${position && city ? "&" : ""}${city ? `cities=${city}` : ""}`;
   };
 
   const handleClick = () => {
-    navigate(`/vacancies?${getPath()}`);
+    navigate(`/vacancies?${getPath().toLowerCase()}`);
   };
 
   return (

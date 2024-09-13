@@ -2,7 +2,7 @@ import { VacancyApiType } from "../../../shared/api";
 import { supabase } from "../../../shared/services";
 
 export const createEditVacancy = async (
-  newVacancy: Omit<VacancyApiType, "id"> & { id?: number },
+  newVacancy: Omit<VacancyApiType, "id" | "gender"> & { id?: number; gender?: string | null },
 ) => {
   const query = newVacancy.id
     ? supabase.from("vacancies").update(newVacancy).eq("id", newVacancy.id)

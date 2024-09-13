@@ -19,7 +19,7 @@ export const DetailsCard = memo(({ data, isHiring = false, className }: DetailsC
     about,
     salary,
     employment,
-    city,
+    cities,
     schedule,
     weekHours,
     education,
@@ -28,7 +28,6 @@ export const DetailsCard = memo(({ data, isHiring = false, className }: DetailsC
     updatedAt,
     phone,
     userName,
-    coordinates,
     views,
     applicantsQuantity,
     age,
@@ -42,7 +41,7 @@ export const DetailsCard = memo(({ data, isHiring = false, className }: DetailsC
     <Card className={className}>
       <DetailsCardHeaderBlock>
         <DetailsCardHeaderBlock.DetailsCardHeaderTitle
-          {...{ userName, avatar, views, isHiring, position, city, coordinates, age, gender, id }}
+          {...{ userName, avatar, views, isHiring, position, cities, age, gender, id }}
         />
         <DetailsCardHeaderBlock.DetailsCardHeaderOperations
           {...{

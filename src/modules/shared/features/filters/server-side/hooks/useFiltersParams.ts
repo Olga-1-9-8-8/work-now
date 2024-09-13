@@ -11,7 +11,7 @@ export const useFiltersParams = () => {
     week_hours: "cs",
     creation_date: "gte",
     position: "ilike",
-    city: "in",
+    cities: "cs",
     username: "ilike",
   };
 

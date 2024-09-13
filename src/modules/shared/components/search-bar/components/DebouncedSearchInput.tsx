@@ -1,31 +1,47 @@
 import { XCircle } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDebounce, useUrl } from "../../../hooks";
 import { Button } from "../../../ui/buttons/Button";
 import { Input } from "../../../ui/inputs/Input";
 
-export const SearchInput = () => {
-  const { setParam, getParam } = useUrl();
-  const [searchTerm, setSearchTerm] = useState(getParam("position") || "");
-  const debouncedSearchTerm = useDebounce(searchTerm, 300);
+interface DebouncedSearchInputProps {
+  searchTerm: string;
+  setSearchTerm: (value: string) => void;
+  paramName: string;
+  placeholder?: string;
+  debounceDelay?: number;
+}
+
+export const DebouncedSearchInput = ({
+  searchTerm,
+  setSearchTerm,
+  paramName,
+  placeholder,
+  debounceDelay = 300,
+}: DebouncedSearchInputProps) => {
+  const debouncedSearchTerm = useDebounce(searchTerm, debounceDelay);
+  const { setParam } = useUrl();
 
   useEffect(() => {
     if (debouncedSearchTerm) {
-      setParam("position", debouncedSearchTerm);
+      setParam(paramName, debouncedSearchTerm);
     }
-  }, [debouncedSearchTerm, setParam]);
+  }, [debouncedSearchTerm, paramName, setParam]);
 
   return (
-    <div className="relative">
+    <div className="relative flex-1">
       <Input
         className="border-primary-extraDark pr-11 text-base"
-        placeholder="Введите должность"
+        placeholder={placeholder}
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       {searchTerm && (
         <Button
-          onClick={() => setSearchTerm("")}
+          onClick={() => {
+            setSearchTerm("");
+            setParam(paramName, "");
+          }}
           variant="ghost"
           size="icon"
           className="absolute right-2 top-0"

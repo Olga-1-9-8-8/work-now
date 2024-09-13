@@ -9,9 +9,10 @@ export const HomeSearchBarSearchers = () => {
       <h3 className="text-base font-semibold text-primary-dark">Популярные запросы</h3>
       <ul className="flex flex-wrap justify-center gap-2 md:justify-start">
         {Object.entries(searchConfig).map(([title, item]) => {
+          const firstTenItems = item.items.slice(0, 10);
           return (
             <Fragment key={title}>
-              {item.items.map((i, index) => (
+              {firstTenItems.map((i, index) => (
                 <HomeSearchBarSearchersItem title={title} item={i} key={index} />
               ))}
             </Fragment>

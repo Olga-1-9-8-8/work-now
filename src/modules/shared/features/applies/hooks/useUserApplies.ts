@@ -8,7 +8,7 @@ export const useUserApplies = (id: number, isHiring: boolean) => {
     error,
     data: applies,
   } = useQuery({
-    queryKey: ["applies"],
+    queryKey: ["applies", id],
     queryFn: () => getAllUserApplies({ id, isHiring }),
   });
 

@@ -1,25 +1,26 @@
-import * as TooltipBase from "@radix-ui/react-tooltip";
-import React, { ReactNode } from "react";
-import { TooltipContent, TooltipPrimitive, TooltipTrigger } from "./TooltipPrimitive";
+import React from "react";
+import {
+  Tooltip as TooltipBase,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./TooltipPrimitive";
 
-interface TooltipProps {
-  content: ReactNode;
-  open?: boolean;
-  defaultOpen?: boolean;
-  onOpenChange?: (open: boolean) => void;
-  children: ReactNode;
+interface TooltipProps extends React.ComponentPropsWithoutRef<typeof TooltipBase> {
+  children: React.ReactNode;
+  content: React.ReactNode;
+  className?: string;
 }
 
-export const Tooltip = React.forwardRef<
-  React.ElementRef<typeof TooltipBase.Content>,
-  TooltipProps & React.ComponentPropsWithoutRef<typeof TooltipBase.Content>
->(({ className, content, open, defaultOpen, onOpenChange, children, ...props }, ref) => {
+export const Tooltip = ({ className, content, children, ...props }: TooltipProps) => {
   return (
-    <TooltipPrimitive open={open} defaultOpen={defaultOpen} onOpenChange={onOpenChange}>
-      <TooltipTrigger asChild>{children}</TooltipTrigger>
-      <TooltipContent ref={ref} side="top" align="center" className={className} {...props}>
-        {content}
-      </TooltipContent>
-    </TooltipPrimitive>
+    <TooltipProvider>
+      <TooltipBase {...props}>
+        <TooltipTrigger asChild>{children}</TooltipTrigger>
+        <TooltipContent side="top" align="center" className={className} {...props}>
+          {content}
+        </TooltipContent>
+      </TooltipBase>
+    </TooltipProvider>
   );
-});
+};

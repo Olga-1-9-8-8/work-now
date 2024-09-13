@@ -2,7 +2,7 @@ import { UniversalItemApiTypeInput } from "../../api";
 import { UniversalJobType } from "../../types";
 
 export const mapItemToApiType = (
-  items: Omit<UniversalJobType, "id">,
+  items: Omit<UniversalJobType, "id" | "cities"> & { cities?: string[] },
   userId: string,
   id?: number,
 ): Omit<UniversalItemApiTypeInput, "id"> & { id?: number } => {
@@ -10,7 +10,7 @@ export const mapItemToApiType = (
 
   const {
     about,
-    city,
+    cities,
     employment,
     employmentStartDate,
     weekHours,
@@ -33,7 +33,7 @@ export const mapItemToApiType = (
     views: views ?? 0,
     creation_date: creationDate.toISOString(),
     about: about ?? null,
-    city: city ?? null,
+    cities: cities && cities.length > 0 ? cities : null,
     employment_start_date: employmentStartDate ? employmentStartDate.toISOString() : null,
     week_hours: weekHours ?? [],
     education: education || null,

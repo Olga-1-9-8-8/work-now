@@ -11,14 +11,16 @@ export const HomeInfoListItems = ({ title, items }: HomeInfoListItemsProps) => {
   const navigate = useNavigate();
 
   const handleClick = (item: UniversalItemType) => {
-    navigate(`/vacancies?${title}=${item.title}`);
+    navigate(`/vacancies?${title}=${item.value}`);
   };
+
+  const firstTenItems = items.items.slice(0, 10);
 
   return (
     <div className="flex flex-1 flex-col items-start gap-1 px-2 pl-8">
-      <h4 className="text-nowrap font-semibold text-primary-dark">{`Вакансии ${items.title}`}</h4>
+      <h4 className="text-nowrap font-semibold text-primary-dark">{`${items.title}`}</h4>
       <ul className="flex flex-col items-start gap-2">
-        {items.items.map((item, index) => {
+        {firstTenItems.map((item, index) => {
           return (
             // eslint-disable-next-line react/no-array-index-key
             <li key={index} className="text-nowrap font-medium opacity-65 hover:opacity-100">

@@ -10,9 +10,9 @@ interface SearchListTitleProps {
 export const SearchListTitle = ({ title }: SearchListTitleProps) => {
   const { getParam } = useUrl();
   const position = getParam("position");
-  const city = getParam("city");
+  const cities = getParam("cities");
 
-  const positionAndCity = [position, city].filter(Boolean).join(", ");
+  const positionAndCity = [position, cities].filter(Boolean).join(", ");
 
   return (
     <div className="flex justify-between">

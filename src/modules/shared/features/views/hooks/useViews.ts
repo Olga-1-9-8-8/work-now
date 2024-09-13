@@ -8,7 +8,7 @@ export const useViews = (id: number, isHiring: boolean) => {
     error,
     data: views,
   } = useQuery({
-    queryKey: ["views"],
+    queryKey: ["views", id],
     queryFn: () => getAllViews({ id, isHiring }),
   });
 

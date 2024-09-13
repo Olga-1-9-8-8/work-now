@@ -1,5 +1,6 @@
 import { Building } from "lucide-react";
-import { GenderType } from "../../../../../../../types";
+import { CityType, GenderType } from "../../../../../../../types";
+import { Tooltip } from "../../../../../../../ui/tooltip/Tooltip";
 import { TypographyH2 } from "../../../../../../../ui/typography/TypographyH2";
 import {
   capitalizeFirstLetter,
@@ -18,11 +19,7 @@ interface DetailsCardHeaderTitleProps {
   views: number;
   isHiring: boolean;
   position: string;
-  city?: string;
-  coordinates?: {
-    lat: string;
-    lng: string;
-  };
+  cities?: CityType[];
   age?: number | string;
   gender?: GenderType;
 }
@@ -34,8 +31,7 @@ export const DetailsCardHeaderTitle = ({
   views,
   isHiring,
   position,
-  city,
-  coordinates,
+  cities,
   age,
   gender,
 }: DetailsCardHeaderTitleProps) => {
@@ -64,7 +60,26 @@ export const DetailsCardHeaderTitle = ({
         </div>
 
         <div className="flex items-center gap-4 text-muted-foreground">
-          {city && <MapBadge city={city} coordinates={coordinates} />}
+          {cities && (
+            <div className="flex">
+              <MapBadge city={cities[0].city} coordinates={cities[0].coordinates} />
+              {cities.length > 1 && (
+                <Tooltip
+                  content={
+                    <div>
+                      {cities.slice(1).map(({ city, coordinates }) => (
+                        <MapBadge key={city} city={city} coordinates={coordinates} />
+                      ))}
+                    </div>
+                  }
+                >
+                  <div className=" right-0 top-0 flex h-5 w-5 items-center justify-center rounded-e-md bg-success">
+                    <span className="text-[0.8rem] text-white"> +{cities.length - 1}</span>
+                  </div>
+                </Tooltip>
+              )}
+            </div>
+          )}
           <DetailsCardHeaderTitlePersonalData
             gender={gender}
             age={isHiring ? undefined : age}

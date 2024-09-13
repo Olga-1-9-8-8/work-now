@@ -13,7 +13,7 @@ export const vacancyFormValidationSchema = z.object({
     .string()
     .min(2, "Строка должна содержать минимум 2ве буквы")
     .max(50, "Строка должна содержать максимум 50 букв"),
-  city: z.string(),
+  cities: z.array(z.string()),
   applicantsQuantity: z.number().default(0),
   employment: z.array(z.enum(employmentTypes)).optional(),
   salary: z.array(z.number()),

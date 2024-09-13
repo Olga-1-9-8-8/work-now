@@ -1,5 +1,6 @@
 import { UniversalItemApiTypeInput } from "../../api";
 import {
+  CityType,
   EducationType,
   EmploymentType,
   GenderType,
@@ -12,7 +13,7 @@ export const mapUniversalItem = (item: UniversalItemApiTypeInput) => {
     creation_date: creationDate,
     applicants_quantity: applicantsQuantity,
     user_id: userId,
-    city,
+    cities,
     employment_start_date: employmentStartDate,
     schedule,
     week_hours: weekHours,
@@ -34,7 +35,7 @@ export const mapUniversalItem = (item: UniversalItemApiTypeInput) => {
     updatedAt: updatedAt ? new Date(updatedAt) : undefined,
     schedule: (schedule as ScheduleType[]) ?? undefined,
     weekHours: (weekHours as WeekHoursType[]) ?? undefined,
-    city: city ?? undefined,
+    cities: cities ? cities.map((city) => ({ city }) as CityType) : undefined,
     employment: (employment as EmploymentType[]) ?? undefined,
     education: (education as EducationType) ?? undefined,
     salary: salary ?? undefined,

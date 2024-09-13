@@ -16,7 +16,7 @@ export const getDefaultUniversalJobFormValues = (
     return {
       userId: item.userId,
       position: item.position,
-      city: item.city,
+      cities: item.cities ? item.cities.map(({ city }) => city) : undefined,
       applicantsQuantity: item.applicantsQuantity,
       employment: item.employment as EmploymentType[],
       salary: item.salary,

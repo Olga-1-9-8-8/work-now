@@ -1,4 +1,4 @@
-import { filterConfig } from "../../../shared/configs";
+import { filterConfig, searchConfig } from "../../../shared/configs";
 import { UniversalItemType, UniversalJobType } from "../../../shared/types";
 import { Button } from "../../../shared/ui/buttons/Button";
 import {
@@ -9,6 +9,7 @@ import {
   FormSliderField,
   FormTextareaField,
 } from "../../../shared/ui/form-control";
+import { FormMultiSelect } from "../../../shared/ui/form-control/select/FormMultiSelect";
 import {
   Form,
   FormDescription,
@@ -35,6 +36,7 @@ export const ResumeCreationForm = ({ userId, resume, onModalClose }: ResumeCreat
   });
 
   const { employment, schedule, education, week_hours: weekHours } = filterConfig;
+  const { cities } = searchConfig;
 
   return (
     <Form {...form}>
@@ -45,11 +47,12 @@ export const ResumeCreationForm = ({ userId, resume, onModalClose }: ResumeCreat
           placeholder="Название вашего резюме"
           disabled={isSubmitting}
         />
-        <FormInputField<ResumeCreationFormType>
+        <FormMultiSelect<ResumeCreationFormType>
           label="Укажите регион поиска работы"
-          name="city"
-          placeholder="Место где хотите найти работу"
+          name="cities"
+          title={cities.title}
           disabled={isSubmitting}
+          options={cities.items as Required<UniversalItemType<string>>[]}
         />
         <FormSelect<ResumeCreationFormType>
           disabled={isSubmitting}

@@ -64,7 +64,7 @@ export const MultiSelectCombobox = ({
     if (selectedValues.length === options.length) {
       handleClear();
     } else {
-      const allValues = options.map((option) => option.value.toLowerCase());
+      const allValues = options.map((option) => option.value);
       onSelectedValuesChange(allValues);
       onValueChange(allValues);
     }
@@ -100,9 +100,9 @@ export const MultiSelectCombobox = ({
               <MultiSelectComboboxItem
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
-                onSelect={() => toggleOption(option.value.toLowerCase())}
+                onSelect={() => toggleOption(option.value)}
                 title={option.title}
-                isSelected={selectedValues.includes(option.value.toLowerCase())}
+                isSelected={selectedValues.includes(option.value)}
                 variant={variant}
               />
             ))}
