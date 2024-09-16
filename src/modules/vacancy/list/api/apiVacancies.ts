@@ -29,20 +29,18 @@ export const getVacanciesThirdPartApi = async (param: any, segments: string = "/
 
 interface GetVacanciesProps {
   filters: FilterType[];
-  sortArr: SortingType[];
+  sort: SortingType;
   page: number;
 }
 
-export const getVacancies = async ({ filters, sortArr, page }: GetVacanciesProps) => {
+export const getVacancies = async ({ filters, sort, page }: GetVacanciesProps) => {
   let query = supabase.from("vacancies").select("*,profiles(*)", { count: "exact" });
 
   if (filters.length > 0) {
     query = buildFilterQuery(filters, query);
   }
 
-  if (sortArr.length > 0) {
-    query = buildSortQuery(sortArr, query);
-  }
+  query = buildSortQuery(sort, query);
 
   if (page) {
     query = buildPaginationQuery(page, query);

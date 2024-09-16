@@ -30,6 +30,7 @@ export const FilteredDropdownMenu = ({ sortedField, options }: FilteredDropdownM
   const handleChange = (value: string) => {
     setCurrentValue(value);
     setParam(sortedField, value);
+    setParam("offset", "1");
   };
 
   return (
@@ -39,7 +40,7 @@ export const FilteredDropdownMenu = ({ sortedField, options }: FilteredDropdownM
           {getDropdownMenuTitle(currentValue, options)} <ChevronDown size={19} />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
+      <DropdownMenuContent className="w-60">
         <DropdownMenuRadioGroup value={currentValue} onValueChange={handleChange}>
           {options.map((item) => (
             <DropdownMenuRadioItem key={item.value} value={item.value}>

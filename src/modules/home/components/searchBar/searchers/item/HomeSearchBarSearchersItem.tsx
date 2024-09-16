@@ -10,8 +10,8 @@ interface HomeSearchBarSearchersItemProps {
 
 export const HomeSearchBarSearchersItem = ({ title, item }: HomeSearchBarSearchersItemProps) => {
   return (
-    <li>
-      <Button asChild className="bg-primary-extraDark hover:bg-primary-extraDark/90">
+    <li className="flex-1">
+      <Button asChild className="w-full bg-primary-extraDark hover:bg-primary-extraDark/90">
         <Link to={`/vacancies?${title}=${item.value}`} className="flex gap-2">
           <Search className="stroke-success stroke-2" />
           <span className="font-semibold">{item.title}</span>

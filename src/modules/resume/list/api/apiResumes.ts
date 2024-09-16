@@ -12,19 +12,19 @@ import { supabase } from "../../../shared/services";
 
 interface GetResumesProps {
   filters: FilterType[];
-  sortArr: SortingType[];
+  sort: SortingType;
   page: number;
 }
 
-export const getResumes = async ({ filters, sortArr, page }: GetResumesProps) => {
+export const getResumes = async ({ filters, sort, page }: GetResumesProps) => {
   let query = supabase.from("resumes").select("*,profiles(*)", { count: "exact" });
 
   if (filters.length > 0) {
     query = buildFilterQuery(filters, query);
   }
-  if (sortArr.length > 0) {
-    query = buildSortQuery(sortArr, query);
-  }
+
+  query = buildSortQuery(sort, query);
+
   if (page) {
     query = buildPaginationQuery(page, query);
   }

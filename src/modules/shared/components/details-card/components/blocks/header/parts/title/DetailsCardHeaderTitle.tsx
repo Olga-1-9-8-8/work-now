@@ -62,13 +62,20 @@ export const DetailsCardHeaderTitle = ({
         <div className="flex items-center gap-4 text-muted-foreground">
           {cities && (
             <div className="flex">
-              <MapBadge city={cities[0].city} coordinates={cities[0].coordinates} />
+              <MapBadge
+                city={capitalizeFirstLetter(cities[0].city)}
+                coordinates={cities[0].coordinates}
+              />
               {cities.length > 1 && (
                 <Tooltip
                   content={
                     <div>
                       {cities.slice(1).map(({ city, coordinates }) => (
-                        <MapBadge key={city} city={city} coordinates={coordinates} />
+                        <MapBadge
+                          key={city}
+                          city={capitalizeFirstLetter(city)}
+                          coordinates={coordinates}
+                        />
                       ))}
                     </div>
                   }

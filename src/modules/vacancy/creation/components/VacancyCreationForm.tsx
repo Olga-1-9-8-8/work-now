@@ -45,7 +45,7 @@ export const VacancyCreationForm = ({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8 px-1">
         <FormInputField<VacancyCreationFormType>
           label="Укажите должность"
           name="position"

@@ -40,7 +40,7 @@ export const ResumeCreationForm = ({ userId, resume, onModalClose }: ResumeCreat
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8 px-1">
         <FormInputField<ResumeCreationFormType>
           label="Укажите должность"
           name="position"

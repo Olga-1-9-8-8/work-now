@@ -85,13 +85,20 @@ export const SearchCardHeaderDetails = ({
       <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center">
         {cities && (
           <div className="flex">
-            <MapBadge city={cities[0].city} coordinates={cities[0].coordinates} />
+            <MapBadge
+              city={capitalizeFirstLetter(cities[0].city)}
+              coordinates={cities[0].coordinates}
+            />
             {cities.length > 1 && (
               <Tooltip
                 content={
                   <div className="flex flex-col gap-2">
                     {cities.slice(1).map(({ city, coordinates }) => (
-                      <MapBadge key={city} city={city} coordinates={coordinates} />
+                      <MapBadge
+                        key={city}
+                        city={capitalizeFirstLetter(city)}
+                        coordinates={coordinates}
+                      />
                     ))}
                   </div>
                 }

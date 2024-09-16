@@ -22,7 +22,7 @@ export const LkItemCardContentApplicants = ({
       icon={Mail}
       count={applicantsQuantity}
       title="отклик"
-      titleModal={getModalTitle("откликнувшихся", isHiring)}
+      titleModal={getModalTitle("откликнувшихся на", isHiring)}
     >
       <LkItemCardContentItemModal data={appliesData} isLoading={isAppliesLoading} />
     </LkItemCardContentItem>

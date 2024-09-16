@@ -21,6 +21,14 @@ export const sortConfig: SortConfigType = {
         title: "По возрастанию зарплаты",
         value: "salary-asc",
       },
+      {
+        title: "По названию позиции (А-Я)",
+        value: "position-asc",
+      },
+      {
+        title: "По названию позиции (Я-А)",
+        value: "position-desc",
+      },
     ],
   },
   creation_date: {
