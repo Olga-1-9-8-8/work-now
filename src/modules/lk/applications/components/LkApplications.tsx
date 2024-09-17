@@ -21,7 +21,7 @@ export const LkApplications = ({ applies, count }: LkAppliesProps) => {
         </TypographyH3>
         <div className="my-4 flex flex-col gap-4">
           {applies.map((data) => (
-            <LkCard key={data.id} data={data} />
+            <LkCard key={data.id} data={data} title="Отклики" />
           ))}
         </div>
       </div>

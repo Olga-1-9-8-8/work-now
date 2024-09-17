@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../../../services/auth";
 import { UserEntity } from "../../../types";
 import { Skeleton } from "../../../ui/skeleton/Skeleton";
@@ -14,6 +14,7 @@ interface SearchListHeaderProps {
 
 export const SearchListHeader = ({ total, isHiring, isLoading }: SearchListHeaderProps) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { isAuthenticated, role, isUserLoading } = useUser();
 
   const canShowCreateButton =
@@ -37,7 +38,14 @@ export const SearchListHeader = ({ total, isHiring, isLoading }: SearchListHeade
       {canShowCreateButton && (
         <CreateButton
           title={isHiring ? "Создать новое резюме" : "Создать новую вакансию"}
-          onClick={() => navigate(`/${isHiring ? "resumes" : "vacancies"}/creation`)}
+          onClick={() =>
+            navigate(`/${isHiring ? "resumes" : "vacancies"}/creation`, {
+              state: {
+                from: location.pathname,
+                title: `Назад в Список ${isHiring ? "вакансий" : "резюме"}`,
+              },
+            })
+          }
         />
       )}
     </div>

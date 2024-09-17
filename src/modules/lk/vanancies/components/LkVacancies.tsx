@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Pagination } from "../../../shared/components/pagination";
 import { UniversalJobType } from "../../../shared/types";
 import { Button } from "../../../shared/ui/buttons/Button";
@@ -12,7 +12,7 @@ interface LkVacanciesProps {
 
 export const LkVacancies = ({ vacancies, totalCount }: LkVacanciesProps) => {
   const navigate = useNavigate();
-
+  const location = useLocation();
   return (
     <div className="py-6">
       <div className="flex flex-col md:gap-6">
@@ -23,7 +23,18 @@ export const LkVacancies = ({ vacancies, totalCount }: LkVacanciesProps) => {
             <p className="pt-2 text-lg text-muted-foreground">
               Вы заполнили <strong>{totalCount}</strong> вакансий
             </p>
-            <Button onClick={() => navigate("/vacancies/creation")} variant="success" size="sm">
+            <Button
+              onClick={() =>
+                navigate("/vacancies/creation", {
+                  state: {
+                    from: location.pathname,
+                    title: "Назад в Мои вакансии",
+                  },
+                })
+              }
+              variant="success"
+              size="sm"
+            >
               + Создайте еще вакансию
             </Button>
           </div>

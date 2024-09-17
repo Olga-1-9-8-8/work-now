@@ -1,5 +1,5 @@
 /* eslint-disable unicorn/no-useless-undefined */
-import { differenceInDays, format, parse, sub } from "date-fns";
+import { differenceInCalendarDays, format, parse, sub } from "date-fns";
 import { ru } from "date-fns/locale";
 
 /**
@@ -32,7 +32,7 @@ export const parseDateFromString = (date: string): Date => {
 export const formattedTimeString = (date: Date): string => {
   const today = new Date();
   const dateValue = new Date(date);
-  const daysDifference = differenceInDays(today, dateValue);
+  const daysDifference = differenceInCalendarDays(today, dateValue);
 
   let timeString = "";
   if (daysDifference === 0) {

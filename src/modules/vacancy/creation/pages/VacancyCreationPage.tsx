@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { BackButton } from "../../../shared/components/buttons";
 import { NotExist } from "../../../shared/components/not-found";
 import { useAuthContext } from "../../../shared/services/auth";
 import {
@@ -31,6 +32,7 @@ const VacancyCreationPage = () => {
 
   return (
     <PageContainer>
+      <BackButton />
       <Card className="mt-6">
         <CardHeader>
           <CardTitle>Создайте вакансию</CardTitle>

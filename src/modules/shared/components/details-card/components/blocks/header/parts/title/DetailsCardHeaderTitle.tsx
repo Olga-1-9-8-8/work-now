@@ -1,6 +1,5 @@
 import { Building } from "lucide-react";
 import { CityType, GenderType } from "../../../../../../../types";
-import { Tooltip } from "../../../../../../../ui/tooltip/Tooltip";
 import { TypographyH2 } from "../../../../../../../ui/typography/TypographyH2";
 import {
   capitalizeFirstLetter,
@@ -8,7 +7,7 @@ import {
 } from "../../../../../../../utils/helpers";
 import { Avatar } from "../../../../../../avatar";
 import { CardTitleWithTooltip } from "../../../../../../card";
-import { MapBadge } from "../../../../../../map";
+import { MapCityBadgeGroup } from "../../../../../../map";
 import { DetailsCardHeaderTitlePersonalData } from "./items/DetailsCardHeaderTitlePersonalData";
 import { DetailsCardHeaderTitleViews } from "./items/DetailsCardHeaderTitleViews";
 
@@ -60,33 +59,7 @@ export const DetailsCardHeaderTitle = ({
         </div>
 
         <div className="flex items-center gap-4 text-muted-foreground">
-          {cities && (
-            <div className="flex">
-              <MapBadge
-                city={capitalizeFirstLetter(cities[0].city)}
-                coordinates={cities[0].coordinates}
-              />
-              {cities.length > 1 && (
-                <Tooltip
-                  content={
-                    <div>
-                      {cities.slice(1).map(({ city, coordinates }) => (
-                        <MapBadge
-                          key={city}
-                          city={capitalizeFirstLetter(city)}
-                          coordinates={coordinates}
-                        />
-                      ))}
-                    </div>
-                  }
-                >
-                  <div className=" right-0 top-0 flex h-5 w-5 items-center justify-center rounded-e-md bg-success">
-                    <span className="text-[0.8rem] text-white"> +{cities.length - 1}</span>
-                  </div>
-                </Tooltip>
-              )}
-            </div>
-          )}
+          {cities && <MapCityBadgeGroup cities={cities} />}
           <DetailsCardHeaderTitlePersonalData
             gender={gender}
             age={isHiring ? undefined : age}

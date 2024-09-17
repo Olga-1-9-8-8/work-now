@@ -1,21 +1,17 @@
 import { useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export const useMoveBack = (path?: string) => {
+export const useMoveBack = (defaultPath?: string) => {
   const navigate = useNavigate();
-
   const location = useLocation();
 
-  const moveBack = useCallback(() => {
-    if (path) {
-      navigate(path);
-    } else if (location.key === "default") {
-      navigate("/");
-    } else {
-      const prevPagePath = location.pathname.split("/").slice(0, -1).join("/");
-      navigate(prevPagePath || "/");
-    }
-  }, [location, navigate, path]);
+  const pathParts = location.pathname.split("/").filter(Boolean);
+  const parentPath = `/${pathParts.slice(0, -1).join("/")}`;
 
-  return moveBack;
+  const moveBack = useCallback(() => {
+    const targetPath = location.state?.from || defaultPath || parentPath;
+    navigate(targetPath);
+  }, [defaultPath, location.state?.from, navigate, parentPath]);
+
+  return { moveBack, titleFromState: location.state?.title };
 };

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Pagination } from "../../../shared/components/pagination";
 import { UniversalJobType } from "../../../shared/types";
 import { Button } from "../../../shared/ui/buttons/Button";
@@ -12,6 +12,7 @@ interface LkResumesProps {
 
 export const LkResumes = ({ resumes, totalCount }: LkResumesProps) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <div className="py-6">
@@ -22,7 +23,18 @@ export const LkResumes = ({ resumes, totalCount }: LkResumesProps) => {
             <p className="pt-2 text-lg text-muted-foreground">
               Вы заполнили <strong>{totalCount}</strong> резюме
             </p>
-            <Button onClick={() => navigate("/resumes/creation")} variant="success" size="sm">
+            <Button
+              onClick={() =>
+                navigate("/resumes/creation", {
+                  state: {
+                    from: location.pathname,
+                    title: "Назад в Мои резюме",
+                  },
+                })
+              }
+              variant="success"
+              size="sm"
+            >
               + Создайте еще резюме
             </Button>
           </div>

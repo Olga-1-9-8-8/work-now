@@ -1,5 +1,5 @@
 export const sortTypes = [
-  "creationDate-desc",
+  "creation_date-desc",
   "salary-desc",
   "salary-asc",
   "position-asc",

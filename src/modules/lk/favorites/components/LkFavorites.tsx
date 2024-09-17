@@ -21,7 +21,7 @@ export const LkFavorites = ({ favorites, count }: LkFavoritesProps) => {
         </TypographyH3>
         <div className="my-4 flex flex-col gap-4">
           {favorites.map((data) => {
-            return <LkCard key={data.id} data={data} />;
+            return <LkCard key={data.id} data={data} title="Избранное" />;
           })}
         </div>
       </div>

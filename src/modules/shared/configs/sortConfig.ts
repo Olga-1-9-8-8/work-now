@@ -11,7 +11,7 @@ export const sortConfig: SortConfigType = {
     items: [
       {
         title: "По дате",
-        value: "creationDate-desc",
+        value: "creation_date-desc",
       },
       {
         title: "По убыванию зарплаты",
