@@ -7,5 +7,6 @@ coverage
 # Ignore files
 
 /src/vite-env.d.ts
+/src/modules/shared/api/types/database.types.ts
 
 .config/*

@@ -10,3 +10,4 @@ coverage
 
 
 /package-lock.json
+/src/modules/shared/api/types/database.types.ts
