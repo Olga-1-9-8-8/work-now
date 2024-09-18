@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
+import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import { ScrollToTop } from "./modules/shared/components/scroll";
@@ -25,22 +26,24 @@ const queryClient = new QueryClient({
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ErrorBoundary fallback={<ErrorFallback />}>
-      <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools />
-        <ResponsiveProvider>
-          <BrowserRouter>
-            <Suspense fallback={<Spinner />}>
-              <Toaster position="bottom-center" richColors />
-              <TooltipProvider delayDuration={200}>
-                <ScrollToTop />
-                <AuthProvider>
-                  <AppRoutes />
-                </AuthProvider>
-              </TooltipProvider>
-            </Suspense>
-          </BrowserRouter>
-        </ResponsiveProvider>
-      </QueryClientProvider>
+      <HelmetProvider>
+        <QueryClientProvider client={queryClient}>
+          <ReactQueryDevtools />
+          <ResponsiveProvider>
+            <BrowserRouter>
+              <Suspense fallback={<Spinner />}>
+                <Toaster position="bottom-center" richColors />
+                <TooltipProvider delayDuration={200}>
+                  <ScrollToTop />
+                  <AuthProvider>
+                    <AppRoutes />
+                  </AuthProvider>
+                </TooltipProvider>
+              </Suspense>
+            </BrowserRouter>
+          </ResponsiveProvider>
+        </QueryClientProvider>
+      </HelmetProvider>
     </ErrorBoundary>
   </React.StrictMode>,
 );

@@ -1,17 +1,14 @@
-import { CardDescription, CardTitle } from "../../../ui/card/Card";
-import { AuthResetPasswordForm } from "../components/form/AuthResetPasswordForm";
+import { SeoMetadata } from "../../../navigation";
+import { AuthReset } from "../components/AuthReset";
 
 const AuthResetPage = () => {
   return (
     <>
-      <CardTitle>
-        Забыли пароль?
-        <CardDescription>
-          Напишите свою почту и мы вышлем на неё ссылку для восстановления пароля
-        </CardDescription>
-      </CardTitle>
-
-      <AuthResetPasswordForm />
+      <SeoMetadata
+        title="WorkNow / Восстановление пароля"
+        description=" На странице восстановления пароля WorkNow вы можете быстро и безопасно восстановить доступ к своему аккаунту"
+      />
+      <AuthReset />
     </>
   );
 };

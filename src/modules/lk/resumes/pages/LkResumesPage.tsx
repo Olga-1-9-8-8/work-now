@@ -1,34 +1,14 @@
-import { useNavigate } from "react-router-dom";
-import { NotExist, NotFound } from "../../../shared/components/not-found";
-import { Button } from "../../../shared/ui/buttons/Button";
-import { Spinner } from "../../../shared/ui/spinner/Spinner";
-import { useProfileResumes } from "../../shared/hooks/useProfileResumes";
+import { SeoMetadata } from "../../../shared/navigation";
 import { LkResumes } from "../components/LkResumes";
 
 export const LkResumesPage = () => {
-  const navigate = useNavigate();
-  const { profileResumes, isProfileResumesLoading, totalProfileResumesCount } = useProfileResumes();
-
-  if (isProfileResumesLoading) {
-    return <Spinner />;
-  }
-
-  if (!profileResumes) {
-    return <NotFound title="Резюме" />;
-  }
-
-  return totalProfileResumesCount ? (
-    <LkResumes resumes={profileResumes} totalCount={totalProfileResumesCount} />
-  ) : (
-    <NotExist
-      title={
-        <div className="flex items-center gap-4">
-          <span>У вас пока нет резюме.</span>
-          <Button onClick={() => navigate("/resumes/creation")} variant="success" size="sm">
-            Создайте резюме
-          </Button>
-        </div>
-      }
-    />
+  return (
+    <>
+      <SeoMetadata
+        title="WorkNow / Мои Резюме"
+        description=" На странице моих резюме WorkNow вы можете легко управлять всеми вашими резюме в одном месте"
+      />
+      <LkResumes />
+    </>
   );
 };

@@ -7,7 +7,7 @@ import {
   AccordionTrigger,
 } from "../../../shared/ui/accordion/Accordion";
 import { Button } from "../../../shared/ui/buttons/Button";
-import { TypographyH3 } from "../../../shared/ui/typography/TypographyH3";
+import { TypographyH1 } from "../../../shared/ui/typography/TypographyH1";
 import { HomeInfoList } from "./list/HomeInfoList";
 
 export const HomeInfo = () => {
@@ -21,9 +21,9 @@ export const HomeInfo = () => {
   return (
     <Accordion type="single" collapsible>
       <AccordionItem value="item-1" className="flex flex-col items-center py-4">
-        <TypographyH3 className="text-2xl font-semibold">
+        <TypographyH1 className="text-2xl font-semibold">
           Начни поиск и найди работу быстро
-        </TypographyH3>
+        </TypographyH1>
         <p className="pt-4 font-medium md:text-lg">
           Не знаешь какая будет твоя следующая работа? Посмотри что люди ищут на сайте сегодня
         </p>

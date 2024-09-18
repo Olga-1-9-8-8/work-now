@@ -1,52 +1,35 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { Pagination } from "../../../shared/components/pagination";
-import { UniversalJobType } from "../../../shared/types";
+import { useNavigate } from "react-router-dom";
+import { NotExist, NotFound } from "../../../shared/components/not-found";
 import { Button } from "../../../shared/ui/buttons/Button";
-import { TypographyH2 } from "../../../shared/ui/typography/TypographyH2";
-import { LkVacanciesCard } from "./card/LkVacanciesCard";
+import { Spinner } from "../../../shared/ui/spinner/Spinner";
+import { useProfileVacancies } from "../../shared/hooks/useProfileVacancies";
+import { LkVacanciesList } from "./LkVacanciesList";
 
-interface LkVacanciesProps {
-  vacancies: UniversalJobType[];
-  totalCount: number;
-}
-
-export const LkVacancies = ({ vacancies, totalCount }: LkVacanciesProps) => {
+export const LkVacancies = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  return (
-    <div className="py-6">
-      <div className="flex flex-col md:gap-6">
-        <div>
-          <TypographyH2>Мои вакансии</TypographyH2>
+  const { profileVacancies, isProfileVacanciesLoading, totalProfileVacanciesCount } =
+    useProfileVacancies();
 
-          <div className=" flex flex-col gap-8 md:flex-row md:items-baseline">
-            <p className="pt-2 text-lg text-muted-foreground">
-              Вы заполнили <strong>{totalCount}</strong> вакансий
-            </p>
-            <Button
-              onClick={() =>
-                navigate("/vacancies/creation", {
-                  state: {
-                    from: location.pathname,
-                    title: "Назад в Мои вакансии",
-                  },
-                })
-              }
-              variant="success"
-              size="sm"
-            >
-              + Создайте еще вакансию
-            </Button>
-          </div>
-        </div>
+  if (isProfileVacanciesLoading) {
+    return <Spinner />;
+  }
 
-        <div className="flex flex-col gap-4 py-8 sm:py-4">
-          {vacancies.map((vacancy) => (
-            <LkVacanciesCard key={vacancy.id} vacancy={vacancy} />
-          ))}
+  if (!profileVacancies) {
+    return <NotFound title="Резюме" />;
+  }
+
+  return totalProfileVacanciesCount ? (
+    <LkVacanciesList vacancies={profileVacancies} totalCount={totalProfileVacanciesCount} />
+  ) : (
+    <NotExist
+      title={
+        <div className="flex items-center gap-4">
+          <span>У вас пока нет вакансий.</span>
+          <Button onClick={() => navigate("/vacancies/creation")} variant="success" size="sm">
+            Создайте вакансию
+          </Button>
         </div>
-      </div>
-      <Pagination totalCount={totalCount} />
-    </div>
+      }
+    />
   );
 };

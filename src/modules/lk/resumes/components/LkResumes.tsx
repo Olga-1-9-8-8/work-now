@@ -1,52 +1,34 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { Pagination } from "../../../shared/components/pagination";
-import { UniversalJobType } from "../../../shared/types";
+import { useNavigate } from "react-router-dom";
+import { NotExist, NotFound } from "../../../shared/components/not-found";
 import { Button } from "../../../shared/ui/buttons/Button";
-import { TypographyH2 } from "../../../shared/ui/typography/TypographyH2";
-import { LkResumesCard } from "./card/LkResumesCard";
+import { Spinner } from "../../../shared/ui/spinner/Spinner";
+import { useProfileResumes } from "../../shared/hooks/useProfileResumes";
+import { LkResumesList } from "./LkResumesList";
 
-interface LkResumesProps {
-  resumes: UniversalJobType[];
-  totalCount: number;
-}
-
-export const LkResumes = ({ resumes, totalCount }: LkResumesProps) => {
+export const LkResumes = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const { profileResumes, isProfileResumesLoading, totalProfileResumesCount } = useProfileResumes();
 
-  return (
-    <div className="py-6">
-      <div className="flex flex-col md:gap-6">
-        <div>
-          <TypographyH2>Мои резюме</TypographyH2>
-          <div className=" flex flex-col gap-8 md:flex-row md:items-baseline">
-            <p className="pt-2 text-lg text-muted-foreground">
-              Вы заполнили <strong>{totalCount}</strong> резюме
-            </p>
-            <Button
-              onClick={() =>
-                navigate("/resumes/creation", {
-                  state: {
-                    from: location.pathname,
-                    title: "Назад в Мои резюме",
-                  },
-                })
-              }
-              variant="success"
-              size="sm"
-            >
-              + Создайте еще резюме
-            </Button>
-          </div>
-        </div>
+  if (isProfileResumesLoading) {
+    return <Spinner />;
+  }
 
-        <div className="flex flex-col gap-4 py-8 sm:py-4">
-          {resumes.map((resume) => (
-            <LkResumesCard key={resume.id} resume={resume} />
-          ))}
+  if (!profileResumes) {
+    return <NotFound title="Резюме" />;
+  }
+
+  return totalProfileResumesCount ? (
+    <LkResumesList resumes={profileResumes} totalCount={totalProfileResumesCount} />
+  ) : (
+    <NotExist
+      title={
+        <div className="flex items-center gap-4">
+          <span>У вас пока нет резюме.</span>
+          <Button onClick={() => navigate("/resumes/creation")} variant="success" size="sm">
+            Создайте резюме
+          </Button>
         </div>
-      </div>
-      <Pagination totalCount={totalCount} />
-    </div>
+      }
+    />
   );
 };

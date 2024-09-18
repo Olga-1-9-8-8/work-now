@@ -1,15 +1,14 @@
-import { CardDescription, CardTitle } from "../../../ui/card/Card";
-import { AuthUpdatePasswordForm } from "../components/form/AuthUpdatePasswordForm";
+import { SeoMetadata } from "../../../navigation";
+import { AuthUpdatePassword } from "../components/AuthUpdatePassword";
 
 const AuthUpdatePasswordPage = () => {
   return (
     <>
-      <CardTitle>
-        Введите новый пароль
-        <CardDescription>Напишите свой новый пароль для входа в аккаунт</CardDescription>
-      </CardTitle>
-
-      <AuthUpdatePasswordForm />
+      <SeoMetadata
+        title="WorkNow / Изменение пароля"
+        description="На странице изменения пароля WorkNow вы можете легко и безопасно обновить свой пароль для доступа к аккаунту"
+      />
+      <AuthUpdatePassword />
     </>
   );
 };

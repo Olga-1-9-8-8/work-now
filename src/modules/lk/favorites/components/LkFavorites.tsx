@@ -1,31 +1,17 @@
-import { Pagination } from "../../../shared/components/pagination";
-import { UniversalCardItemType } from "../../../shared/types";
-import { TypographyH3 } from "../../../shared/ui/typography/TypographyH3";
-import { getRightNounWordDeclension } from "../../../shared/utils/helpers";
-import { LkCard } from "../../shared/components";
+import { NotExist, NotFound } from "../../../shared/components/not-found";
+import { useFavorites } from "../../../shared/features/favorites/hooks/useFavorites";
+import { Spinner } from "../../../shared/ui/spinner/Spinner";
+import { LkFavoritesList } from "./LkFavoritesList";
 
-interface LkFavoritesProps {
-  count: number;
-  favorites: UniversalCardItemType[];
-}
+export const LkFavorites = () => {
+  const { favorites, isFavoritesLoading, totalFavoritesCount } = useFavorites();
 
-export const LkFavorites = ({ favorites, count }: LkFavoritesProps) => {
-  return (
-    <div className="pb-4">
-      <div className="py-4">
-        <TypographyH3>
-          У Вас в Избранном{" "}
-          <strong className="text-primary-extraDark">
-            {getRightNounWordDeclension(count, "элемент", ["", "а", "ов"])}
-          </strong>
-        </TypographyH3>
-        <div className="my-4 flex flex-col gap-4">
-          {favorites.map((data) => {
-            return <LkCard key={data.id} data={data} title="Избранное" />;
-          })}
-        </div>
-      </div>
-      <Pagination totalCount={count} />
-    </div>
+  if (isFavoritesLoading) return <Spinner />;
+  if (!favorites) return <NotFound title="Элементы в Избранном" />;
+
+  return totalFavoritesCount ? (
+    <LkFavoritesList count={totalFavoritesCount} favorites={favorites} />
+  ) : (
+    <NotExist title="Вы не добавили ни одного элемента в Избранное" />
   );
 };

@@ -1,17 +1,14 @@
-import { NotExist, NotFound } from "../../../shared/components/not-found";
-import { useFavorites } from "../../../shared/features/favorites/hooks/useFavorites";
-import { Spinner } from "../../../shared/ui/spinner/Spinner";
+import { SeoMetadata } from "../../../shared/navigation";
 import { LkFavorites } from "../components/LkFavorites";
 
 export const LkFavoritesPage = () => {
-  const { favorites, isFavoritesLoading, totalFavoritesCount } = useFavorites();
-
-  if (isFavoritesLoading) return <Spinner />;
-  if (!favorites) return <NotFound title="Элементы в Избранном" />;
-
-  return totalFavoritesCount ? (
-    <LkFavorites count={totalFavoritesCount} favorites={favorites} />
-  ) : (
-    <NotExist title="Вы не добавили ни одного элемента в Избранное" />
+  return (
+    <>
+      <SeoMetadata
+        title="WorkNow / Мое избранное"
+        description="На странице моего избранного WorkNow вы можете легко управлять сохраненными элементами (резюме / вакансиями) и получать доступ к ним в любое время"
+      />
+      <LkFavorites />
+    </>
   );
 };

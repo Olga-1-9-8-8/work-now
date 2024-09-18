@@ -1,24 +1,15 @@
-import { useLocation } from "react-router-dom";
-import { Tabs } from "../../../components/tabs";
-import { AuthLoginForm } from "../components/form/AuthLoginForm";
-import { AuthSignUpForm } from "../components/form/AuthSignUpForm";
+import { SeoMetadata } from "../../../navigation";
+import { Auth } from "../components/Auth";
 
 const AuthPage = () => {
-  const { state } = useLocation();
-
   return (
-    <Tabs
-      tabs={[
-        {
-          value: "login",
-          title: "Войти в Личный кабинет",
-          content: <AuthLoginForm />,
-        },
-        { value: "singUp", title: "Зарегистрироваться", content: <AuthSignUpForm /> },
-      ]}
-      defaultValue={state?.tab ?? "login"}
-      isFullWidth
-    />
+    <>
+      <SeoMetadata
+        title="WorkNow / Авторизация"
+        description=" На странице авторизации WorkNow вы можете легко и безопасно войти в свой аккаунт"
+      />
+      <Auth />;
+    </>
   );
 };
 

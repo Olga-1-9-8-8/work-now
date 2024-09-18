@@ -55,7 +55,6 @@ export const routes: RouteObject[] = [
         path: "vacancies",
       },
       {
-        // TODO: Интегрировать с "vacancies/:companyCode/:id"
         path: "vacancies/:id",
         element: <VacancyDetailsPage />,
         children: [],

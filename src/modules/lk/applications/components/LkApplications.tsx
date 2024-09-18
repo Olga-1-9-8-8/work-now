@@ -1,31 +1,17 @@
-import { Pagination } from "../../../shared/components/pagination";
-import { UniversalCardItemType } from "../../../shared/types";
-import { TypographyH3 } from "../../../shared/ui/typography/TypographyH3";
-import { getRightNounWordDeclension } from "../../../shared/utils/helpers";
-import { LkCard } from "../../shared/components";
+import { NotExist, NotFound } from "../../../shared/components/not-found";
+import { useApplies } from "../../../shared/features/applies/hooks/useApplies";
+import { Spinner } from "../../../shared/ui/spinner/Spinner";
+import { LkApplicationsList } from "./LkApplicationsList";
 
-interface LkAppliesProps {
-  count: number;
-  applies: UniversalCardItemType[];
-}
+export const LkApplications = () => {
+  const { applies, totalAppliesCount, isAppliesLoading } = useApplies();
 
-export const LkApplications = ({ applies, count }: LkAppliesProps) => {
-  return (
-    <div className="pb-10">
-      <div className="py-4">
-        <TypographyH3>
-          У Вас в Откликах{" "}
-          <strong className="text-primary-extraDark">
-            {getRightNounWordDeclension(count, "элемент", ["", "а", "ов"])}
-          </strong>
-        </TypographyH3>
-        <div className="my-4 flex flex-col gap-4">
-          {applies.map((data) => (
-            <LkCard key={data.id} data={data} title="Отклики" />
-          ))}
-        </div>
-      </div>
-      <Pagination totalCount={count} />
-    </div>
+  if (isAppliesLoading) return <Spinner />;
+  if (!applies) return <NotFound title="Элементы в Откликах" />;
+
+  return totalAppliesCount ? (
+    <LkApplicationsList count={totalAppliesCount} applies={applies} />
+  ) : (
+    <NotExist title="Вы не добавили ни одного элемента в Отклики" />
   );
 };
