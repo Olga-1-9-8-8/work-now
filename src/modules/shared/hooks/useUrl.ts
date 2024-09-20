@@ -4,32 +4,34 @@ import { NavigateOptions, useSearchParams } from "react-router-dom";
 export const useUrl = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const getParam = (key: string) => {
-    return searchParams.get(key);
-  };
+  const getParam = useCallback((key: string) => searchParams.get(key), [searchParams]);
+  const getAllParams = useCallback(() => [...searchParams.entries()], [searchParams]);
 
-  const getAllParams = () => {
-    return [...searchParams.entries()];
-  };
-  const setParam = (key: string, value: string | null, options?: NavigateOptions) => {
-    if (value) {
-      searchParams.set(key, value);
-    } else {
+  const setParam = useCallback(
+    (key: string, value: string | null, options?: NavigateOptions) => {
+      if (value) {
+        searchParams.set(key, value);
+      } else {
+        searchParams.delete(key);
+      }
+
+      setSearchParams(searchParams, { replace: true, ...options });
+    },
+    [searchParams, setSearchParams],
+  );
+
+  const removeParam = useCallback(
+    (key: string, options?: NavigateOptions) => {
       searchParams.delete(key);
-    }
-
-    setSearchParams(searchParams, { replace: true, ...options });
-  };
-
-  const removeParam = (key: string, options?: NavigateOptions) => {
-    searchParams.delete(key);
-    setSearchParams(searchParams, { replace: true, ...options });
-  };
+      setSearchParams(searchParams, { replace: true, ...options });
+    },
+    [searchParams, setSearchParams],
+  );
 
   return {
     getParam,
     getAllParams,
-    setParam: useCallback(setParam, [searchParams, setSearchParams]),
-    removeParam: useCallback(removeParam, [searchParams, setSearchParams]),
+    setParam,
+    removeParam,
   };
 };

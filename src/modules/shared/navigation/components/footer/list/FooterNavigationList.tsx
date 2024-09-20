@@ -5,7 +5,7 @@ const footerItems = [
   {
     href: externalUrlsConfig.links.twitter,
     title: "Built by",
-    text: "Olga Koroleva &trade;",
+    text: "Olga Koroleva",
   },
   {
     href: externalUrlsConfig.links.vercel,

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 import React from "react";
 import {
   Tooltip as TooltipBase,
@@ -13,6 +14,7 @@ interface TooltipProps extends React.ComponentPropsWithoutRef<typeof TooltipBase
 }
 
 export const Tooltip = ({ className, content, children, ...props }: TooltipProps) => {
+  if (!content) return <>{children}</>;
   return (
     <TooltipProvider>
       <TooltipBase {...props}>

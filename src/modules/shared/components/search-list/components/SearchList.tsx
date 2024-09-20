@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { PageContainer } from "../../../ui/layout";
 import { SearchFiltersBar } from "../../filters";
 import { SearchListAdditionalFilters } from "./SearchListAdditionalFilters";
-import { SearchListHeader } from "./SearchListHeader";
+import { SearchListHeader } from "./header/SearchListHeader";
 
 interface SearchListProps {
   isHiring?: boolean;

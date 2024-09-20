@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .word-spacing-wide {
+    word-spacing: 4px;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

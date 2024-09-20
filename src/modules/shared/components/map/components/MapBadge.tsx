@@ -14,7 +14,8 @@ interface MapBadgeProps {
 }
 
 export const MapBadge = ({ city, coordinates }: MapBadgeProps) => {
-  if (!coordinates) return <CardItemInsight className="gap-1" icon={MapPin} title={city} />;
+  if (!coordinates)
+    return <CardItemInsight className="items-center gap-1" icon={MapPin} title={city} />;
 
   return (
     <DrawerDialogResponsive

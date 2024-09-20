@@ -9,29 +9,32 @@ import {
 } from "../../../../ui/accordion/Accordion";
 import { MultiSelect } from "../../../../ui/form-control/select/multi/MultiSelect";
 import { TypographyH6 } from "../../../../ui/typography/TypographyH6";
+import { SideBarItemButtonReset } from "../button/SideBarItemButton";
 
 interface SideBarItemProps {
   value: string;
   title: string;
   items: Required<UniversalItemType<string>>[];
+  defaultSearchTerm?: string;
+  onSearchTermChange?: (value: string) => void;
 }
 
-export const SideBarItem = ({ items, value, title }: SideBarItemProps) => {
-  const { setParam, getParam } = useUrl();
+export const SideBarItem = ({
+  items,
+  value,
+  title,
+  defaultSearchTerm = "",
+  onSearchTermChange,
+}: SideBarItemProps) => {
+  const { setParam } = useUrl();
   const [canShow, setCanShow] = useState(false);
 
-  const handleChange = (selectedValues: string[]) => {
+  const updateParams = (selectedValues: string[]) => {
+    const selectedValuesString = selectedValues.join(",");
     setCanShow(selectedValues.length > 0);
-    setParam(value, selectedValues.join(","));
+    setParam(value, selectedValuesString);
     setParam("offset", "1");
-  };
-
-  const handleReset = (
-    e: React.MouseEvent<HTMLSpanElement> | React.KeyboardEvent<HTMLSpanElement>,
-  ) => {
-    e.stopPropagation();
-    setCanShow(false);
-    setParam(value, "");
+    onSearchTermChange?.(selectedValuesString);
   };
 
   return (
@@ -40,21 +43,7 @@ export const SideBarItem = ({ items, value, title }: SideBarItemProps) => {
         <AccordionTrigger className="py-1 hover:no-underline">
           <div className="flex min-h-10 items-center gap-4">
             <TypographyH6 className="text-nowrap ">{title}</TypographyH6>
-            {canShow && (
-              <span
-                role="button"
-                className="p-0 text-sm text-muted-foreground underline decoration-muted-foreground decoration-dashed"
-                onClick={handleReset}
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    handleReset(e);
-                  }
-                }}
-              >
-                Сбросить
-              </span>
-            )}
+            {canShow && <SideBarItemButtonReset onClick={() => updateParams([])} />}
           </div>
         </AccordionTrigger>
 
@@ -62,8 +51,8 @@ export const SideBarItem = ({ items, value, title }: SideBarItemProps) => {
           <MultiSelect
             options={items}
             title={value}
-            defaultValue={getParam(value)?.split(",") ?? []}
-            onValueChange={handleChange}
+            defaultValue={defaultSearchTerm ? defaultSearchTerm.split(",") : []}
+            onValueChange={updateParams}
             variant="list"
             expandable
           />

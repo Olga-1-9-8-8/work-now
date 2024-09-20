@@ -5,43 +5,43 @@ import { Button } from "../../../ui/buttons/Button";
 import { Input } from "../../../ui/inputs/Input";
 
 interface DebouncedSearchInputProps {
-  searchTerm: string;
-  setSearchTerm: (value: string) => void;
-  paramName: string;
+  paramKey: string;
+  defaultSearchTerm?: string;
+  onSearchTermChange?: (value: string) => void;
   placeholder?: string;
   debounceDelay?: number;
 }
 
 export const DebouncedSearchInput = ({
-  searchTerm,
-  setSearchTerm,
-  paramName,
+  paramKey,
+  defaultSearchTerm = "",
+  onSearchTermChange,
   placeholder,
   debounceDelay = 300,
 }: DebouncedSearchInputProps) => {
-  const debouncedSearchTerm = useDebounce(searchTerm, debounceDelay);
   const { setParam } = useUrl();
+  const debouncedSearchTerm = useDebounce(defaultSearchTerm, debounceDelay);
 
   useEffect(() => {
-    if (debouncedSearchTerm) {
-      setParam(paramName, debouncedSearchTerm);
-    }
-  }, [debouncedSearchTerm, paramName, setParam]);
+    setParam(paramKey, debouncedSearchTerm);
+    setParam("offset", "1");
+  }, [debouncedSearchTerm, paramKey, setParam]);
+
+  const handleChange = (value: string) => {
+    onSearchTermChange?.(value);
+  };
 
   return (
     <div className="relative flex-1">
       <Input
         className="border-primary-extraDark pr-11 text-base"
         placeholder={placeholder}
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        value={defaultSearchTerm}
+        onChange={(e) => handleChange(e.target.value)}
       />
-      {searchTerm && (
+      {defaultSearchTerm && (
         <Button
-          onClick={() => {
-            setSearchTerm("");
-            setParam(paramName, "");
-          }}
+          onClick={() => handleChange("")}
           variant="ghost"
           size="icon"
           className="absolute right-2 top-0"
