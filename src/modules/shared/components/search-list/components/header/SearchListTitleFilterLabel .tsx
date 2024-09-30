@@ -6,7 +6,10 @@ interface SearchListTitleFilterLabelProps {
 }
 
 export const SearchListTitleFilterLabel = ({ filter }: SearchListTitleFilterLabelProps) => {
-  const items = filter.split(",");
+  const items = filter
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
 
   return (
     <CountLabelWithTooltip

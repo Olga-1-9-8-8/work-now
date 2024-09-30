@@ -46,7 +46,7 @@ export const FormCheckboxMultipleField = <T extends FieldValues>({
                 return (
                   <FormItem
                     key={item.value}
-                    className="flex flex-row items-start space-x-4 space-y-0 py-1"
+                    className="flex flex-row items-center space-x-3 space-y-0 py-1"
                   >
                     <FormControl>
                       <Checkbox
@@ -61,7 +61,7 @@ export const FormCheckboxMultipleField = <T extends FieldValues>({
                         {...props}
                       />
                     </FormControl>
-                    <FormLabel className="font-normal">{item.title}</FormLabel>
+                    <FormLabel className="text-sm text-dark">{item.title}</FormLabel>
                   </FormItem>
                 );
               }}

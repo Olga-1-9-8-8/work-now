@@ -10,6 +10,10 @@ export const buildSortQuery = (
   let updatedQuery = query;
 
   const { column, direction } = sort;
+  if (column === "salary") {
+    updatedQuery = updatedQuery.not("salary", "is", null);
+  }
+
   updatedQuery = updatedQuery.order(column, { ascending: direction === "asc" });
 
   return updatedQuery;

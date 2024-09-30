@@ -8,7 +8,7 @@ interface SideBarProps {
 
 export const SideBar = ({ isHiring, render }: SideBarProps) => {
   return (
-    <aside className="flex-col gap-2 rounded-lg lg:w-[20rem]">
+    <aside className="w-[16rem] flex-col gap-2 rounded-lg lg:w-[20rem]">
       {Object.entries(searchConfig).map(([key, item]) => {
         if (item.isVacancyOnly && !isHiring) return null;
         return render(key, item);

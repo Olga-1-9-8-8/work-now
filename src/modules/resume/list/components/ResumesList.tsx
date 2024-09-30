@@ -11,7 +11,7 @@ interface ResumesListProps {
 export const ResumesList = ({ resumes, totalCount }: ResumesListProps) => {
   if (!resumes) return <NotFound title="Резюме" />;
   return (
-    <>
+    <div className="flex flex-col gap-3">
       {totalCount === 0 ? (
         <NotFound title="Резюме" description="Поменяйте фильтры или попробуйте еще раз" />
       ) : (
@@ -20,6 +20,6 @@ export const ResumesList = ({ resumes, totalCount }: ResumesListProps) => {
         })
       )}
       {!!totalCount && <Pagination totalCount={totalCount} />}
-    </>
+    </div>
   );
 };

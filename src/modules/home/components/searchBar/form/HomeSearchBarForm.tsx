@@ -30,7 +30,7 @@ export const HomeSearchBarForm = () => {
 
       <Input
         className="border-l-1 h-14 grow rounded-none rounded-r-lg border-2 border-primary-extraDark focus-visible:ring-0 focus-visible:ring-offset-0"
-        placeholder="Местоположение или “Удаленка”"
+        placeholder="Введите регион или город работы"
         value={city}
         onChange={(e) => setCity(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && handleClick()}

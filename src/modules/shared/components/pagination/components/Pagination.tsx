@@ -1,4 +1,3 @@
-import { useResponsiveContext } from "../../../responsive";
 import {
   PaginationBase,
   PaginationContent,
@@ -15,8 +14,6 @@ interface PaginationProps {
 }
 
 export const Pagination = ({ totalCount }: PaginationProps) => {
-  const isMobile = useResponsiveContext();
-
   const {
     handleNextPage,
     handlePageClick,
@@ -36,9 +33,8 @@ export const Pagination = ({ totalCount }: PaginationProps) => {
             <PaginationPrevious
               disabled={currentPage === 1}
               onClick={handlePreviousPage}
-              title={isMobile ? "" : "Предыдущая"}
-              className={`cursor-pointer ${isMobile && "p-0 pl-1"}`}
-              size={isMobile ? "icon" : undefined}
+              className="cursor-pointer px-4 lg:px-4"
+              size="icon"
             />
           </PaginationItem>
           {pageNumbers.map((page, index) => {
@@ -64,9 +60,8 @@ export const Pagination = ({ totalCount }: PaginationProps) => {
             <PaginationNext
               disabled={currentPage === pageCount}
               onClick={handleNextPage}
-              title={isMobile ? "" : "Следующая"}
-              size={isMobile ? "icon" : undefined}
-              className={`cursor-pointer  ${isMobile && "p-0 pr-1"}`}
+              size="icon"
+              className="cursor-pointer px-4 lg:px-4"
             />
           </PaginationItem>
         </PaginationContent>

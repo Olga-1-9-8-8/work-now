@@ -10,7 +10,6 @@ interface VacanciesListItemProps {
 export const VacanciesListItem = ({ vacancy }: VacanciesListItemProps) => {
   const navigate = useNavigate();
   const handleCardClick = useCallback(() => {
-    // TODO:  Интегрировать с `/vacancies/${companyCode}/${id}`
     navigate(`/vacancies/${vacancy.id}`);
   }, [navigate, vacancy.id]);
 

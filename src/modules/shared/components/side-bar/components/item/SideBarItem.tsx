@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useUrl } from "../../../../hooks";
 import { UniversalItemType } from "../../../../types";
 import {
@@ -26,16 +26,29 @@ export const SideBarItem = ({
   defaultSearchTerm = "",
   onSearchTermChange,
 }: SideBarItemProps) => {
-  const { setParam } = useUrl();
+  const { setParam, getParam } = useUrl();
+  const paramValue = getParam(value);
   const [canShow, setCanShow] = useState(false);
 
-  const updateParams = (selectedValues: string[]) => {
-    const selectedValuesString = selectedValues.join(",");
-    setCanShow(selectedValues.length > 0);
-    setParam(value, selectedValuesString);
-    setParam("offset", "1");
-    onSearchTermChange?.(selectedValuesString);
-  };
+  const isItemExistInParamArr = useMemo(() => {
+    const paramArr = paramValue ? paramValue.split(",") : [];
+    return items.some((item) => paramArr.includes(item.value));
+  }, [items, paramValue]);
+
+  useEffect(() => {
+    setCanShow(isItemExistInParamArr);
+  }, [isItemExistInParamArr]);
+
+  const updateParams = useCallback(
+    (selectedValues: string[]) => {
+      const selectedValuesString = selectedValues.join(",");
+      setCanShow(selectedValues.length > 0);
+      setParam(value, selectedValuesString);
+      setParam("offset", "1");
+      onSearchTermChange?.(selectedValuesString);
+    },
+    [onSearchTermChange, setParam, value],
+  );
 
   return (
     <Accordion type="single" collapsible className="w-full" defaultValue={`item-${value}`}>

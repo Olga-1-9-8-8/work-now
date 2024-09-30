@@ -16,7 +16,7 @@ export const CheckboxWithLabel = React.forwardRef<
   return (
     <div className={cn("flex items-center space-x-3", className)}>
       <Checkbox id={id} {...props} ref={ref} />
-      <Label className="text-primary-extraDark" htmlFor={id}>
+      <Label className="text-sm text-dark" htmlFor={id}>
         {label}
       </Label>
     </div>

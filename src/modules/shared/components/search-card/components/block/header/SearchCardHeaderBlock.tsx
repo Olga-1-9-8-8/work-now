@@ -1,5 +1,5 @@
 import { Building, CalendarDays, ClipboardCheck, EyeIcon, GraduationCap } from "lucide-react";
-import { ReactNode, useState } from "react";
+import { ReactNode, memo, useState } from "react";
 import { FaCircleChevronDown, FaCircleChevronUp, FaPerson } from "react-icons/fa6";
 import { CityType, EducationType, GenderType } from "../../../../../types";
 import { Badge } from "../../../../../ui/badge/Badge";
@@ -30,27 +30,24 @@ interface SearchCardHeaderTitleProps {
   isHiring?: boolean;
 }
 
-export const SearchCardHeaderTitle = ({
-  userName,
-  avatar,
-  position,
-  isHiring,
-}: SearchCardHeaderTitleProps) => {
-  return (
-    <div className="flex flex-col items-start gap-4 sm:flex-row">
-      <Avatar
-        className="h-16 w-16 border-2"
-        icon={isHiring ? Building : undefined}
-        src={avatar}
-        userName={userName}
-      />
-      <div>
-        <CardTitle className="text-xl md:text-2xl">{capitalizeFirstLetter(position)}</CardTitle>
-        <CardTitleWithTooltip title={userName ?? "Аноним"} />
+export const SearchCardHeaderTitle = memo(
+  ({ userName, avatar, position, isHiring }: SearchCardHeaderTitleProps) => {
+    return (
+      <div className="flex flex-col items-start gap-4 sm:flex-row">
+        <Avatar
+          className="h-16 w-16 border-2"
+          icon={isHiring ? Building : undefined}
+          src={avatar}
+          userName={userName}
+        />
+        <div>
+          <CardTitle className="text-xl md:text-2xl">{capitalizeFirstLetter(position)}</CardTitle>
+          <CardTitleWithTooltip title={userName ?? "Аноним"} />
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  },
+);
 
 interface SearchCardHeaderDetailsProps {
   cities?: CityType[];
@@ -161,7 +158,9 @@ export const SearchCardHeaderAdditionalInfo = ({
           </Button>
         </CollapsibleTrigger>
       </div>
-      <CollapsibleContent>{content}</CollapsibleContent>
+      <CollapsibleContent className="overflow-hidden data-[state=open]:animate-collapsible-down">
+        {content}
+      </CollapsibleContent>
     </Collapsible>
   );
 };

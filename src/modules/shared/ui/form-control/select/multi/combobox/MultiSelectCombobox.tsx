@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { CommandItem } from "cmdk";
+import { useCallback, useState } from "react";
 import { UniversalItemType } from "../../../../../types";
 import { Button } from "../../../../buttons/Button";
 import {
@@ -37,30 +38,36 @@ export const MultiSelectCombobox = ({
   const visibleItems = expandable && !isExpand ? options.slice(0, visibleItemsCount) : options;
   const showExpandButton = expandable && options.length > visibleItemsCount && !isExpand;
 
-  const handleInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      onSetIsPopoverOpen?.(true);
-    } else if (event.key === "Backspace" && !event.currentTarget.value) {
-      const updatedSelectedValues = selectedValues.slice(0, -1);
-      onSelectedValuesChange(updatedSelectedValues);
-      onValueChange(updatedSelectedValues);
-    }
-  };
+  const handleInputKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === "Enter") {
+        onSetIsPopoverOpen?.(true);
+      } else if (event.key === "Backspace" && !event.currentTarget.value) {
+        const updatedSelectedValues = selectedValues.slice(0, -1);
+        onSelectedValuesChange(updatedSelectedValues);
+        onValueChange(updatedSelectedValues);
+      }
+    },
+    [onSelectedValuesChange, onSetIsPopoverOpen, onValueChange, selectedValues],
+  );
 
-  const toggleOption = (value: string) => {
-    const newSelectedValues = selectedValues.includes(value)
-      ? selectedValues.filter((v) => v !== value)
-      : [...selectedValues, value];
-    onSelectedValuesChange(newSelectedValues);
-    onValueChange(newSelectedValues);
-  };
+  const toggleOption = useCallback(
+    (value: string) => {
+      const newSelectedValues = selectedValues.includes(value)
+        ? selectedValues.filter((v) => v !== value)
+        : [...selectedValues, value];
+      onSelectedValuesChange(newSelectedValues);
+      onValueChange(newSelectedValues);
+    },
+    [onSelectedValuesChange, onValueChange, selectedValues],
+  );
 
-  const handleClear = () => {
+  const handleClear = useCallback(() => {
     onSelectedValuesChange([]);
     onValueChange([]);
-  };
+  }, [onSelectedValuesChange, onValueChange]);
 
-  const toggleAll = () => {
+  const toggleAll = useCallback(() => {
     if (selectedValues.length === options.length) {
       handleClear();
     } else {
@@ -68,7 +75,7 @@ export const MultiSelectCombobox = ({
       onSelectedValuesChange(allValues);
       onValueChange(allValues);
     }
-  };
+  }, [handleClear, onSelectedValuesChange, onValueChange, options, selectedValues.length]);
 
   return (
     <Command>
@@ -86,6 +93,7 @@ export const MultiSelectCombobox = ({
           className={`${variant === "list" ? "h-72" : "flex max-h-[300px] flex-col"}`}
         >
           <CommandGroup>
+            <CommandItem value="-" className="hidden" />
             {variant === "popover" && (
               <MultiSelectComboboxItem
                 key="all"
@@ -96,10 +104,9 @@ export const MultiSelectCombobox = ({
                 isAll
               />
             )}
-            {visibleItems.map((option, index) => (
+            {visibleItems.map((option) => (
               <MultiSelectComboboxItem
-                // eslint-disable-next-line react/no-array-index-key
-                key={index}
+                key={option.value}
                 onSelect={() => toggleOption(option.value)}
                 title={option.title}
                 isSelected={selectedValues.includes(option.value)}
@@ -110,7 +117,7 @@ export const MultiSelectCombobox = ({
           {showExpandButton && (
             <Button
               variant="link"
-              className=" text-primary-extraDark"
+              className="text-primary-extraDark"
               onClick={() => setIsExpand(true)}
             >
               Показать все

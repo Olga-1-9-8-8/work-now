@@ -1,10 +1,7 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useCallback, useState } from "react";
 import { useUrl } from "../../../hooks";
-import { useResponsiveContext } from "../../../responsive";
-import { UniversalItemType } from "../../../types";
-import { DebouncedSearchInput } from "../../search-bar/components/DebouncedSearchInput";
-import { SideBar } from "../../side-bar";
-import { SideBarItem } from "../../side-bar/components/item/SideBarItem";
+import { SearchListCollapsibleInputs } from "./inputs/SearchListCollapsibleInputs";
+import { SearchListSideBar } from "./side-bar/SearchListSideBar";
 
 interface SearchListAdditionalFiltersProps {
   isHiring: boolean;
@@ -15,38 +12,32 @@ export const SearchListAdditionalFilters = ({
   isHiring,
   children,
 }: SearchListAdditionalFiltersProps) => {
-  const isMobile = useResponsiveContext();
   const { getParam } = useUrl();
 
-  const [positionSearchTerm, setPositionSearchTerm] = useState(getParam("position") || "");
+  const [searchTerms, setSearchTerms] = useState(() => ({
+    position: getParam("position") || "",
+    cities: getParam("cities") || "",
+    username: getParam("username") || "",
+  }));
+
+  const handleSearchTermChange = useCallback((key: keyof typeof searchTerms, value: string) => {
+    setSearchTerms((prevSearchTerms) => ({ ...prevSearchTerms, [key]: value }));
+  }, []);
 
   return (
     <div className="flex gap-4 py-4">
-      {isMobile ? null : (
-        <SideBar
-          isHiring={isHiring}
-          render={(key, item) => (
-            <SideBarItem
-              key={key}
-              value={key}
-              title={item.title}
-              items={item.items as Required<UniversalItemType<string>>[]}
-              searchTerm={positionSearchTerm}
-              setSearchTerm={setPositionSearchTerm}
-            />
-          )}
-        />
-      )}
+      <SearchListSideBar
+        isHiring={isHiring}
+        searchTerms={searchTerms}
+        onSearchTermChange={handleSearchTermChange}
+      />
       <div className="flex-1">
-        <div className="flex flex-col gap-4">
-          <DebouncedSearchInput
-            searchTerm={positionSearchTerm}
-            setSearchTerm={setPositionSearchTerm}
-            paramName="position"
-            placeholder="Введите должность"
-          />
-          {children}
-        </div>
+        <SearchListCollapsibleInputs
+          isHiring={isHiring}
+          searchTerms={searchTerms}
+          onSearchTermChange={handleSearchTermChange}
+        />
+        {children}
       </div>
     </div>
   );

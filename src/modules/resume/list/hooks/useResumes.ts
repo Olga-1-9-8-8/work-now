@@ -15,7 +15,7 @@ export const useResumes = () => {
     data: resumes,
     error,
   } = useQuery({
-    queryKey: ["resumes", filters, undefined, page],
+    queryKey: ["resumes", filters, sort, page],
     queryFn: async () => {
       const resumesData = await getResumes({ filters, sort, page });
 
@@ -39,14 +39,14 @@ export const useResumes = () => {
       queryFn: () => getResumes({ filters, sort, page: page - 1 }),
     });
   }
+  if (sort.column === "salary" && resumes?.data) {
+    sortClientData(sort, resumes.data);
+  }
 
   return {
     isLoading,
     error,
-    resumes: (sort.column === "salary" && resumes?.data
-      ? sortClientData(sort, resumes.data)
-      : resumes?.data
-    )?.map(mapUniversalItemWithProfile),
+    resumes: resumes?.data?.map(mapUniversalItemWithProfile),
     totalCount: resumes?.totalCount ?? undefined,
   };
 };

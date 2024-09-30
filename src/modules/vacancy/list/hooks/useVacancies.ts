@@ -44,13 +44,14 @@ export const useVacancies = () => {
     });
   }
 
+  if (sort.column === "salary" && vacancies?.data) {
+    sortClientData(sort, vacancies.data);
+  }
+
   return {
     isLoading,
     error,
-    vacancies: (sort.column === "salary" && vacancies?.data
-      ? sortClientData(sort, vacancies.data)
-      : vacancies?.data
-    )?.map(mapUniversalItemWithProfile),
+    vacancies: vacancies?.data?.map(mapUniversalItemWithProfile),
     totalCount: vacancies?.totalCount ?? undefined,
   };
 };

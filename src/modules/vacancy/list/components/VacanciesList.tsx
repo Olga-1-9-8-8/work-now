@@ -12,7 +12,7 @@ export const VacanciesList = ({ vacancies, totalCount }: VacanciesListProps) => 
   if (!vacancies) return <NotFound title="Вакансии" />;
 
   return (
-    <>
+    <div className="flex flex-col gap-3">
       {totalCount === 0 ? (
         <NotFound title="Вакансии" description="Поменяйте фильтры или попробуйте еще раз" />
       ) : (
@@ -21,6 +21,6 @@ export const VacanciesList = ({ vacancies, totalCount }: VacanciesListProps) => 
         })
       )}
       {!!totalCount && <Pagination totalCount={totalCount} />}
-    </>
+    </div>
   );
 };

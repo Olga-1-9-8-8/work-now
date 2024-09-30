@@ -22,7 +22,10 @@ export const CountLabelWithTooltip = <T,>({
       content={
         items.length > 1 && (
           <div className="flex flex-col gap-2">
-            {items.slice(1).map((item) => renderContent(item))}
+            {items
+              .slice(1)
+              .filter(Boolean)
+              .map((item) => renderContent(item))}
           </div>
         )
       }
