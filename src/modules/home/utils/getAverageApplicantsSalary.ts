@@ -2,8 +2,7 @@
 import { getAverageSalary } from "../../shared/utils";
 import { formatCurrency } from "../../shared/utils/helpers";
 
-export const getAverageApplicantsSalary = <T extends { salary: number[] | null }[]>(items?: T) => {
-  if (!items || items.length === 0) return "Нет данных";
+export const getAverageApplicantsSalary = <T extends { salary: number[] | null }[]>(items: T) => {
   let countItemsWithSalary = 0;
 
   const sumSalary = items.reduce((prev, curr) => {
@@ -14,5 +13,5 @@ export const getAverageApplicantsSalary = <T extends { salary: number[] | null }
     return prev + getAverageSalary(curr.salary);
   }, 0);
 
-  return countItemsWithSalary ? formatCurrency(sumSalary / countItemsWithSalary) : "Нет данных";
+  return countItemsWithSalary ? formatCurrency(sumSalary / countItemsWithSalary) : undefined;
 };

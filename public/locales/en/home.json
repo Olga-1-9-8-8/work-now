@@ -1,0 +1,60 @@
+{
+  "home": {
+    "info": {
+      "title": "Start your search and find your job quickly",
+      "description": "Don't know what your next job will be? See what people are searching for on the site today",
+      "needAccount": "Register on the site now",
+      "needAccountBtn": "Create a profile for free"
+    },
+    "searchBar": {
+      "searchers": {
+        "title": "Popular jobs"
+      },
+      "placeholder": "Enter the title of the work",
+      "cityPlaceholder": "Enter the region or city "
+    },
+    "details": {
+      "title": "If you are a Student or Graduate",
+      "description": "There are many internship offers on the site. Read brief information about them"
+    },
+    "charts": {
+      "overview": {
+        "title": "Analytics charts",
+        "lastResumes": {
+          "title": "Total resumes for this period"
+        },
+        "applicantsWithHighEducation": {
+          "title": "Number of resumes  with higher education"
+        },
+        "averageApplicantsSalary": {
+          "title": "The average salary that candidates want to receive"
+        },
+        "averageApplicantsQuantity": {
+          "title": "Average number of responses per 1 candidate"
+        }
+      },
+      "pricing": {
+        "title": "Price for companies",
+        "heading": "Clear and low price",
+        "description": "Only employers need pay for finding employees.",
+        "label": "What is included in the price",
+        "price": "Monthly payment",
+        "btnTitle": "Register",
+        "explanation": "The first two months of using the application are free for a new company."
+      },
+      "salary": {
+        "title": "Schedule of desired salaries indicated in published resumes by days for the last",
+        "description": "The average maximum/minimum/average salary per day is indicated for all resumes"
+      },
+      "gender": {
+        "title": "Gender Ratio in Published CVs for the last"
+      },
+      "age": {
+        "title": "Average age of candidates in published resumes for the last"
+      },
+      "chartNotExist": "No data for the graph",
+      "nodata": "No data",
+      "days": "days"
+    }
+  }
+}

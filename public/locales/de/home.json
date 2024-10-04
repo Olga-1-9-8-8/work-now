@@ -1,0 +1,60 @@
+{
+  "home": {
+    "info": {
+      "title": "Starten Sie Ihre Suche und finden Sie schnell einen Job",
+      "description": "Sie wissen nicht, was Ihr nächster Job sein wird? Sehen Sie, wonach die Leute heute auf der Website suchen",
+      "needAccount": "Registrieren Sie sich jetzt auf der Website",
+      "needAccountBtn": "Erstellen Sie kostenlos ein Profil"
+    },
+    "searchBar": {
+      "searchers": {
+        "title": "Beliebte Suchanfragen"
+      },
+      "placeholder": "Berufsbezeichnung eingeben",
+      "cityPlaceholder": "Geben Sie Ihre Arbeitsregion oder Ihren Arbeitsort ein"
+    },
+    "details": {
+      "title": "Wenn Sie Student oder Absolvent sind",
+      "description": "Auf der Website gibt es viele Praktikumsangebote. Lesen Sie kurze Informationen darüber"
+    },
+    "charts": {
+      "overview": {
+        "title": "Analytics-Diagramme",
+        "lastResumes": {
+          "title": "Gesamtzusammenfassung für diesen Zeitraum"
+        },
+        "applicantsWithHighEducation": {
+          "title": "Anzahl der Lebensläufe von Bewerbern mit Hochschulbildung"
+        },
+        "averageApplicantsSalary": {
+          "title": "Durchschnittliches Gehalt, das Bewerber erhalten möchten"
+        },
+        "averageApplicantsQuantity": {
+          "title": "Durchschnittliche Anzahl der Antworten pro Kandidat"
+        }
+      },
+      "pricing": {
+        "title": "Preis für Unternehmen",
+        "heading": "Übersichtlicher und günstiger Preis",
+        "description": "Nur Arbeitgeber müssen für die Vermittlung von Mitarbeitern bezahlen.",
+        "label": "Was ist im Preis inbegriffen",
+        "price": "Monatliche Zahlung",
+        "btnTitle": "Registrieren",
+        "explanation": "Die ersten zwei Monate der Nutzung der Anwendung sind für ein neues Unternehmen kostenlos."
+      },
+      "salary": {
+        "title": "Zeitplan für das gewünschte Gehalt, angegeben in den veröffentlichten Lebensläufen, tageweise für die letzten",
+        "description": "In allen Lebensläufen ist das durchschnittliche Höchst-/Mindest-/Durchschnittsgehalt pro Tag angegeben"
+      },
+      "gender": {
+        "title": "Geschlechterverhältnis in veröffentlichten Lebensläufen in der letzten"
+      },
+      "age": {
+        "title": "Durchschnittsalter der Bewerber in veröffentlichten Lebensläufen in den letzten"
+      },
+      "chartNotExist": "Für die Grafik liegen keine Daten vor",
+      "nodata": "Keine Daten",
+      "days": "Tage"
+    }
+  }
+}

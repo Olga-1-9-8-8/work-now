@@ -17,7 +17,7 @@ export const ChartHeader = ({ title, description, icon: Icon }: ChartHeaderProps
     <div>
       <TypographyH6>{title}</TypographyH6>
       {description && (
-        <p className="max-w-xl text-sm font-normal leading-normal text-muted-foreground">
+        <p className="max-w-2xl text-sm font-normal leading-normal text-muted-foreground">
           {description}
         </p>
       )}

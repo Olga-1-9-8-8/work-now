@@ -1,1 +1,1 @@
-export { LanguagesSwitcherButton } from "./components/LanguagesSwitcherButton";
+export { LanguageSwitcherDropdown } from "./components/LanguageSwitcherDropdown";

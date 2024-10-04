@@ -1,3 +1,4 @@
+export { currencyConfigs } from "./currencyConfigs";
 export { externalUrlsConfig } from "./externalUrlsConfig";
 export { filterConfig, popularFilterConfig } from "./filterConfig";
 export type { FilterConfigType } from "./filterConfig";

@@ -7,7 +7,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "../../../../ui/nav-menu/NavigationMenu";
-import { LanguagesSwitcherButton } from "../../../../widgets/languages-switcher";
+import { LanguageSwitcherDropdown } from "../../../../widgets/languages-switcher";
 import { HeaderNavListItemLink } from "../link/HeaderNavListItemLink";
 
 interface HeaderNavHamburgerMobileProps {
@@ -17,7 +17,7 @@ interface HeaderNavHamburgerMobileProps {
 export const HeaderNavHamburgerMobile = ({ items }: HeaderNavHamburgerMobileProps) => {
   return (
     <div className="flex items-center gap-8">
-      <LanguagesSwitcherButton />
+      <LanguageSwitcherDropdown />
       <NavigationMenu delayDuration={100} className="justify-end">
         <NavigationMenuList>
           <NavigationMenuItem>

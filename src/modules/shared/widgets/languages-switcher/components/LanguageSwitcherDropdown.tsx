@@ -16,20 +16,25 @@ interface LanguagesSwitcherButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {}
 
-export const LanguagesSwitcherButton = memo(({ ...props }: LanguagesSwitcherButtonProps) => {
-  const { t, changeLanguage, language } = useLanguageSwitcher();
+export const LanguageSwitcherDropdown = memo(({ ...props }: LanguagesSwitcherButtonProps) => {
+  const { t, changeLanguage, language } = useLanguageSwitcher("header");
+
   return (
     <div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" {...props}>
-            <Globe className="size-6 stroke-primary-light hover:stroke-muted lg:size-7" />
+            <Globe className="h-6 w-6 stroke-primary-light transition-colors hover:stroke-muted md:h-5 md:w-5" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56">
+        <DropdownMenuContent className="min-w-48">
           <DropdownMenuRadioGroup value={language} onValueChange={changeLanguage}>
             {InternationalizationConfig.map((item) => (
-              <DropdownMenuRadioItem className="text-base" key={item.value} value={item.value}>
+              <DropdownMenuRadioItem
+                className="text-sm font-medium text-primary-dark"
+                key={item.value}
+                value={item.value}
+              >
                 {t(item.title)}
               </DropdownMenuRadioItem>
             ))}

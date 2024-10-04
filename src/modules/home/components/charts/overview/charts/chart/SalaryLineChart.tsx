@@ -1,8 +1,8 @@
-import { BadgeRussianRuble } from "lucide-react";
 import { useMemo } from "react";
 import { Area, AreaChart, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts";
 import { colors } from "../../../../../../../../tailwind.config";
-import { homeChartSalaryConfig } from "../../../../../../shared/configs";
+import { currencyConfigs, homeChartSalaryConfig } from "../../../../../../shared/configs";
+import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { UniversalItemAnalyticsApiTypeInput } from "../../../../../types/UniversalItemAnalyticsApiTypeInput";
 import { mapItemsToSalaryLineChartData } from "../../../../../utils/mappers/mapItemsToSalaryLineChartData";
 import { ChartNotExist } from "./blocks/ChartNotExist";
@@ -28,9 +28,10 @@ export const SalaryLineChart = ({
     return mapItemsToSalaryLineChartData(items, numDays);
   }, [items, numDays]);
 
+  const { t, language } = useLanguageSwitcher("home");
   return (
     <ChartWrapper
-      icon={BadgeRussianRuble}
+      icon={currencyConfigs[t(language) as keyof typeof currencyConfigs].icon}
       title={title}
       description={description}
       isLoading={isLoading}
@@ -40,12 +41,12 @@ export const SalaryLineChart = ({
         <AreaChart data={chartData}>
           <XAxis
             dataKey="title"
-            tick={{ fill: colors.primary.dark, fontSize: 14 }}
+            tick={{ fill: colors.primary.dark, fontSize: 13 }}
             tickLine={{ stroke: colors.primary.dark }}
           />
           <YAxis
-            unit=" ₽"
-            tick={{ fill: colors.primary.dark, fontSize: 14 }}
+            unit={currencyConfigs[t(language) as keyof typeof currencyConfigs].title}
+            tick={{ fill: colors.primary.dark, fontSize: 13 }}
             tickLine={{ stroke: colors.primary.dark }}
           />
           <CartesianGrid strokeDasharray="4" />
@@ -64,8 +65,8 @@ export const SalaryLineChart = ({
               stroke={series.stroke}
               fill={series.fill}
               strokeWidth={3}
-              name={series.name}
-              unit={series.unit}
+              name={series.name[t(language) as keyof typeof series.name]}
+              unit={currencyConfigs[t(language) as keyof typeof currencyConfigs].title}
             />
           ))}
         </AreaChart>

@@ -1,3 +1,4 @@
+import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { useLastResumesAnalytics } from "../../../../hooks/useLastResumesAnalytics";
 import { AgeBarChart } from "./chart/AgeBarChart";
 import { GenderChart } from "./chart/GenderChart";
@@ -5,15 +6,15 @@ import { SalaryLineChart } from "./chart/SalaryLineChart";
 
 export const HomeChartsOverviewCharts = () => {
   const { lastResumes, isLoading, numDays } = useLastResumesAnalytics();
-
+  const { t } = useLanguageSwitcher("home");
   return (
     <div className="flex min-h-3.5 flex-col gap-4">
       <SalaryLineChart
         isLoading={isLoading}
         items={lastResumes}
         numDays={numDays}
-        title="График желаемой зарплаты, указанной в опубликованных резюме по дням за последнии"
-        description="Указана средняя максимальная/минимальная/средняя зарплата за день по всем резюме"
+        title={t("home.charts.salary.title")}
+        description={t("home.charts.salary.description")}
       />
 
       <div className="flex flex-col justify-between gap-4 lg:flex-row">
@@ -21,13 +22,13 @@ export const HomeChartsOverviewCharts = () => {
           isLoading={isLoading}
           items={lastResumes}
           numDays={numDays}
-          title="Соотношение полов в опубликованных резюме за последнии"
+          title={t("home.charts.gender.title")}
         />
         <AgeBarChart
           isLoading={isLoading}
           items={lastResumes}
           numDays={numDays}
-          title="Средний возраст соискателей в опубликованных резюме за последнии"
+          title={t("home.charts.age.title")}
         />
       </div>
     </div>

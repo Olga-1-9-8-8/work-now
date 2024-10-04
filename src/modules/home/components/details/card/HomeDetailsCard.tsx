@@ -21,9 +21,7 @@ export const HomeDetailsCard = ({ title, description, children }: HomeDetailsCar
           <CardTitle>{title}</CardTitle>
           {description && <CardDescription>{description}</CardDescription>}
         </CardHeader>
-        <CardContent className="grid gap-4">
-          <div>{children}</div>
-        </CardContent>
+        <CardContent>{children}</CardContent>
       </div>
     </Card>
   );

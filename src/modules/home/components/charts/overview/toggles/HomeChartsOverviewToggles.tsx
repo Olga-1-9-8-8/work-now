@@ -1,16 +1,13 @@
 import { useCallback, useEffect } from "react";
 import { Toggles } from "../../../../../shared/components/toggles";
 import { useUrl } from "../../../../../shared/hooks";
+import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { DEFAULT_LAST_DAYS } from "../../../../const";
-
-const toggleOptions = [
-  { value: "7", title: "За прошлую неделю" },
-  { value: "30", title: "За прошлый месяц" },
-  { value: "365", title: "За прошлый год" },
-];
+import { toggleOptions } from "./config/toggleOptions";
 
 export const HomeChartsOverviewToggles = () => {
   const { setParam, getParam } = useUrl();
+  const { t, language } = useLanguageSwitcher("home");
 
   const handleLastValueChange = useCallback(
     (lastValue: string) => {
@@ -32,7 +29,7 @@ export const HomeChartsOverviewToggles = () => {
       className="flex w-full flex-col gap-4 text-nowrap md:flex-row"
       variant="primary"
       type="single"
-      options={toggleOptions}
+      options={toggleOptions[t(language) as keyof typeof toggleOptions]}
       defaultValue={getParam("last") ?? DEFAULT_LAST_DAYS}
       onValueChange={handleLastValueChange}
     />

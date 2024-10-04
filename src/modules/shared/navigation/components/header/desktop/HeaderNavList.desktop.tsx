@@ -4,7 +4,7 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
 } from "../../../../ui/nav-menu/NavigationMenu";
-import { LanguagesSwitcherButton } from "../../../../widgets/languages-switcher";
+import { LanguageSwitcherDropdown } from "../../../../widgets/languages-switcher";
 import { HeaderNavListItemDesktop } from "./item/HeaderNavListItem.desktop";
 
 interface HeaderNavListDesktopProps {
@@ -22,7 +22,7 @@ export const HeaderNavListDesktop = ({ items }: HeaderNavListDesktopProps) => {
             </NavigationMenuItem>
           );
         })}
-        <LanguagesSwitcherButton className="lg:ml-12" />
+        <LanguageSwitcherDropdown className="lg:ml-12" />
       </NavigationMenuList>
     </NavigationMenu>
   );
