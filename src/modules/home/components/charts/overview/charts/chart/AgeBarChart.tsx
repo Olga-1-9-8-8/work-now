@@ -2,6 +2,8 @@ import { useMemo } from "react";
 import { FaPeopleRoof } from "react-icons/fa6";
 import { Bar, BarChart, Tooltip, XAxis, YAxis } from "recharts";
 import { colors } from "../../../../../../../../tailwind.config";
+import { LanguageType } from "../../../../../../shared/configs/internationalization/InternationalizationConfig";
+import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { UniversalItemAnalyticsApiTypeInput } from "../../../../../types/UniversalItemAnalyticsApiTypeInput";
 import { mapItemsToAgeChartData } from "../../../../../utils/mappers/mapItemsToAgeChartData";
 import { ChartNotExist } from "./blocks/ChartNotExist";
@@ -16,10 +18,12 @@ interface LineChartProps {
 }
 
 export const AgeBarChart = ({ items, numDays, title, description, isLoading }: LineChartProps) => {
+  const { t, language } = useLanguageSwitcher("home");
+
   const chartData = useMemo(() => {
     if (!items || items.length === 0) return null;
-    return mapItemsToAgeChartData(items);
-  }, [items]);
+    return mapItemsToAgeChartData(items, language as LanguageType);
+  }, [items, language]);
 
   return (
     <ChartWrapper
@@ -37,7 +41,7 @@ export const AgeBarChart = ({ items, numDays, title, description, isLoading }: L
             tickLine={{ stroke: colors.primary.dark }}
           />
           <YAxis
-            unit=" чел."
+            unit={` ${t("home.chart.age.unit")}`}
             tick={{ fill: colors.primary.dark, fontSize: 14 }}
             tickLine={{ stroke: colors.primary.dark }}
           />
@@ -47,7 +51,12 @@ export const AgeBarChart = ({ items, numDays, title, description, isLoading }: L
               color: colors.primary.dark,
             }}
           />
-          <Bar dataKey="value" name="Кол-во" fill={colors.primary.extraDark} unit=" чел." />
+          <Bar
+            dataKey="value"
+            name={t("home.chart.age.tooltipTitle")}
+            fill={colors.primary.extraDark}
+            unit={` ${t("home.chart.age.unit")}`}
+          />
         </BarChart>
       ) : (
         <ChartNotExist />

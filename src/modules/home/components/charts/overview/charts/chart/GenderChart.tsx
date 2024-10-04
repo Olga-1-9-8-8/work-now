@@ -3,6 +3,8 @@ import { FaPeopleArrows } from "react-icons/fa6";
 import { Cell, Legend, Pie, PieChart, Tooltip } from "recharts";
 import { PieSectorDataItem } from "recharts/types/polar/Pie";
 import { colors } from "../../../../../../../../tailwind.config";
+import { LanguageType } from "../../../../../../shared/configs/internationalization/InternationalizationConfig";
+import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { UniversalItemAnalyticsApiTypeInput } from "../../../../../types/UniversalItemAnalyticsApiTypeInput";
 import { mapItemsToGenderChartData } from "../../../../../utils/mappers/mapItemsToGenderChartData";
 import { ChartNotExist } from "./blocks/ChartNotExist";
@@ -19,10 +21,12 @@ interface LineChartProps {
 }
 
 export const GenderChart = ({ items, numDays, title, description, isLoading }: LineChartProps) => {
+  const { language } = useLanguageSwitcher("home");
+
   const chartData = useMemo(() => {
     if (!items || items.length === 0) return null;
-    return mapItemsToGenderChartData(items);
-  }, [items]);
+    return mapItemsToGenderChartData(items, language as LanguageType);
+  }, [items, language]);
 
   const renderCustomizedLabel = ({
     cx,

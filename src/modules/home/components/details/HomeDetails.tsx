@@ -3,6 +3,7 @@ import { ChevronDown } from "lucide-react";
 import { useRef } from "react";
 import animationGirl from "../../../../../public/assets/animation/AnimationGirl.json";
 import { homeDetailsConfig } from "../../../shared/configs";
+import { LanguageType } from "../../../shared/configs/internationalization/InternationalizationConfig";
 import { TypographyH3 } from "../../../shared/ui/typography/TypographyH3";
 import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { HomeDetailsCard } from "./card/HomeDetailsCard";
@@ -24,7 +25,7 @@ export const HomeDetails = () => {
       </div>
 
       <div className="flex flex-wrap justify-center gap-6">
-        {homeDetailsConfig[t(language) as keyof typeof homeDetailsConfig].map((item) => (
+        {homeDetailsConfig[language as LanguageType].map((item) => (
           <HomeDetailsCard key={item.title} title={item.title} description={item.description}>
             {item.items.map((i) => (
               <HomeDetailsCardItem key={i.index} title={i.title} />

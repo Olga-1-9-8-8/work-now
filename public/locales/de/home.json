@@ -55,6 +55,12 @@
       "chartNotExist": "Für die Grafik liegen keine Daten vor",
       "nodata": "Keine Daten",
       "days": "Tage"
+    },
+    "chart": {
+      "age": {
+        "tooltipTitle": "Menge",
+        "unit": "per."
+      }
     }
   }
 }

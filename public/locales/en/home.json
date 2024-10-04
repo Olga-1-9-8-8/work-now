@@ -55,6 +55,12 @@
       "chartNotExist": "No data for the graph",
       "nodata": "No data",
       "days": "days"
+    },
+    "chart": {
+      "age": {
+        "tooltipTitle": "Quantity",
+        "unit": " per."
+      }
     }
   }
 }

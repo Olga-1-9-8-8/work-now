@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { currencyConfigs, homeInfoPricingConfig } from "../../../../shared/configs";
+import { LanguageType } from "../../../../shared/configs/internationalization/InternationalizationConfig";
 import { useUser } from "../../../../shared/services/auth";
 import { Button } from "../../../../shared/ui/buttons/Button";
 import { formatCurrency } from "../../../../shared/utils/helpers";
@@ -29,11 +30,9 @@ export const HomeChartsPricing = () => {
         <div className="grid gap-6">
           <h3 className="text-xl font-bold sm:text-2xl">{t("home.charts.pricing.label")}</h3>
           <ul className="grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
-            {homeInfoPricingConfig[t(language) as keyof typeof homeInfoPricingConfig].map(
-              (item) => (
-                <HomeChartsPricingItem title={item} key={item} />
-              ),
-            )}
+            {homeInfoPricingConfig[language as LanguageType].map((item) => (
+              <HomeChartsPricingItem title={item} key={item} />
+            ))}
           </ul>
         </div>
         <div className="flex flex-col gap-4 text-center">
@@ -41,8 +40,8 @@ export const HomeChartsPricing = () => {
             <h4 className="text-7xl font-bold">
               {formatCurrency(
                 import.meta.env.VITE_PRICE_PER_MONTH,
-                t(language),
-                currencyConfigs[t(language) as keyof typeof currencyConfigs].currency,
+                language,
+                currencyConfigs[language as LanguageType].currency,
               )}
             </h4>
             <p className="text-sm font-medium text-muted-foreground">
