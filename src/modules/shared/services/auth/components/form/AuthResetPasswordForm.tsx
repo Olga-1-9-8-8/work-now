@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 import { UseFormReset } from "react-hook-form";
 import { TypographyH6 } from "../../../../ui/typography/TypographyH6";
+import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { useResetPassword } from "../../hooks/useResetPassword";
 import { ResetPasswordFormType } from "../../types/form/ResetPasswordFormType";
 import { authResetPasswordFormValidationSchema } from "../../validation/authResetPasswordFormValidationSchema";
@@ -9,7 +10,7 @@ import { AuthEmailField } from "./item/AuthEmailField";
 
 export const AuthResetPasswordForm = () => {
   const { isResetPasswordPending, resetPassword } = useResetPassword();
-
+  const { t } = useLanguageSwitcher("login");
   const [isSendMail, setIsSendMail] = useState(false);
 
   const onSubmit = useCallback(
@@ -22,22 +23,20 @@ export const AuthResetPasswordForm = () => {
   if (isSendMail) {
     return (
       <div className="flex flex-col gap-4">
-        <TypographyH6 className="text-success">
-          На вашу почту выслано письмо для восстановления пароля.
-        </TypographyH6>
+        <TypographyH6 className="text-success">{t("login.login.reset.description")}</TypographyH6>
       </div>
     );
   }
 
   return (
     <AuthFormWrapper<ResetPasswordFormType>
-      title="Сбросить пароль"
+      title={t("login.login.reset.title")}
       schema={authResetPasswordFormValidationSchema}
       onSubmit={onSubmit}
       isLoading={isResetPasswordPending}
     >
       <AuthEmailField<ResetPasswordFormType>
-        label="Укажите email для сброса пароля"
+        label={t("login.login.form.email.label")}
         name="email"
         placeholder="Email"
         disabled={isResetPasswordPending}

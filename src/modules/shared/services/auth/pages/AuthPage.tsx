@@ -8,7 +8,7 @@ const AuthPage = () => {
         title="WorkNow / Авторизация"
         description=" На странице авторизации WorkNow вы можете легко и безопасно войти в свой аккаунт"
       />
-      <Auth />;
+      <Auth />
     </>
   );
 };

@@ -1,0 +1,65 @@
+{
+  "login": {
+    "singUp": {
+      "title": "Register",
+      "form": {
+        "username": {
+          "label": "Please enter your name/or company name",
+          "placeholder": "Name"
+        },
+        "email": {
+          "label": "Enter your email"
+        },
+        "password": {
+          "label": "Enter password",
+          "placeholder": "Enter password"
+        },
+        "confirmPassword": {
+          "label": "Confirm password",
+          "placeholder": "Confirm password"
+        },
+        "phone": {
+          "label": "Enter your phone number"
+        },
+        "isCompany": {
+          "label": "Are you hiring? (Click if you are a company)"
+        }
+      },
+      "confirmed": {
+        "title": "A confirmation of registration has been sent to your email.",
+        "description": "Verify your email address before logging into your account for the first time."
+      }
+    },
+    "login": {
+      "title": "Login to  Account",
+      "form": {
+        "title": "Login to account",
+        "email": {
+          "label": "Enter your email"
+        },
+        "password": {
+          "label": "Enter your password",
+          "placeholder": "Enter password"
+        },
+        "forgotPassword": "Forgot your password?"
+      },
+      "reset": {
+        "description": "Enter your email and we will send you a link to reset your password.",
+        "title": "Reset password"
+      },
+      "update": {
+        "title": "Update password",
+        "password": {
+          "label": "Enter new password",
+          "placeholder": "Enter password"
+        },
+        "confirmPassword": {
+          "label": "Confirm new password",
+          "placeholder": "Confirm Password"
+        },
+        "header": "Enter new password",
+        "description": "Write your new password to login into your account"
+      }
+    }
+  }
+}

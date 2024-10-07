@@ -3,6 +3,7 @@ import { UseFormReset } from "react-hook-form";
 import { FormInputField } from "../../../../ui/form-control";
 import { FormCheckboxField } from "../../../../ui/form-control/checkbox/FormCheckboxField";
 import { TypographyH5 } from "../../../../ui/typography/TypographyH5";
+import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { useSignUp } from "../../hooks/useSignUp";
 import { SignUpFormType } from "../../types/form/SignUpFormType";
 import { authSignUpFormValidationSchema } from "../../validation/authSignUpFormValidationSchema";
@@ -14,6 +15,8 @@ export const AuthSignUpForm = () => {
   const { isSignUpPending, signUp } = useSignUp();
 
   const [isPassedConfirmation, setIsPassedConfirmation] = useState(false);
+
+  const { t } = useLanguageSwitcher("login");
 
   const onSubmit = useCallback(
     (data: SignUpFormType, reset: UseFormReset<SignUpFormType>) => {
@@ -29,53 +32,51 @@ export const AuthSignUpForm = () => {
   if (isPassedConfirmation) {
     return (
       <div className="flex flex-col gap-4">
-        <TypographyH5>На вашу почту выслано подтверждение регистрации.</TypographyH5>
-        <p className="text-muted-foreground">
-          Подтвердить свой адрес электронной почты перед первым входом в свой аккаунт.
-        </p>
+        <TypographyH5>{t("login.singUp.confirmed.title")}</TypographyH5>
+        <p className="text-muted-foreground">{t("login.singUp.confirmed.description")}</p>
       </div>
     );
   }
 
   return (
     <AuthFormWrapper<SignUpFormType>
-      title="Зарегистрироваться"
+      title={t("login.singUp.title")}
       schema={authSignUpFormValidationSchema}
       onSubmit={onSubmit}
       isLoading={isSignUpPending}
     >
       <FormInputField<SignUpFormType>
-        label="Укажите имя / или название компании"
+        label={t("login.singUp.form.username.label")}
         name="username"
-        placeholder="Имя"
+        placeholder={t("login.singUp.form.username.placeholder")}
         disabled={isSignUpPending}
       />
       <FormInputField<SignUpFormType>
-        label="Укажите email"
+        label={t("login.singUp.form.email.label")}
         name="email"
         placeholder="Email"
         autoComplete="email"
         disabled={isSignUpPending}
       />
       <AuthPasswordField<SignUpFormType>
-        label="Укажите пароль"
+        label={t("login.singUp.form.password.label")}
         name="password"
-        placeholder="Введите пароль"
+        placeholder={t("login.singUp.form.password.placeholder")}
         disabled={isSignUpPending}
       />
       <AuthPasswordField<SignUpFormType>
-        label="Подтвердите пароль"
+        label={t("login.singUp.form.confirmPassword.label")}
         name="confirmPassword"
-        placeholder="Подтвердите введенный пароль"
+        placeholder={t("login.singUp.form.confirmPassword.placeholder")}
         disabled={isSignUpPending}
       />
       <AuthPhoneField<SignUpFormType>
-        label="Укажите номер телефона"
+        label={t("login.singUp.form.phone.label")}
         name="phone"
         disabled={isSignUpPending}
       />
       <FormCheckboxField<SignUpFormType>
-        label="Вы будете нанимать? (Нажмите, если вы компания)"
+        label={t("login.singUp.form.isCompany.label")}
         name="isCompany"
         disabled={isSignUpPending}
       />

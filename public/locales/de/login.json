@@ -1,0 +1,65 @@
+{
+  "login": {
+    "singUp": {
+      "title": "Registrieren",
+      "form": {
+        "username": {
+          "label": "Bitte geben Sie Ihren Namen/oder Firmennamen ein",
+          "placeholder": "Name"
+        },
+        "email": {
+          "label": "Sie Ihre E-Mail ein"
+        },
+        "password": {
+          "label": "Passwort eingeben",
+          "placeholder": "Geben Sie Ihr Passwort ein"
+        },
+        "confirmPassword": {
+          "label": "Bestätigen Sie Ihr Passwort",
+          "placeholder": "Passwort bestätigen"
+        },
+        "phone": {
+          "label": " Sie Ihre Telefonnummer ein"
+        },
+        "isCompany": {
+          "label": "Stellen Sie ein? (Klicken Sie, wenn Sie ein Unternehmen sind)"
+        }
+      },
+      "confirmed": {
+        "title": "Eine Registrierungsbestätigung wurde an Ihre E-Mail gesendet.",
+        "description": "Bestätigen Sie Ihre E-Mail-Adresse, bevor Sie sich zum ersten Mal bei Ihrem Konto anmelden."
+      }
+    },
+    "login": {
+      "title": "In das Benutzerkonto einloggen",
+      "form": {
+        "title": "Melden Sie sich beim Konto an",
+        "email": {
+          "label": "Geben Sie Ihre E-Mail-Adresse ein"
+        },
+        "password": {
+          "label": "Geben Sie Ihr Passwort ein",
+          "placeholder": "Geben Sie Ihr Passwort ein"
+        },
+        "forgotPassword": "Passwort vergessen?"
+      },
+      "reset": {
+        "description": "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link zum Zurücksetzen Ihres Passworts.",
+        "title": "Passwort zurücksetzen"
+      },
+      "update": {
+        "title": "Passwort aktualisieren",
+        "password": {
+          "label": "Neues Passwort eingeben",
+          "placeholder": "Passwort eingeben"
+        },
+        "confirmPassword": {
+          "label": "Neues Passwort bestätigen",
+          "placeholder": "Passwort bestätigen"
+        },
+        "header": "Neues Passwort eingeben",
+        "description": "Geben Sie Ihr neues Passwort ein, um sich bei Ihrem Konto anzumelden"
+      }
+    }
+  }
+}

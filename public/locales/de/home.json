@@ -50,17 +50,13 @@
         "title": "Geschlechterverhältnis in veröffentlichten Lebensläufen in der letzten"
       },
       "age": {
-        "title": "Durchschnittsalter der Bewerber in veröffentlichten Lebensläufen in den letzten"
+        "title": "Durchschnittsalter der Bewerber in veröffentlichten Lebensläufen in den letzten",
+        "tooltipTitle": "Menge",
+        "unit": "per."
       },
       "chartNotExist": "Für die Grafik liegen keine Daten vor",
       "nodata": "Keine Daten",
       "days": "Tage"
-    },
-    "chart": {
-      "age": {
-        "tooltipTitle": "Menge",
-        "unit": "per."
-      }
     }
   }
 }

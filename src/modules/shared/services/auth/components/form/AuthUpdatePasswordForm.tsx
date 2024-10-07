@@ -1,5 +1,6 @@
 import { UseFormReset } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { useUpdateUser } from "../../hooks/useUpdateUser";
 import { UpdatePasswordFormType } from "../../types/form/UpdatePasswordFormType";
 import { authUpdatePasswordFormValidationSchema } from "../../validation/authUpdatePasswordFormValidationSchema";
@@ -8,6 +9,7 @@ import { AuthPasswordField } from "./item/AuthPasswordField";
 
 export const AuthUpdatePasswordForm = () => {
   const { updateUser, isUpdatingUser } = useUpdateUser();
+  const { t } = useLanguageSwitcher("login");
 
   const navigate = useNavigate();
 
@@ -22,21 +24,21 @@ export const AuthUpdatePasswordForm = () => {
 
   return (
     <AuthFormWrapper<UpdatePasswordFormType>
-      title="Обновить пароль"
+      title={t("login.login.update.title")}
       schema={authUpdatePasswordFormValidationSchema}
       onSubmit={onSubmit}
       isLoading={isUpdatingUser}
     >
       <AuthPasswordField<UpdatePasswordFormType>
-        label="Укажите новый пароль"
+        label={t("login.login.update.password.label")}
         name="password"
-        placeholder="Введите пароль"
+        placeholder={t("login.login.update.password.placeholder")}
         disabled={isUpdatingUser}
       />
       <AuthPasswordField<UpdatePasswordFormType>
-        label="Подтвердите новый пароль"
+        label={t("login.login.update.confirmPassword.label")}
         name="confirmPassword"
-        placeholder="Подтвердите введенный пароль"
+        placeholder={t("login.login.update.confirmPassword.placeholder")}
         disabled={isUpdatingUser}
       />
     </AuthFormWrapper>
