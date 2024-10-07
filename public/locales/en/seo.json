@@ -1,0 +1,71 @@
+{
+  "seo": {
+    "homePage": {
+      "description": "Work Now is a platform for job and employee search. Create resumes and vacancies, select employees and get a job fast"
+    },
+    "authPage": {
+      "description": "The WorkNow login page allows you to easily and securely login into your account.",
+      "title": "WorkNow / Login"
+    },
+    "authResetPage": {
+      "title": "WorkNow / Password Reset",
+      "description": "On the WorkNow reset password page, you can quickly and securely regain access to your account"
+    },
+    "authUpdatePasswordPage": {
+      "description": "The WorkNow update password page allows you to easily and securely update your account password.",
+      "title": "WorkNow / Update Password"
+    },
+    "vacancyCreationPage": {
+      "title": "WorkNow / Create a vacancy",
+      "description": "WorkNow's goal is to help you create a professional and attractive vacancy that will open doors to new opportunities and qualitatively expand your staff."
+    },
+    "vacancyDetailsPage": {
+      "title": "WorkNow / Job Details",
+      "description": "WorkNow features detailed job postings to help you find your perfect job"
+    },
+    "vacanciesListPage": {
+      "title": "WorkNow / Job List",
+      "description": "WorkNow has a wide range of jobs for a variety of industries and skill levels. Our goal is to help you find the perfect job."
+    },
+    "resumesListPage": {
+      "title": "WorkNow / Resume List",
+      "description": "On WorkNow you will find a wide range of resumes suitable for various fields and skill levels. Our goal is to help you find the perfect candidate."
+    },
+    "lkVacanciesPage": {
+      "description": "On WorkNow's My Vacancies page, you can easily manage all your jobs in one place.",
+      "title": "WorkNow / My Vacancies"
+    },
+    "pageNotFound": {
+      "title": "Page not found",
+      "description": "Unfortunately, the page you requested could not be found."
+    },
+    "resumeDetailsPage": {
+      "title": "WorkNow / Resume Details",
+      "description": "WorkNow features detailed candidate resumes to help you find the perfect fit for your team."
+    },
+    "resumeCreationPage": {
+      "title": "WorkNow / Resume Creation",
+      "description": "WorkNow's goal is to help you create a professional and attractive resume that will open doors to new career opportunities."
+    },
+    "lkResumesPage": {
+      "title": "WorkNow / My Resumes",
+      "description": "On WorkNow's My Resumes page, you can easily manage all your resumes in one place."
+    },
+    "lkHomePage": {
+      "title": "WorkNow / Personal account",
+      "description": "On the WorkNow personal account page, you will have access to all the functions and settings of your account"
+    },
+    "lkFavoritesPage": {
+      "title": "WorkNow / My Favorites",
+      "description": "On the WorkNow My Favorites page, you can easily manage your favorites (resumes/jobs) and access them at any time."
+    },
+    "lkDetailsPage": {
+      "title": "WorkNow / My Profile",
+      "description": "On the WorkNow My Profile page, you can manage your personal information and customize your account settings."
+    },
+    "lkApplicationsPage": {
+      "title": "WorkNow / My responses",
+      "description": "On the WorkNow My Responses page, you can view and manage your responses to resumes or jobs."
+    }
+  }
+}

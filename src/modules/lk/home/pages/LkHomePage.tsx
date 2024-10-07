@@ -1,12 +1,14 @@
 import { SeoMetadata } from "../../../shared/navigation";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { LkHome } from "../components/LkHome";
 
 export const LkHomePage = () => {
+  const { t } = useLanguageSwitcher("seo");
   return (
     <>
       <SeoMetadata
-        title="WorkNow / Личный кабинет"
-        description="На странице личного кабинета WorkNow вы получите доступ ко всем функциям и настройкам вашего аккаунта"
+        title={t("seo.lkHomePage.title")}
+        description={t("seo.lkHomePage.description")}
       />
       <LkHome />;
     </>

@@ -53,9 +53,9 @@ export const AgeBarChart = ({ items, numDays, title, description, isLoading }: L
           />
           <Bar
             dataKey="value"
-            name={t("home.chart.age.tooltipTitle")}
+            name={t("home.charts.age.tooltipTitle")}
             fill={colors.primary.extraDark}
-            unit={` ${t("home.chart.age.unit")}`}
+            unit={` ${t("home.charts.age.unit")}`}
           />
         </BarChart>
       ) : (

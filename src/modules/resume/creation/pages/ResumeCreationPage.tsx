@@ -1,12 +1,14 @@
 import { SeoMetadata } from "../../../shared/navigation";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { ResumeCreation } from "../components/ResumeCreation";
 
 const ResumeCreationPage = () => {
+  const { t } = useLanguageSwitcher("seo");
   return (
     <>
       <SeoMetadata
-        title="WorkNow / Создание резюме"
-        description="Цель WorkNow— помочь вам создать профессиональное и привлекательное резюме, которое откроет двери к новым карьерным возможностям."
+        title={t("seo.resumeCreationPage.title")}
+        description={t("seo.resumeCreationPage.description")}
       />
       <ResumeCreation />;
     </>

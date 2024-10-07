@@ -1,0 +1,71 @@
+{
+  "seo": {
+    "homePage": {
+      "description": "Work Now ist eine Plattform für die Job- und Mitarbeitersuche. Erstellen Sie Lebensläufe und Stellenangebote, wählen Sie Mitarbeiter aus und finden Sie schnell einen Job"
+    },
+    "authPage": {
+      "description": "Über die WorkNow-Anmeldeseite können Sie sich einfach und sicher bei Ihrem Konto anmelden.",
+      "title": "WorkNow / Anmelden"
+    },
+    "authResetPage": {
+      "title": "WorkNow / Passwort zurücksetzen",
+      "description": "Auf der Seite zum Zurücksetzen des WorkNow-Passworts können Sie schnell und sicher wieder auf Ihr Konto zugreifen"
+    },
+    "authUpdatePasswordPage": {
+      "description": "Auf der Seite zur Kennwortaktualisierung von WorkNow können Sie Ihr Kontokennwort einfach und sicher aktualisieren.",
+      "title": "WorkNow / Passwort aktualisieren"
+    },
+    "vacancyCreationPage": {
+      "title": "WorkNow / Stellenangebot erstellen",
+      "description": "Das Ziel von WorkNow ist es, Sie bei der Schaffung einer professionellen und attraktiven Vakanz zu unterstützen, die Ihnen neue Möglichkeiten eröffnet und Ihren Personalstamm qualitativ erweitert."
+    },
+    "vacancyDetailsPage": {
+      "title": "WorkNow / Jobdetails",
+      "description": "WorkNow bietet detaillierte Stellenausschreibungen, die Ihnen helfen, Ihren perfekten Job zu finden"
+    },
+    "vacanciesListPage": {
+      "title": "WorkNow / Jobliste",
+      "description": "WorkNow bietet eine große Auswahl an Jobs für unterschiedliche Branchen und Qualifikationsniveaus. Unser Ziel ist es, Ihnen zu helfen, den perfekten Job zu finden."
+    },
+    "resumesListPage": {
+      "title": "WorkNow / Lebenslaufliste",
+      "description": "Auf WorkNov finden Sie eine Reihe von Lebensläufen, die für verschiedene Bereiche und Qualifikationsniveaus geeignet sind. Ihr Ziel ist es, Ihnen bei der Suche nach dem perfekten Kandidaten zu helfen."
+    },
+    "lkVacanciesPage": {
+      "description": "Auf der Seite Meine Jobs von WorkNow können Sie alle Ihre Jobs einfach an einem Ort verwalten.",
+      "title": "WorkNow / Meine Stellenangebote"
+    },
+    "pageNotFound": {
+      "title": "Seite nicht gefunden",
+      "description": "Leider konnte die von Ihnen angeforderte Seite nicht gefunden werden."
+    },
+    "resumeDetailsPage": {
+      "title": "WorkNow / Lebenslaufdetails",
+      "description": "WorkNow bietet detaillierte Lebensläufe von Kandidaten, die Ihnen dabei helfen, die perfekte Besetzung für Ihr Team zu finden."
+    },
+    "resumeCreationPage": {
+      "title": "WorkNow / Lebenslauf erstellen",
+      "description": "Das Ziel von WorkNow ist es, Ihnen bei der Erstellung eines professionellen und ansprechenden Lebenslaufs zu helfen, der Ihnen Türen zu neuen Karrieremöglichkeiten öffnet."
+    },
+    "lkResumesPage": {
+      "title": "WorkNow / Meine Lebensläufe",
+      "description": "Auf der Seite „Meine Lebensläufe“ von WorkNow können Sie alle Ihre Lebensläufe einfach an einem Ort verwalten."
+    },
+    "lkHomePage": {
+      "title": "WorkNow / Persönliches Konto",
+      "description": "Auf der persönlichen WorkNow-Kontoseite haben Sie Zugriff auf alle Funktionen und Einstellungen Ihres Kontos"
+    },
+    "lkFavoritesPage": {
+      "title": "WorkNow / Meine Favoriten",
+      "description": "Auf der Seite „Meine Favoriten“ von WorkNow können Sie Ihre Favoriten (Lebensläufe/Jobs) einfach verwalten und jederzeit darauf zugreifen."
+    },
+    "lkDetailsPage": {
+      "title": "WorkNow / Mein Profil",
+      "description": "Auf der Seite „Mein Profil“ von WorkNow können Sie Ihre persönlichen Daten verwalten und Ihre Kontoeinstellungen anpassen."
+    },
+    "lkApplicationsPage": {
+      "title": "WorkNow / Meine Antworten",
+      "description": "Auf der Seite „Meine Antworten“ von WorkNow können Sie Ihre Antworten auf Lebensläufe oder Stellenangebote anzeigen und verwalten."
+    }
+  }
+}

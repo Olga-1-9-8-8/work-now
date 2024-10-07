@@ -1,12 +1,14 @@
 import { SeoMetadata } from "../../../navigation";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { AuthReset } from "../components/AuthReset";
 
 const AuthResetPage = () => {
+  const { t } = useLanguageSwitcher("seo");
   return (
     <>
       <SeoMetadata
-        title="WorkNow / Восстановление пароля"
-        description=" На странице восстановления пароля WorkNow вы можете быстро и безопасно восстановить доступ к своему аккаунту"
+        title={t("seo.authResetPage.title")}
+        description={t("seo.authResetPage.description")}
       />
       <AuthReset />
     </>

@@ -1,13 +1,12 @@
 import { SeoMetadata } from "../../../navigation";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { Auth } from "../components/Auth";
 
 const AuthPage = () => {
+  const { t } = useLanguageSwitcher("seo");
   return (
     <>
-      <SeoMetadata
-        title="WorkNow / Авторизация"
-        description=" На странице авторизации WorkNow вы можете легко и безопасно войти в свой аккаунт"
-      />
+      <SeoMetadata title={t("seo.authPage.title")} description={t("seo.authPage.description")} />
       <Auth />
     </>
   );

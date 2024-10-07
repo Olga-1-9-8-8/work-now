@@ -1,12 +1,14 @@
 import { SeoMetadata } from "../../../shared/navigation";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { VacancyCreation } from "../components/VacancyCreation";
 
 const VacancyCreationPage = () => {
+  const { t } = useLanguageSwitcher("seo");
   return (
     <>
       <SeoMetadata
-        title="WorkNow / Создание вакансии"
-        description="Цель WorkNow — помочь вам создать профессиональную и привлекательную вакансию, которая откроет двери к новым возможностям и качественно расширит ваш штат сотрудников."
+        title={t("seo.vacancyCreationPage.title")}
+        description={t("seo.vacancyCreationPage.description")}
       />
       ;
       <VacancyCreation />

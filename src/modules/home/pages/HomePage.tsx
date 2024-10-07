@@ -1,13 +1,13 @@
 import { SeoMetadata } from "../../shared/navigation";
+import { useLanguageSwitcher } from "../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { Home } from "../components/Home";
 
 export const HomePage = () => {
+  const { t } = useLanguageSwitcher("seo");
+
   return (
     <>
-      <SeoMetadata
-        title="Work Now"
-        description="Work Now - это платформа для поиска работы и сотрудников. Создавайте резюме и вакансии, подбирайте сотрудников и устраивайтесь на работу, проходите стажировки."
-      />
+      <SeoMetadata title="Work Now" description={t("seo.homePage.description")} />
       <Home />;
     </>
   );

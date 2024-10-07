@@ -1,17 +1,19 @@
 import { SearchList } from "../../../shared/components/search-list";
 import { SeoMetadata } from "../../../shared/navigation";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { VacanciesList } from "../components/VacanciesList";
 import { useVacancies } from "../hooks/useVacancies";
 
 const VacanciesListPage = () => {
   const { isLoading, vacancies, totalCount } = useVacancies();
+  const { t } = useLanguageSwitcher("seo");
 
   return (
     <>
       <SeoMetadata
-        title="WorkNow / Список Вакансий"
-        description="На сайте WorkNow вы найдете обширный список вакансий, подходящие для различных сфер деятельности и уровней квалификации. Наша цель — помочь вам найти идеальную работу"
+        title={t("seo.vacanciesListPage.title")}
+        description={t("seo.vacanciesListPage.description")}
       />
       <SearchList total={totalCount} isLoading={isLoading} isHiring>
         {isLoading ? <Spinner /> : <VacanciesList vacancies={vacancies} totalCount={totalCount} />}

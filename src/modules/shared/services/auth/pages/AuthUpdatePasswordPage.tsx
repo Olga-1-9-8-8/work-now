@@ -1,12 +1,14 @@
 import { SeoMetadata } from "../../../navigation";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { AuthUpdatePassword } from "../components/AuthUpdatePassword";
 
 const AuthUpdatePasswordPage = () => {
+  const { t } = useLanguageSwitcher("seo");
   return (
     <>
       <SeoMetadata
-        title="WorkNow / Изменение пароля"
-        description="На странице изменения пароля WorkNow вы можете легко и безопасно обновить свой пароль для доступа к аккаунту"
+        title={t("seo.authUpdatePasswordPage.title")}
+        description={t("seo.authUpdatePasswordPage.description")}
       />
       <AuthUpdatePassword />
     </>

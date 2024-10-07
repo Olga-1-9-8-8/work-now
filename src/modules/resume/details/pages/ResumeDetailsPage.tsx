@@ -1,12 +1,14 @@
 import { SeoMetadata } from "../../../shared/navigation";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { ResumeDetails } from "../components/ResumeDetails";
 
 export const ResumeDetailsPage = () => {
+  const { t } = useLanguageSwitcher("seo");
   return (
     <>
       <SeoMetadata
-        title="WorkNow / Детали Резюме"
-        description="На сайте WorkNow представлены детализированные резюме кандидатов, которые помогут вам найти идеального специалиста для вашей команды"
+        title={t("seo.resumeDetailsPage.title")}
+        description={t("seo.resumeDetailsPage.description")}
       />
       <ResumeDetails />;
     </>
