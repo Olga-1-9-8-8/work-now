@@ -2,10 +2,12 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagination";
 import { useUrl } from "../../../shared/hooks";
 import { mapUniversalItem } from "../../../shared/utils";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { getProfileVacancies } from "../api/apiProfile";
 
 export const useProfileVacancies = () => {
   const queryClient = useQueryClient();
+  const { t } = useLanguageSwitcher("lk");
 
   const { getParam } = useUrl();
   const page = Number(getParam("offset")) || 1;
@@ -17,7 +19,7 @@ export const useProfileVacancies = () => {
   } = useQuery({
     queryKey: ["vacancies", page],
     queryFn: async () => {
-      const vacanciesData = await getProfileVacancies(page);
+      const vacanciesData = await getProfileVacancies(page, t);
 
       if (vacanciesData) {
         vacanciesData.data.forEach((vacancyData) => {
@@ -35,14 +37,14 @@ export const useProfileVacancies = () => {
   ) {
     queryClient.prefetchQuery({
       queryKey: ["vacancies", page + 1],
-      queryFn: () => getProfileVacancies(page + 1),
+      queryFn: () => getProfileVacancies(page + 1, t),
     });
   }
 
   if (page > 1) {
     queryClient.prefetchQuery({
       queryKey: ["vacancies", page - 1],
-      queryFn: () => getProfileVacancies(page - 1),
+      queryFn: () => getProfileVacancies(page - 1, t),
     });
   }
 

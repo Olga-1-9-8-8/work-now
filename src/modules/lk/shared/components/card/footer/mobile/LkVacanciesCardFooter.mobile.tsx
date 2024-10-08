@@ -1,6 +1,7 @@
 import { Copy, MoreVertical, Pencil, TrashIcon } from "lucide-react";
 import { cloneElement, useState } from "react";
 import { DeleteConfirmation } from "../../../../../../shared/components/delete-cofirmation";
+import { LanguageType } from "../../../../../../shared/configs/internationalization/InternationalizationConfig";
 import { useAuthContext } from "../../../../../../shared/services/auth";
 import { UserEntity } from "../../../../../../shared/types";
 import { Button } from "../../../../../../shared/ui/buttons/Button";
@@ -21,6 +22,7 @@ import {
 } from "../../../../../../shared/ui/dropdown-menu/DropdownMenu";
 import { TypographyH6 } from "../../../../../../shared/ui/typography/TypographyH6";
 import { formattedTimeString } from "../../../../../../shared/utils/helpers";
+import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 
 interface LkItemCardFooterMobileProps {
   position: string;
@@ -45,6 +47,7 @@ export const LkItemCardFooterMobile = ({
   const [open, setOpen] = useState(false);
 
   const isCompany = role === UserEntity.Company;
+  const { t, language } = useLanguageSwitcher("lk");
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -60,7 +63,9 @@ export const LkItemCardFooterMobile = ({
           disabled={isItemDuplicating}
         >
           <Copy size={22} className="stroke-primary-extraDark" />
-          <TypographyH6 className="text-primary-extraDark">Дублировать</TypographyH6>
+          <TypographyH6 className="text-primary-extraDark">
+            {t("lk.card.duplicateButton")}
+          </TypographyH6>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
 
@@ -71,17 +76,21 @@ export const LkItemCardFooterMobile = ({
               className="flex cursor-pointer gap-4"
             >
               <Pencil size={22} className="stroke-primary-extraDark" />
-              <TypographyH6 className="text-primary-extraDark">Редактировать</TypographyH6>
+              <TypographyH6 className="text-primary-extraDark">
+                {t("lk.card.editButton")}
+              </TypographyH6>
             </DropdownMenuItem>
           </DrawerTrigger>
 
           <DrawerContent>
             <DrawerHeader>
               <DrawerTitle>
-                Редактировать {isCompany ? "вакансию" : "резюме"} {position}
+                {t("lk.card.editButton")}{" "}
+                {isCompany ? t("lk.card.titleVacancy") : t("lk.card.linkTitleResume")} {position}
               </DrawerTitle>
               <DrawerDescription>
-                Дата создания: {formattedTimeString(creationDate)}
+                {t("lk.card.editButtonDescription")}{" "}
+                {formattedTimeString(creationDate, language as LanguageType)}
               </DrawerDescription>
             </DrawerHeader>
             {cloneElement(children, { onModalClose: () => setOpen(false) })}
@@ -97,19 +106,21 @@ export const LkItemCardFooterMobile = ({
               className="flex cursor-pointer gap-4"
             >
               <TrashIcon size={22} className="stroke-primary-extraDark" />
-              <TypographyH6 className="text-primary-extraDark">Удалить</TypographyH6>
+              <TypographyH6 className="text-primary-extraDark">{t("shared.delete")}</TypographyH6>
             </DropdownMenuItem>
           </DrawerTrigger>
 
           <DrawerContent>
             <DrawerHeader>
               <DrawerTitle>
-                Удаление {isCompany ? "вакансии" : "резюме"} {position}
+                {t("lk.card.deleteButton")}{" "}
+                {isCompany ? t("lk.card.linkTitleVacancy") : t("lk.card.linkTitleResume")}{" "}
+                {position}
               </DrawerTitle>
             </DrawerHeader>
             <DeleteConfirmation
               disabled={isItemDeleting}
-              title={isCompany ? "вакансия" : "резюме"}
+              title={isCompany ? t("lk.card.titleVacancy") : t("lk.card.linkTitleResume")}
               onDelete={onDeleteItem}
             />
           </DrawerContent>

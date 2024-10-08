@@ -1,11 +1,13 @@
 import { TrashIcon } from "lucide-react";
 import { DeleteConfirmation } from "../../../../../../shared/components/delete-cofirmation";
+import { LanguageType } from "../../../../../../shared/configs/internationalization/InternationalizationConfig";
 import { useAuthContext } from "../../../../../../shared/services/auth";
 import { UserEntity } from "../../../../../../shared/types";
 import { Button } from "../../../../../../shared/ui/buttons/Button";
 import { CardFooter } from "../../../../../../shared/ui/card/Card";
 import { DrawerDialogResponsive } from "../../../../../../shared/ui/drawer-dialog/DrawerDialogResponsive";
 import { formattedTimeString } from "../../../../../../shared/utils/helpers";
+import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 
 interface LkItemCardFooterDesktopProps {
   position: string;
@@ -29,20 +31,21 @@ export const LkItemCardFooterDesktop = ({
   const { role } = useAuthContext();
 
   const isCompany = role === UserEntity.Company;
+  const { t, language } = useLanguageSwitcher("lk");
 
   return (
     <CardFooter className="flex justify-between p-0">
       <div className="flex gap-4">
         <DrawerDialogResponsive
-          button={<Button>Редактировать</Button>}
-          title={`Редактировать ${isCompany ? "вакансию" : "резюме"} ${position}`}
-          description={`Дата создания: ${formattedTimeString(creationDate)}`}
+          button={<Button>{t("lk.card.editButton")}</Button>}
+          title={`${t("lk.card.editButton")} ${isCompany ? t("lk.card.titleVacancy") : t("lk.card.linkTitleResume")} ${position}`}
+          description={`${t("lk.card.editButtonDescription")} ${formattedTimeString(creationDate, language as LanguageType)}`}
         >
           {children}
         </DrawerDialogResponsive>
 
         <Button onClick={onDuplicateItem} disabled={isItemDuplicating}>
-          Дублировать
+          {t("lk.card.duplicateButton")}
         </Button>
       </div>
       <DrawerDialogResponsive
@@ -51,11 +54,11 @@ export const LkItemCardFooterDesktop = ({
             <TrashIcon />
           </Button>
         }
-        title={`Удаление ${isCompany ? "вакансии" : "резюме"} ${position}`}
+        title={`${t("lk.card.deleteButton")} ${isCompany ? t("lk.card.linkTitleVacancy") : t("lk.card.linkTitleResume")} ${position}`}
       >
         <DeleteConfirmation
           disabled={isItemDeleting}
-          title={isCompany ? "вакансия" : "резюме"}
+          title={isCompany ? t("lk.card.titleVacancy") : t("lk.card.linkTitleResume")}
           onDelete={onDeleteItem}
         />
       </DrawerDialogResponsive>

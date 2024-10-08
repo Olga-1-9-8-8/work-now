@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { NotExist, NotFound } from "../../../shared/components/not-found";
 import { Button } from "../../../shared/ui/buttons/Button";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { useProfileVacancies } from "../../shared/hooks/useProfileVacancies";
 import { LkVacanciesList } from "./LkVacanciesList";
 
@@ -10,12 +11,14 @@ export const LkVacancies = () => {
   const { profileVacancies, isProfileVacanciesLoading, totalProfileVacanciesCount } =
     useProfileVacancies();
 
+  const { t } = useLanguageSwitcher("lk");
+
   if (isProfileVacanciesLoading) {
     return <Spinner />;
   }
 
   if (!profileVacancies) {
-    return <NotFound title="Резюме" />;
+    return <NotFound title={t("lk.vacancies.notFoundTitle")} />;
   }
 
   return totalProfileVacanciesCount ? (
@@ -24,9 +27,9 @@ export const LkVacancies = () => {
     <NotExist
       title={
         <div className="flex items-center gap-4">
-          <span>У вас пока нет вакансий.</span>
+          <span>{t("lk.vacancies.notExist.title")}</span>
           <Button onClick={() => navigate("/vacancies/creation")} variant="success" size="sm">
-            Создайте вакансию
+            {t("lk.vacancies.buttonTitle")}
           </Button>
         </div>
       }

@@ -1,6 +1,7 @@
 import { ArrowRight, Building2, FileText, Heart, Home, LogOut, Mails, User2 } from "lucide-react";
 import { ElementType } from "react";
 import { UserEntity } from "../types";
+import { LanguageType } from "./internationalization/InternationalizationConfig";
 
 export const navTypes = [
   "home",
@@ -14,11 +15,11 @@ export const navTypes = [
 export type NavTypes = (typeof navTypes)[number];
 
 export type LkNavItems = {
-  title: string;
+  title: Record<LanguageType, string>;
   value: NavTypes;
   href: string;
   icon: ElementType;
-  linkTitle?: string;
+  linkTitle?: Record<LanguageType, string>;
   linkIcon?: ElementType;
   isMain?: boolean;
   isExit?: boolean;
@@ -27,7 +28,11 @@ export type LkNavItems = {
 
 export const lkNavConfig: LkNavItems[] = [
   {
-    title: "Главная",
+    title: {
+      ru: "Главная",
+      en: "Main",
+      de: "Startseite",
+    },
     value: "home",
     href: "/lk",
     icon: Home,
@@ -35,58 +40,106 @@ export const lkNavConfig: LkNavItems[] = [
     role: UserEntity.All,
   },
   {
-    title: "Профиль",
+    title: {
+      ru: "Профиль",
+      en: "Profile",
+      de: "Profil",
+    },
     value: "profile",
     href: "/lk/details",
-    linkTitle: "Выйти",
+    linkTitle: {
+      ru: "Выйти",
+      en: "Logout",
+      de: "Ausloggen",
+    },
     linkIcon: LogOut,
     isExit: true,
     icon: User2,
     role: UserEntity.Person,
   },
   {
-    title: "Профиль",
+    title: {
+      ru: "Профиль",
+      en: "Profile",
+      de: "Profil",
+    },
     value: "profile",
     href: "/lk/details",
-    linkTitle: "Выйти",
+    linkTitle: {
+      ru: "Выйти",
+      en: "Logout",
+      de: "Ausloggen",
+    },
     linkIcon: LogOut,
     isExit: true,
     icon: Building2,
     role: UserEntity.Company,
   },
   {
-    title: "Избранное",
+    title: {
+      ru: "Избранное",
+      en: "Favorites",
+      de: "Favoriten",
+    },
     value: "favorites",
     href: "/lk/favorites",
     icon: Heart,
-    linkTitle: "Перейти",
+    linkTitle: {
+      ru: "Перейти",
+      en: "Navigate to",
+      de: "Navigieren Sie zu",
+    },
     linkIcon: ArrowRight,
     role: UserEntity.All,
   },
   {
-    title: "Мои резюме",
+    title: {
+      ru: "Мои Резюме",
+      en: "My Resumes",
+      de: "Meine Lebensläufe",
+    },
     value: "resumes",
     href: "/lk/resumes",
     icon: FileText,
-    linkTitle: "Перейти",
+    linkTitle: {
+      ru: "Перейти",
+      en: "Navigate to",
+      de: "navigieren Sie zu",
+    },
     linkIcon: ArrowRight,
     role: UserEntity.Person,
   },
   {
-    title: "Мои вакансии",
+    title: {
+      ru: "Мои Вакансии",
+      en: "My Vacancies",
+      de: "Meine Stellenangebote",
+    },
     value: "vacancies",
     href: "/lk/vacancies",
     icon: FileText,
-    linkTitle: "Перейти",
+    linkTitle: {
+      ru: "Перейти",
+      en: "Navigate to",
+      de: "Navigieren Sie zu",
+    },
     linkIcon: ArrowRight,
     role: UserEntity.Company,
   },
   {
-    title: "Мои Отклики",
+    title: {
+      ru: "Мои Отклики",
+      en: "My Applies",
+      de: "Meine Antworten",
+    },
     value: "applies",
     href: "/lk/applications",
     icon: Mails,
-    linkTitle: "Перейти",
+    linkTitle: {
+      ru: "Перейти",
+      en: "Navigate to",
+      de: "Navigieren Sie zu",
+    },
     linkIcon: ArrowRight,
     role: UserEntity.All,
   },

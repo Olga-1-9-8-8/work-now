@@ -11,9 +11,10 @@ import {
 } from "lucide-react";
 import { ElementType } from "react";
 import { UserRoles } from "../types";
+import { LanguageType } from "./internationalization/InternationalizationConfig";
 
 export type MainNavItem = {
-  title: string;
+  title: Record<LanguageType, string>;
   href: string;
   icon: ElementType;
   permission: UserRoles;
@@ -27,61 +28,101 @@ export type MainNavItems = (MainNavItem & {
 
 export const mainNavConfig: MainNavItems = [
   {
-    title: "Найти работу",
+    title: {
+      ru: "Найти работу",
+      en: "Find a job",
+      de: "Finde einen Job",
+    },
     href: "/vacancies",
     icon: Briefcase,
     permission: UserRoles.All,
   },
   {
-    title: "Найти сотрудника",
+    title: {
+      ru: "Найти сотрудника",
+      en: "Find employees",
+      de: "Mitarbeiter finden",
+    },
     href: "/resumes",
     icon: CircleUserRound,
     permission: UserRoles.All,
   },
   {
-    title: "Избранное",
+    title: {
+      ru: "Избранное",
+      en: "Favorites",
+      de: "Favoriten",
+    },
     href: "/lk/favorites",
     icon: Heart,
     permission: UserRoles.Authorized,
   },
   {
-    title: "Отклики",
+    title: {
+      ru: "Отклики",
+      en: "Applies",
+      de: "Antworten",
+    },
     href: "/lk/applications",
     icon: Mails,
     permission: UserRoles.Authorized,
   },
   {
-    title: "Профиль",
+    title: {
+      ru: "Профиль",
+      en: "Profile",
+      de: "Profil",
+    },
     href: "/lk",
     icon: UserRound,
     permission: UserRoles.Authorized,
     items: [
       {
-        title: "Мои данные",
+        title: {
+          ru: "Мои данные",
+          en: "My data",
+          de: "Meine Daten",
+        },
         href: "/lk/details",
         icon: UserCheck,
         permission: UserRoles.Authorized,
       },
       {
-        title: "Избранное",
+        title: {
+          ru: "Избранное",
+          en: "Favorites",
+          de: "Favoriten",
+        },
         href: "/lk/favorites",
         icon: Heart,
         permission: UserRoles.Authorized,
       },
       {
-        title: "Мои отклики",
+        title: {
+          ru: "Мои отклики",
+          en: "My applies",
+          de: "Meine Bewerbungen",
+        },
         href: "/lk/applications",
         icon: Mails,
         permission: UserRoles.Authorized,
       },
       {
-        title: "Мои резюме",
+        title: {
+          ru: "Мои резюме",
+          en: "My resumes",
+          de: "Meine Lebenslauf",
+        },
         href: "/lk/resumes",
         icon: FileText,
         permission: UserRoles.Authorized,
       },
       {
-        title: "Выйти",
+        title: {
+          ru: "Выйти",
+          en: "Logout",
+          de: "Sich wieder abmelden",
+        },
         href: "/login",
         icon: LogOut,
         permission: UserRoles.Authorized,
@@ -89,9 +130,12 @@ export const mainNavConfig: MainNavItems = [
       },
     ],
   },
-
   {
-    title: "Войти",
+    title: {
+      ru: "Войти",
+      en: "Login",
+      de: "Einloggen",
+    },
     href: "/login",
     icon: LogIn,
     type: "button",

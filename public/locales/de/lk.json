@@ -1,0 +1,138 @@
+{
+  "lk": {
+    "details": {
+      "notFound": "Versuchen Sie bitte erneut, sich bei Ihrem Konto anzumelden, oder wenden Sie sich an den technischen Support.",
+      "profileDataCard": {
+        "title": "Personenbezogene Daten",
+        "noName": "Anonym",
+        "editProfileTitle": "Profil bearbeiten",
+        "gender": "Geschlecht:",
+        "phone": "Telefon:",
+        "companyAge": "Unternehmen am Markt (Jahre):",
+        "personAge": "Alter:"
+      },
+      "form": {
+        "name": "Geben Sie Ihren Namen ein",
+        "namePlaceholder": "Name",
+        "ageLabel": "Unternehmen am Markt (Jahre):",
+        "companyName": "Geben Sie den Firmennamen ein",
+        "agePlaceholder": "Anzahl der Jahre im Geschäft",
+        "genderLabel": "Geschlecht eingeben",
+        "age": "Geben Sie Ihr Alter ein",
+        "saveButtonTitle": "Speichern"
+      },
+      "deleteAccountCard": {
+        "title": "Konto löschen",
+        "description": "Möchten Sie Ihr Konto wirklich löschen?",
+        "text": "Es wird unmöglich sein, das Konto wiederherzustellen"
+      },
+      "updatePasswordCard": {
+        "title": "Passwort zurücksetzen"
+      }
+    },
+    "noSpecified": "Nicht angegeben",
+    "delete": "Löschen",
+    "download": "Herunterladen",
+    "noElements": "Es gibt derzeit keine Elemente.",
+    "description": "{{count}} artikel",
+    "applications": {
+      "list": {
+        "title": "In Ihren Antworten",
+        "notFoundTitle": "In den Antworten wurden keine Elemente gefunden",
+        "notExistTitle": "Sie haben den Antworten keine Elemente hinzugefügt"
+      },
+      "title": "Antworten"
+    },
+    "favorites": {
+      "list": {
+        "title": "In Ihren Favoriten",
+        "notFoundTitle": "Keine Artikel in den Favoriten gefunden",
+        "notExistTitle": "Sie haben Ihren Favoriten keine Artikel hinzugefügt"
+      },
+      "title": "Favoriten"
+    },
+    "resumes": {
+      "notExist": {
+        "title": "Sie haben noch keinen Lebenslauf."
+      },
+      "notFoundTitle": "Keine Lebensläufe gefunden",
+      "buttonTitle": "Erstellen Sie einen Lebenslauf",
+      "title": "Mein Lebenslauf",
+      "backButtonTitle": "Zurück zu meinen Lebensläufen",
+      "createButtonTitle": "Einen weiteren Lebenslauf erstellen",
+      "list": {
+        "title": "Sie haben erstellt:",
+        "description_one": "{{count}} lebenslauf",
+        "description_other": "{{count}} lebensläufe"
+      },
+      "api": {
+        "deleteError": "Fehler beim Löschen des Lebenslaufs",
+        "deleteToastTitle": "Lebenslauf {{position}} erfolgreich gelöscht",
+        "getProfileResumesError": "Problem beim Laden des Lebenslaufprofils aus der Datenbank"
+      }
+    },
+    "vacancies": {
+      "api": {
+        "deleteError": "Fehler beim Löschen der Stelle",
+        "getVacancyError": "Problem beim Laden der Stellenanzeige aus der Datenbank",
+        "deleteToastTitle": "Stellenangebot {{position}} erfolgreich gelöscht",
+        "getProfileVacanciesError": "Problem beim Laden des Stellenprofils aus der Datenbank"
+      },
+      "notFoundTitle": "Keine offenen Stellen gefunden",
+      "notExist": {
+        "title": "Sie haben derzeit keine offenen Stellen."
+      },
+      "buttonTitle": "Erstellen Sie eine Stelle",
+      "title": "Meine offenen Stellen",
+      "createButtonTitle": "Eine weitere Stelle erstellen",
+      "backButtonTitle": "Zurück zu Meine Stellenangebote",
+      "list": {
+        "title": "Sie haben erstellt:",
+        "description_one": "{{count}} freie Stelle",
+        "description_other": "{{count}} offene Stellen"
+      }
+    },
+    "card": {
+      "backButtonTitle": "Zurück zu",
+      "linkTitle": "Navigieren Sie zu",
+      "linkTitleVacancy": "stellenangebot",
+      "linkTitleResume": "lebenslauf",
+      "description": "Erstellt",
+      "updated": "Aktualisiert",
+      "editButton": "Bearbeiten",
+      "editButtonDescription": "Erstellungsdatum:",
+      "duplicateButton": "Duplikat",
+      "deleteButton": "Löschen",
+      "titleVacancy": "Stellenangebot",
+      "content": {
+        "applicants": {
+          "title": "die auf reagiert haben"
+        },
+        "views": {
+          "title": "die angesehen haben"
+        },
+        "tooltip": "Klicken Sie, um die Liste anzuzeigen",
+        "applies": {
+          "title": "die geantwortet haben auf das"
+        }
+      },
+      "views": {
+        "description_one": "{{count}} ansicht",
+        "description_other": "{{count}} ansichten"
+      },
+      "applies": {
+        "description_one": "{{count}} antwort",
+        "description_other": "{{count}} antworten"
+      }
+    },
+    "copy": "Kopie",
+    "modal": {
+      "title": "Liste der",
+      "companies": "Unternehmen",
+      "candidates": "kandidaten"
+    },
+    "noData": "Daten nicht gefunden",
+    "noViews": "Keine Ansichten",
+    "noApplies": "Keine antworten"
+  }
+}

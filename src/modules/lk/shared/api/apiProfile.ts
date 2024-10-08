@@ -1,7 +1,7 @@
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagination";
 import { supabase } from "../../../shared/services";
 
-export const getProfileResumes = async (page: number) => {
+export const getProfileResumes = async (page: number, t: (key: string) => string) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -27,13 +27,13 @@ export const getProfileResumes = async (page: number) => {
 
   if (error) {
     console.log(error);
-    throw new Error("Проблема с загрузкой резюме профиля из базы данных");
+    throw new Error(t("lk.resumes.api.getProfileResumesError"));
   }
 
   return { data, totalCount: count };
 };
 
-export const getProfileVacancies = async (page: number) => {
+export const getProfileVacancies = async (page: number, t: (key: string) => string) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -59,7 +59,7 @@ export const getProfileVacancies = async (page: number) => {
 
   if (error) {
     console.log(error);
-    throw new Error("Проблема с загрузкой вакансий профиля из базы данных");
+    throw new Error(t("lk.vacancies.api.getProfileVacanciesError"));
   }
 
   return { data, totalCount: count };

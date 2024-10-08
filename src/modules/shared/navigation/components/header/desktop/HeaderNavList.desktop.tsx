@@ -15,9 +15,10 @@ export const HeaderNavListDesktop = ({ items }: HeaderNavListDesktopProps) => {
   return (
     <NavigationMenu delayDuration={100} className="justify-end">
       <NavigationMenuList className="pl-2 lg:gap-2">
-        {items.map((item) => {
+        {items.map((item, i) => {
           return (
-            <NavigationMenuItem key={item.title}>
+            // eslint-disable-next-line react/no-array-index-key
+            <NavigationMenuItem key={i}>
               <HeaderNavListItemDesktop item={item} className="p-1 lg:p-3" />
             </NavigationMenuItem>
           );

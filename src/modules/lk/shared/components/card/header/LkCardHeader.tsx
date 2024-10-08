@@ -6,6 +6,7 @@ import { Badge } from "../../../../../shared/ui/badge/Badge";
 import { Button } from "../../../../../shared/ui/buttons/Button";
 import { CardHeader } from "../../../../../shared/ui/card/Card";
 import { getSalaryTitle } from "../../../../../shared/utils";
+import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { LkCardHeaderTitle } from "./LkCardHeaderTitle";
 
 interface LkCardHeaderProps {
@@ -14,6 +15,7 @@ interface LkCardHeaderProps {
 
 export const LkCardHeader = ({ data }: LkCardHeaderProps) => {
   const isCompany = data.role === UserEntity.Company;
+  const { t } = useLanguageSwitcher("lk");
 
   return (
     <CardHeader className="flex-row justify-between">
@@ -39,7 +41,8 @@ export const LkCardHeader = ({ data }: LkCardHeaderProps) => {
         </div>
       </div>
       <Button variant="link" className="hidden py-0 lg:inline-flex">
-        Перейти к {isCompany ? "вакансии" : "резюме"}
+        {t("lk.card.linkTitle")}{" "}
+        {isCompany ? t("lk.card.linkTitleVacancy") : t("lk.card.linkTitleResume")}
         <ArrowRight size={17} className="ml-2" />
       </Button>
     </CardHeader>

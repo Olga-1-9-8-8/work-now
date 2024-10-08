@@ -4,6 +4,7 @@ import { useDeleteAccount } from "../../../../shared/services/auth/hooks/useDele
 import { Button } from "../../../../shared/ui/buttons/Button";
 import { DrawerDialogResponsive } from "../../../../shared/ui/drawer-dialog/DrawerDialogResponsive";
 import { TypographyH3 } from "../../../../shared/ui/typography/TypographyH3";
+import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { LkDetailsCard } from "../card/LkDetailsCard";
 
 interface LkDetailsDeleteAccountCardProps {
@@ -12,12 +13,15 @@ interface LkDetailsDeleteAccountCardProps {
 
 export const LkDetailsDeleteAccountCard = ({ isLoading }: LkDetailsDeleteAccountCardProps) => {
   const { deleteAccount, isAccountDeleting } = useDeleteAccount();
+  const { t } = useLanguageSwitcher("lk");
 
   return (
-    <LkDetailsCard title="Удаление аккаунта" isLoading={isLoading}>
+    <LkDetailsCard title={t("lk.details.deleteAccountCard.title")} isLoading={isLoading}>
       <section className="flex flex-col gap-4">
-        <TypographyH3>Вы уверены что хотите удалить аккаунт?</TypographyH3>
-        <p className="font-medium text-muted-foreground">Восстановить аккаунт будет невозможно</p>
+        <TypographyH3>{t("lk.details.deleteAccountCard.description")}</TypographyH3>
+        <p className="font-medium text-muted-foreground">
+          {t("lk.details.deleteAccountCard.text")}
+        </p>
         <div className="flex justify-end">
           <DrawerDialogResponsive
             button={
@@ -28,10 +32,10 @@ export const LkDetailsDeleteAccountCard = ({ isLoading }: LkDetailsDeleteAccount
                 disabled={isAccountDeleting}
               >
                 <TrashIcon className="h-2/4 w-2/4 stroke-destructive" />
-                <span>Удалить</span>
+                <span>{t("lk.delete")}</span>
               </Button>
             }
-            title="Удаление аккаунта"
+            title={t("lk.details.deleteAccountCard.title")}
           >
             <DeleteConfirmation title="аккаунт" onDelete={deleteAccount} />
           </DrawerDialogResponsive>

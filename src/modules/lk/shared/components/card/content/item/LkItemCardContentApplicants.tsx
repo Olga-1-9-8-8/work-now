@@ -1,6 +1,5 @@
 import { Mail } from "lucide-react";
 import { useUserApplies } from "../../../../../../shared/features/applies/hooks/useUserApplies";
-import { getModalTitle } from "../../../../utils/getModalTitle";
 import { LkItemCardContentItem } from "./LkItemCardContentItem";
 import { LkItemCardContentItemModal } from "./modal/LkItemCardContentItemModal";
 
@@ -19,10 +18,10 @@ export const LkItemCardContentApplicants = ({
 
   return (
     <LkItemCardContentItem
+      variant="apply"
       icon={Mail}
       count={applicantsQuantity}
-      title="отклик"
-      titleModal={getModalTitle("откликнувшихся на", isHiring)}
+      isHiring={isHiring}
     >
       <LkItemCardContentItemModal data={appliesData} isLoading={isAppliesLoading} />
     </LkItemCardContentItem>

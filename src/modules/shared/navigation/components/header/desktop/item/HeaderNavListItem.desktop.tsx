@@ -1,6 +1,6 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { LanguageType } from "../../../../../configs/internationalization/InternationalizationConfig";
 import { MainNavItem } from "../../../../../configs/mainNavConfig";
 import { Button } from "../../../../../ui/buttons/Button";
 import {
@@ -8,6 +8,7 @@ import {
   NavigationMenuTrigger,
 } from "../../../../../ui/nav-menu/NavigationMenu";
 import { cn } from "../../../../../utils";
+import { useLanguageSwitcher } from "../../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { HeaderNavListItemLink } from "../../link/HeaderNavListItemLink";
 
 interface HeaderNavListItemDesktopProps {
@@ -20,7 +21,7 @@ export const HeaderNavListItemDesktop = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a"> & HeaderNavListItemDesktopProps
 >(({ className, title, item, children, ...props }, ref) => {
-  const { t } = useTranslation("header");
+  const { language } = useLanguageSwitcher("header");
   const navigate = useNavigate();
 
   const Icon = item.icon;
@@ -32,13 +33,13 @@ export const HeaderNavListItemDesktop = React.forwardRef<
         variant="link"
       >
         <Icon size={20} />
-        {t(item.title)}
+        {item.title[language as LanguageType]}
       </Button>
     ) : (
       <HeaderNavListItemLink
         icon={item.icon}
         to={item.href}
-        title={t(item.title)}
+        title={item.title[language as LanguageType]}
         className={cn("text-xs lg:text-sm", className)}
         {...props}
         ref={ref}
@@ -52,7 +53,7 @@ export const HeaderNavListItemDesktop = React.forwardRef<
         <HeaderNavListItemLink
           icon={item.icon}
           to={item.href}
-          title={t(item.title)}
+          title={item.title[language as LanguageType]}
           className={cn("text-xs lg:text-sm", className)}
           {...props}
           ref={ref}
@@ -61,13 +62,14 @@ export const HeaderNavListItemDesktop = React.forwardRef<
 
       <NavigationMenuContent>
         <ul className="w-[300px] p-4">
-          {item.items.map((i: MainNavItem) => {
+          {item.items.map((i: MainNavItem, index: number) => {
             return (
               <HeaderNavListItemLink
                 className="flex-row gap-4 font-bold text-dark"
-                key={i.title}
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
                 to={i.href}
-                title={t(i.title)}
+                title={i.title[language as LanguageType]}
                 icon={i.icon}
                 isExit={i.isExit}
               />

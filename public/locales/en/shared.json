@@ -1,0 +1,10 @@
+{
+  "shared": {
+    "deleteConfirmation": {
+      "title": "Are you sure you want to delete permanently",
+      "restore": "Restore",
+      "text": "will be impossible!"
+    },
+    "delete": "Delete"
+  }
+}

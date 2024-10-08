@@ -1,7 +1,7 @@
 import { getApply, getAvatar, getFavorite } from "../../../shared/api";
 import { supabase } from "../../../shared/services";
 
-export const getVacancy = async (id?: number) => {
+export const getVacancy = async (t: (key: string) => string, id?: number) => {
   if (!id) return null;
   const { data, error } = await supabase
     .from("vacancies")
@@ -11,7 +11,7 @@ export const getVacancy = async (id?: number) => {
 
   if (error) {
     console.log(error);
-    throw new Error("Проблема с загрузкой вакансии из базы данных");
+    throw new Error(t("lk.vacancies.api.getVacancyError"));
   }
 
   if (!data) return null;
@@ -30,7 +30,7 @@ export const getVacancy = async (id?: number) => {
   };
 };
 
-export const deleteVacancy = async (id: number) => {
+export const deleteVacancy = async (id: number, t: (key: string) => string) => {
   const { data, error } = await supabase
     .from("vacancies")
     .delete()
@@ -40,7 +40,7 @@ export const deleteVacancy = async (id: number) => {
 
   if (error) {
     console.log(error);
-    throw new Error("Ошибка удаления вакансии");
+    throw new Error(t("lk.vacancies.api.deleteError"));
   }
   return data;
 };

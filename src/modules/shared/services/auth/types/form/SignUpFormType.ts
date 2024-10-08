@@ -1,4 +1,4 @@
 import { z } from "zod";
-import { authSignUpFormValidationSchema } from "../../validation/authSignUpFormValidationSchema";
+import { getAuthSignUpFormValidationSchema } from "../../validation/getAuthSignUpFormValidationSchema";
 
-export type SignUpFormType = z.infer<typeof authSignUpFormValidationSchema>;
+export type SignUpFormType = z.infer<ReturnType<typeof getAuthSignUpFormValidationSchema>>;

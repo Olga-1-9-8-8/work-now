@@ -2,10 +2,13 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagination";
 import { useUrl } from "../../../shared/hooks";
 import { mapUniversalItem } from "../../../shared/utils";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { getProfileResumes } from "../api/apiProfile";
 
 export const useProfileResumes = () => {
   const queryClient = useQueryClient();
+
+  const { t } = useLanguageSwitcher("lk");
 
   const { getParam } = useUrl();
   const page = Number(getParam("offset")) || 1;
@@ -17,7 +20,7 @@ export const useProfileResumes = () => {
   } = useQuery({
     queryKey: ["resumes", page],
     queryFn: async () => {
-      const resumesData = await getProfileResumes(page);
+      const resumesData = await getProfileResumes(page, t);
       if (resumesData) {
         resumesData.data.forEach((resumeData) => {
           const { id } = resumeData;
@@ -34,14 +37,14 @@ export const useProfileResumes = () => {
   ) {
     queryClient.prefetchQuery({
       queryKey: ["resumes", page + 1],
-      queryFn: () => getProfileResumes(page + 1),
+      queryFn: () => getProfileResumes(page + 1, t),
     });
   }
 
   if (page > 1) {
     queryClient.prefetchQuery({
       queryKey: ["resumes", page - 1],
-      queryFn: () => getProfileResumes(page - 1),
+      queryFn: () => getProfileResumes(page - 1, t),
     });
   }
 

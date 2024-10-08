@@ -1,0 +1,139 @@
+{
+  "lk": {
+    "details": {
+      "notFound": "Please try logging into your account again or contact technical support.",
+      "profileDataCard": {
+        "title": "Personal data",
+        "noName": "Anonymous",
+        "editProfileTitle": "Edit profile",
+        "gender": "Gender:",
+        "phone": "Phone:",
+        "companyAge": "Company on the market (years):",
+        "personAge": "Age:"
+      },
+      "form": {
+        "name": "Enter your name",
+        "namePlaceholder": "Name",
+        "ageLabel": "Company in the market (years):",
+        "companyName": "Enter the company name",
+        "agePlaceholder": "Number of years in business",
+        "genderLabel": "Enter gender",
+        "age": "Enter your age",
+        "saveButtonTitle": "Save"
+      },
+      "deleteAccountCard": {
+        "title": "Delete account",
+        "description": "Are you sure you want to delete your account?",
+        "text": "It will be impossible to restore the account"
+      },
+      "updatePasswordCard": {
+        "title": "Reset password"
+      }
+    },
+    "noSpecified": "Not specified",
+    "delete": "Delete",
+    "download": "Download",
+    "noElements": "No elements yet",
+    "description_one": "{{count}} item",
+    "description_other": "{{count}} items",
+    "applications": {
+      "list": {
+        "title": "In your Applies",
+        "notFoundTitle": "No items found in Applies",
+        "notExistTitle": "You have not added any items to Applies"
+      },
+      "title": "Applies"
+    },
+    "favorites": {
+      "list": {
+        "title": "In your Favorites",
+        "notFoundTitle": "No items found in Favorites",
+        "notExistTitle": "You have not added any items to your Favorites."
+      },
+      "title": "Favorites"
+    },
+    "resumes": {
+      "notExist": {
+        "title": "You don't have a resume yet."
+      },
+      "notFoundTitle": "No resumes found",
+      "buttonTitle": "Create a resume",
+      "title": "My resumes",
+      "backButtonTitle": "Back to My Resumes",
+      "createButtonTitle": "Create another resume",
+      "list": {
+        "title": "You have created:",
+        "description_one": "{{count}} resume",
+        "description_other": "{{count}} resumes"
+      },
+      "api": {
+        "deleteError": "Resume delete Error",
+        "deleteToastTitle": "Resume {{position}} deleted successfully",
+        "getProfileResumesError": "Problem loading resume profile from database"
+      }
+    },
+    "vacancies": {
+      "api": {
+        "deleteError": "Vacancy delete Error",
+        "getVacancyError": "Problem loading vacancy from database",
+        "deleteToastTitle": "Vacancy {{position}} successfully deleted",
+        "getProfileVacanciesError": "Problem loading vacancies profile from the database"
+      },
+      "notFoundTitle": "No vacancies found",
+      "notExist": {
+        "title": "You don't have any vacancies yet."
+      },
+      "buttonTitle": "Create a vacancy",
+      "title": "My vacancies",
+      "createButtonTitle": "Create another vacancy",
+      "backButtonTitle": "Back to My Vacancies",
+      "list": {
+        "title": "You have created:",
+        "description_one": "{{count}} vacancy",
+        "description_other": "{{count}} vacancies"
+      }
+    },
+    "card": {
+      "backButtonTitle": "Back to",
+      "linkTitle": "Navigate to",
+      "linkTitleVacancy": "vacancy",
+      "linkTitleResume": "resume",
+      "description": "Created",
+      "updated": "Updated",
+      "editButton": "Edit",
+      "editButtonDescription": "Creation date:",
+      "duplicateButton": "Duplicate",
+      "deleteButton": "Delete",
+      "titleVacancy": "vacancy",
+      "content": {
+        "applicants": {
+          "title": "applied to"
+        },
+        "tooltip": "Click to view the list",
+        "views": {
+          "title": "who viewed the"
+        },
+        "applies": {
+          "title": "who applied to the"
+        }
+      },
+      "views": {
+        "description_one": "{{count}} view",
+        "description_other": "{{count}} views"
+      },
+      "applies": {
+        "description_one": "{{count}} apply",
+        "description_other": "{{count}} applies"
+      }
+    },
+    "copy": "Copy",
+    "modal": {
+      "title": "List of",
+      "companies": "companies",
+      "candidates": "candidates"
+    },
+    "noData": "Data not found",
+    "noViews": "No views",
+    "noApplies": "No applies"
+  }
+}

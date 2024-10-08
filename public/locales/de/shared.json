@@ -1,0 +1,10 @@
+{
+  "shared": {
+    "deleteConfirmation": {
+      "title": "Möchten Sie diese Seite wirklich dauerhaft löschen",
+      "restore": "Wiederherstellen",
+      "text": "wird unmöglich sein!"
+    },
+    "delete": "Löschen"
+  }
+}

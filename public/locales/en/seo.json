@@ -64,8 +64,8 @@
       "description": "On the WorkNow My Profile page, you can manage your personal information and customize your account settings."
     },
     "lkApplicationsPage": {
-      "title": "WorkNow / My responses",
-      "description": "On the WorkNow My Responses page, you can view and manage your responses to resumes or jobs."
+      "title": "WorkNow / My applies",
+      "description": "On the WorkNow My Applies page, you can view and manage your responses to resumes or jobs."
     }
   }
 }

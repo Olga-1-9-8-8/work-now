@@ -2,6 +2,7 @@ import { Trash2Icon } from "lucide-react";
 import { useUpdateUser } from "../../../../../shared/services/auth";
 import { UserEntity } from "../../../../../shared/types";
 import { Button } from "../../../../../shared/ui/buttons/Button";
+import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { LkDetailsFormAvatar } from "../../avatar/LkDetailsFormAvatar";
 import { LkDetailsFormAvatarBlockFileInput } from "./LkDetailsFormAvatarBlockFileInput";
 
@@ -12,6 +13,7 @@ interface LkDetailsFormAvatarBlockProps {
 
 export const LkDetailsFormAvatarBlock = ({ avatarSrc, role }: LkDetailsFormAvatarBlockProps) => {
   const { updateUser, isUpdatingUser } = useUpdateUser();
+  const { t } = useLanguageSwitcher("lk");
 
   return avatarSrc ? (
     <div className="flex items-center justify-evenly gap-4">
@@ -28,7 +30,7 @@ export const LkDetailsFormAvatarBlock = ({ avatarSrc, role }: LkDetailsFormAvata
         >
           <Trash2Icon />
         </Button>
-        <p>Удалить</p>
+        <p>{t("lk.delete")}</p>
       </div>
     </div>
   ) : (

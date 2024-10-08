@@ -11,7 +11,6 @@ export const currencyConfigs = {
     icon: BadgeDollarSign,
     currency: "USD",
   },
-
   de: {
     title: " euro",
     icon: BadgeEuro,

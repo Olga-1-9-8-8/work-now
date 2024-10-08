@@ -6,6 +6,7 @@ import { Button } from "../../../../../shared/ui/buttons/Button";
 import { FormControl, FormField, FormItem, FormMessage } from "../../../../../shared/ui/form/Form";
 import { Input } from "../../../../../shared/ui/inputs/Input";
 import { cn } from "../../../../../shared/utils/cn";
+import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { LkDetailsFormType } from "../../../types/LkDetailsFormType";
 
 interface LkDetailsFormAvatarBlockFileInputProps {
@@ -16,6 +17,7 @@ export const LkDetailsFormAvatarBlockFileInput = ({
   className,
 }: LkDetailsFormAvatarBlockFileInputProps) => {
   const { updateUser, isUpdatingUser } = useUpdateUser();
+  const { t } = useLanguageSwitcher("lk");
 
   const { control } = useFormContext<LkDetailsFormType>();
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -50,7 +52,7 @@ export const LkDetailsFormAvatarBlockFileInput = ({
           </FormItem>
         )}
       />
-      Загрузить
+      {t("lk.download")}
     </div>
   );
 };

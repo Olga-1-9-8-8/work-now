@@ -3,6 +3,7 @@ import { CardSocialsButtons } from "../../../../shared/components/card";
 import { AppliedButton } from "../../../../shared/features/applies";
 import { UniversalCardItemType, UserEntity } from "../../../../shared/types";
 import { Card, CardFooter } from "../../../../shared/ui/card/Card";
+import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { LkCardHeader } from "./header/LkCardHeader";
 
 interface LkCardProps {
@@ -13,6 +14,7 @@ interface LkCardProps {
 export const LkCard = ({ data, title }: LkCardProps) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useLanguageSwitcher("lk");
 
   return (
     <Card
@@ -20,7 +22,7 @@ export const LkCard = ({ data, title }: LkCardProps) => {
       className="relative"
       onClick={() =>
         navigate(`/${data.role === UserEntity.Company ? "vacancies" : "resumes"}/${data.id}`, {
-          state: { from: location.pathname, title: `Назад в ${title}` },
+          state: { from: location.pathname, title: `${t("lk.card.backButtonTitle")} ${title}` },
         })
       }
     >

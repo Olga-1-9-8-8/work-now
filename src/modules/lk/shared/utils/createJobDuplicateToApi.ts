@@ -1,13 +1,17 @@
 import { UniversalJobType } from "../../../shared/types";
 import { mapItemToApiType } from "../../../shared/utils";
 
-export const createJobDuplicateToApi = (item: UniversalJobType, isHiring: boolean) => {
+export const createJobDuplicateToApi = (
+  item: UniversalJobType,
+  isHiring: boolean,
+  t: (key: string) => string,
+) => {
   const { id, isInApplies, isInFavorites, views, applicantsQuantity, cities, gender, ...itemData } =
     item;
 
   const newItemData = {
     ...itemData,
-    position: `Копия - ${itemData.position}`,
+    position: `${t("lk.copy")} - ${itemData.position}`,
     creationDate: new Date(),
     cities: cities?.map(({ city }) => city),
     views: 0,

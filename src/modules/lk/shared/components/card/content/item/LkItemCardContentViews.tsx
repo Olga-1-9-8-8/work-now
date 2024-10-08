@@ -1,6 +1,5 @@
 import { EyeIcon } from "lucide-react";
 import { useViews } from "../../../../../../shared/features/views/hooks/useViews";
-import { getModalTitle } from "../../../../utils/getModalTitle";
 import { LkItemCardContentItem } from "./LkItemCardContentItem";
 import { LkItemCardContentItemModal } from "./modal/LkItemCardContentItemModal";
 
@@ -14,12 +13,7 @@ export const LkItemCardContentViews = ({ id, views, isHiring }: LkItemCardConten
   const { viewsData, isViewsLoading } = useViews(id, isHiring);
 
   return (
-    <LkItemCardContentItem
-      icon={EyeIcon}
-      count={views}
-      title="просмотр"
-      titleModal={getModalTitle("просмотревших", isHiring)}
-    >
+    <LkItemCardContentItem variant="view" icon={EyeIcon} count={views} isHiring={isHiring}>
       <LkItemCardContentItemModal data={viewsData} isLoading={isViewsLoading} />
     </LkItemCardContentItem>
   );

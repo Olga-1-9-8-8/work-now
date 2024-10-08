@@ -1,0 +1,146 @@
+{
+  "lk": {
+    "details": {
+      "notFound": "Попробуйте войти в свой аккаунт еще раз или обратитесь в техническую поддержку.",
+      "profileDataCard": {
+        "title": "Личные данные",
+        "noName": "Аноним",
+        "editProfileTitle": "Изменить данные профиля",
+        "gender": "Пол:",
+        "phone": "Телефон:",
+        "companyAge": "Количество лет организация на рынке:",
+        "personAge": "Возраст:"
+      },
+      "form": {
+        "name": "Укажите имя",
+        "namePlaceholder": "Имя",
+        "ageLabel": "Укажите сколько лет организация на рынке",
+        "companyName": "Укажите название компании",
+        "agePlaceholder": "Количество лет вашей компании",
+        "genderLabel": "Укажите пол",
+        "age": "Укажите свой возраст",
+        "saveButtonTitle": "Сохранить"
+      },
+      "deleteAccountCard": {
+        "title": "Удаление аккаунта",
+        "description": "Вы уверены что хотите удалить аккаунт?",
+        "text": "Восстановить аккаунт будет невозможно"
+      },
+      "updatePasswordCard": {
+        "title": "Сброс пароля"
+      }
+    },
+    "noSpecified": "Не указано",
+    "delete": "Удалить",
+    "download": "Загрузить",
+    "noElements": "Пока нет ни одного элемента",
+    "description_one": "{{count}} элемент",
+    "description_few": "{{count}} элемента",
+    "description_many": "{{count}} элементов",
+    "description_other": "{{count}} элементов",
+    "applications": {
+      "list": {
+        "title": " У Вас в Откликах",
+        "notFoundTitle": "Элементы в Откликах не найдены",
+        "notExistTitle": "Вы не добавили ни одного элемента в Отклики"
+      },
+      "title": "Отклики"
+    },
+    "favorites": {
+      "list": {
+        "title": " У Вас в Избранном",
+        "notFoundTitle": "Элементы в Избранном не найдены",
+        "notExistTitle": "Вы не добавили ни одного элемента в Избранное"
+      },
+      "title": "Избранное"
+    },
+    "resumes": {
+      "notExist": {
+        "title": "У вас пока нет резюме."
+      },
+      "notFoundTitle": "Резюме не найдены",
+      "buttonTitle": "Создайте резюме",
+      "title": "Мои резюме",
+      "backButtonTitle": "Назад в Мои резюме",
+      "createButtonTitle": "Создайте еще резюме",
+      "list": {
+        "title": "Вы заполнили:",
+        "description": "{{count}} резюме"
+      },
+      "api": {
+        "deleteError": "Ошибка удаления резюме",
+        "deleteToastTitle": "Резюме {{position}} успешно удалено",
+        "getProfileResumesError": "Проблема с загрузкой резюме профиля из базы данных"
+      }
+    },
+    "vacancies": {
+      "api": {
+        "deleteError": "Ошибка удаления вакансии",
+        "getVacancyError": "Проблема с загрузкой вакансии из базы данных",
+        "deleteToastTitle": "Вакансия {{position}} успешно удалена",
+        "getProfileVacanciesError": "Проблема с загрузкой вакансий профиля из базы данных"
+      },
+      "notFoundTitle": "Вакансии не найдены",
+      "notExist": {
+        "title": "У вас пока нет вакансий."
+      },
+      "buttonTitle": "Создайте вакансию",
+      "title": "Мои вакансии",
+      "createButtonTitle": "Создайте еще вакансию",
+      "backButtonTitle": "Назад в Мои вакансии",
+      "list": {
+        "title": "Вы заполнили:",
+        "description_one": "{{count}} вакансию",
+        "description_few": "{{count}} вакансии",
+        "description_many": "{{count}} вакансий",
+        "description_other": "{{count}} вакансий"
+      }
+    },
+    "card": {
+      "backButtonTitle": "Назад в",
+      "linkTitle": "Перейти к",
+      "linkTitleVacancy": "вакансии",
+      "linkTitleResume": "резюме",
+      "description": "Создано",
+      "updated": "Обновлено",
+      "editButton": "Редактировать",
+      "editButtonDescription": "Дата создания:",
+      "duplicateButton": "Дублировать",
+      "deleteButton": "Удаление",
+      "titleVacancy": "вакансию",
+      "content": {
+        "applicants": {
+          "title": "откликнувшихся на"
+        },
+        "views": {
+          "title": "просмотревших"
+        },
+        "tooltip": "Нажми для просмотра списка",
+        "applies": {
+          "title": "откликнувшихся на"
+        }
+      },
+      "views": {
+        "description_one": "{{count}} просмотр",
+        "description_few": "{{count}} просмотра",
+        "description_many": "{{count}} просмотров",
+        "description_other": "{{count}} просмотров"
+      },
+      "applies": {
+        "description_one": "{{count}} отклик",
+        "description_few": "{{count}} отклика",
+        "description_many": "{{count}} откликов",
+        "description_other": "{{count}} откликов"
+      }
+    },
+    "copy": "Копия",
+    "modal": {
+      "title": "Список",
+      "companies": "компаний",
+      "candidates": "кандидатов"
+    },
+    "noData": "Данные не найдены",
+    "noViews": "Нет просмотров",
+    "noApplies": "Нет откликов"
+  }
+}
