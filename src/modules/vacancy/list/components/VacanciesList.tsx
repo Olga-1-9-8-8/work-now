@@ -1,6 +1,7 @@
 import { NotFound } from "../../../shared/components/not-found";
 import { Pagination } from "../../../shared/components/pagination/components/Pagination";
 import { UniversalCardItemType } from "../../../shared/types";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { VacanciesListItem } from "./item/VacanciesListItem";
 
 interface VacanciesListProps {
@@ -9,12 +10,16 @@ interface VacanciesListProps {
 }
 
 export const VacanciesList = ({ vacancies, totalCount }: VacanciesListProps) => {
-  if (!vacancies) return <NotFound title="Вакансии" />;
+  const { t } = useLanguageSwitcher("vacancy");
+  if (!vacancies) return <NotFound title={t("vacancy.list.notFound")} />;
 
   return (
     <div className="flex flex-col gap-3">
       {totalCount === 0 ? (
-        <NotFound title="Вакансии" description="Поменяйте фильтры или попробуйте еще раз" />
+        <NotFound
+          title={t("vacancy.list.notFound")}
+          description={t("vacancy.list.notFoundDescription")}
+        />
       ) : (
         vacancies.map((vacancy) => {
           return <VacanciesListItem key={vacancy.id} vacancy={vacancy} />;

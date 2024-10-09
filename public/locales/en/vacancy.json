@@ -34,7 +34,16 @@
     "api": {
       "editToastTitle": "The vacancy for {{position}} has been successfully edited",
       "createToastTitle": "New vacancy for {{position}} has been created",
-      "createEditVacancyError": "Create vacancy error"
+      "createEditVacancyError": "Create vacancy error",
+      "getVacancyError": "Error loading vacancy from database",
+      "getVacanciesError": "Error loading vacancies from the database"
+    },
+    "details": {
+      "notExist": "Vacancy details not found"
+    },
+    "list": {
+      "notFound": "No vacancies found",
+      "notFoundDescription": "Change filters or try again"
     }
   }
 }

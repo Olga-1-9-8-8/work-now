@@ -1,5 +1,4 @@
 /* eslint-disable unicorn/prefer-switch */
-import axios from "axios";
 import { getApply, getAvatar, getFavorite } from "../../../shared/api";
 import {
   FilterType,
@@ -9,31 +8,15 @@ import {
 } from "../../../shared/features/filters/server-side";
 import { buildPaginationQuery } from "../../../shared/features/filters/server-side/utils/buildPaginationQuery";
 import { supabase } from "../../../shared/services";
-import { API_URL } from "../../shared/api/const";
-
-export const getVacanciesThirdPartApi = async (param: any, segments: string = "/region/code") => {
-  const result = await axios({
-    method: "get",
-    url: `${API_URL}${segments}`,
-    params: {
-      limit: 30,
-      offset: 1,
-      text: "",
-      ...param,
-    },
-  });
-
-  const data = await result.data;
-  return data.results.vacancies;
-};
 
 interface GetVacanciesProps {
   filters: FilterType[];
   sort: SortingType;
   page: number;
+  t: (key: string) => string;
 }
 
-export const getVacancies = async ({ filters, sort, page }: GetVacanciesProps) => {
+export const getVacancies = async ({ filters, sort, page, t }: GetVacanciesProps) => {
   let query = supabase.from("vacancies").select("*,profiles(*)", { count: "exact" });
 
   if (filters.length > 0) {
@@ -50,7 +33,7 @@ export const getVacancies = async ({ filters, sort, page }: GetVacanciesProps) =
 
   if (error) {
     console.log(error);
-    throw new Error("Проблема с загрузкой вакансий из базы данных");
+    throw new Error(t("vacancy.api.getVacanciesError"));
   }
 
   if (data.length === 0) return { data, totalCount: count };

@@ -34,7 +34,16 @@
     "api": {
       "editToastTitle": "Die Stelle für {{position}} wurde erfolgreich bearbeitet",
       "createToastTitle": "Neue Stelle {{position}} erstellt",
-      "createEditVacancyError": "Fehler beim Erstellen einer freien Stelle"
+      "createEditVacancyError": "Fehler beim Erstellen einer freien Stelle",
+      "getVacancyError": "Fehler beim Laden der Stellenanzeige aus der Datenbank",
+      "getVacanciesError": "Fehler beim Laden der Stellenangebote aus der Datenbank"
+    },
+    "details": {
+      "notExist": "Jobdetails nicht gefunden"
+    },
+    "list": {
+      "notFound": "Keine offenen Stellen gefunden",
+      "notFoundDescription": "Ändern Sie die Filter oder versuchen Sie es erneut"
     }
   }
 }

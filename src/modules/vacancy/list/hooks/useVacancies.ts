@@ -3,10 +3,12 @@ import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagina
 import { sortClientData } from "../../../shared/features/filters/client-side";
 import { useFiltersParams } from "../../../shared/features/filters/server-side";
 import { mapUniversalItemWithProfile } from "../../../shared/utils";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { getVacancies } from "../api/apiVacancies";
 
 export const useVacancies = () => {
   const queryClient = useQueryClient();
+  const { t } = useLanguageSwitcher("vacancy");
 
   const { filters, sort, page } = useFiltersParams();
 
@@ -18,7 +20,7 @@ export const useVacancies = () => {
     queryKey: ["vacancies", filters, sort, page],
 
     queryFn: async () => {
-      const vacanciesData = await getVacancies({ filters, sort, page });
+      const vacanciesData = await getVacancies({ filters, sort, page, t });
 
       vacanciesData.data.forEach((vacancyData) => {
         queryClient.setQueryData(["vacancy", vacancyData.id], vacancyData);
@@ -33,14 +35,14 @@ export const useVacancies = () => {
   ) {
     queryClient.prefetchQuery({
       queryKey: ["vacancy", filters, undefined, page + 1],
-      queryFn: () => getVacancies({ filters, sort, page: page + 1 }),
+      queryFn: () => getVacancies({ filters, sort, page: page + 1, t }),
     });
   }
 
   if (page > 1) {
     queryClient.prefetchQuery({
       queryKey: ["vacancy", filters, undefined, page - 1],
-      queryFn: () => getVacancies({ filters, sort, page: page - 1 }),
+      queryFn: () => getVacancies({ filters, sort, page: page - 1, t }),
     });
   }
 

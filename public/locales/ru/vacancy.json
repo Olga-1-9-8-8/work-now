@@ -34,7 +34,16 @@
     "api": {
       "editToastTitle": "Вакансия {{position}} успешно отредактирована",
       "createToastTitle": "Новое вакансия {{position}} создана",
-      "createEditVacancyError": "Ошибка при создании вакансии"
+      "createEditVacancyError": "Ошибка при создании вакансии",
+      "getVacancyError": "Проблема с загрузкой вакансии из базы данных",
+      "getVacanciesError": "Проблема с загрузкой вакансий из базы данных"
+    },
+    "details": {
+      "notExist": "Детали вакансии не найдены"
+    },
+    "list": {
+      "notFound": "Вакансии не найдены",
+      "notFoundDescription": "Поменяйте фильтры или попробуйте еще раз"
     }
   }
 }

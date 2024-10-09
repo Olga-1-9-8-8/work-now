@@ -1,20 +1,7 @@
-import axios from "axios";
 import { getApply, getAvatar, getFavorite } from "../../../shared/api";
 import { supabase } from "../../../shared/services";
-import { API_URL } from "../../shared/api/const";
 
-export const getVacancyThirdPartyApi = async (id?: string, companyCode?: string) => {
-  const result = await axios({
-    method: "get",
-    url: `${API_URL}/vacancy/${companyCode}/${id}`,
-  });
-
-  const data = await result.data;
-
-  return data.results.vacancies[0].vacancy;
-};
-
-export const getVacancy = async (id?: number) => {
+export const getVacancy = async (t: (key: string) => string, id?: number) => {
   if (!id) return null;
   const { data, error } = await supabase
     .from("vacancies")
@@ -24,7 +11,7 @@ export const getVacancy = async (id?: number) => {
 
   if (error) {
     console.log(error);
-    throw new Error("Проблема с загрузкой вакансии из базы данных");
+    throw new Error(t("vacancy.api.getVacancyError"));
   }
 
   if (!data) return null;

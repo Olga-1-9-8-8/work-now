@@ -6,8 +6,8 @@ import { VacanciesList } from "../components/VacanciesList";
 import { useVacancies } from "../hooks/useVacancies";
 
 const VacanciesListPage = () => {
-  const { isLoading, vacancies, totalCount } = useVacancies();
   const { t } = useLanguageSwitcher("seo");
+  const { isLoading, vacancies, totalCount } = useVacancies();
 
   return (
     <>
