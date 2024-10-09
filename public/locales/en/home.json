@@ -57,6 +57,9 @@
       "chartNotExist": "No data for the graph",
       "nodata": "No data",
       "days": "days"
+    },
+    "api": {
+      "getResumesAnalyticsError": "Error loading resume analytics from database"
     }
   }
 }

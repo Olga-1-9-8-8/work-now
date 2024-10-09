@@ -1,7 +1,7 @@
 import { addDays, format } from "date-fns";
 import { supabase } from "../../shared/services";
 
-export const getResumesAnalyticsAfterDate = async (date: string) => {
+export const getResumesAnalyticsAfterDate = async (date: string, t: (key: string) => string) => {
   const { data, error } = await supabase
     .from("resumes")
     .select("creation_date, salary, education, applicants_quantity, profiles(age, gender)")
@@ -10,7 +10,7 @@ export const getResumesAnalyticsAfterDate = async (date: string) => {
 
   if (error) {
     console.log(error);
-    throw new Error("Проблема с загрузкой аналитики по резюме из базы данных");
+    throw new Error(t("home.api.getResumesAnalyticsError"));
   }
 
   return data;

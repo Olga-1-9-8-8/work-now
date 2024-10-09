@@ -5,8 +5,9 @@ import { GenderChart } from "./chart/GenderChart";
 import { SalaryLineChart } from "./chart/SalaryLineChart";
 
 export const HomeChartsOverviewCharts = () => {
-  const { lastResumes, isLoading, numDays } = useLastResumesAnalytics();
   const { t } = useLanguageSwitcher("home");
+  const { lastResumes, isLoading, numDays } = useLastResumesAnalytics();
+
   return (
     <div className="flex min-h-3.5 flex-col gap-4">
       <SalaryLineChart

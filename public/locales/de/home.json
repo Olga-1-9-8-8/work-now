@@ -57,6 +57,9 @@
       "chartNotExist": "Für die Grafik liegen keine Daten vor",
       "nodata": "Keine Daten",
       "days": "Tage"
+    },
+    "api": {
+      "getResumesAnalyticsError": "Fehler beim Laden der Lebenslaufanalyse aus der Datenbank"
     }
   }
 }
