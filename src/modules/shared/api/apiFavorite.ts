@@ -1,7 +1,7 @@
 import { supabase } from "../services/api/supabase";
 import { UserEntity } from "../types";
 
-export const getFavorite = async (id: number) => {
+export const getFavorite = async (id: number, t: (key: string) => string) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -20,7 +20,7 @@ export const getFavorite = async (id: number) => {
 
   if (favoriteError) {
     console.log(favoriteError);
-    throw new Error("Проблема с загрузкой избранного из базы данных");
+    throw new Error(t("shared.api.getFavoriteError"));
   }
   return favoriteData;
 };

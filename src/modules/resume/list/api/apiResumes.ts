@@ -42,8 +42,8 @@ export const getResumes = async ({ filters, sort, page, t }: GetResumesProps) =>
   const resumesData = await Promise.all(
     data.map(async (resume) => {
       const [favorite, appliesData] = await Promise.all([
-        getFavorite(resume.id),
-        getApply(resume.id),
+        getFavorite(resume.id, t),
+        getApply(resume.id, t),
       ]);
 
       const avatarPromise = resume.profiles?.avatar

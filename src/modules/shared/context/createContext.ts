@@ -7,7 +7,7 @@ export const createContext = <TContext extends {}>(value: TContext) => {
     const contextValue = React.useContext(Context);
 
     if (contextValue === undefined) {
-      throw new Error("useContext должен быть внутри провайдера");
+      throw new Error("useContext must be inside the provider");
     }
     return contextValue;
   };

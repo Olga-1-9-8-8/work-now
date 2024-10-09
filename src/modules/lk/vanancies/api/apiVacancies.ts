@@ -17,8 +17,8 @@ export const getVacancy = async (t: (key: string) => string, id?: number) => {
   if (!data) return null;
 
   const [favorite, appliesData, avatar] = await Promise.all([
-    getFavorite(data.id),
-    getApply(data.id),
+    getFavorite(data.id, t),
+    getApply(data.id, t),
     data.profiles?.avatar ? getAvatar(data.profiles.avatar) : null,
   ]);
 

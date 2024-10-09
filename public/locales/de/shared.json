@@ -5,6 +5,10 @@
       "restore": "Wiederherstellen",
       "text": "wird unmöglich sein!"
     },
-    "delete": "Löschen"
+    "delete": "Löschen",
+    "api": {
+      "getApplyError": "Fehler beim Laden der Antworten aus der Datenbank",
+      "getFavoriteError": "Fehler beim Laden der Favoriten aus der Datenbank"
+    }
   }
 }

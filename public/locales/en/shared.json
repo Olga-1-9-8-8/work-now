@@ -5,6 +5,10 @@
       "restore": "Restore",
       "text": "will be impossible!"
     },
-    "delete": "Delete"
+    "delete": "Delete",
+    "api": {
+      "getApplyError": "Error loading applies from database",
+      "getFavoriteError": "Error loading favorites from database"
+    }
   }
 }
