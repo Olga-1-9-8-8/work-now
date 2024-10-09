@@ -226,7 +226,6 @@ export const homeDetailsConfig: HomeDetailsItems = {
       ],
     },
   ],
-
   en: [
     {
       title: "Internship",
