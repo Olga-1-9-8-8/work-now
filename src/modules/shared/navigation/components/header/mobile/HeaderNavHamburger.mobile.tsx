@@ -1,4 +1,5 @@
 import { Menu } from "lucide-react";
+import { LanguageType } from "../../../../configs";
 import { MainNavItem } from "../../../../configs/mainNavConfig";
 import {
   NavigationMenu,
@@ -8,6 +9,7 @@ import {
   NavigationMenuTrigger,
 } from "../../../../ui/nav-menu/NavigationMenu";
 import { LanguageSwitcherDropdown } from "../../../../widgets/languages-switcher";
+import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { HeaderNavListItemLink } from "../link/HeaderNavListItemLink";
 
 interface HeaderNavHamburgerMobileProps {
@@ -15,6 +17,7 @@ interface HeaderNavHamburgerMobileProps {
 }
 
 export const HeaderNavHamburgerMobile = ({ items }: HeaderNavHamburgerMobileProps) => {
+  const { language } = useLanguageSwitcher("shared");
   return (
     <div className="flex items-center gap-8">
       <LanguageSwitcherDropdown />
@@ -26,13 +29,14 @@ export const HeaderNavHamburgerMobile = ({ items }: HeaderNavHamburgerMobileProp
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="w-[300px] p-4">
-                {items.map((i: MainNavItem) => {
+                {items.map((i: MainNavItem, index: number) => {
                   return (
                     <HeaderNavListItemLink
                       className="flex-row gap-4 text-base font-bold text-dark"
-                      key={i.title}
+                      // eslint-disable-next-line react/no-array-index-key
+                      key={index}
                       to={i.href}
-                      title={i.title}
+                      title={i.title[language as LanguageType]}
                       icon={i.icon}
                     />
                   );

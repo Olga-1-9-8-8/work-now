@@ -6,13 +6,7 @@ import { filterMainNavItems } from "../utils/filterMainNavItems";
 
 export const useRoleBasedHeaderNavigation = () => {
   const { isAuthenticated } = useAuthContext();
+  const userRole = isAuthenticated ? UserRoles.Authorized : UserRoles.NotAuthorized;
 
-  return useMemo(
-    () =>
-      filterMainNavItems(
-        mainNavConfig,
-        isAuthenticated ? UserRoles.Authorized : UserRoles.NotAuthorized,
-      ),
-    [isAuthenticated],
-  );
+  return useMemo(() => filterMainNavItems(mainNavConfig, userRole), [userRole]);
 };
