@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { LanguageType } from "../../../../shared/configs/internationalization/InternationalizationConfig";
+import { LanguageType } from "../../../../shared/configs";
 import { useAuthContext, useUpdateUser } from "../../../../shared/services/auth";
 import { ProfileType } from "../../../../shared/services/auth/types/ProfileType";
 import { UserEntity, getGenderTitle } from "../../../../shared/types";

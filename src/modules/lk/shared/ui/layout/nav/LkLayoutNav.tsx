@@ -1,4 +1,4 @@
-import { LanguageType } from "../../../../../shared/configs/internationalization/InternationalizationConfig";
+import { LanguageType } from "../../../../../shared/configs";
 import { lkNavConfig } from "../../../../../shared/configs/lkNavConfig";
 import { HeaderNavListItemLink } from "../../../../../shared/navigation";
 import { useResponsiveContext } from "../../../../../shared/responsive";

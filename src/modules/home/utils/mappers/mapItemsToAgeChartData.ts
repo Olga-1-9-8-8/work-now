@@ -1,5 +1,5 @@
 /* eslint-disable unicorn/no-array-reduce */
-import { LanguageType } from "../../../shared/configs/internationalization/InternationalizationConfig";
+import { LanguageType } from "../../../shared/configs";
 import { AgeType, getAgeTitle, getAgeValue } from "../../../shared/types";
 import { UniversalItemAnalyticsApiTypeInput } from "../../types/UniversalItemAnalyticsApiTypeInput";
 

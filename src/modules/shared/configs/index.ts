@@ -5,6 +5,7 @@ export type { FilterConfigType } from "./filterConfig";
 export { homeChartSalaryConfig } from "./homeChartConfigs";
 export { homeDetailsConfig } from "./homeDetailsConfig";
 export { homeInfoPricingConfig } from "./homeInfoConfig";
+export type { LanguageType } from "./internationalization/InternationalizationConfig";
 export { lkNavConfig } from "./lkNavConfig";
 export { mainNavConfig } from "./mainNavConfig";
 export { searchConfig } from "./searchConfig";

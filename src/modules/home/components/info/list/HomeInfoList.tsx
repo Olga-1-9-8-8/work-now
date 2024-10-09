@@ -1,5 +1,4 @@
-import { searchConfig } from "../../../../shared/configs";
-import { LanguageType } from "../../../../shared/configs/internationalization/InternationalizationConfig";
+import { LanguageType, searchConfig } from "../../../../shared/configs";
 import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { HomeInfoListItems } from "./items/HomeInfoListItems";
 

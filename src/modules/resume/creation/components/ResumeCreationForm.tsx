@@ -1,4 +1,4 @@
-import { filterConfig, searchConfig } from "../../../shared/configs";
+import { LanguageType, filterConfig, searchConfig } from "../../../shared/configs";
 import { UniversalItemType, UniversalJobType } from "../../../shared/types";
 import { Button } from "../../../shared/ui/buttons/Button";
 import {
@@ -19,6 +19,7 @@ import {
   FormMessage,
 } from "../../../shared/ui/form/Form";
 import { getSalaryTitle } from "../../../shared/utils";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { useResumeForm } from "../hooks/useResumeForm";
 import { ResumeCreationFormType } from "../types/ResumeCreationFormType";
 
@@ -29,26 +30,32 @@ interface ResumeCreationFormProps {
 }
 
 export const ResumeCreationForm = ({ userId, resume, onModalClose }: ResumeCreationFormProps) => {
+  const { t, language } = useLanguageSwitcher("resume");
   const { form, handleSubmit, isSubmitting } = useResumeForm({
     resume,
     userId,
     onModalClose,
   });
 
-  const { employment, schedule, education, week_hours: weekHours } = filterConfig;
-  const { cities } = searchConfig;
+  const {
+    employment,
+    schedule,
+    education,
+    week_hours: weekHours,
+  } = filterConfig[language as LanguageType];
+  const { cities } = searchConfig[language as LanguageType];
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8 px-1">
         <FormInputField<ResumeCreationFormType>
-          label="Укажите должность"
+          label={t("resume.creation.form.position.label")}
           name="position"
-          placeholder="Название вашего резюме"
+          placeholder={t("resume.creation.form.position.placeholder")}
           disabled={isSubmitting}
         />
         <FormMultiSelect<ResumeCreationFormType>
-          label="Укажите регион поиска работы"
+          label={t("resume.creation.form.cities.label")}
           name="cities"
           title={cities.title}
           disabled={isSubmitting}
@@ -82,17 +89,18 @@ export const ResumeCreationForm = ({ userId, resume, onModalClose }: ResumeCreat
         />
         <FormSliderField<ResumeCreationFormType>
           name="salary"
-          getLabel={(value) => `Зарплата: ${getSalaryTitle(value)} `}
+          getLabel={(value) =>
+            `${t("resume.creation.form.salary.label")} ${getSalaryTitle(value)} `
+          }
           disabled={isSubmitting}
-          description="Выберите диапазон зарплат"
+          description={t("resume.creation.form.salary.description")}
         />
 
         <FormTextareaField<ResumeCreationFormType>
           disabled={isSubmitting}
           name="about"
-          label="Напиши о себе"
-          placeholder="Напиши про свои навыки"
-          description="Какой опыт вы приобрели благодаря получению образования"
+          label={t("resume.creation.form.about.label")}
+          placeholder={t("resume.creation.form.about.placeholder")}
         />
         <FormField
           control={form.control}
@@ -100,15 +108,17 @@ export const ResumeCreationForm = ({ userId, resume, onModalClose }: ResumeCreat
           disabled={isSubmitting}
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel>Дата начала работы</FormLabel>
+              <FormLabel>{t("resume.creation.form.employmentStartDate.label")}</FormLabel>
               <DatePicker {...field} />
-              <FormDescription>Дата предполагаемого выхода на работу</FormDescription>
+              <FormDescription>
+                {t("resume.creation.form.employmentStartDate.description")}
+              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
         <Button disabled={isSubmitting} size="lg" type="submit">
-          Опубликовать резюме
+          {t("resume.creation.form.submit")}
         </Button>
       </form>
     </Form>

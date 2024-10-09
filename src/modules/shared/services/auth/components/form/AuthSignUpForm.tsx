@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { UseFormReset } from "react-hook-form";
-import { LanguageType } from "../../../../configs/internationalization/InternationalizationConfig";
+import { LanguageType } from "../../../../configs";
 import { FormInputField } from "../../../../ui/form-control";
 import { FormCheckboxField } from "../../../../ui/form-control/checkbox/FormCheckboxField";
 import { TypographyH5 } from "../../../../ui/typography/TypographyH5";

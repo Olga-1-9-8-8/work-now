@@ -1,5 +1,5 @@
 import { NotExist } from "../../../../../../../shared/components/not-found";
-import { LanguageType } from "../../../../../../../shared/configs/internationalization/InternationalizationConfig";
+import { LanguageType } from "../../../../../../../shared/configs";
 import { UniversalEngagementType } from "../../../../../../../shared/types";
 import { Badge } from "../../../../../../../shared/ui/badge/Badge";
 import { Button } from "../../../../../../../shared/ui/buttons/Button";

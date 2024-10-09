@@ -1,6 +1,6 @@
 import { TrashIcon } from "lucide-react";
 import { DeleteConfirmation } from "../../../../../../shared/components/delete-cofirmation";
-import { LanguageType } from "../../../../../../shared/configs/internationalization/InternationalizationConfig";
+import { LanguageType } from "../../../../../../shared/configs";
 import { useAuthContext } from "../../../../../../shared/services/auth";
 import { UserEntity } from "../../../../../../shared/types";
 import { Button } from "../../../../../../shared/ui/buttons/Button";

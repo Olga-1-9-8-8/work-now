@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { FaPeopleRoof } from "react-icons/fa6";
 import { Bar, BarChart, Tooltip, XAxis, YAxis } from "recharts";
 import { colors } from "../../../../../../../../tailwind.config";
-import { LanguageType } from "../../../../../../shared/configs/internationalization/InternationalizationConfig";
+import { LanguageType } from "../../../../../../shared/configs";
 import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { UniversalItemAnalyticsApiTypeInput } from "../../../../../types/UniversalItemAnalyticsApiTypeInput";
 import { mapItemsToAgeChartData } from "../../../../../utils/mappers/mapItemsToAgeChartData";

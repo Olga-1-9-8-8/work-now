@@ -2,10 +2,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { LanguageType } from "../../../shared/configs";
 import { UniversalJobType } from "../../../shared/types";
 import { getDefaultUniversalJobFormValues, mapItemToApiType } from "../../../shared/utils";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { ResumeCreationFormType } from "../types/ResumeCreationFormType";
-import { resumeFormValidationSchema } from "../validation/resumeFormValidationSchema";
+import { getResumeFormValidationSchema } from "../validation/getResumeFormValidationSchema";
 import { useCreateResume } from "./useCreateResume";
 import { useEditResume } from "./useEditResume";
 
@@ -17,8 +19,12 @@ interface UseResumeFormProps {
 
 export const useResumeForm = ({ resume, userId, onModalClose }: UseResumeFormProps) => {
   const navigate = useNavigate();
+  const { language } = useLanguageSwitcher("resume");
+
   const { createResume, isCreating } = useCreateResume();
   const { editResume, isEditing } = useEditResume();
+
+  const resumeFormValidationSchema = getResumeFormValidationSchema(language as LanguageType);
 
   const form = useForm<ResumeCreationFormType>({
     resolver: zodResolver(resumeFormValidationSchema),

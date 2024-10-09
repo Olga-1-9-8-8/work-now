@@ -1,5 +1,5 @@
 import { Pencil } from "lucide-react";
-import { LanguageType } from "../../../../shared/configs/internationalization/InternationalizationConfig";
+import { LanguageType } from "../../../../shared/configs";
 import { ProfileType, useUpdateUser } from "../../../../shared/services/auth";
 import { GenderType, UserEntity, getGenderTitle } from "../../../../shared/types";
 import { Button } from "../../../../shared/ui/buttons/Button";

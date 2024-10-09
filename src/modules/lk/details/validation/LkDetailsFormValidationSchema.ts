@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { LanguageType } from "../../../shared/configs/internationalization/InternationalizationConfig";
+import { LanguageType } from "../../../shared/configs";
 import { UserEntity } from "../../../shared/types";
 import { getAgeSchema, getUserNameSchema } from "../../../shared/validation";
 

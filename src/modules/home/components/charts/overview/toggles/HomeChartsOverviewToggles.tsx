@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from "react";
 import { Toggles } from "../../../../../shared/components/toggles";
-import { LanguageType } from "../../../../../shared/configs/internationalization/InternationalizationConfig";
+import { LanguageType } from "../../../../../shared/configs";
 import { useUrl } from "../../../../../shared/hooks";
 import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { DEFAULT_LAST_DAYS } from "../../../../const";

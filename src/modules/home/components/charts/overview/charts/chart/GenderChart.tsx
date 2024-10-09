@@ -3,7 +3,7 @@ import { FaPeopleArrows } from "react-icons/fa6";
 import { Cell, Legend, Pie, PieChart, Tooltip } from "recharts";
 import { PieSectorDataItem } from "recharts/types/polar/Pie";
 import { colors } from "../../../../../../../../tailwind.config";
-import { LanguageType } from "../../../../../../shared/configs/internationalization/InternationalizationConfig";
+import { LanguageType } from "../../../../../../shared/configs";
 import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { UniversalItemAnalyticsApiTypeInput } from "../../../../../types/UniversalItemAnalyticsApiTypeInput";
 import { mapItemsToGenderChartData } from "../../../../../utils/mappers/mapItemsToGenderChartData";

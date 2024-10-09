@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { LanguageType } from "../../../../../configs/internationalization/InternationalizationConfig";
+import { LanguageType } from "../../../../../configs";
 import { MainNavItem } from "../../../../../configs/mainNavConfig";
 import { Button } from "../../../../../ui/buttons/Button";
 import {

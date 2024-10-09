@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { LanguageType } from "../../../../../shared/configs/internationalization/InternationalizationConfig";
+import { LanguageType } from "../../../../../shared/configs";
 import { useResponsiveContext } from "../../../../../shared/responsive";
 import { useAuthContext } from "../../../../../shared/services/auth";
 import { UserEntity } from "../../../../../shared/types";

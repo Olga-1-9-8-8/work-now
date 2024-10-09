@@ -12,9 +12,11 @@ import {
 } from "../../../shared/ui/card/Card";
 import { PageContainer } from "../../../shared/ui/layout";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { ResumeCreationForm } from "./ResumeCreationForm";
 
 export const ResumeCreation = () => {
+  const { t } = useLanguageSwitcher("resume");
   const { user, isUserLoading } = useAuthContext();
   const navigate = useNavigate();
 
@@ -26,7 +28,7 @@ export const ResumeCreation = () => {
   if (isUserLoading) return <Spinner />;
 
   if (!user) {
-    return <NotExist title="Чтобы создать резюме, нужно войти в аккаунт" />;
+    return <NotExist title={t("resume.creation.notExist")} />;
   }
 
   return (
@@ -34,8 +36,8 @@ export const ResumeCreation = () => {
       <BackButton />
       <Card className="my-6">
         <CardHeader>
-          <CardTitle>Создай резюме</CardTitle>
-          <CardDescription>Не забудь добавить фото к своему профилю.</CardDescription>
+          <CardTitle>{t("resume.creation.title")}</CardTitle>
+          <CardDescription>{t("resume.creation.description")}</CardDescription>
         </CardHeader>
         <CardContent>
           <ResumeCreationForm userId={user.id} />

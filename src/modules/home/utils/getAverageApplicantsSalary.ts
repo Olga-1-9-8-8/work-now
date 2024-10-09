@@ -1,6 +1,5 @@
 /* eslint-disable unicorn/no-array-reduce */
-import { currencyConfigs } from "../../shared/configs";
-import { LanguageType } from "../../shared/configs/internationalization/InternationalizationConfig";
+import { LanguageType, currencyConfigs } from "../../shared/configs";
 import { getAverageSalary } from "../../shared/utils";
 import { formatCurrency } from "../../shared/utils/helpers";
 

@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { currencyConfigs, homeInfoPricingConfig } from "../../../../shared/configs";
-import { LanguageType } from "../../../../shared/configs/internationalization/InternationalizationConfig";
+import { LanguageType, currencyConfigs, homeInfoPricingConfig } from "../../../../shared/configs";
 import { useUser } from "../../../../shared/services/auth";
 import { Button } from "../../../../shared/ui/buttons/Button";
 import { formatCurrency } from "../../../../shared/utils/helpers";

@@ -1,0 +1,35 @@
+{
+  "resume": {
+    "creation": {
+      "title": "Erstellen Sie einen Lebenslauf",
+      "description": "Vergessen Sie nicht, Ihrem Profil ein Foto hinzuzufügen.",
+      "notExist": "Um einen Lebenslauf zu erstellen, müssen Sie sich bei Ihrem Konto anmelden.",
+      "form": {
+        "position": {
+          "label": "Geben Sie die Position ein",
+          "placeholder": "Titel Ihres Lebenslaufs"
+        },
+        "cities": {
+          "label": "Gewünschten Ort eingeben"
+        },
+        "salary": {
+          "description": "Gehaltsspanne auswählen",
+          "label": "Gehalt:"
+        },
+        "about": {
+          "label": "Berufliche Zusammenfassung",
+          "placeholder": "Schreiben Sie über Erfahrungen, Fähigkeiten, Erfolge, Ziele …"
+        },
+        "employmentStartDate": {
+          "label": "Beginn der Beschäftigung",
+          "description": "Erwartetes Eintrittsdatum"
+        },
+        "submit": "Lebenslauf veröffentlichen"
+      }
+    },
+    "api": {
+      "createToastTitle": "Ein neues Lebenslauf für {{position}} wurde erstellt.",
+      "editToastTitle": "Der Lebenslauf für {{position}} wurde erfolgreich bearbeitet"
+    }
+  }
+}

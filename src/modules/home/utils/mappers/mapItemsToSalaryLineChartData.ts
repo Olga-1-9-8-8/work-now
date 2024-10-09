@@ -1,6 +1,6 @@
 import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
 import { de, enUS, ru } from "date-fns/locale";
-import { LanguageType } from "../../../shared/configs/internationalization/InternationalizationConfig";
+import { LanguageType } from "../../../shared/configs";
 import { UniversalItemAnalyticsApiTypeInput } from "../../types/UniversalItemAnalyticsApiTypeInput";
 
 export const mapItemsToSalaryLineChartData = (

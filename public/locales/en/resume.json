@@ -1,0 +1,35 @@
+{
+  "resume": {
+    "creation": {
+      "title": "Create a resume",
+      "description": "Don't forget to add a photo to your profile.",
+      "notExist": "To create a resume, you need to login to your account",
+      "form": {
+        "position": {
+          "label": "Enter the position",
+          "placeholder": "Title of Your Resume"
+        },
+        "cities": {
+          "label": "Enter desired location"
+        },
+        "salary": {
+          "description": "Select salary range",
+          "label": "Salary:"
+        },
+        "about": {
+          "label": "Professional Summary",
+          "placeholder": "Write about experience, skills, achievements, goals ..."
+        },
+        "employmentStartDate": {
+          "label": "Employment start date",
+          "description": "Expected employment start date"
+        },
+        "submit": "Publish Resume"
+      }
+    },
+    "api": {
+      "createToastTitle": "A new resume for {{position}} has been created",
+      "editToastTitle": "The resume for {{position}} has been successfully edited"
+    }
+  }
+}

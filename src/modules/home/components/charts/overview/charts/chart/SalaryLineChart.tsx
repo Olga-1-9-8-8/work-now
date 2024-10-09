@@ -1,8 +1,11 @@
 import { useMemo } from "react";
 import { Area, AreaChart, CartesianGrid, Tooltip, XAxis, YAxis } from "recharts";
 import { colors } from "../../../../../../../../tailwind.config";
-import { currencyConfigs, homeChartSalaryConfig } from "../../../../../../shared/configs";
-import { LanguageType } from "../../../../../../shared/configs/internationalization/InternationalizationConfig";
+import {
+  LanguageType,
+  currencyConfigs,
+  homeChartSalaryConfig,
+} from "../../../../../../shared/configs";
 import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { UniversalItemAnalyticsApiTypeInput } from "../../../../../types/UniversalItemAnalyticsApiTypeInput";
 import { mapItemsToSalaryLineChartData } from "../../../../../utils/mappers/mapItemsToSalaryLineChartData";
