@@ -14,9 +14,10 @@ interface GetResumesProps {
   filters: FilterType[];
   sort: SortingType;
   page: number;
+  t: (key: string) => string;
 }
 
-export const getResumes = async ({ filters, sort, page }: GetResumesProps) => {
+export const getResumes = async ({ filters, sort, page, t }: GetResumesProps) => {
   let query = supabase.from("resumes").select("*,profiles(*)", { count: "exact" });
 
   if (filters.length > 0) {
@@ -33,7 +34,7 @@ export const getResumes = async ({ filters, sort, page }: GetResumesProps) => {
 
   if (error) {
     console.log(error);
-    throw new Error("Проблема с загрузкой резюме из базы данных");
+    throw new Error(t("resume.api.getResumesError"));
   }
 
   if (data.length === 0) return { data, totalCount: count };

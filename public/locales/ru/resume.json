@@ -29,7 +29,17 @@
     },
     "api": {
       "createToastTitle": "Новое резюме {{position}} создано",
-      "editToastTitle": "Резюме {{position}} успешно отредактировано"
+      "editToastTitle": "Резюме {{position}} успешно отредактировано",
+      "getResumeError": "Проблема с загрузкой резюме из базы данных",
+      "getResumesError": "Проблема с загрузкой резюме из базы данных",
+      "createEditResumeError": "Ошибка при создании резюме"
+    },
+    "details": {
+      "notExist": "Детали резюме не найдены"
+    },
+    "list": {
+      "notFoundTitle": "Резюме не найдены ",
+      "notFoundDescription": "Поменяйте фильтры или попробуйте еще раз"
     }
   }
 }

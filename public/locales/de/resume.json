@@ -29,7 +29,17 @@
     },
     "api": {
       "createToastTitle": "Ein neues Lebenslauf für {{position}} wurde erstellt.",
-      "editToastTitle": "Der Lebenslauf für {{position}} wurde erfolgreich bearbeitet"
+      "editToastTitle": "Der Lebenslauf für {{position}} wurde erfolgreich bearbeitet",
+      "getResumeError": "Fehler beim Laden des Lebenslaufs aus der Datenbank",
+      "getResumesError": "Fehler beim Laden des Lebenslaufs aus der Datenbank.",
+      "createEditResumeError": "Fehler beim Erstellen des Lebenslaufs"
+    },
+    "details": {
+      "notExist": "Lebenslaufdetails nicht gefunden."
+    },
+    "list": {
+      "notFoundTitle": "Lebensläufe nicht gefunden",
+      "notFoundDescription": "Ändern Sie die Filter oder versuchen Sie es erneut"
     }
   }
 }

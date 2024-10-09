@@ -29,7 +29,17 @@
     },
     "api": {
       "createToastTitle": "A new resume for {{position}} has been created",
-      "editToastTitle": "The resume for {{position}} has been successfully edited"
+      "editToastTitle": "The resume for {{position}} has been successfully edited",
+      "getResumeError": "Error loading resume from the database",
+      "getResumesError": "Error loading resume from the database",
+      "createEditResumeError": "Create resume error"
+    },
+    "details": {
+      "notExist": "Resume details not found."
+    },
+    "list": {
+      "notFoundTitle": "Resumes not found",
+      "notFoundDescription": "Change the filters or try again"
     }
   }
 }
