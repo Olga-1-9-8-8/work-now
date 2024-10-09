@@ -28,7 +28,7 @@ export interface UniversalJobType {
   schedule?: ScheduleType[] | string;
   weekHours?: WeekHoursType[];
   about?: string;
-  education?: EducationType | string;
+  education?: EducationType;
   employmentStartDate?: Date;
   views: number;
   companyCode?: string;

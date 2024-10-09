@@ -1,6 +1,7 @@
+import { LanguageType } from "../../../configs";
 import { educationValueToEducationTitle } from "../../../const";
 import { EducationType } from "../../../types";
 
-export const getEducationTitle = (education?: string | EducationType): string => {
-  return educationValueToEducationTitle[education as EducationType] ?? education ?? "Не указано";
+export const getEducationTitle = (education: EducationType, language: LanguageType) => {
+  return educationValueToEducationTitle[language][education];
 };
