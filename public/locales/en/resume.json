@@ -28,7 +28,7 @@
       }
     },
     "api": {
-      "createToastTitle": "A new resume for {{position}} has been created",
+      "createToastTitle": "New resume for {{position}} has been created",
       "editToastTitle": "The resume for {{position}} has been successfully edited",
       "getResumeError": "Error loading resume from the database",
       "getResumesError": "Error loading resume from the database",

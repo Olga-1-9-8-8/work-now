@@ -1,4 +1,4 @@
 import { z } from "zod";
-import { vacancyFormValidationSchema } from "../validation/vacancyFormValidationSchema";
+import { getVacancyFormValidationSchema } from "../validation/getVacancyFormValidationSchema";
 
-export type VacancyCreationFormType = z.infer<typeof vacancyFormValidationSchema>;
+export type VacancyCreationFormType = z.infer<ReturnType<typeof getVacancyFormValidationSchema>>;

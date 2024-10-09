@@ -12,9 +12,11 @@ import {
 } from "../../../shared/ui/card/Card";
 import { PageContainer } from "../../../shared/ui/layout";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { VacancyCreationForm } from "./VacancyCreationForm";
 
 export const VacancyCreation = () => {
+  const { t } = useLanguageSwitcher("vacancy");
   const { user, isUserLoading } = useAuthContext();
   const navigate = useNavigate();
 
@@ -27,7 +29,7 @@ export const VacancyCreation = () => {
   if (isUserLoading) return <Spinner />;
 
   if (!user) {
-    return <NotExist title="Чтобы создать вакансию, нужно войти в аккаунт" />;
+    return <NotExist title={t("vacancy.creation.notExist")} />;
   }
 
   return (
@@ -35,8 +37,8 @@ export const VacancyCreation = () => {
       <BackButton />
       <Card className="mt-6">
         <CardHeader>
-          <CardTitle>Создайте вакансию</CardTitle>
-          <CardDescription>Не забудьте добавить логотип к своему профилю.</CardDescription>
+          <CardTitle>{t("vacancy.creation.title")}</CardTitle>
+          <CardDescription>{t("vacancy.creation.description")}</CardDescription>
         </CardHeader>
         <CardContent>
           <VacancyCreationForm userId={user.id} />

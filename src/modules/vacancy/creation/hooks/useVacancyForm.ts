@@ -2,10 +2,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { LanguageType } from "../../../shared/configs";
 import { UniversalJobType } from "../../../shared/types";
 import { getDefaultUniversalJobFormValues, mapItemToApiType } from "../../../shared/utils";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { VacancyCreationFormType } from "../types/VacancyCreationFormType";
-import { vacancyFormValidationSchema } from "../validation/vacancyFormValidationSchema";
+import { getVacancyFormValidationSchema } from "../validation/getVacancyFormValidationSchema";
 import { useCreateVacancy } from "./useCreateVacancy";
 import { useEditVacancy } from "./useEditVacancy";
 
@@ -19,6 +21,10 @@ export const useVacancyForm = ({ vacancy, userId, onModalClose }: UseVacancyForm
   const navigate = useNavigate();
   const { createVacancy, isCreatingVacancy } = useCreateVacancy();
   const { editVacancy, isEditing } = useEditVacancy();
+
+  const { language } = useLanguageSwitcher("vacancy");
+
+  const vacancyFormValidationSchema = getVacancyFormValidationSchema(language as LanguageType);
 
   const form = useForm<VacancyCreationFormType>({
     resolver: zodResolver(vacancyFormValidationSchema),

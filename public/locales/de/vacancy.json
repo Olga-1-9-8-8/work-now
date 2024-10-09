@@ -1,0 +1,40 @@
+{
+  "vacancy": {
+    "creation": {
+      "form": {
+        "position": {
+          "label": "Geben Sie die Position ein",
+          "placeholder": "Titel Ihrer Stelle"
+        },
+        "cities": {
+          "label": "Gewünschten Ort eingeben"
+        },
+        "salary": {
+          "label": "Gehalt:",
+          "description": "Gehaltsspanne auswählen"
+        },
+        "about": {
+          "label": "Stellenbeschreibung",
+          "description": "Welche Erfahrungen und Kenntnisse benötigen Sie für diese Stelle?",
+          "placeholder": "Schreiben Sie über die Aufgaben, erforderlichen Fähigkeiten, Erfahrungen und Ausbildung, geben Sie eine kurze Beschreibung Ihres Unternehmens …"
+        },
+        "employmentStartDate": {
+          "label": "Beginn der Beschäftigung",
+          "description": "Erwartetes Eintrittsdatum"
+        },
+        "submit": "Stellenangebot veröffentlichen",
+        "gender": {
+          "label": "Geben Sie das bevorzugte Geschlecht ein"
+        }
+      },
+      "title": "Erstellen Sie eine Stelle",
+      "description": "Vergessen Sie nicht, Ihrem Profil ein Logo hinzuzufügen.",
+      "notExist": "Um eine Stelle zu erstellen, müssen Sie sich bei Ihrem Konto anmelden"
+    },
+    "api": {
+      "editToastTitle": "Die Stelle für {{position}} wurde erfolgreich bearbeitet",
+      "createToastTitle": "Neue Stelle {{position}} erstellt",
+      "createEditVacancyError": "Fehler beim Erstellen einer freien Stelle"
+    }
+  }
+}

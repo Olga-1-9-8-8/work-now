@@ -1,0 +1,40 @@
+{
+  "vacancy": {
+    "creation": {
+      "form": {
+        "position": {
+          "label": "Enter the position",
+          "placeholder": "Title of Your Vacancy"
+        },
+        "cities": {
+          "label": "Enter desired location"
+        },
+        "salary": {
+          "label": "Salary:",
+          "description": "Select salary range"
+        },
+        "about": {
+          "label": "Job Vacancy Description",
+          "description": "What experience and knowledge do you need for this vacancy?",
+          "placeholder": "Write about job responsibilities,required skills, experience, and education, provide a brief description of your company..."
+        },
+        "employmentStartDate": {
+          "label": "Employment start date",
+          "description": "Expected employment start date"
+        },
+        "submit": "Post the vacancy",
+        "gender": {
+          "label": "Enter the preferred gender"
+        }
+      },
+      "title": "Create a vacancy",
+      "description": "Don't forget to add your logo to your profile.",
+      "notExist": "To create a vacancy, you need to login to your account"
+    },
+    "api": {
+      "editToastTitle": "The vacancy for {{position}} has been successfully edited",
+      "createToastTitle": "New vacancy for {{position}} has been created",
+      "createEditVacancyError": "Create vacancy error"
+    }
+  }
+}

@@ -1,8 +1,9 @@
-import { VacancyApiType } from "../../../shared/api";
 import { supabase } from "../../../shared/services";
+import { CreateEditVacancyType } from "../types";
 
 export const createEditVacancy = async (
-  newVacancy: Omit<VacancyApiType, "id" | "gender"> & { id?: number; gender?: string | null },
+  newVacancy: CreateEditVacancyType,
+  t: (key: string) => string,
 ) => {
   const query = newVacancy.id
     ? supabase.from("vacancies").update(newVacancy).eq("id", newVacancy.id)
@@ -12,7 +13,7 @@ export const createEditVacancy = async (
 
   if (error) {
     console.log(error);
-    throw new Error("Ошибка при создании вакансии");
+    throw new Error(t("vacancy.api.createEditVacancyError"));
   }
 
   return data;
