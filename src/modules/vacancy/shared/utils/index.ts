@@ -1,1 +1,0 @@
-export { mapVacancy } from "./mapVacancy";
