@@ -1,13 +1,8 @@
 import { z } from "zod";
 import { LanguageType } from "../../../configs";
-import {
-  getEmailSchema,
-  getPasswordSchema,
-  getPhoneSchema,
-  getUserNameSchema,
-} from "../../../validation";
+import { getPasswordSchema } from "../../../validation";
 
-const sungUpErrorMessages = {
+const updatePasswordErrorMessages = {
   noMatchPassword: {
     ru: "Пароли не совпадают",
     en: "Passwords don't match",
@@ -15,17 +10,13 @@ const sungUpErrorMessages = {
   },
 };
 
-export const getAuthSignUpFormValidationSchema = (language: LanguageType) =>
+export const getAuthUpdatePasswordFormValidationSchema = (language: LanguageType) =>
   z
     .object({
-      username: getUserNameSchema(language),
-      email: getEmailSchema(language),
       password: getPasswordSchema(language),
       confirmPassword: getPasswordSchema(language),
-      phone: getPhoneSchema(language),
-      isCompany: z.boolean().optional(),
     })
     .refine(({ password, confirmPassword }) => password === confirmPassword, {
-      message: sungUpErrorMessages.noMatchPassword[language],
+      message: updatePasswordErrorMessages.noMatchPassword[language],
       path: ["confirmPassword"],
     });

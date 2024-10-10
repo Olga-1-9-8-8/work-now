@@ -1,10 +1,12 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { logout as logoutApi } from "../api/apiAuth";
 
 export const useLogout = () => {
   const queryClient = useQueryClient();
+  const { t } = useLanguageSwitcher("shared");
   const navigate = useNavigate();
 
   const { mutate: logout, isPending: isLogoutPending } = useMutation({
@@ -14,7 +16,7 @@ export const useLogout = () => {
       queryClient.setQueryData(["user"], null);
       queryClient.removeQueries();
       navigate("/login", { replace: true });
-      toast.error(`Вы вышли из своего аккаунта`);
+      toast.error(t("shared.api.logoutToastSuccessTitle"));
     },
   });
 

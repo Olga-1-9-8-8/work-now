@@ -1,18 +1,21 @@
 import { useCallback } from "react";
 import { UseFormReset } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { LanguageType } from "../../../../configs";
 import { Button } from "../../../../ui/buttons/Button";
 import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { useLogin } from "../../hooks/useLogin";
 import { LogInFormType } from "../../types/form/LogInFormType";
-import { authLogInFormValidationSchema } from "../../validation/authLogInFormValidationSchema";
+import { getAuthLogInFormValidationSchema } from "../../validation/getAuthLogInFormValidationSchema";
 import { AuthFormWrapper } from "./AuthFormWrapper";
 import { AuthEmailField } from "./item/AuthEmailField";
 import { AuthPasswordField } from "./item/AuthPasswordField";
 
 export const AuthLoginForm = () => {
   const navigate = useNavigate();
-  const { t } = useLanguageSwitcher("login");
+  const { t, language } = useLanguageSwitcher("login");
+
+  const authLogInFormValidationSchema = getAuthLogInFormValidationSchema(language as LanguageType);
 
   const { isLoginPending, login } = useLogin();
 

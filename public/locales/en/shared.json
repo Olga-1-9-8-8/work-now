@@ -8,7 +8,20 @@
     "delete": "Delete",
     "api": {
       "getApplyError": "Error loading applies from database",
-      "getFavoriteError": "Error loading favorites from database"
-    }
+      "getFavoriteError": "Error loading favorites from database",
+      "auth": {
+        "signUpError": "An account with this email already exists",
+        "signUpGeneralError": "Error creating account:",
+        "signUpSuccessTitle": "You have successfully created a new account. We have sent you a link to activate your account to your email."
+      },
+      "deleteAccountToastTitle": "You have successfully deleted your account",
+      "loginToastErrorTitle": "The username or password you entered is incorrect",
+      "loginToastSuccessTitle": "you have successfully logged into your account",
+      "logoutToastSuccessTitle": "You have been logged out of your account",
+      "resetPasswordToastSuccessTitle": "An email with instructions on how to reset your password has been sent to your email address.",
+      "resetPasswordToastErrorTitle": "Invalid login",
+      "updateUserSuccessTitle": "Your personal data has been updated successfully"
+    },
+    "anonymous": "Anonymous"
   }
 }

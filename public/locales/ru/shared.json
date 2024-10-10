@@ -8,7 +8,20 @@
     "delete": "Удалить",
     "api": {
       "getApplyError": "Проблема с загрузкой откликов из базы данных",
-      "getFavoriteError": "Проблема с загрузкой избранного из базы данных"
-    }
+      "getFavoriteError": "Проблема с загрузкой избранного из базы данных",
+      "auth": {
+        "signUpError": "Аккаунт с данным email уже существует",
+        "signUpGeneralError": "Ошибка при создании аккаунта: ",
+        "signUpSuccessTitle": "Вы успешно создали новый аккаунт.Мы выслали на Вашу почту ссылку для активации аккаунта"
+      },
+      "deleteAccountToastTitle": "Вы успешно удалили свой аккаунт",
+      "loginToastErrorTitle": "Неверный логин или пароль",
+      "loginToastSuccessTitle": "вы успешно вошли в свой аккаунт",
+      "logoutToastSuccessTitle": "Вы вышли из своего аккаунта",
+      "resetPasswordToastSuccessTitle": "Вам на почту отправлено письмо с инструкциями по восстановлению пароля",
+      "resetPasswordToastErrorTitle": "Неверный логин",
+      "updateUserSuccessTitle": "Ваши личные данные успешно обновлены"
+    },
+    "anonymous": "Аноним"
   }
 }

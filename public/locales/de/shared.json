@@ -8,7 +8,20 @@
     "delete": "Löschen",
     "api": {
       "getApplyError": "Fehler beim Laden der Antworten aus der Datenbank",
-      "getFavoriteError": "Fehler beim Laden der Favoriten aus der Datenbank"
-    }
+      "getFavoriteError": "Fehler beim Laden der Favoriten aus der Datenbank",
+      "auth": {
+        "signUpError": "Ein Konto mit dieser E-Mail-Adresse existiert bereits",
+        "signUpGeneralError": "Fehler beim Erstellen eines Kontos:",
+        "signUpSuccessTitle": "Sie haben erfolgreich ein neues Konto erstellt. Wir haben einen Link an Ihre E-Mail gesendet, um Ihr Konto zu aktivieren"
+      },
+      "deleteAccountToastTitle": "Sie haben Ihr Konto erfolgreich gelöscht",
+      "loginToastErrorTitle": "Der von Ihnen eingegebene Benutzername oder Passwort ist falsch",
+      "loginToastSuccessTitle": "sie haben sich erfolgreich in Ihrem Konto angemeldet",
+      "logoutToastSuccessTitle": "Sie sind von Ihrem Konto abgemeldet",
+      "resetPasswordToastSuccessTitle": "Ihnen wurde eine E-Mail mit Anweisungen zum Zurücksetzen Ihres Passworts zugesandt",
+      "resetPasswordToastErrorTitle": "Ungültiger Login",
+      "updateUserSuccessTitle": "Ihre persönlichen Daten wurden erfolgreich aktualisiert"
+    },
+    "anonymous": "Anonym"
   }
 }

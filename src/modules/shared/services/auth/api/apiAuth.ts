@@ -3,7 +3,11 @@ import { GenderType, UserEntity } from "../../../types";
 import { supabase } from "../../api/supabase";
 import { SignUpFormType } from "../types/form/SignUpFormType";
 
-export const signUp = async ({ username, password, email, phone, isCompany }: SignUpFormType) => {
+interface SignUpProps extends Omit<SignUpFormType, "confirmPassword"> {
+  t: (key: string) => string;
+}
+
+export const signUp = async ({ username, password, email, phone, isCompany, t }: SignUpProps) => {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -21,7 +25,7 @@ export const signUp = async ({ username, password, email, phone, isCompany }: Si
   });
 
   if (data?.user && data.user.identities && data.user.identities.length === 0) {
-    throw new Error("Аккаунт с данным email уже существует");
+    throw new Error(t("shared.api.auth.signUpError"));
   }
 
   if (error) {

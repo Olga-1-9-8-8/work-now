@@ -1,4 +1,6 @@
 import { z } from "zod";
-import { authResetPasswordFormValidationSchema } from "../../validation/authResetPasswordFormValidationSchema";
+import { getAuthResetPasswordFormValidationSchema } from "../../validation/getAuthResetPasswordFormValidationSchema";
 
-export type ResetPasswordFormType = z.infer<typeof authResetPasswordFormValidationSchema>;
+export type ResetPasswordFormType = z.infer<
+  ReturnType<typeof getAuthResetPasswordFormValidationSchema>
+>;

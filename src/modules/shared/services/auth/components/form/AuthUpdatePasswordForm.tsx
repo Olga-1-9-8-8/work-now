@@ -1,17 +1,22 @@
 import { UseFormReset } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { LanguageType } from "../../../../configs";
 import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { useUpdateUser } from "../../hooks/useUpdateUser";
 import { UpdatePasswordFormType } from "../../types/form/UpdatePasswordFormType";
-import { authUpdatePasswordFormValidationSchema } from "../../validation/authUpdatePasswordFormValidationSchema";
+import { getAuthUpdatePasswordFormValidationSchema } from "../../validation/getAuthUpdatePasswordFormValidationSchema";
 import { AuthFormWrapper } from "./AuthFormWrapper";
 import { AuthPasswordField } from "./item/AuthPasswordField";
 
 export const AuthUpdatePasswordForm = () => {
   const { updateUser, isUpdatingUser } = useUpdateUser();
-  const { t } = useLanguageSwitcher("login");
+  const { t, language } = useLanguageSwitcher("login");
 
   const navigate = useNavigate();
+
+  const authUpdatePasswordFormValidationSchema = getAuthUpdatePasswordFormValidationSchema(
+    language as LanguageType,
+  );
 
   const onSubmit = (data: UpdatePasswordFormType, reset: UseFormReset<UpdatePasswordFormType>) => {
     updateUser(data, {
