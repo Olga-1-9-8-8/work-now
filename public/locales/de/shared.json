@@ -22,6 +22,27 @@
       "resetPasswordToastErrorTitle": "Ungültiger Login",
       "updateUserSuccessTitle": "Ihre persönlichen Daten wurden erfolgreich aktualisiert"
     },
-    "anonymous": "Anonym"
+    "anonymous": "Anonym",
+    "errorFallbackTitle": "Etwas ist völlig schief gelaufen",
+    "errorFallbackButtonTitle": "Zurück zur Hauptseite",
+    "details": {
+      "card": {
+        "education": {
+          "company": {
+            "title": "Erforderliche Ausbildung"
+          },
+          "candidate": {
+            "title": "Meine Ausbildung"
+          },
+          "notSpecified": "Nicht angegeben"
+        },
+        "salary": {
+          "title": "Gehaltsspanne"
+        },
+        "employment": {
+          "title": "Art der Arbeit"
+        }
+      }
+    }
   }
 }

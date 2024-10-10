@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { LanguageType } from "../../../../configs";
 import { useUrl } from "../../../../hooks";
 import { UniversalItemType } from "../../../../types";
 import {
@@ -9,6 +10,7 @@ import {
 } from "../../../../ui/accordion/Accordion";
 import { MultiSelect } from "../../../../ui/form-control/select/multi/MultiSelect";
 import { TypographyH6 } from "../../../../ui/typography/TypographyH6";
+import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { SideBarItemButtonReset } from "../button/SideBarItemButton";
 
 interface SideBarItemProps {
@@ -27,6 +29,9 @@ export const SideBarItem = ({
   onSearchTermChange,
 }: SideBarItemProps) => {
   const { setParam, getParam } = useUrl();
+
+  const { language } = useLanguageSwitcher("shared");
+
   const paramValue = getParam(value);
   const [canShow, setCanShow] = useState(false);
 
@@ -67,6 +72,7 @@ export const SideBarItem = ({
             defaultValue={defaultSearchTerm ? defaultSearchTerm.split(",") : []}
             onValueChange={updateParams}
             variant="list"
+            language={language as LanguageType}
             expandable
           />
         </AccordionContent>

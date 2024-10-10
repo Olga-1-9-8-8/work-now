@@ -46,7 +46,7 @@ export const LkItemCardHeader = ({
         </Link>
 
         <Badge shape="square" variant="destructive">
-          {getSalaryTitle(salary)}
+          {getSalaryTitle(language as LanguageType, salary)}
         </Badge>
       </div>
       <div className="flex gap-4">

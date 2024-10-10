@@ -21,6 +21,7 @@ export const SearchFiltersBarSelect = () => {
             placeholder={option.title}
             onValueChange={(value) => handleChange(value, title)}
             defaultValue={getParam(title)?.split(",") ?? []}
+            language={language as LanguageType}
           />
         </li>
       ))}

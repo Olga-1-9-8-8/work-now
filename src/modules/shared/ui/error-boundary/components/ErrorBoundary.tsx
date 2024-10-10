@@ -20,7 +20,7 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, info: ErrorInfo) {
-    console.log("критическая ошибка", error, info);
+    console.log("critical error", error, info);
   }
 
   render() {

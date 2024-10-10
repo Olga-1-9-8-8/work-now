@@ -22,6 +22,27 @@
       "resetPasswordToastErrorTitle": "Неверный логин",
       "updateUserSuccessTitle": "Ваши личные данные успешно обновлены"
     },
-    "anonymous": "Аноним"
+    "anonymous": "Аноним",
+    "errorFallbackTitle": "Что то пошло совсем не так",
+    "errorFallbackButtonTitle": " Вернуться на главную страницу",
+    "details": {
+      "card": {
+        "education": {
+          "company": {
+            "title": "Требуемое образование"
+          },
+          "candidate": {
+            "title": "Мое образование"
+          },
+          "notSpecified": "Не указано"
+        },
+        "salary": {
+          "title": "Диапазон оплаты труда"
+        },
+        "employment": {
+          "title": "Тип работы"
+        }
+      }
+    }
   }
 }

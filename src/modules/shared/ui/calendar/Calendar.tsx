@@ -1,18 +1,27 @@
 /* eslint-disable react/no-unstable-nested-components */
-import { ru } from "date-fns/locale";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import * as React from "react";
 import { DayPicker } from "react-day-picker";
+import { LanguageType } from "../../configs";
 import { cn } from "../../utils/cn";
+import { getLocale } from "../../utils/getLocales";
 import { buttonVariants } from "../buttons/Button";
 
-export type CalendarProps = React.ComponentProps<typeof DayPicker>;
+export type CalendarProps = {
+  language: LanguageType;
+} & React.ComponentProps<typeof DayPicker>;
 
-const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: CalendarProps) => {
+const Calendar = ({
+  className,
+  classNames,
+  language,
+  showOutsideDays = true,
+  ...props
+}: CalendarProps) => {
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
-      locale={ru}
+      locale={getLocale(language)}
       className={cn("p-3", className)}
       classNames={{
         months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",

@@ -1,5 +1,6 @@
 import { CommandItem } from "cmdk";
 import { useCallback, useState } from "react";
+import { LanguageType } from "../../../../../configs";
 import { UniversalItemType } from "../../../../../types";
 import { Button } from "../../../../buttons/Button";
 import {
@@ -10,6 +11,7 @@ import {
   CommandList,
 } from "../../../../command/Command";
 import { ScrollArea } from "../../../../scroll-area/ScrollArea";
+import { multiSelectComboboxConfig } from "./config/multiSelectComboboxConfig";
 import { MultiSelectComboboxItem } from "./item/MultiSelectComboboxItem";
 
 interface MultiSelectComboboxProps {
@@ -21,6 +23,7 @@ interface MultiSelectComboboxProps {
   expandable?: boolean;
   visibleItemsCount?: number;
   variant: "popover" | "list";
+  language: LanguageType;
 }
 
 export const MultiSelectCombobox = ({
@@ -32,6 +35,7 @@ export const MultiSelectCombobox = ({
   expandable,
   visibleItemsCount = 7,
   variant,
+  language,
 }: MultiSelectComboboxProps) => {
   const [isExpand, setIsExpand] = useState(false);
 
@@ -82,12 +86,12 @@ export const MultiSelectCombobox = ({
       {isExpand && (
         <CommandInput
           inputClassName={`${variant === "list" ? "bg-secondary rounded-2xl" : ""}`}
-          placeholder="Поиск..."
+          placeholder={multiSelectComboboxConfig[language].searchTitle}
           onKeyDown={handleInputKeyDown}
         />
       )}
       <CommandList>
-        <CommandEmpty>Результаты не найдены.</CommandEmpty>
+        <CommandEmpty>{multiSelectComboboxConfig[language].empty}</CommandEmpty>
         <ScrollArea
           type="always"
           className={`${variant === "list" ? "h-72" : "flex max-h-[300px] flex-col"}`}
@@ -98,7 +102,7 @@ export const MultiSelectCombobox = ({
               <MultiSelectComboboxItem
                 key="all"
                 onSelect={toggleAll}
-                title="(Выбрать все)"
+                title={multiSelectComboboxConfig[language].selectAllTitle}
                 isSelected={selectedValues.length === options.length}
                 variant={variant}
                 isAll
@@ -120,7 +124,7 @@ export const MultiSelectCombobox = ({
               className="text-primary-extraDark"
               onClick={() => setIsExpand(true)}
             >
-              Показать все
+              {multiSelectComboboxConfig[language].showAllTitle}
             </Button>
           )}
         </ScrollArea>
@@ -129,10 +133,10 @@ export const MultiSelectCombobox = ({
       {variant === "popover" && (
         <div className="flex gap-2 p-2">
           <Button size="sm" onClick={() => onSetIsPopoverOpen?.(false)} className="flex-1">
-            Готово
+            {multiSelectComboboxConfig[language].done}
           </Button>
           <Button size="sm" onClick={() => handleClear()} className="flex-1">
-            Сбросить
+            {multiSelectComboboxConfig[language].reset}
           </Button>
         </div>
       )}

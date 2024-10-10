@@ -1,6 +1,6 @@
 import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
-import { de, enUS, ru } from "date-fns/locale";
 import { LanguageType } from "../../../shared/configs";
+import { getLocale } from "../../../shared/utils/getLocales";
 import { UniversalItemAnalyticsApiTypeInput } from "../../types/UniversalItemAnalyticsApiTypeInput";
 
 export const mapItemsToSalaryLineChartData = (
@@ -12,8 +12,6 @@ export const mapItemsToSalaryLineChartData = (
     start: subDays(new Date(), numDays),
     end: subDays(new Date(), 0),
   });
-
-  const locales = { en: enUS, de, ru };
 
   return dates.map((date) => {
     const sameDateSalariesArr = items
@@ -43,7 +41,7 @@ export const mapItemsToSalaryLineChartData = (
     };
 
     return {
-      title: format(date, "dd MMM", { locale: locales[language] ?? enUS }),
+      title: format(date, "dd MMM", { locale: getLocale(language) }),
       salaryAverage: getSalaryAverage(),
       salaryMin: getSalaryMin(),
       salaryMax: getSalaryMax(),

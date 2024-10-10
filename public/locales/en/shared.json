@@ -22,6 +22,27 @@
       "resetPasswordToastErrorTitle": "Invalid login",
       "updateUserSuccessTitle": "Your personal data has been updated successfully"
     },
-    "anonymous": "Anonymous"
+    "anonymous": "Anonymous",
+    "errorFallbackTitle": "Something went terribly wrong",
+    "errorFallbackButtonTitle": "Return to the main page",
+    "details": {
+      "card": {
+        "education": {
+          "company": {
+            "title": "Required Education"
+          },
+          "candidate": {
+            "title": "My education"
+          },
+          "notSpecified": "Not specified"
+        },
+        "salary": {
+          "title": "Salary range"
+        },
+        "employment": {
+          "title": "Type of work"
+        }
+      }
+    }
   }
 }

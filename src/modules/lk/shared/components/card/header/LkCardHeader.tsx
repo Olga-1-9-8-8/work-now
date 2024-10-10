@@ -1,6 +1,7 @@
 import { ArrowRight, Building2 } from "lucide-react";
 import { Avatar } from "../../../../../shared/components/avatar";
 import { MapCityBadgeGroup } from "../../../../../shared/components/map";
+import { LanguageType } from "../../../../../shared/configs";
 import { UniversalCardItemType, UserEntity } from "../../../../../shared/types";
 import { Badge } from "../../../../../shared/ui/badge/Badge";
 import { Button } from "../../../../../shared/ui/buttons/Button";
@@ -15,7 +16,7 @@ interface LkCardHeaderProps {
 
 export const LkCardHeader = ({ data }: LkCardHeaderProps) => {
   const isCompany = data.role === UserEntity.Company;
-  const { t } = useLanguageSwitcher("lk");
+  const { t, language } = useLanguageSwitcher("lk");
 
   return (
     <CardHeader className="flex-row justify-between">
@@ -36,7 +37,7 @@ export const LkCardHeader = ({ data }: LkCardHeaderProps) => {
           />
           {data.cities && <MapCityBadgeGroup cities={data.cities} />}
           <Badge className="ml-4 w-max" variant="success">
-            {getSalaryTitle(data.salary)}
+            {getSalaryTitle(language as LanguageType, data.salary)}
           </Badge>
         </div>
       </div>

@@ -3,13 +3,14 @@ import { useTranslation } from "react-i18next";
 
 export const useLanguageSwitcher = (title: string = "translation") => {
   const { t, i18n } = useTranslation(title);
+  const { language, changeLanguage } = i18n;
 
   return useMemo(
     () => ({
       t,
-      language: i18n.language,
-      changeLanguage: i18n.changeLanguage,
+      language,
+      changeLanguage,
     }),
-    [t, i18n.language, i18n.changeLanguage],
+    [t, language, changeLanguage],
   );
 };

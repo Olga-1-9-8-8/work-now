@@ -60,6 +60,7 @@ export const ResumeCreationForm = ({ userId, resume, onModalClose }: ResumeCreat
           title={cities.title}
           disabled={isSubmitting}
           options={cities.items as Required<UniversalItemType<string>>[]}
+          language={language as LanguageType}
         />
         <FormSelect<ResumeCreationFormType>
           disabled={isSubmitting}
@@ -90,7 +91,7 @@ export const ResumeCreationForm = ({ userId, resume, onModalClose }: ResumeCreat
         <FormSliderField<ResumeCreationFormType>
           name="salary"
           getLabel={(value) =>
-            `${t("resume.creation.form.salary.label")} ${getSalaryTitle(value)} `
+            `${t("resume.creation.form.salary.label")} ${getSalaryTitle(language as LanguageType, value)} `
           }
           disabled={isSubmitting}
           description={t("resume.creation.form.salary.description")}
@@ -109,7 +110,7 @@ export const ResumeCreationForm = ({ userId, resume, onModalClose }: ResumeCreat
           render={({ field }) => (
             <FormItem className="flex flex-col">
               <FormLabel>{t("resume.creation.form.employmentStartDate.label")}</FormLabel>
-              <DatePicker {...field} />
+              <DatePicker language={language as LanguageType} {...field} />
               <FormDescription>
                 {t("resume.creation.form.employmentStartDate.description")}
               </FormDescription>

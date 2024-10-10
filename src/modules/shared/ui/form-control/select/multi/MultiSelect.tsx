@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { LanguageType } from "../../../../configs";
 import { UniversalItemType } from "../../../../types";
 import { MultiSelectPopover } from "./MultiSelectPopover";
 import { MultiSelectCombobox } from "./combobox/MultiSelectCombobox";
@@ -7,6 +8,7 @@ interface MultiSelectProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
   options: Required<UniversalItemType<string>>[];
   onValueChange: (value: string[]) => void;
   defaultValue: string[];
+  language: LanguageType;
   placeholder?: string;
   expandable?: boolean;
   visibleItemsCount?: number;
@@ -23,6 +25,7 @@ export const MultiSelect = ({
   className,
   visibleItemsCount,
   expandable = false,
+  language,
   ...props
 }: MultiSelectProps) => {
   const [selectedValues, setSelectedValues] = useState<string[]>(() => defaultValue);
@@ -46,6 +49,7 @@ export const MultiSelect = ({
       variant={variant}
       visibleItemsCount={visibleItemsCount}
       expandable={expandable}
+      language={language}
     />
   );
 

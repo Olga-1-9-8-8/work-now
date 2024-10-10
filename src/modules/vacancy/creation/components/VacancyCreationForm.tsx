@@ -71,6 +71,7 @@ export const VacancyCreationForm = ({
           title={cities.title}
           disabled={isSubmitting}
           options={cities.items as Required<UniversalItemType<string>>[]}
+          language={language as LanguageType}
         />
 
         <FormSelect<VacancyCreationFormType>
@@ -105,7 +106,7 @@ export const VacancyCreationForm = ({
         <FormSliderField<VacancyCreationFormType>
           name="salary"
           getLabel={(value) =>
-            `${t("vacancy.creation.form.salary.label")} ${getSalaryTitle(value)} `
+            `${t("vacancy.creation.form.salary.label")} ${getSalaryTitle(language as LanguageType, value)} `
           }
           disabled={isSubmitting}
           description={t("vacancy.creation.form.salary.description")}
@@ -125,7 +126,7 @@ export const VacancyCreationForm = ({
           render={({ field }) => (
             <FormItem className="flex flex-col">
               <FormLabel>{t("vacancy.creation.form.employmentStartDate.label")}</FormLabel>
-              <DatePicker {...field} />
+              <DatePicker language={language as LanguageType} {...field} />
               <FormDescription>
                 {t("vacancy.creation.form.employmentStartDate.description")}
               </FormDescription>
