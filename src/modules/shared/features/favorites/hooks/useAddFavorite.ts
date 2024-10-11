@@ -1,15 +1,20 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { addFavorite as addFavoriteApi } from "../api/apiFavorites";
 
 export const useAddFavorite = () => {
   const queryClient = useQueryClient();
 
+  const { t } = useLanguageSwitcher("shared");
+
   const { isPending: isFavoriteAdding, mutate: addFavorite } = useMutation({
-    mutationFn: addFavoriteApi,
+    mutationFn: (id: number | string) => addFavoriteApi(id, t),
     onSuccess: (data) => {
       toast.success(
-        `${data?.isCompanyRole ? "Резюме" : "Вакансия"} ${data?.position} успешно добавлено в Избранное`,
+        data?.isCompanyRole
+          ? t("shared.api.addFavoriteResumeSuccess", { position: data?.position })
+          : t("shared.api.addFavoriteVacancySuccess", { position: data?.position }),
       );
       queryClient.invalidateQueries({
         queryKey: ["favorites"],

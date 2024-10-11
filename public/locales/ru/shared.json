@@ -20,7 +20,32 @@
       "logoutToastSuccessTitle": "Вы вышли из своего аккаунта",
       "resetPasswordToastSuccessTitle": "Вам на почту отправлено письмо с инструкциями по восстановлению пароля",
       "resetPasswordToastErrorTitle": "Неверный логин",
-      "updateUserSuccessTitle": "Ваши личные данные успешно обновлены"
+      "updateUserSuccessTitle": "Ваши личные данные успешно обновлены",
+      "getAppliesError": "Проблема с загрузкой откликов из базы данных",
+      "getAllUserAppliesError": "Ошибка при получении откликов",
+      "deleteApplyError": "Ошибка удаления элемента из Откликов",
+      "updateApplyResumeError": "Ошибка при обновлении резюме, после отклика",
+      "updateApplyVacancyError": "Ошибка при обновлении вакансии, после отклика",
+      "addApplyResumeError": "Ошибка при добавлении резюме в Отклики",
+      "addApplyVacancyError": "Ошибка при добавлении вакансии в Отклики",
+      "addApplyResumeSuccess": "Резюме {{position}} успешно добавлено в Отклики",
+      "addApplyVacancySuccess": "Вакансия {{position}} успешно добавлена в Отклики",
+      "removeApplyResumeSuccess": "Резюме {{position}} успешно удалено из Откликов",
+      "removeApplyVacancySuccess": "Вакансия {{position}} успешно удалена из Откликов",
+      "addViewError": "Ошибка при проверке просмотров",
+      "updateViewVacancyError": "Ошибка при обновлении вакансии после просмотра",
+      "updateViewResumeError": "Ошибка при обновлении резюме после просмотра",
+      "addViewVacancy": "Проблема с добавлением  вакансии  в Просмотры",
+      "addViewResume": "Ошибка добавления резюме в Просмотры",
+      "getAllViewsError": "Ошибка при получении просмотров",
+      "getFavoritesError": "Проблема с загрузкой избранного из базы данных",
+      "addFavoriteResumeError": "Ошибка при добавлении резюме в Избранное",
+      "addFavoriteVacancyError": "Ошибка при добавлении вакансии в Избранное",
+      "deleteFavoriteError": "Ошибка удаления элемента из Избранного",
+      "removeFavoriteResumeSuccess": "Резюме {{position}} успешно удалено из Избранного",
+      "removeFavoriteVacancySuccess": "Вакансия {{position}} успешно удалена из Избранного",
+      "addFavoriteResumeSuccess": "Резюме {{position}} успешно добавлено в Избранное",
+      "addFavoriteVacancySuccess": "Вакансия {{position}} успешно добавлена в Избранное"
     },
     "anonymous": "Аноним",
     "errorFallbackTitle": "Что то пошло совсем не так",
@@ -63,18 +88,38 @@
             "title": "Требуемый пол: "
           },
           "companyAge": {
-            "title_one": "{{age}} год на рынке",
+            "title_one": "{{count}} год на рынке",
             "title_few": "{{count}} года на рынке",
             "title_many": "{{count}} лет на рынке",
             "title_other": "{{count}} лет на рынке"
           },
           "age": {
-            "title_one": "{{age}} год",
+            "title_one": "{{count}} год",
             "title_few": "{{count}} года",
             "title_many": "{{count}} лет",
             "title_other": "{{count}} лет"
           }
         }
+      }
+    },
+    "applies": {
+      "tooltip": {
+        "remove": "Удалить из откликов",
+        "apply": "Добавить в отклики"
+      },
+      "button": {
+        "applied": "Откликнуться",
+        "removed": "Вы откликнулись"
+      }
+    },
+    "favorites": {
+      "tooltip": {
+        "remove": "Удалить из избранного",
+        "add": "Добавить в избранное"
+      },
+      "button": {
+        "removed": "Уже в Избранном",
+        "add": "В Избранное"
       }
     }
   }

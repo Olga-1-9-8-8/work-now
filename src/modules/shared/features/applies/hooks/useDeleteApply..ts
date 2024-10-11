@@ -1,15 +1,20 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { deleteApply as deleteApplyApi } from "../api/apiApplies";
 
 export const useDeleteApply = () => {
   const queryClient = useQueryClient();
 
+  const { t } = useLanguageSwitcher("shared");
+
   const { isPending: isApplyDeleting, mutate: deleteApply } = useMutation({
-    mutationFn: deleteApplyApi,
+    mutationFn: (id: number | string) => deleteApplyApi(id, t),
     onSuccess: (data) => {
       toast.error(
-        `${data?.isCompanyRole ? "Резюме" : "Вакансия"} ${data?.position} успешно удалено из Откликов`,
+        data?.isCompanyRole
+          ? t("shared.api.removeApplyResumeSuccess", { position: data?.position })
+          : t("shared.api.removeApplyVacancySuccess", { position: data?.position }),
       );
       queryClient.invalidateQueries({
         queryKey: ["applies"],

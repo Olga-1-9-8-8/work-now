@@ -4,14 +4,17 @@ import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../components/pagination";
 import { supabase } from "../../../services/api/supabase";
 import { UserEntity } from "../../../types";
 
-const processItemsWithFavoriteApplyStatusAndDownloadAvatar = async (
-  items: (ResumeWithProfileApiTypeInput | VacancyWithProfileApiTypeInput | null)[],
+const processItemsWithFavoriteApplyStatusAndDownloadAvatar = async <
+  T extends ResumeWithProfileApiTypeInput | VacancyWithProfileApiTypeInput | null,
+>(
+  items: T[],
+  t: (key: string) => string,
 ) => {
   const filteredItems = items.filter((item) => item !== null);
 
   return Promise.all(
     filteredItems.map(async (item) => {
-      const favorite = await getFavorite(item.id);
+      const favorite = await getFavorite(item.id, t);
 
       const profiles = item.profiles
         ? {
@@ -30,7 +33,7 @@ const processItemsWithFavoriteApplyStatusAndDownloadAvatar = async (
   );
 };
 
-export const getApplies = async (page: number) => {
+export const getApplies = async (page: number, t: (key: string) => string) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -55,22 +58,24 @@ export const getApplies = async (page: number) => {
 
   if (error) {
     console.log(error);
-    throw new Error("Проблема с загрузкой откликов из базы данных");
+    throw new Error(t("shared.api.getAppliesError"));
   }
 
   const appliesData = {
     vacancies: await processItemsWithFavoriteApplyStatusAndDownloadAvatar(
       data.flatMap((item) => item.vacancies),
+      t,
     ),
     resumes: await processItemsWithFavoriteApplyStatusAndDownloadAvatar(
       data.flatMap((item) => item.resumes),
+      t,
     ),
   };
 
   return { data: appliesData, totalCount: count };
 };
 
-export const addApply = async (id: number | string) => {
+export const addApply = async (id: number | string, t: (key: string) => string) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -92,7 +97,9 @@ export const addApply = async (id: number | string) => {
 
   if (error) {
     console.log(error);
-    throw new Error(`Проблема с добавлением ${isCompanyRole ? "резюме " : "вакансии"} в Отклики`);
+    throw new Error(
+      isCompanyRole ? t("shared.api.addApplyResumeError") : t("shared.api.addApplyVacancyError"),
+    );
   }
 
   const applicationData = isCompanyRole ? data.resumes : data.vacancies;
@@ -110,7 +117,9 @@ export const addApply = async (id: number | string) => {
     if (applicationUpdateError) {
       console.log(applicationUpdateError);
       throw new Error(
-        `Ошибка при обновлении ${isCompanyRole ? "резюме" : "вакансии"}, после отклика`,
+        isCompanyRole
+          ? t("shared.api.updateApplyResumeError")
+          : t("shared.api.updateApplyVacancyError"),
       );
     }
   }
@@ -118,7 +127,7 @@ export const addApply = async (id: number | string) => {
   return { ...applicationData, isCompanyRole };
 };
 
-export const deleteApply = async (id: number | string) => {
+export const deleteApply = async (id: number | string, t: (key: string) => string) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -139,7 +148,7 @@ export const deleteApply = async (id: number | string) => {
 
   if (error) {
     console.log(error);
-    throw new Error("Ошибка удаления элемента из Откликов");
+    throw new Error(t("shared.api.deleteApplyError"));
   }
 
   const applicationData = isCompanyRole ? data.resumes : data.vacancies;
@@ -157,7 +166,9 @@ export const deleteApply = async (id: number | string) => {
     if (applicationUpdateError) {
       console.log(applicationUpdateError);
       throw new Error(
-        `Ошибка при обновлении ${isCompanyRole ? "резюме" : "вакансии"}, после отклика`,
+        isCompanyRole
+          ? t("shared.api.updateApplyResumeError")
+          : t("shared.api.updateApplyVacancyError"),
       );
     }
   }
@@ -168,9 +179,10 @@ export const deleteApply = async (id: number | string) => {
 interface GetUserAppliesParams {
   id: number;
   isHiring: boolean;
+  t: (key: string) => string;
 }
 
-export const getAllUserApplies = async ({ id, isHiring }: GetUserAppliesParams) => {
+export const getAllUserApplies = async ({ id, isHiring, t }: GetUserAppliesParams) => {
   const columnName = isHiring ? "vacancy_id" : "resume_id";
 
   const { data: applies, error: appliesError } = await supabase
@@ -180,7 +192,7 @@ export const getAllUserApplies = async ({ id, isHiring }: GetUserAppliesParams) 
 
   if (appliesError) {
     console.error(appliesError);
-    throw new Error("Ошибка при получении просмотров");
+    throw new Error(t("shared.api.getAllUserAppliesError"));
   }
 
   return applies;

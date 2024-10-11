@@ -36,7 +36,7 @@ export const buildFilterQuery = (
             break;
           }
           default: {
-            throw new Error(`Неподдерживаемый оператор: ${operator}`);
+            throw new Error(`Unsupported operator: ${operator}`);
           }
         }
       } else if (column === "creation_date") {

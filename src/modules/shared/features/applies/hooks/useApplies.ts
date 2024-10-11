@@ -2,10 +2,12 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../components/pagination";
 import { useUrl } from "../../../hooks";
 import { mapResumeVacancyItem } from "../../../utils";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { getApplies } from "../api/apiApplies";
 
 export const useApplies = () => {
   const queryClient = useQueryClient();
+  const { t } = useLanguageSwitcher("shared");
 
   const { getParam } = useUrl();
   const page = Number(getParam("offset")) || 1;
@@ -17,7 +19,7 @@ export const useApplies = () => {
   } = useQuery({
     queryKey: ["applies", page],
     queryFn: async () => {
-      const appliesData = await getApplies(page);
+      const appliesData = await getApplies(page, t);
       if (appliesData?.data?.resumes) {
         appliesData.data.resumes.forEach((resume) => {
           queryClient.setQueryData(["resume", resume.id], resume);
@@ -37,14 +39,14 @@ export const useApplies = () => {
   if (applies?.totalCount && page < Math.ceil(applies.totalCount / QUANTITY_OF_ITEMS_ON_ONE_PAGE)) {
     queryClient.prefetchQuery({
       queryKey: ["applies", page + 1],
-      queryFn: () => getApplies(page + 1),
+      queryFn: () => getApplies(page + 1, t),
     });
   }
 
   if (page > 1) {
     queryClient.prefetchQuery({
       queryKey: ["applies", page - 1],
-      queryFn: () => getApplies(page - 1),
+      queryFn: () => getApplies(page - 1, t),
     });
   }
 

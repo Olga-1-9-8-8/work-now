@@ -2,6 +2,7 @@ import { Zap } from "lucide-react";
 import { useLayoutEffect, useState } from "react";
 import { Button, ButtonProps } from "../../../ui/buttons/Button";
 import { Tooltip } from "../../../ui/tooltip/Tooltip";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { useAddApply } from "../hooks/useAddApply";
 import { useDeleteApply } from "../hooks/useDeleteApply.";
 
@@ -20,6 +21,8 @@ export const AppliedButton = ({
   const [isApplied, setIsApplied] = useState(isInApplies);
   const { deleteApply, isApplyDeleting } = useDeleteApply();
   const { addApply, isApplyAdding } = useAddApply();
+
+  const { t } = useLanguageSwitcher("shared");
 
   useLayoutEffect(() => {
     if (isInApplies) setIsApplied(isInApplies);
@@ -40,7 +43,10 @@ export const AppliedButton = ({
 
   return (
     <Tooltip
-      content={tooltipContent ?? (isApplied ? "Удалить из откликов" : "Добавить в отклики")}
+      content={
+        tooltipContent ??
+        (isApplied ? t("shared.applies.tooltip.remove") : t("shared.applies.tooltip.apply"))
+      }
       className="w-48"
     >
       <div>
@@ -52,9 +58,9 @@ export const AppliedButton = ({
           {...props}
         >
           <Zap
-            className={`mr-3 stroke-white group-hover:fill-destructive ${isApplied && "fill-destructive"}`}
+            className={`mr-1 h-5 w-5 stroke-white group-hover:fill-destructive ${isApplied && "fill-destructive"}`}
           />
-          {isApplied ? "Вы откликнулись" : "Откликнуться"}
+          {isApplied ? t("shared.applies.button.removed") : t("shared.applies.button.applied")}
         </Button>
       </div>
     </Tooltip>

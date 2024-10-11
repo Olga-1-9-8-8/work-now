@@ -20,7 +20,32 @@
       "logoutToastSuccessTitle": "You have been logged out of your account",
       "resetPasswordToastSuccessTitle": "An email with instructions on how to reset your password has been sent to your email address.",
       "resetPasswordToastErrorTitle": "Invalid login",
-      "updateUserSuccessTitle": "Your personal data has been updated successfully"
+      "updateUserSuccessTitle": "Your personal data has been updated successfully",
+      "getAppliesError": "Error loading applies from the database",
+      "getAllUserAppliesError": "Error receiving applies from the database",
+      "deleteApplyError": "Error deleting item from Applies",
+      "updateApplyResumeError": "Error updating resume after applying",
+      "updateApplyVacancyError": "Error updating vacancy after applying",
+      "addApplyResumeError": "Error adding resume to applies",
+      "addApplyVacancyError": "Error adding vacancy to applies",
+      "addApplyResumeSuccess": "Resume {{position}} successfully added to Applies",
+      "addApplyVacancySuccess": "Vacancy {{position}} successfully added to Applies",
+      "removeApplyResumeSuccess": "Resume {{position}} successfully remove from Applies",
+      "removeApplyVacancySuccess": "Vacancy {{position}} successfully removed from Applies",
+      "addViewError": "Error checking views",
+      "updateViewVacancyError": "Error updating vacancy after viewing",
+      "updateViewResumeError": "Error updating resume after viewing",
+      "addViewVacancy": "Error adding vacancy to Views",
+      "addViewResume": "Error adding resume to Views",
+      "getAllViewsError": "Error getting views",
+      "getFavoritesError": "Error loading favorites from the database",
+      "addFavoriteResumeError": "Error adding resume to Favotites",
+      "addFavoriteVacancyError": "Error adding vacancy to Favorites",
+      "deleteFavoriteError": "Error removing item from Favorites",
+      "removeFavoriteResumeSuccess": "Resume {{position}} successfully remove from Favorites",
+      "removeFavoriteVacancySuccess": "Vacancy {{position}} successfully removed from Favorites",
+      "addFavoriteResumeSuccess": "Resume {{position}} successfully added to Favorites",
+      "addFavoriteVacancySuccess": "Vacancy {{position}} successfully added to Favorites"
     },
     "anonymous": "Anonymous",
     "errorFallbackTitle": "Something went terribly wrong",
@@ -60,17 +85,37 @@
         },
         "personalData": {
           "gender": {
-            "title": "Required Gender"
+            "title": "Required Gender: "
           },
           "companyAge": {
-            "title_one": "{{age}} year on the market",
-            "title_other": "{{age}} years on the market"
+            "title_one": "{{count}} year on the market",
+            "title_other": "{{count}} years on the market"
           },
           "age": {
-            "title_one": "{{age}} year",
-            "title_other": "{{age}} years"
+            "title_one": "{{count}} year",
+            "title_other": "{{count}} years"
           }
         }
+      }
+    },
+    "applies": {
+      "tooltip": {
+        "remove": "Remove from applies",
+        "apply": "Add to applies"
+      },
+      "button": {
+        "applied": "Apply",
+        "removed": "Applied"
+      }
+    },
+    "favorites": {
+      "tooltip": {
+        "remove": "Remove from favorites",
+        "add": "Add to favorites"
+      },
+      "button": {
+        "removed": "In Favorites",
+        "add": "Add to Favorites"
       }
     }
   }

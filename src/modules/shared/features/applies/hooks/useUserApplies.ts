@@ -1,15 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import { mapUniversalEngagement } from "../../../utils";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { getAllUserApplies } from "../api/apiApplies";
 
 export const useUserApplies = (id: number, isHiring: boolean) => {
+  const { t } = useLanguageSwitcher("shared");
   const {
     isLoading: isAppliesLoading,
     error,
     data: applies,
   } = useQuery({
     queryKey: ["applies", id],
-    queryFn: () => getAllUserApplies({ id, isHiring }),
+    queryFn: () => getAllUserApplies({ id, isHiring, t }),
   });
 
   return {

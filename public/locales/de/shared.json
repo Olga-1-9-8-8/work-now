@@ -20,7 +20,32 @@
       "logoutToastSuccessTitle": "Sie sind von Ihrem Konto abgemeldet",
       "resetPasswordToastSuccessTitle": "Ihnen wurde eine E-Mail mit Anweisungen zum Zurücksetzen Ihres Passworts zugesandt",
       "resetPasswordToastErrorTitle": "Ungültiger Login",
-      "updateUserSuccessTitle": "Ihre persönlichen Daten wurden erfolgreich aktualisiert"
+      "updateUserSuccessTitle": "Ihre persönlichen Daten wurden erfolgreich aktualisiert",
+      "getAppliesError": "Fehler beim Laden von Bewerbungen aus der Datenbank",
+      "getAllUserAppliesError": "Fehler beim Empfang von Bewerbungen aus der Datenbank",
+      "deleteApplyError": "Fehler beim Löschen des Elements aus den Bewerbungen",
+      "updateApplyResumeError": "Fehler beim Aktualisieren des Lebenslaufs nach der Bewerbung",
+      "updateApplyVacancyError": "Fehler beim Aktualisieren der Stelle nach der Bewerbung",
+      "addApplyResumeError": "Fehler beim Hinzufügen des Lebenslaufs zu den Bewerbungen",
+      "addApplyVacancyError": "Fehler beim Hinzufügen der Stelle zu den Bewerbungen",
+      "addApplyResumeSuccess": "Lebenslauf {{position}} erfolgreich zu den Bewerbungen hinzugefügt",
+      "addApplyVacancySuccess": "Stelle {{position}} erfolgreich zu den Bewerbungen hinzugefügt",
+      "removeApplyResumeSuccess": "Lebenslauf {{position}} erfolgreich aus den Bewerbungen entfernt",
+      "removeApplyVacancySuccess": "Stelle {{position}} erfolgreich aus den Bewerbungen entfernt",
+      "addViewError": "Fehler beim Überprüfen der Ansichten",
+      "updateViewVacancyError": "Fehler beim Aktualisieren des Stellenangebots nach der Anzeige",
+      "updateViewResumeError": "Fehler beim Aktualisieren des Lebenslaufs nach dem Anzeigen",
+      "addViewVacancy": "Beim Hinzufügen der offenen Stelle zu Ansichten ist ein Fehler aufgetreten",
+      "addViewResume": "Fehler beim Hinzufügen des Lebenslaufs zu Ansichten",
+      "getAllViewsError": "Beim Abrufen der Aufrufe ist ein Fehler aufgetreten",
+      "getFavoritesError": "Fehler beim Laden der Favoriten aus der Datenbank",
+      "addFavoriteResumeError": "Fehler beim Hinzufügen des Lebenslaufs zu den Favoriten",
+      "addFavoriteVacancyError": "Fehler beim Hinzufügen einer Stelle zu den Favoriten",
+      "deleteFavoriteError": "Fehler beim Entfernen des Elements aus den Favoriten",
+      "removeFavoriteResumeSuccess": "Lebenslauf {{position}} erfolgreich aus Favoriten entfernen",
+      "removeFavoriteVacancySuccess": "Stellenangebot {{position}} erfolgreich aus Favoriten entfernt",
+      "addFavoriteResumeSuccess": "Lebenslauf {{position}} erfolgreich zu Favoriten hinzugefügt",
+      "addFavoriteVacancySuccess": "Stellenangebot {{position}} erfolgreich zu Favoriten hinzugefügt"
     },
     "anonymous": "Anonym",
     "errorFallbackTitle": "Etwas ist völlig schief gelaufen",
@@ -60,17 +85,37 @@
         },
         "personalData": {
           "gender": {
-            "title": "Erforderliches Geschlecht"
+            "title": "Erforderliches Geschlecht: "
           },
           "companyAge": {
-            "title_one": "{{age}} Jahr auf dem Markt",
-            "title_other": "{{age}} Jahre auf dem Markt"
+            "title_one": "{{count}} Jahr auf dem Markt",
+            "title_other": "{{count}} Jahre auf dem Markt"
           },
           "age": {
-            "title_one": "{{age}} Jahr",
-            "title_other": "{{age}} Jahre"
+            "title_one": "{{count}} Jahr",
+            "title_other": "{{count}} Jahre"
           }
         }
+      }
+    },
+    "applies": {
+      "tooltip": {
+        "remove": "Von Bewerbungen entfernen",
+        "apply": "Zu Bewerbungen hinzufügen"
+      },
+      "button": {
+        "applied": "Sich bewerben",
+        "removed": "Bewerbung eingereicht"
+      }
+    },
+    "favorites": {
+      "tooltip": {
+        "remove": "Aus Favoriten entfernen",
+        "add": "Zu meinen Favoriten hinzufügen"
+      },
+      "button": {
+        "removed": "in Favoriten",
+        "add": "Zu Favoriten hinzufügen"
       }
     }
   }

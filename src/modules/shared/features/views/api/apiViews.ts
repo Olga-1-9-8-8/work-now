@@ -5,9 +5,10 @@ interface AddViewParams {
   count: number;
   isHiring: boolean;
   userId?: string;
+  t: (key: string) => string;
 }
 
-export const addView = async ({ id, count, isHiring, userId }: AddViewParams) => {
+export const addView = async ({ id, count, isHiring, userId, t }: AddViewParams) => {
   if (!userId) return null;
   const column = isHiring ? "vacancies" : "resumes";
   const columnName = isHiring ? "vacancy_id" : "resume_id";
@@ -21,7 +22,7 @@ export const addView = async ({ id, count, isHiring, userId }: AddViewParams) =>
 
   if (viewCheckError) {
     console.error(viewCheckError);
-    throw new Error("Ошибка при проверке просмотров");
+    throw new Error(t("shared.api.addViewError"));
   }
 
   if (userAlreadyViewedItem) {
@@ -38,7 +39,9 @@ export const addView = async ({ id, count, isHiring, userId }: AddViewParams) =>
 
   if (resumeUpdateError) {
     console.log(resumeUpdateError);
-    throw new Error(`Ошибка при обновлении ${isHiring ? "вакансии" : "резюме"}, после просмотра`);
+    throw new Error(
+      isHiring ? t("shared.api.updateViewVacancyError") : t("shared.api.updateViewResumeError"),
+    );
   }
 
   const { error } = await supabase.from("views").insert({
@@ -48,7 +51,7 @@ export const addView = async ({ id, count, isHiring, userId }: AddViewParams) =>
 
   if (error) {
     console.log(error);
-    throw new Error(`Проблема с добавлением ${isHiring ? " вакансии " : "резюме"} в Просмотры`);
+    throw new Error(isHiring ? t("shared.api.addViewVacancy") : t("shared.api.addViewResume"));
   }
 
   return { isHiring, id };
@@ -57,9 +60,10 @@ export const addView = async ({ id, count, isHiring, userId }: AddViewParams) =>
 interface GetViewParams {
   id: number;
   isHiring: boolean;
+  t: (key: string) => string;
 }
 
-export const getAllViews = async ({ id, isHiring }: GetViewParams) => {
+export const getAllViews = async ({ id, isHiring, t }: GetViewParams) => {
   const columnName = isHiring ? "vacancy_id" : "resume_id";
 
   const { data: views, error: viewError } = await supabase
@@ -69,7 +73,7 @@ export const getAllViews = async ({ id, isHiring }: GetViewParams) => {
 
   if (viewError) {
     console.error(viewError);
-    throw new Error("Ошибка при получении просмотров");
+    throw new Error(t("shared.api.getAllViewsError"));
   }
 
   return views;

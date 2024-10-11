@@ -2,6 +2,7 @@ import { Heart } from "lucide-react";
 import { useLayoutEffect, useState } from "react";
 import { Button, ButtonProps } from "../../../ui/buttons/Button";
 import { Tooltip } from "../../../ui/tooltip/Tooltip";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { useAddFavorite } from "../hooks/useAddFavorite";
 import { useDeleteFavorite } from "../hooks/useDeleteFavorite.";
 
@@ -23,6 +24,8 @@ export const FavoriteButton = ({
   const { deleteFavorite, isFavoriteDeleting } = useDeleteFavorite();
   const { addFavorite, isFavoriteAdding } = useAddFavorite();
 
+  const { t } = useLanguageSwitcher("shared");
+
   useLayoutEffect(() => {
     if (isInFavorites) setIsFavorite(isInFavorites);
   }, [isInFavorites]);
@@ -41,7 +44,10 @@ export const FavoriteButton = ({
 
   return (
     <Tooltip
-      content={tooltipContent ?? (isInFavorites ? "Удалить из Избранного" : "Добавить в Избранное")}
+      content={
+        tooltipContent ??
+        (isInFavorites ? t("shared.favorites.tooltip.remove") : t("shared.favorites.tooltip.add"))
+      }
       className="w-48"
     >
       <div>
@@ -54,10 +60,12 @@ export const FavoriteButton = ({
           {...props}
         >
           <Heart
-            className={`stroke-destructive group-hover:fill-destructive ${isFavorite && "fill-destructive"}`}
+            className={`h-5 w-5 stroke-destructive group-hover:fill-destructive ${isFavorite && "fill-destructive"}`}
           />
           {withTitle && (
-            <span className="ml-2">{isFavorite ? "Уже в Избранном" : "В Избранное"}</span>
+            <span className="ml-2">
+              {isFavorite ? t("shared.favorites.button.removed") : t("shared.favorites.button.add")}
+            </span>
           )}
         </Button>
       </div>

@@ -4,14 +4,17 @@ import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../components/pagination";
 import { supabase } from "../../../services/api/supabase";
 import { UserEntity } from "../../../types";
 
-const processItemsWithFavoriteApplyStatusAndDownloadAvatar = async (
-  items: (ResumeWithProfileApiTypeInput | VacancyWithProfileApiTypeInput | null)[],
+const processItemsWithFavoriteApplyStatusAndDownloadAvatar = async <
+  T extends ResumeWithProfileApiTypeInput | VacancyWithProfileApiTypeInput | null,
+>(
+  items: T[],
+  t: (key: string) => string,
 ) => {
   const filteredItems = items.filter((item) => item !== null);
 
   return Promise.all(
     filteredItems.map(async (item) => {
-      const applies = await getApply(item.id);
+      const applies = await getApply(item.id, t);
       const profiles = item.profiles
         ? {
             ...item.profiles,
@@ -29,7 +32,7 @@ const processItemsWithFavoriteApplyStatusAndDownloadAvatar = async (
   );
 };
 
-export const getFavorites = async (page: number) => {
+export const getFavorites = async (page: number, t: (key: string) => string) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -54,22 +57,24 @@ export const getFavorites = async (page: number) => {
 
   if (error) {
     console.log(error);
-    throw new Error("Проблема с загрузкой избранного из базы данных");
+    throw new Error(t("shared.api.getFavoritesError"));
   }
 
   const favoritesData = {
     vacancies: await processItemsWithFavoriteApplyStatusAndDownloadAvatar(
       data.flatMap((item) => item.vacancies),
+      t,
     ),
     resumes: await processItemsWithFavoriteApplyStatusAndDownloadAvatar(
       data.flatMap((item) => item.resumes),
+      t,
     ),
   };
 
   return { data: favoritesData, totalCount: count };
 };
 
-export const addFavorite = async (id: number | string) => {
+export const addFavorite = async (id: number | string, t: (key: string) => string) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -92,7 +97,9 @@ export const addFavorite = async (id: number | string) => {
   if (error) {
     console.log(error);
     throw new Error(
-      `Проблема с добавлением ${isCompanyRole ? "резюме" : " вакансии "} в Избранное`,
+      isCompanyRole
+        ? t("shared.api.addFavoriteResumeError")
+        : t("shared.api.addFavoriteVacancyError"),
     );
   }
 
@@ -101,7 +108,7 @@ export const addFavorite = async (id: number | string) => {
   return { ...applicationData, isCompanyRole };
 };
 
-export const deleteFavorite = async (id: number | string) => {
+export const deleteFavorite = async (id: number | string, t: (key: string) => string) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -122,7 +129,7 @@ export const deleteFavorite = async (id: number | string) => {
 
   if (error) {
     console.log(error);
-    throw new Error("Ошибка удаления элемента из Избранного");
+    throw new Error(t("shared.api.deleteFavoriteError"));
   }
 
   const applicationData = isCompanyRole ? data.resumes : data.vacancies;

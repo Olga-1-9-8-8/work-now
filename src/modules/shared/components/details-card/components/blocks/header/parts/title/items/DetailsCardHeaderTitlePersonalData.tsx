@@ -19,7 +19,7 @@ export const DetailsCardHeaderTitlePersonalData = ({
   const title = [
     isHiring && t("shared.details.card.personalData.gender.title"),
     getGenderTitle(language as LanguageType, gender),
-    age && `/ ${t("shared.details.card.personalData.age.title", { age })}`,
+    age && `/ ${t("shared.details.card.personalData.age.title", { count: Number(age) })}`,
   ]
     .filter(Boolean)
     .join(" ");

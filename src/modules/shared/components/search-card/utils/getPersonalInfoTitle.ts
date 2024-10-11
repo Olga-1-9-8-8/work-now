@@ -9,7 +9,9 @@ export const getPersonalInfoTitle = (
   age?: string,
   isHiring?: boolean,
 ) => {
-  const ageTitle = age ? `/ ${t("shared.details.card.personalData.age.title", { age })}` : "";
+  const ageTitle = age
+    ? `/ ${t("shared.details.card.personalData.age.title", { count: Number(age) })}`
+    : "";
   const genderTitle = getGenderTitle(language, gender);
 
   if (isHiring) {

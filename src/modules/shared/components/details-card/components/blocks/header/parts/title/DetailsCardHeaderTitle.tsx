@@ -47,7 +47,7 @@ export const DetailsCardHeaderTitle = ({
           <CardTitleWithTooltip title={userName ?? "Аноним"} />
           {isHiring && age && (
             <p className="text-sm font-medium text-muted-foreground">
-              {t("shared.details.card.personalData.companyAge.title", { age })}
+              {t("shared.details.card.personalData.companyAge.title", { count: Number(age) })}
             </p>
           )}
         </div>
