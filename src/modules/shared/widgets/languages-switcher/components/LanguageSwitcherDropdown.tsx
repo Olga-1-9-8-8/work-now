@@ -1,7 +1,10 @@
 import { VariantProps } from "class-variance-authority";
 import { Globe } from "lucide-react";
 import { memo } from "react";
-import { InternationalizationConfig } from "../../../configs/internationalization/InternationalizationConfig";
+import {
+  InternationalizationConfig,
+  LanguageType,
+} from "../../../configs/internationalization/InternationalizationConfig";
 import { Button, buttonVariants } from "../../../ui/buttons/Button";
 import {
   DropdownMenu,
@@ -17,7 +20,7 @@ interface LanguagesSwitcherButtonProps
     VariantProps<typeof buttonVariants> {}
 
 export const LanguageSwitcherDropdown = memo(({ ...props }: LanguagesSwitcherButtonProps) => {
-  const { t, changeLanguage, language } = useLanguageSwitcher("header");
+  const { changeLanguage, language } = useLanguageSwitcher("shared");
 
   return (
     <div>
@@ -35,7 +38,7 @@ export const LanguageSwitcherDropdown = memo(({ ...props }: LanguagesSwitcherBut
                 key={item.value}
                 value={item.value}
               >
-                {t(item.title)}
+                {item.title[language as LanguageType]}
               </DropdownMenuRadioItem>
             ))}
           </DropdownMenuRadioGroup>

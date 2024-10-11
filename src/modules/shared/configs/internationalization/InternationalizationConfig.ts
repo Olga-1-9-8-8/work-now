@@ -3,21 +3,33 @@ export const languages = ["ru", "en", "de"] as const;
 export type LanguageType = (typeof languages)[number];
 
 export interface LanguageItemOption {
-  title: string;
+  title: Record<LanguageType, string>;
   value: LanguageType;
 }
 
 export const InternationalizationConfig: LanguageItemOption[] = [
   {
-    title: "Английский",
+    title: {
+      en: "English",
+      ru: "Английский",
+      de: "Englisch",
+    },
     value: "en",
   },
   {
-    title: "Русский",
+    title: {
+      en: "Russian",
+      ru: "Русский",
+      de: "Russisch",
+    },
     value: "ru",
   },
   {
-    title: "Немецкий",
+    title: {
+      en: "German",
+      ru: "Немецкий",
+      de: "Deutsch",
+    },
     value: "de",
   },
 ];
