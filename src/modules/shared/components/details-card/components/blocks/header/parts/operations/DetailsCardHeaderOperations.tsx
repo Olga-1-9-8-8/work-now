@@ -1,13 +1,13 @@
 import { ClipboardCheck, FilePlus2, RefreshCw } from "lucide-react";
+import { useMemo } from "react";
+import { LanguageType } from "../../../../../../../configs";
 import { AppliedButton } from "../../../../../../../features/applies";
 import { FavoriteButton } from "../../../../../../../features/favorites";
 import { useUser } from "../../../../../../../services/auth";
 import { UserEntity } from "../../../../../../../types";
 import { CardDescription } from "../../../../../../../ui/card/Card";
-import {
-  formattedTimeString,
-  getRightNounWordDeclension,
-} from "../../../../../../../utils/helpers";
+import { formattedTimeString } from "../../../../../../../utils/helpers";
+import { useLanguageSwitcher } from "../../../../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 
 interface DetailsCardHeaderOperationsProps {
   id: number | string;
@@ -28,19 +28,17 @@ export const DetailsCardHeaderOperations = ({
   isInApplies,
 }: DetailsCardHeaderOperationsProps) => {
   const { isAuthenticated, role } = useUser();
+  const { language, t } = useLanguageSwitcher("shared");
 
   const isDisabled = !isAuthenticated || !!isHiring === (role === UserEntity.Company);
 
-  const getTooltipContent = () => {
-    return `Войдите как ${isHiring ? "кандидат" : "компания"}, чтобы добавить ${isHiring ? "вакансию" : "резюме"}`;
-  };
+  const getApplicantsQuantityText = useMemo(() => {
+    if (applicantsQuantity === 0) return t("shared.details.card.operations.noApplicants");
+    return isHiring
+      ? t("shared.details.card.operations.company.apply", { count: applicantsQuantity })
+      : t("shared.details.card.operations.candidate.apply", { count: applicantsQuantity });
+  }, [applicantsQuantity, isHiring, t]);
 
-  const getApplicantsQuantityText = () => {
-    const word = isHiring ? "кандидат" : "компан";
-    const endings = isHiring ? ["", "а", "ов"] : ["ия", "ии", "ий"];
-    const declension = getRightNounWordDeclension(applicantsQuantity, word, endings);
-    return `${declension} уже ${getRightNounWordDeclension(applicantsQuantity, "откликнул", [`${isHiring ? "ся" : "ась"}`, "ись", "ись"]).slice(1)}`;
-  };
   return (
     <div className="flex flex-col gap-3">
       <div className="md:flex-start flex flex-row-reverse justify-end gap-8 md:flex-row">
@@ -48,30 +46,42 @@ export const DetailsCardHeaderOperations = ({
           id={id}
           role={role}
           isInFavorites={isInFavorites}
-          tooltipContent={isDisabled ? `${getTooltipContent()} в Избранное` : undefined}
+          tooltipContent={
+            isDisabled
+              ? isHiring
+                ? t("shared.details.card.operations.tooltip.favorites.candidate")
+                : t("shared.details.card.operations.tooltip.favorites.company")
+              : undefined
+          }
           disabled={isDisabled}
         />
         <AppliedButton
           id={id}
           isInApplies={isInApplies}
           disabled={isDisabled}
-          tooltipContent={isDisabled ? `${getTooltipContent()} в Отклики` : undefined}
+          tooltipContent={
+            isDisabled
+              ? isHiring
+                ? t("shared.details.card.operations.tooltip.applies.candidate")
+                : t("shared.details.card.operations.tooltip.applies.company")
+              : undefined
+          }
         />
       </div>
       <p className="mt-2 flex gap-1 text-sm font-medium text-muted-foreground">
         <ClipboardCheck size={20} className="stroke-success" />
-        {getApplicantsQuantityText()}
+        {getApplicantsQuantityText}
       </p>
       <div className="flex flex-wrap gap-4 md:flex-col md:gap-2">
         <CardDescription className="mt-2 flex gap-1 font-semibold text-muted-foreground opacity-85">
           <FilePlus2 size={20} className="stroke-success" />
-          Создано {formattedTimeString(creationDate)}
+          {t("shared.created")} {formattedTimeString(creationDate, language as LanguageType)}
         </CardDescription>
 
         {updatedAt && (
           <CardDescription className="mt-2 flex gap-1 font-semibold text-muted-foreground opacity-85">
             <RefreshCw size={20} className="stroke-success" />
-            Обновлено {formattedTimeString(updatedAt)}
+            {t("shared.updated")} {formattedTimeString(updatedAt, language as LanguageType)}
           </CardDescription>
         )}
       </div>

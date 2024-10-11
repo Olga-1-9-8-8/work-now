@@ -1,7 +1,7 @@
 import { EyeIcon } from "lucide-react";
 import { useAddUserViews } from "../../../../../../../../features/views/hooks/useAddUserViews";
 import { Tooltip } from "../../../../../../../../ui/tooltip/Tooltip";
-import { getRightNounWordDeclension } from "../../../../../../../../utils/helpers";
+import { useLanguageSwitcher } from "../../../../../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 
 interface DetailsCardHeaderTitleViewsProps {
   id: number;
@@ -15,14 +15,19 @@ export const DetailsCardHeaderTitleViews = ({
   id,
 }: DetailsCardHeaderTitleViewsProps) => {
   useAddUserViews(id, views, isHiring);
+  const { t } = useLanguageSwitcher("shared");
 
   return (
     <div className="my-2 flex gap-2 text-sm font-semibold text-success">
       <EyeIcon size={20} className="stroke-success" />
       <Tooltip
-        content={`Просмотрено ${isHiring ? "кандидатами" : "компаниями"}, зарегистрированными на сайте`}
+        content={
+          isHiring
+            ? t("shared.details.card.views.candidates.tooltip")
+            : t("shared.details.card.views.company.tooltip")
+        }
       >
-        <span>Просмотрено {getRightNounWordDeclension(views, "раз", ["", "а", ""])}</span>
+        <span>{t("shared.details.card.views.count", { count: views })}</span>
       </Tooltip>
     </div>
   );

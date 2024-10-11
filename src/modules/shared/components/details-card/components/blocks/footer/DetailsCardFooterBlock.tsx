@@ -4,6 +4,7 @@ import { UserEntity } from "../../../../../types";
 import { Badge } from "../../../../../ui/badge/Badge";
 import { CardFooter } from "../../../../../ui/card/Card";
 import { TypographyH4 } from "../../../../../ui/typography/TypographyH4";
+import { useLanguageSwitcher } from "../../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { CardSocialsButtons } from "../../../../card";
 
 interface DetailsCardFooterSocialsProps {
@@ -13,18 +14,20 @@ interface DetailsCardFooterSocialsProps {
 
 const DetailsCardFooterSocials = ({ phone, isHiring }: DetailsCardFooterSocialsProps) => {
   const { isAuthenticated, role } = useUser();
+  const { t } = useLanguageSwitcher("shared");
 
   const canShow = isAuthenticated && role === (isHiring ? UserEntity.Person : UserEntity.Company);
 
   return (
     <>
-      <TypographyH4 className="py-3">Способы связи:</TypographyH4>
+      <TypographyH4 className="py-3">{t("shared.details.card.footer.title")}</TypographyH4>
       {canShow ? (
         <CardSocialsButtons phone={phone} />
       ) : (
         <Badge className="hover:bg-warning" variant="warning" shape="square">
-          Войдите под аккаунтом {isHiring ? "кандидата " : "компании"}, чтобы посмотреть контакты и
-          откликнутся на {isHiring ? "вакансию" : "резюме"}
+          {isHiring
+            ? t("shared.details.card.footer.badge.person")
+            : t("shared.details.card.footer.badge.company")}
         </Badge>
       )}
     </>

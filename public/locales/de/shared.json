@@ -95,6 +95,36 @@
             "title_one": "{{count}} Jahr",
             "title_other": "{{count}} Jahre"
           }
+        },
+        "views": {
+          "candidates": {
+            "tooltip": "Von auf der Site registrierten Kandidaten angesehen"
+          },
+          "company": {
+            "tooltip": "Von auf der Site registrierten Unternehmen angesehen"
+          },
+          "count_one": "{{count}} Mal angesehen",
+          "count_other": "{{count}} Mal angesehen"
+        },
+        "operations": {
+          "noApplicants": "Bewerben Sie sich als Erster auf diese Stelle",
+          "tooltip": {
+            "favorites": {
+              "candidate": "Melden Sie sich als Kandidat an, um eine Stelle zu den Favoriten hinzuzufügen",
+              "company": "Melden Sie sich als Unternehmen an, um Ihren Lebenslauf zu den Favoriten hinzuzufügen"
+            },
+            "applies": {
+              "candidate": "Melden Sie sich als Kandidat an, um eine Bewerbung zu den Bewerbungen hinzuzufügen",
+              "company": "Melden Sie sich als Unternehmen an, um eine Bewerbung zu den Bewerbungen hinzuzufügen"
+            }
+          }
+        },
+        "footer": {
+          "title": "Kontaktmethoden:",
+          "badge": {
+            "person": "Melden Sie sich mit Ihrem Kandidatenkonto an, um Ihre Kontakte anzuzeigen und sich auf die Stelle zu bewerben.",
+            "company": "Melden Sie sich mit Ihrem Unternehmenskonto an, um Kontakte anzuzeigen und sich auf Ihren Lebenslauf zu bewerben"
+          }
         }
       }
     },
@@ -117,6 +147,12 @@
         "removed": "in Favoriten",
         "add": "Zu Favoriten hinzufügen"
       }
-    }
+    },
+    "card": {
+      "phone": "Telefon:"
+    },
+    "notSpecified": "Nicht angegeben",
+    "created": "Erstellt",
+    "updated": "Aktualisiert"
   }
 }

@@ -4,6 +4,7 @@ import { externalUrlsConfig } from "../../../../configs";
 import { Badge } from "../../../../ui/badge/Badge";
 import { Button } from "../../../../ui/buttons/Button";
 import { formatPhoneNumber } from "../../../../utils/helpers";
+import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 
 interface CardSocialsButtonsProps {
   phone?: string;
@@ -11,9 +12,14 @@ interface CardSocialsButtonsProps {
 
 export const CardSocialsButtons = ({ phone }: CardSocialsButtonsProps) => {
   const formattedPhone = phone ? formatPhoneNumber(phone) : undefined;
+  const { t } = useLanguageSwitcher("shared");
 
   if (!formattedPhone)
-    return <Badge className="text-nowrap">Телефон: {phone ?? "Не указан"}</Badge>;
+    return (
+      <Badge className="text-nowrap">
+        {t("shared.card.phone")} {phone ?? t("shared.notSpecified")}
+      </Badge>
+    );
 
   return (
     <div className="flex w-full justify-around gap-5 lg:w-auto">

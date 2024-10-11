@@ -44,7 +44,7 @@ export const DetailsCardHeaderTitle = ({
           userName={userName}
         />
         <div className="flex flex-col ">
-          <CardTitleWithTooltip title={userName ?? "Аноним"} />
+          <CardTitleWithTooltip title={userName ?? t("shared.anonymous")} />
           {isHiring && age && (
             <p className="text-sm font-medium text-muted-foreground">
               {t("shared.details.card.personalData.companyAge.title", { count: Number(age) })}

@@ -95,6 +95,36 @@
             "title_one": "{{count}} year",
             "title_other": "{{count}} years"
           }
+        },
+        "views": {
+          "candidates": {
+            "tooltip": "Viewed by candidates registered on the site"
+          },
+          "company": {
+            "tooltip": "Viewed by companies registered on the site"
+          },
+          "count_one": "Viewed {{count}} time",
+          "count_other": "Viewed {{count}} times"
+        },
+        "operations": {
+          "noApplicants": "Be the first to apply to this vacancy",
+          "tooltip": {
+            "favorites": {
+              "candidate": "Login as a candidate to add a vacancy to Favorites",
+              "company": "Login as a company to add resume to Favorites"
+            },
+            "applies": {
+              "candidate": "Login as a candidate to add a vacancy to Applies",
+              "company": "Login as a company to add resume to Applies"
+            }
+          }
+        },
+        "footer": {
+          "title": "Contact methods:",
+          "badge": {
+            "person": "Log in under the candidate account to view contacts and apply to the vacancy",
+            "company": "Log in with your company account to view contacts and apply to resume"
+          }
         }
       }
     },
@@ -117,6 +147,12 @@
         "removed": "In Favorites",
         "add": "Add to Favorites"
       }
-    }
+    },
+    "card": {
+      "phone": "Phone:"
+    },
+    "notSpecified": "Not specified",
+    "created": "Created",
+    "updated": "Updated"
   }
 }
