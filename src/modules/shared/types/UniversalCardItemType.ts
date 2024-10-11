@@ -23,9 +23,9 @@ export interface UniversalJobType {
   updatedAt?: Date;
   cities?: CityType[];
   applicantsQuantity: number;
-  employment?: EmploymentType[] | string;
+  employment?: EmploymentType[];
   salary?: number[];
-  schedule?: ScheduleType[] | string;
+  schedule?: ScheduleType[];
   weekHours?: WeekHoursType[];
   about?: string;
   education?: EducationType;

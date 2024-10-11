@@ -37,10 +37,39 @@
           "notSpecified": "Not specified"
         },
         "salary": {
-          "title": "Salary range"
+          "title": "Salary range",
+          "salary": "Salary"
         },
         "employment": {
-          "title": "Type of work"
+          "title": "Type of work",
+          "startDate": {
+            "notSpecified": "As soon as possible",
+            "title": "Start Date:"
+          },
+          "weekHours": {
+            "title": "hours per week",
+            "titleFull": "Number of hours per week"
+          },
+          "schedule": {
+            "title": "Work schedule"
+          }
+        },
+        "about": {
+          "company": "Responsibilities",
+          "candidate": "About Me / previous experience / skills / goals / achievements"
+        },
+        "personalData": {
+          "gender": {
+            "title": "Required Gender"
+          },
+          "companyAge": {
+            "title_one": "{{age}} year on the market",
+            "title_other": "{{age}} years on the market"
+          },
+          "age": {
+            "title_one": "{{age}} year",
+            "title_other": "{{age}} years"
+          }
         }
       }
     }

@@ -37,10 +37,39 @@
           "notSpecified": "Nicht angegeben"
         },
         "salary": {
-          "title": "Gehaltsspanne"
+          "title": "Gehaltsspanne",
+          "salary": "Gehalt"
         },
         "employment": {
-          "title": "Art der Arbeit"
+          "title": "Art der Arbeit",
+          "startDate": {
+            "notSpecified": "So schnell wie möglich",
+            "title": "Startdatum:"
+          },
+          "weekHours": {
+            "title": "stunden pro Woche",
+            "titleFull": "Anzahl der Stunden pro Woche"
+          },
+          "schedule": {
+            "title": "Arbeitszeitplan"
+          }
+        },
+        "about": {
+          "company": "Aufgaben",
+          "candidate": "Über mich / berufserfahrung / fähigkeiten / ziele / erfolge"
+        },
+        "personalData": {
+          "gender": {
+            "title": "Erforderliches Geschlecht"
+          },
+          "companyAge": {
+            "title_one": "{{age}} Jahr auf dem Markt",
+            "title_other": "{{age}} Jahre auf dem Markt"
+          },
+          "age": {
+            "title_one": "{{age}} Jahr",
+            "title_other": "{{age}} Jahre"
+          }
         }
       }
     }

@@ -141,7 +141,7 @@ export const VacancyCreationForm = ({
           disabled={isSubmitting}
           options={genderTypes.map((gender) => ({
             value: gender,
-            title: getGenderTitle(gender, language as LanguageType),
+            title: getGenderTitle(language as LanguageType, gender),
           }))}
         />
 

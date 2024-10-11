@@ -1,4 +1,5 @@
 import { Briefcase, Clock, Clock5Icon, Coins } from "lucide-react";
+import { LanguageType } from "../../../../configs";
 import { EmploymentType, ScheduleType, WeekHoursType } from "../../../../types";
 import { CardContent } from "../../../../ui/card/Card";
 import {
@@ -8,12 +9,13 @@ import {
   getBadgesTitle,
   getSalaryTitle,
 } from "../../../../utils";
+import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { CardItemInsight } from "../../../card";
 
 interface SearchCardDetailsBlockProps {
   salary?: number[];
-  employment?: EmploymentType[] | string;
-  schedule?: ScheduleType[] | string;
+  employment?: EmploymentType[];
+  schedule?: ScheduleType[];
   weekHours?: WeekHoursType[];
 }
 
@@ -23,14 +25,16 @@ export const SearchCardDetailsBlock = ({
   schedule,
   weekHours,
 }: SearchCardDetailsBlockProps) => {
+  const { language, t } = useLanguageSwitcher("shared");
+
   return (
     <CardContent className="space-y-8">
       <ul className="flex flex-col flex-wrap gap-8 lg:flex-row lg:gap-5">
         <li className="flex-1">
           <CardItemInsight
             icon={Coins}
-            badges={[{ title: getSalaryTitle(salary) }]}
-            title="Зарплата"
+            badges={[{ title: getSalaryTitle(language as LanguageType, salary) }]}
+            title={t("shared.details.card.salary.salary")}
           />
         </li>
         {schedule && (
@@ -38,8 +42,8 @@ export const SearchCardDetailsBlock = ({
             <CardItemInsight
               icon={Clock}
               badges={getBadgesTitle(schedule)}
-              getBadgeData={getBadgeDataByScheduleType}
-              title="График работы"
+              getBadgeData={(title) => getBadgeDataByScheduleType(language as LanguageType, title)}
+              title={t("shared.details.card.employment.schedule.title")}
             />
           </li>
         )}
@@ -48,8 +52,10 @@ export const SearchCardDetailsBlock = ({
             <CardItemInsight
               icon={Briefcase}
               badges={getBadgesTitle(employment)}
-              getBadgeData={getBadgeDataByEmploymentType}
-              title="Тип работы"
+              getBadgeData={(title) =>
+                getBadgeDataByEmploymentType(language as LanguageType, title)
+              }
+              title={t("shared.details.card.employment.title")}
             />
           </li>
         )}
@@ -59,8 +65,8 @@ export const SearchCardDetailsBlock = ({
           <CardItemInsight
             icon={Clock5Icon}
             badges={getBadgesTitle(weekHours)}
-            getBadgeData={getBadgeDataByWeekHours}
-            title="Количество часов в неделю"
+            getBadgeData={(title) => getBadgeDataByWeekHours(language as LanguageType, title)}
+            title={t("shared.details.card.employment.weekHours.titleFull")}
           />
         </div>
       )}

@@ -1,10 +1,8 @@
 import { Building } from "lucide-react";
 import { CityType, GenderType } from "../../../../../../../types";
 import { TypographyH2 } from "../../../../../../../ui/typography/TypographyH2";
-import {
-  capitalizeFirstLetter,
-  getRightNounYearDeclension,
-} from "../../../../../../../utils/helpers";
+import { capitalizeFirstLetter } from "../../../../../../../utils/helpers";
+import { useLanguageSwitcher } from "../../../../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { Avatar } from "../../../../../../avatar";
 import { CardTitleWithTooltip } from "../../../../../../card";
 import { MapCityBadgeGroup } from "../../../../../../map";
@@ -34,6 +32,8 @@ export const DetailsCardHeaderTitle = ({
   age,
   gender,
 }: DetailsCardHeaderTitleProps) => {
+  const { t } = useLanguageSwitcher("shared");
+
   return (
     <div className="flex flex-col gap-3">
       <div className="flex items-center gap-2">
@@ -45,9 +45,9 @@ export const DetailsCardHeaderTitle = ({
         />
         <div className="flex flex-col ">
           <CardTitleWithTooltip title={userName ?? "Аноним"} />
-          {isHiring && (
+          {isHiring && age && (
             <p className="text-sm font-medium text-muted-foreground">
-              {getRightNounYearDeclension(String(age))} на рынке
+              {t("shared.details.card.personalData.companyAge.title", { age })}
             </p>
           )}
         </div>

@@ -16,11 +16,6 @@ export const getRightNounWordDeclension = (
   return `${quantity} ${word}${wordEndings[getIndex()]}`;
 };
 
-export const getRightNounYearDeclension = (quantity: string) => {
-  if (quantity.at(-1) === "1") return `${quantity} год`;
-  return [2, 3, 4].includes(Number(quantity.at(-1))) ? `${quantity} года` : `${quantity} лет`;
-};
-
 export const truncateText = (text: string, maxLength: number) => {
   return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
 };

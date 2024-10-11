@@ -1,6 +1,7 @@
 import { UniversalCardItemType } from "../../../types";
 import { Card } from "../../../ui/card/Card";
 import { TypographyH5 } from "../../../ui/typography/TypographyH5";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { ThirdPartyHtmlComponent } from "../../third-party-html";
 import { SearchCardDetailsBlock } from "./block/SearchCardDetailsBlock";
 import { SearchCardOperationsFooterBlock } from "./block/footer/SearchCardOperationsFooterBlock";
@@ -13,6 +14,8 @@ interface SearchCardProps {
 }
 
 export const SearchCard = ({ data, onClick, isHiring = false }: SearchCardProps) => {
+  const { t } = useLanguageSwitcher("shared");
+
   const {
     position,
     about,
@@ -69,7 +72,10 @@ export const SearchCard = ({ data, onClick, isHiring = false }: SearchCardProps)
             content={
               <Card className="bg-secondary px-6 py-2 pb-6">
                 <TypographyH5 className="py-3">
-                  {isHiring ? "Чем предстоит заниматься:" : "Обо мне / Навыки / Задачи:"}
+                  {isHiring
+                    ? t("shared.details.card.about.company")
+                    : t("shared.details.card.about.candidate")}
+                  :
                 </TypographyH5>
                 {isHiring ? <ThirdPartyHtmlComponent markup={about} /> : about}
               </Card>

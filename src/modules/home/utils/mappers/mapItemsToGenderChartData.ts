@@ -20,7 +20,7 @@ export const mapItemsToGenderChartData = (
   );
 
   return Object.entries(genderData).map(([title, value]) => ({
-    title: getGenderTitle(title as GenderType, language),
+    title: getGenderTitle(language, title as GenderType),
     value,
   }));
 };

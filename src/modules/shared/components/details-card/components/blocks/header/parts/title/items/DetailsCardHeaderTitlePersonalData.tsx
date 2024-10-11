@@ -1,6 +1,7 @@
 import { FaPerson } from "react-icons/fa6";
+import { LanguageType } from "../../../../../../../../configs";
 import { GenderType, getGenderTitle } from "../../../../../../../../types";
-import { getRightNounYearDeclension } from "../../../../../../../../utils/helpers";
+import { useLanguageSwitcher } from "../../../../../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 
 interface DetailsCardHeaderTitlePersonalDataProps {
   gender?: GenderType;
@@ -13,10 +14,12 @@ export const DetailsCardHeaderTitlePersonalData = ({
   age,
   isHiring,
 }: DetailsCardHeaderTitlePersonalDataProps) => {
+  const { t, language } = useLanguageSwitcher("shared");
+
   const title = [
-    isHiring && "Требуемый пол: ",
-    gender ? getGenderTitle(gender) : "Пол не указан",
-    age && `/ ${getRightNounYearDeclension(String(age))}`,
+    isHiring && t("shared.details.card.personalData.gender.title"),
+    getGenderTitle(language as LanguageType, gender),
+    age && `/ ${t("shared.details.card.personalData.age.title", { age })}`,
   ]
     .filter(Boolean)
     .join(" ");

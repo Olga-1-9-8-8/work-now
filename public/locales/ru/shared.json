@@ -37,10 +37,43 @@
           "notSpecified": "Не указано"
         },
         "salary": {
-          "title": "Диапазон оплаты труда"
+          "title": "Диапазон оплаты труда",
+          "salary": "Зарплата"
         },
         "employment": {
-          "title": "Тип работы"
+          "title": "Тип работы",
+          "startDate": {
+            "notSpecified": "Как можно скорее",
+            "title": "Дата выхода:"
+          },
+          "weekHours": {
+            "title": "часов в неделю",
+            "titleFull": "Количество часов в неделю"
+          },
+          "schedule": {
+            "title": "График работы"
+          }
+        },
+        "about": {
+          "company": "Чем предстоит заниматься:",
+          "candidate": "Обо мне / предыдущий опыт / навыки / цели / достижения:"
+        },
+        "personalData": {
+          "gender": {
+            "title": "Требуемый пол: "
+          },
+          "companyAge": {
+            "title_one": "{{age}} год на рынке",
+            "title_few": "{{count}} года на рынке",
+            "title_many": "{{count}} лет на рынке",
+            "title_other": "{{count}} лет на рынке"
+          },
+          "age": {
+            "title_one": "{{age}} год",
+            "title_few": "{{count}} года",
+            "title_many": "{{count}} лет",
+            "title_other": "{{count}} лет"
+          }
         }
       }
     }

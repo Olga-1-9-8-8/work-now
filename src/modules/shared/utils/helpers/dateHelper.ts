@@ -1,17 +1,18 @@
 /* eslint-disable unicorn/no-useless-undefined */
 import { differenceInCalendarDays, format, parse, sub } from "date-fns";
-import { ru } from "date-fns/locale";
+import { LanguageType } from "../../configs";
+import { getLocale } from "../getLocales";
 
 /**
  * @param date date format
  * @example  Date -> "23 марта ?2024"
  */
-export const getDayMonthYear = (date: Date): string => {
+export const getDayMonthYear = (date: Date, language: LanguageType): string => {
   return format(
     date,
     `d MMMM${date.getFullYear() === new Date().getFullYear() ? "" : " yyyy г."}`,
     {
-      locale: ru,
+      locale: getLocale(language),
     },
   );
 };
@@ -24,26 +25,51 @@ export const parseDateFromString = (date: string): Date => {
   return parse(date, "yyyy-MM-dd", new Date());
 };
 
+const formattedTimeStringConfig = {
+  ru: {
+    lastDay: "сегодня",
+    lastDayAt: "сегодня в",
+    lastTwoDays: "вчера",
+    lastTwoDaysAt: "вчера в",
+  },
+  en: {
+    lastDay: "today",
+    lastDayAt: "today at",
+    lastTwoDays: "yesterday",
+    lastTwoDaysAt: "yesterday at",
+  },
+  de: {
+    lastDay: "heute",
+    lastDayAt: "heute um",
+    lastTwoDays: "gestern",
+    lastTwoDaysAt: "gestern um",
+  },
+};
+
 /**
  * @param {Date} date - The date to be formatted.
  * @example "2022-05-23T00:00:00.000Z" -> "23 марта ?2022"
  * @return {string} The formatted time string.
  */
-export const formattedTimeString = (date: Date): string => {
+export const formattedTimeString = (date: Date, language: LanguageType): string => {
   const today = new Date();
   const dateValue = new Date(date);
   const daysDifference = differenceInCalendarDays(today, dateValue);
 
   let timeString = "";
   if (daysDifference === 0) {
-    timeString = date.getHours() ? "сегодня в" : "сегодня";
+    timeString = date.getHours()
+      ? formattedTimeStringConfig[language].lastDayAt
+      : formattedTimeStringConfig[language].lastDay;
   } else if (daysDifference === 1) {
-    timeString = date.getHours() ? "вчера в" : "вчера";
+    timeString = date.getHours()
+      ? formattedTimeStringConfig[language].lastTwoDaysAt
+      : formattedTimeStringConfig[language].lastTwoDays;
   } else {
-    timeString = getDayMonthYear(date);
+    timeString = getDayMonthYear(date, language);
   }
 
-  const formattedTime = `${timeString} ${date.getHours() ? format(date, "H:mm") : ""}`;
+  const formattedTime = `${timeString} ${date.getHours() ? format(date, "H:mm", { locale: getLocale(language) }) : ""}`;
   return formattedTime;
 };
 

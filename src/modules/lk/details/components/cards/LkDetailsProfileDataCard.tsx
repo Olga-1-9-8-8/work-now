@@ -58,11 +58,11 @@ export const LkDetailsProfileDataCard = ({ profile, isLoading }: LkDetailsProfil
             >
               <div className="flex gap-6 p-2">
                 <RadioGroupItemWithLabel
-                  label={`${getGenderTitle("male", language as LanguageType).slice(0, 3)}.`}
+                  label={`${getGenderTitle(language as LanguageType, "male").slice(0, 3)}.`}
                   value="male"
                 />
                 <RadioGroupItemWithLabel
-                  label={`${getGenderTitle("female", language as LanguageType).slice(0, 3)}.`}
+                  label={`${getGenderTitle(language as LanguageType, "female").slice(0, 3)}.`}
                   value="female"
                 />
               </div>

@@ -22,5 +22,5 @@ export const genderTypes = ["female", "male", "_not_set"] as const;
 
 export type GenderType = (typeof genderTypes)[number];
 
-export const getGenderTitle = (value: GenderType, language: LanguageType) =>
+export const getGenderTitle = (language: LanguageType, value: GenderType = "_not_set") =>
   titles[value][language];

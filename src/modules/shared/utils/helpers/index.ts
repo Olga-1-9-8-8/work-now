@@ -1,19 +1,10 @@
-export { formatCurrency } from "./currencyHelper";
-
 export { createEmptyArray } from "./arrayHelper";
-
-export { formatPhoneNumber, maskPhoneNumber } from "./phoneHelper";
-
+export { formatCurrency } from "./currencyHelper";
 export {
   formattedTimeString,
   getDateFromUrlString,
   getDayMonthYear,
   parseDateFromString,
 } from "./dateHelper";
-
-export {
-  capitalizeFirstLetter,
-  getRightNounWordDeclension,
-  getRightNounYearDeclension,
-  truncateText,
-} from "./textHelper";
+export { formatPhoneNumber, maskPhoneNumber } from "./phoneHelper";
+export { capitalizeFirstLetter, getRightNounWordDeclension, truncateText } from "./textHelper";

@@ -64,8 +64,8 @@ export const LkDetailsForm = ({ profile, onModalClose }: LkDetailsFormProps) => 
               name="gender"
               disabled={isUpdatingUser}
               options={[
-                { value: "male", title: getGenderTitle("male", language as LanguageType) },
-                { value: "female", title: getGenderTitle("female", language as LanguageType) },
+                { value: "male", title: getGenderTitle(language as LanguageType, "male") },
+                { value: "female", title: getGenderTitle(language as LanguageType, "female") },
               ]}
             />
             <FormInputOptField label={t("lk.details.form.age")} name="age" maxLength={2} />
