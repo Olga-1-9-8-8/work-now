@@ -153,6 +153,24 @@
     },
     "notSpecified": "Not specified",
     "created": "Created",
-    "updated": "Updated"
+    "updated": "Updated",
+    "map": {
+      "title": "Map",
+      "tooltip": "View on map"
+    },
+    "search": {
+      "card": {
+        "views": {
+          "notSpecified": "No views",
+          "count_one": "{{count}} view",
+          "count_other": "{{count}} views"
+        },
+        "applies": {
+          "notSpecified": "No applies",
+          "count_one": "{{count}} apply",
+          "count_other": "{{count}} applies"
+        }
+      }
+    }
   }
 }

@@ -1,1 +1,1 @@
-export { SearchBar } from "./components/SearchBar";
+export { DebouncedSearchInput } from "./components/DebouncedSearchInput";

@@ -153,6 +153,24 @@
     },
     "notSpecified": "Nicht angegeben",
     "created": "Erstellt",
-    "updated": "Aktualisiert"
+    "updated": "Aktualisiert",
+    "map": {
+      "title": "Karte",
+      "tooltip": "Auf der Karte anzeigen"
+    },
+    "search": {
+      "card": {
+        "views": {
+          "notSpecified": "Keine Ansichten",
+          "count_one": "{{count}} Ansicht",
+          "count_other": "{{count}} Ansichten"
+        },
+        "applies": {
+          "notSpecified": "Keine Antworten",
+          "count_one": "{{count}} Antwort",
+          "count_other": "{{count}} Antworten"
+        }
+      }
+    }
   }
 }

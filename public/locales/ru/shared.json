@@ -171,6 +171,28 @@
     },
     "notSpecified": "Не указан",
     "created": "Создано",
-    "updated": "Обновлено"
+    "updated": "Обновлено",
+    "map": {
+      "title": "Карта",
+      "tooltip": "Посмотреть на карте"
+    },
+    "search": {
+      "card": {
+        "views": {
+          "notSpecified": "Нет просмотров",
+          "count_one": "{{count}} просмотр",
+          "count_few": "{{count}} просмотра",
+          "count_many": "{{count}} просмотров",
+          "count_other": "{{count}} просмотров"
+        },
+        "applies": {
+          "notSpecified": "Нет откликов",
+          "count_one": "{{count}} отклик",
+          "count_few": "{{count}} отклика",
+          "count_many": "{{count}} откликов",
+          "count_other": "{{count}} откликов"
+        }
+      }
+    }
   }
 }

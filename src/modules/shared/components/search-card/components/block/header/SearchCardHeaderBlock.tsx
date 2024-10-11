@@ -1,6 +1,7 @@
 import { Building, CalendarDays, ClipboardCheck, EyeIcon, GraduationCap } from "lucide-react";
 import { ReactNode, memo, useState } from "react";
 import { FaCircleChevronDown, FaCircleChevronUp, FaPerson } from "react-icons/fa6";
+import { LanguageType } from "../../../../../configs";
 import { CityType, EducationType, GenderType } from "../../../../../types";
 import { Badge } from "../../../../../ui/badge/Badge";
 import { Button } from "../../../../../ui/buttons/Button";
@@ -16,8 +17,8 @@ import {
   capitalizeFirstLetter,
   formattedTimeString,
   getDayMonthYear,
-  getRightNounWordDeclension,
 } from "../../../../../utils/helpers";
+import { useLanguageSwitcher } from "../../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { Avatar } from "../../../../avatar";
 import { CardItemInsight, CardTitleWithTooltip, getEducationTitle } from "../../../../card";
 import { MapCityBadgeGroup } from "../../../../map";
@@ -32,6 +33,7 @@ interface SearchCardHeaderTitleProps {
 
 export const SearchCardHeaderTitle = memo(
   ({ userName, avatar, position, isHiring }: SearchCardHeaderTitleProps) => {
+    const { t } = useLanguageSwitcher("shared");
     return (
       <div className="flex flex-col items-start gap-4 sm:flex-row">
         <Avatar
@@ -42,7 +44,7 @@ export const SearchCardHeaderTitle = memo(
         />
         <div>
           <CardTitle className="text-xl md:text-2xl">{capitalizeFirstLetter(position)}</CardTitle>
-          <CardTitleWithTooltip title={userName ?? "Аноним"} />
+          <CardTitleWithTooltip title={userName ?? t("shared.anonymous")} />
         </div>
       </div>
     );
@@ -51,7 +53,7 @@ export const SearchCardHeaderTitle = memo(
 
 interface SearchCardHeaderDetailsProps {
   cities?: CityType[];
-  education?: EducationType | string;
+  education?: EducationType;
   creationDate?: Date | null;
   updatedAt?: Date | null;
   age?: string;
@@ -68,13 +70,15 @@ export const SearchCardHeaderDetails = ({
   gender,
   isHiring,
 }: SearchCardHeaderDetailsProps) => {
+  const { t, language } = useLanguageSwitcher("shared");
   return (
     <div className="flex flex-col gap-1">
       <div className="mt-1 flex gap-1">
         {creationDate && (
           <Badge shape="square" variant="secondary" className="font-semibold text-muted-foreground">
-            От {formattedTimeString(creationDate)}{" "}
-            {updatedAt && `/ Обновлено ${formattedTimeString(updatedAt)}`}
+            {t("shared.created")} {formattedTimeString(creationDate, language as LanguageType)}{" "}
+            {updatedAt &&
+              `/ ${t("shared.updated")} ${formattedTimeString(updatedAt, language as LanguageType)}`}
           </Badge>
         )}
       </div>
@@ -84,14 +88,18 @@ export const SearchCardHeaderDetails = ({
         <CardItemInsight
           className="items-center gap-2 text-primary-extraDark"
           icon={GraduationCap}
-          title={getEducationTitle(education)}
+          title={
+            education
+              ? getEducationTitle(education, language as LanguageType)
+              : t("shared.details.card.education.notSpecified")
+          }
         />
       </div>
       {(gender || age) && (
         <CardItemInsight
           className="items-center gap-2 text-primary-extraDark "
           icon={FaPerson}
-          title={getPersonalInfoTitle(age, gender, isHiring)}
+          title={getPersonalInfoTitle(language as LanguageType, t, gender, age, isHiring)}
         />
       )}
     </div>
@@ -108,29 +116,38 @@ export const SearchCardHeaderSideDetails = ({
   applicantsQuantity,
   views,
 }: SearchCardHeaderDatesDetailsProps) => {
+  const { language, t } = useLanguageSwitcher("shared");
+
   return (
     <div className="flex flex-col gap-3">
       <CardItemInsight
         icon={CalendarDays}
-        title="Дата выхода:"
+        title={t("shared.details.card.employment.startDate.title")}
         badges={[
-          { title: employmentStartDate ? getDayMonthYear(employmentStartDate) : "immediately" },
+          {
+            title: employmentStartDate
+              ? getDayMonthYear(employmentStartDate, language as LanguageType)
+              : "immediately",
+          },
         ]}
-        getBadgeData={getBadgeDataByStartDate}
+        getBadgeData={(title) => getBadgeDataByStartDate(language as LanguageType, title)}
       />
       <CardItemInsight
         icon={EyeIcon}
         title={
-          views ? getRightNounWordDeclension(views, "просмотр", ["", "а", "ов"]) : "Нет просмотров"
+          views
+            ? t("shared.search.card.views.count", { count: views })
+            : t("shared.search.card.views.notSpecified")
         }
         className="items-center rounded-lg  md:w-fit xl:w-full"
       />
+
       <CardItemInsight
         icon={ClipboardCheck}
         title={
           applicantsQuantity
-            ? getRightNounWordDeclension(applicantsQuantity, "отклик", ["", "а", "ов"])
-            : "Нет откликов"
+            ? t("shared.search.card.applies.count", { count: views })
+            : t("shared.search.card.applies.notSpecified")
         }
         className={`items-center rounded-lg  md:w-fit xl:w-full `}
       />

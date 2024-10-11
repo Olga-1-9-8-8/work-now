@@ -2,7 +2,6 @@ import { UniversalCardItemType } from "../../../types";
 import { Card } from "../../../ui/card/Card";
 import { TypographyH5 } from "../../../ui/typography/TypographyH5";
 import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
-import { ThirdPartyHtmlComponent } from "../../third-party-html";
 import { SearchCardDetailsBlock } from "./block/SearchCardDetailsBlock";
 import { SearchCardOperationsFooterBlock } from "./block/footer/SearchCardOperationsFooterBlock";
 import { SearchCardHeaderBlock } from "./block/header/SearchCardHeaderBlock";
@@ -77,7 +76,7 @@ export const SearchCard = ({ data, onClick, isHiring = false }: SearchCardProps)
                     : t("shared.details.card.about.candidate")}
                   :
                 </TypographyH5>
-                {isHiring ? <ThirdPartyHtmlComponent markup={about} /> : about}
+                {about}
               </Card>
             }
           />
