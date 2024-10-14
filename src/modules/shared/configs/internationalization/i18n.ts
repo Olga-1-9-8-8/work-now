@@ -7,13 +7,18 @@ i18n
   .use(Backend)
   .use(LanguageDetector)
   .use(initReactI18next)
-
   .init({
-    fallbackLng: "ru",
+    fallbackLng: "en",
     debug: import.meta.env.DEV === true,
     interpolation: {
       escapeValue: false,
     },
+    backend: {
+      loadPath: "/locales/{{lng}}/{{ns}}.json",
+    },
+    ns: ["shared", "home", "lk", "login", "resume", "vacancy", "seo"],
+    defaultNS: "shared",
+    supportedLngs: ["en", "de", "ru"],
   });
 
 // eslint-disable-next-line unicorn/prefer-export-from, import/no-default-export

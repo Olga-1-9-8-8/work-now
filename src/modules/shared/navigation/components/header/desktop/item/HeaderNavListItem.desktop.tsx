@@ -21,7 +21,7 @@ export const HeaderNavListItemDesktop = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a"> & HeaderNavListItemDesktopProps
 >(({ className, title, item, children, ...props }, ref) => {
-  const { language } = useLanguageSwitcher("header");
+  const { language } = useLanguageSwitcher("shared");
   const navigate = useNavigate();
 
   const Icon = item.icon;
