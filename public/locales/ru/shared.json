@@ -192,7 +192,39 @@
           "count_many": "{{count}} откликов",
           "count_other": "{{count}} откликов"
         }
+      },
+      "placeholder": {
+        "position": "Введите должность",
+        "cities": "Укажите регион / город поиска работы",
+        "candidate": "Введите фамилию кандидата",
+        "company": "Введите название компании"
+      },
+      "header": {
+        "button": {
+          "title": {
+            "resume": "Создать новое резюме",
+            "vacancy": "Создать новую вакансию"
+          },
+          "navigate": {
+            "title": {
+              "vacancy": "Назад в список вакансий",
+              "resume": "Назад в cписок резюме"
+            }
+          }
+        },
+        "resume": "{{count}} резюме",
+        "vacancy_one": "{{count}} вакансия",
+        "vacancy_few": "{{count}} вакансии",
+        "vacancy_many": "{{count}} вакансий",
+        "vacancy_other": "{{count}} вакансий",
+        "title": "Найдено"
       }
-    }
+    },
+    "filters": {
+      "hide": "Скрыть фильтры",
+      "show": "Показать еще фильтры"
+    },
+    "resume": "резюме",
+    "vacancy": "вакансий"
   }
 }

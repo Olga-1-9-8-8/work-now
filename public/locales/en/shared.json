@@ -170,7 +170,38 @@
           "count_one": "{{count}} apply",
           "count_other": "{{count}} applies"
         }
+      },
+      "placeholder": {
+        "position": "Enter position",
+        "cities": "Enter desired location",
+        "company": "Enter company name",
+        "candidate": "Enter candidate name"
+      },
+      "header": {
+        "button": {
+          "title": {
+            "resume": "Create a new resume",
+            "vacancy": "Create a new vacancy"
+          },
+          "navigate": {
+            "title": {
+              "resume": "Back to resumes list",
+              "vacancy": "Back to vacancies list"
+            }
+          }
+        },
+        "resume_one": "{{count}} resume",
+        "resume_other": "{{count}} resumes",
+        "vacancy_one": "{{count}} vacancy",
+        "vacancy_other": "{{count}} vacancies",
+        "title": "Found"
       }
-    }
+    },
+    "filters": {
+      "hide": "Hide filters",
+      "show": "Show more filters"
+    },
+    "resume": "resume",
+    "vacancy": "vacancies"
   }
 }

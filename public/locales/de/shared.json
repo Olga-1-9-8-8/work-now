@@ -170,7 +170,38 @@
           "count_one": "{{count}} Antwort",
           "count_other": "{{count}} Antworten"
         }
+      },
+      "placeholder": {
+        "position": "Position eingeben",
+        "cities": "Gewünschten Ort eingeben",
+        "company": "Geben Sie den Firmennamen ein",
+        "candidate": "Geben Sie den Namen des Kandidaten ein"
+      },
+      "header": {
+        "button": {
+          "title": {
+            "resume": "Neues Lebenslauf erstellen",
+            "vacancy": "Eine neue Stelle erstellen"
+          },
+          "navigate": {
+            "title": {
+              "resume": "Zurück zur Lebenslaufliste",
+              "vacancy": "Zurück zur Stellenliste"
+            }
+          }
+        },
+        "resume_one": "{{count}} Lebenslauf",
+        "resume_other": "{{count}} Lebensläufe",
+        "vacancy_one": "{{count}} freie Stelle",
+        "vacancy_other": "{{count}} offene Stellen",
+        "title": "Gefunden"
       }
-    }
+    },
+    "filters": {
+      "hide": "Filter ausblenden",
+      "show": "Weitere Filter anzeigen"
+    },
+    "resume": "Lebensläufe",
+    "vacancy": "offene Stellen"
   }
 }

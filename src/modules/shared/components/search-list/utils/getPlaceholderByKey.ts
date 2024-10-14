@@ -1,13 +1,15 @@
-export const getPlaceholderByKey = (key: string, isHiring: boolean) => {
+export const getPlaceholderByKey = (key: string, isHiring: boolean, t: (key: string) => string) => {
   switch (key) {
     case "position": {
-      return "должность";
+      return t("shared.search.placeholder.position");
     }
     case "cities": {
-      return "город";
+      return t("shared.search.placeholder.cities");
     }
     case "username": {
-      return `${isHiring ? "название компании" : "фамилию кандидата"}`;
+      return isHiring
+        ? t("shared.search.placeholder.company")
+        : t("shared.search.placeholder.candidate");
     }
     default: {
       return "";

@@ -6,7 +6,8 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "../../../../ui/collapsible/Collapsible";
-import { DebouncedSearchInput } from "../../../search-bar/components/DebouncedSearchInput";
+import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { DebouncedSearchInput } from "../../../search-bar";
 import { getPlaceholderByKey } from "../../utils/getPlaceholderByKey";
 
 interface SearchListCollapsibleInputsProps<T extends Record<string, string>> {
@@ -23,6 +24,8 @@ export const SearchListCollapsibleInputs = <T extends Record<string, string>>({
   const [open, setOpen] = useState(false);
   const Icon = open ? FaArrowUp : FaArrowDown;
 
+  const { t } = useLanguageSwitcher("shared");
+
   const hasNonEmptySearchTermsAfterFirst = Object.values(searchTerms)
     .slice(1)
     .some((item) => item.length > 0);
@@ -35,7 +38,7 @@ export const SearchListCollapsibleInputs = <T extends Record<string, string>>({
     <Collapsible className="flex flex-col gap-1 pb-4" open={open} onOpenChange={setOpen}>
       <DebouncedSearchInput
         paramKey="position"
-        placeholder={`Введите ${getPlaceholderByKey("position", isHiring)}`}
+        placeholder={getPlaceholderByKey("position", isHiring, t)}
         defaultSearchTerm={searchTerms.position}
         onSearchTermChange={(value) => onSearchTermChange("position", value)}
         className="m-1"
@@ -48,7 +51,7 @@ export const SearchListCollapsibleInputs = <T extends Record<string, string>>({
             <DebouncedSearchInput
               key={key}
               paramKey={key}
-              placeholder={`Введите ${getPlaceholderByKey(key, isHiring)}`}
+              placeholder={getPlaceholderByKey(key, isHiring, t)}
               defaultSearchTerm={searchTerms[key as keyof typeof searchTerms]}
               onSearchTermChange={(value) => onSearchTermChange(key, value)}
               className="m-1"
@@ -58,7 +61,7 @@ export const SearchListCollapsibleInputs = <T extends Record<string, string>>({
 
       <CollapsibleTrigger asChild>
         <Button variant="secondary" size="sm" className="flex w-full gap-2 text-primary-extraDark ">
-          <span>{open ? "Скрыть фильтры" : "Показать еще фильтры"}</span>
+          <span>{open ? t("shared.filters.hide") : t("shared.filters.show")}</span>
           <Icon className="h-4 w-4 fill-primary-extraDark" />
         </Button>
       </CollapsibleTrigger>
