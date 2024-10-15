@@ -20,6 +20,9 @@ export const useDeleteApply = () => {
         queryKey: ["applies"],
       });
       queryClient.invalidateQueries({
+        queryKey: ["counts"],
+      });
+      queryClient.invalidateQueries({
         queryKey: ["favorites"],
       });
       queryClient.invalidateQueries({

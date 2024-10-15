@@ -210,6 +210,10 @@
       "show": "Weitere Filter anzeigen"
     },
     "resume": "Lebensläufe",
-    "vacancy": "offene Stellen"
+    "vacancy": "offene Stellen",
+    "reset": "Zurücksetzen",
+    "buttons": {
+      "back": "Zurück"
+    }
   }
 }

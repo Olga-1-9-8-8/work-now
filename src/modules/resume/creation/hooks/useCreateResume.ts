@@ -14,6 +14,7 @@ export const useCreateResume = () => {
     onSuccess: ({ position }) => {
       toast.success(t("resume.api.createToastTitle", { position }));
       queryClient.invalidateQueries({ queryKey: ["resumes"] });
+      queryClient.invalidateQueries({ queryKey: ["counts"] });
     },
     onError: (err) => toast.error(err.message),
   });

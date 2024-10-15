@@ -23,6 +23,9 @@ export const useDeleteFavorite = () => {
         queryKey: ["applies"],
       });
       queryClient.invalidateQueries({
+        queryKey: ["counts"],
+      });
+      queryClient.invalidateQueries({
         queryKey: [data?.isCompanyRole ? "resume" : "vacancy", data?.id],
       });
     },

@@ -28,7 +28,7 @@ export const LkCard = ({ data, title }: LkCardProps) => {
     >
       <LkCardHeader data={data} />
       <CardFooter className="flex-col justify-between gap-4 pt-4 lg:flex-row">
-        <div className="w-full">
+        <div className="w-full lg:w-fit">
           <AppliedButton id={data.id} isInApplies={data.isInApplies} />
         </div>
         <CardSocialsButtons phone={data.phone} />

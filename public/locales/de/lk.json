@@ -1,5 +1,8 @@
 {
   "lk": {
+    "api": {
+      "getTotalCountsError": "Fehler beim Laden der Gesamtzählungen aus der Datenbank"
+    },
     "details": {
       "notFound": "Versuchen Sie bitte erneut, sich bei Ihrem Konto anzumelden, oder wenden Sie sich an den technischen Support.",
       "profileDataCard": {

@@ -210,6 +210,10 @@
       "show": "Show more filters"
     },
     "resume": "resume",
-    "vacancy": "vacancies"
+    "vacancy": "vacancies",
+    "reset": "Reset",
+    "buttons": {
+      "back": "Back"
+    }
   }
 }

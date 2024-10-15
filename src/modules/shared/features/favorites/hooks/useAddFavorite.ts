@@ -17,6 +17,9 @@ export const useAddFavorite = () => {
           : t("shared.api.addFavoriteVacancySuccess", { position: data?.position }),
       );
       queryClient.invalidateQueries({
+        queryKey: ["counts"],
+      });
+      queryClient.invalidateQueries({
         queryKey: ["favorites"],
       });
       queryClient.invalidateQueries({

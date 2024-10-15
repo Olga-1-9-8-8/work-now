@@ -1,10 +1,13 @@
 import { useCallback } from "react";
+import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 
 interface SideBarItemButtonResetProps {
   onClick: () => void;
 }
 
 export const SideBarItemButtonReset = ({ onClick }: SideBarItemButtonResetProps) => {
+  const { t } = useLanguageSwitcher("shared");
+
   const handleReset = useCallback(
     (e: React.MouseEvent<HTMLSpanElement> | React.KeyboardEvent<HTMLSpanElement>) => {
       e.stopPropagation();
@@ -25,7 +28,7 @@ export const SideBarItemButtonReset = ({ onClick }: SideBarItemButtonResetProps)
         }
       }}
     >
-      Сбросить
+      {t("shared.reset")}
     </span>
   );
 };

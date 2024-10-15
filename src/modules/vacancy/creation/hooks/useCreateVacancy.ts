@@ -13,6 +13,7 @@ export const useCreateVacancy = () => {
     onSuccess: ({ position }) => {
       toast.success(t("vacancy.api.createToastTitle", { position }));
       queryClient.invalidateQueries({ queryKey: ["vacancies"] });
+      queryClient.invalidateQueries({ queryKey: ["counts"] });
     },
     onError: (err) => toast.error(err.message),
   });

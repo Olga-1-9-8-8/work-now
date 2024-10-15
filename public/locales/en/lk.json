@@ -1,5 +1,8 @@
 {
   "lk": {
+    "api": {
+      "getTotalCountsError": "Error loading total counts from the database"
+    },
     "details": {
       "notFound": "Please try logging into your account again or contact technical support.",
       "profileDataCard": {

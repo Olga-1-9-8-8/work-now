@@ -14,6 +14,9 @@ export const useDeleteVacancy = () => {
       queryClient.invalidateQueries({
         queryKey: ["vacancies"],
       });
+      queryClient.invalidateQueries({
+        queryKey: ["counts"],
+      });
     },
     onError: (err) => toast.error(err.message),
   });

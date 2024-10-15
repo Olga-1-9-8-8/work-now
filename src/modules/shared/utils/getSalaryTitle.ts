@@ -36,7 +36,7 @@ export const getSalaryTitle = (language: LanguageType, salary?: number[]) => {
   }
 
   if (salaryTo) {
-    return `${salaryTitleConfigs[language].from} ${getFormattedSalary(salaryTo, language)}`;
+    return `${salaryTitleConfigs[language].to} ${getFormattedSalary(salaryTo, language)}`;
   }
 
   return salaryTitleConfigs[language].notSpecified;
