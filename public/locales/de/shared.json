@@ -107,6 +107,14 @@
           "count_other": "{{count}} Mal angesehen"
         },
         "operations": {
+          "company": {
+            "apply_one": "{{count}} Unternehmen hat bereits geantwortet",
+            "apply_other": "{{count}} Unternehmen haben bereits geantwortet"
+          },
+          "candidate": {
+            "apply_one": "{{count}} Kandidat hat bereits geantwortet",
+            "apply_other": "{{count}} Kandidaten haben bereits geantwortet"
+          },
           "noApplicants": "Bewerben Sie sich als Erster auf diese Stelle",
           "tooltip": {
             "favorites": {

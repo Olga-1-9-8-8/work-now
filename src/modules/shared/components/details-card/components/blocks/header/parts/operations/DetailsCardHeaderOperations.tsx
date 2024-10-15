@@ -35,8 +35,8 @@ export const DetailsCardHeaderOperations = ({
   const getApplicantsQuantityText = useMemo(() => {
     if (applicantsQuantity === 0) return t("shared.details.card.operations.noApplicants");
     return isHiring
-      ? t("shared.details.card.operations.company.apply", { count: applicantsQuantity })
-      : t("shared.details.card.operations.candidate.apply", { count: applicantsQuantity });
+      ? t("shared.details.card.operations.candidate.apply", { count: applicantsQuantity })
+      : t("shared.details.card.operations.company.apply", { count: applicantsQuantity });
   }, [applicantsQuantity, isHiring, t]);
 
   return (

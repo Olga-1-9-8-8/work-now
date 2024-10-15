@@ -10,7 +10,7 @@ export const LkHomePage = () => {
         title={t("seo.lkHomePage.title")}
         description={t("seo.lkHomePage.description")}
       />
-      <LkHome />;
+      <LkHome />
     </>
   );
 };

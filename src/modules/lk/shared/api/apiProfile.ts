@@ -1,4 +1,4 @@
-import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagination";
+import { buildPaginationQuery } from "../../../shared/features/filters/server-side/utils/buildPaginationQuery";
 import { supabase } from "../../../shared/services";
 
 export const getProfileResumes = async (page: number, t: (key: string) => string) => {
@@ -18,9 +18,7 @@ export const getProfileResumes = async (page: number, t: (key: string) => string
     .order("updated_at", { ascending: false });
 
   if (page) {
-    const from = (page - 1) * QUANTITY_OF_ITEMS_ON_ONE_PAGE;
-    const to = from + QUANTITY_OF_ITEMS_ON_ONE_PAGE - 1;
-    query = query.range(from, to);
+    query = buildPaginationQuery(page, query);
   }
 
   const { data, error, count } = await query;
@@ -50,9 +48,7 @@ export const getProfileVacancies = async (page: number, t: (key: string) => stri
     .order("updated_at", { ascending: false });
 
   if (page) {
-    const from = (page - 1) * QUANTITY_OF_ITEMS_ON_ONE_PAGE;
-    const to = from + QUANTITY_OF_ITEMS_ON_ONE_PAGE - 1;
-    query = query.range(from, to);
+    query = buildPaginationQuery(page, query);
   }
 
   const { data, error, count } = await query;

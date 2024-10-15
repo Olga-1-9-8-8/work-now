@@ -41,7 +41,7 @@ export const AgeBarChart = ({ items, numDays, title, description, isLoading }: L
             tickLine={{ stroke: colors.primary.dark }}
           />
           <YAxis
-            unit={` ${t("home.chart.age.unit")}`}
+            unit={` ${t("home.charts.age.unit")}`}
             tick={{ fill: colors.primary.dark, fontSize: 14 }}
             tickLine={{ stroke: colors.primary.dark }}
           />

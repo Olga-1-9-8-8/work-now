@@ -47,7 +47,7 @@
         "description": "The average maximum/minimum/average salary per day is indicated for all resumes"
       },
       "gender": {
-        "title": "Gender Ratio in Published CVs for the last"
+        "title": "Gender Ratio in Published Resumes for the last"
       },
       "age": {
         "title": "Average age of candidates in published resumes for the last",

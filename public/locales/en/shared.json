@@ -107,6 +107,14 @@
           "count_other": "Viewed {{count}} times"
         },
         "operations": {
+          "company": {
+            "apply_one": "{{count}} company has already applied",
+            "apply_other": "{{count}} companies have already applied"
+          },
+          "candidate": {
+            "apply_one": "{{count}} candidate has already applied",
+            "apply_other": "{{count}} candidates has already applied"
+          },
           "noApplicants": "Be the first to apply to this vacancy",
           "tooltip": {
             "favorites": {

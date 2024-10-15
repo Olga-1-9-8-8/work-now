@@ -37,7 +37,7 @@ export const LkDetailsDeleteAccountCard = ({ isLoading }: LkDetailsDeleteAccount
             }
             title={t("lk.details.deleteAccountCard.title")}
           >
-            <DeleteConfirmation title="аккаунт" onDelete={deleteAccount} />
+            <DeleteConfirmation title={t("lk.account")} onDelete={deleteAccount} />
           </DrawerDialogResponsive>
         </div>
       </section>

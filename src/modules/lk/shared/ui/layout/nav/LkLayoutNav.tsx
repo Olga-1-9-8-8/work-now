@@ -10,13 +10,11 @@ import {
   NavigationMenuList,
 } from "../../../../../shared/ui/nav-menu/NavigationMenu";
 import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
-import { useLkCountsContext } from "../../../context/LkCountsProvider";
-import { getTotalCount } from "../../../utils/getTotalCount";
+import { getContext } from "../../../utils/getContext";
 
 export const LkLayoutNav = () => {
   const isMobile = useResponsiveContext();
   const { role } = useAuthContext();
-  const totalCounts = useLkCountsContext();
 
   const { language } = useLanguageSwitcher("lk");
 
@@ -26,6 +24,7 @@ export const LkLayoutNav = () => {
         <NavigationMenuList>
           {lkNavConfig.map((i, index) => {
             if (i.role !== role && i.role !== UserEntity.All) return null;
+            const context = getContext(i.value);
 
             return (
               // eslint-disable-next-line react/no-array-index-key
@@ -35,7 +34,7 @@ export const LkLayoutNav = () => {
                   to={i.href}
                   title={isMobile ? undefined : i.title[language as LanguageType]}
                   icon={i.icon}
-                  totalCount={getTotalCount(i.value, totalCounts)}
+                  totalCount={context?.totalCount}
                 />
               </NavigationMenuItem>
             );

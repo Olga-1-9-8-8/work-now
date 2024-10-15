@@ -1,8 +1,8 @@
 import { getApply, getAvatar, ResumeWithProfileApiTypeInput } from "../../../api";
 import { VacancyWithProfileApiTypeInput } from "../../../api/types/VacancyApiType";
-import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../components/pagination";
 import { supabase } from "../../../services/api/supabase";
 import { UserEntity } from "../../../types";
+import { buildPaginationQuery } from "../../filters/server-side/utils/buildPaginationQuery";
 
 const processItemsWithFavoriteApplyStatusAndDownloadAvatar = async <
   T extends ResumeWithProfileApiTypeInput | VacancyWithProfileApiTypeInput | null,
@@ -48,9 +48,7 @@ export const getFavorites = async (page: number, t: (key: string) => string) => 
     .order("created_at", { ascending: false });
 
   if (page) {
-    const from = (page - 1) * QUANTITY_OF_ITEMS_ON_ONE_PAGE;
-    const to = from + QUANTITY_OF_ITEMS_ON_ONE_PAGE - 1;
-    query = query.range(from, to);
+    query = buildPaginationQuery(page, query);
   }
 
   const { data, error, count } = await query;

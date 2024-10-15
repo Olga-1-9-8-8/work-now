@@ -10,7 +10,7 @@ export const LkDetailsPage = () => {
         title={t("seo.lkDetailsPage.title")}
         description={t("seo.lkDetailsPage.description")}
       />
-      <LkDetails />;
+      <LkDetails />
     </>
   );
 };

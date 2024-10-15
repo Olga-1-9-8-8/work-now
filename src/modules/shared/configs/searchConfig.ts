@@ -1305,10 +1305,6 @@ export const searchConfig: SearchConfigItems = {
           value: "blogger",
         },
         {
-          title: "Designer",
-          value: "designer",
-        },
-        {
           title: "Photographer",
           value: "photographer",
         },
@@ -1431,10 +1427,6 @@ export const searchConfig: SearchConfigItems = {
         {
           title: "Mobile Developer",
           value: "mobile developer",
-        },
-        {
-          title: "Tester",
-          value: "tester",
         },
         {
           title: "Cybersecurity Specialist",
@@ -1972,10 +1964,6 @@ export const searchConfig: SearchConfigItems = {
         {
           title: "Charlottetown",
           value: "charlottetown",
-        },
-        {
-          title: "Lethbridge",
-          value: "lethbridge",
         },
         {
           title: "Bunbury",
@@ -2547,10 +2535,6 @@ export const searchConfig: SearchConfigItems = {
           value: "blogger",
         },
         {
-          title: "Designer",
-          value: "designer",
-        },
-        {
           title: "Fotograf",
           value: "fotograf",
         },
@@ -2642,10 +2626,6 @@ export const searchConfig: SearchConfigItems = {
           value: "kreditanalyst",
         },
         {
-          title: "Prüfer",
-          value: "prüfer",
-        },
-        {
           title: "Spezialist für interne Kontrolle",
           value: "spezialist für interne kontrolle",
         },
@@ -2676,10 +2656,6 @@ export const searchConfig: SearchConfigItems = {
         {
           title: "Mobiler Entwickler",
           value: "mobiler entwickler",
-        },
-        {
-          title: "Tester",
-          value: "tester",
         },
         {
           title: "Cybersecurity-Spezialist",
@@ -3087,10 +3063,6 @@ export const searchConfig: SearchConfigItems = {
           value: "lugano",
         },
         {
-          title: "Biel/Bienne",
-          value: "biel-bienne",
-        },
-        {
           title: "Uster",
           value: "uster",
         },
@@ -3125,14 +3097,6 @@ export const searchConfig: SearchConfigItems = {
         {
           title: "Innsbruck",
           value: "innsbruck",
-        },
-        {
-          title: "St. Gallen",
-          value: "st-gallen",
-        },
-        {
-          title: "Lausanne",
-          value: "lausanne",
         },
         {
           title: "Biel/Bienne",
@@ -3223,10 +3187,6 @@ export const searchConfig: SearchConfigItems = {
           value: "amstetten",
         },
         {
-          title: "Traun",
-          value: "traun",
-        },
-        {
           title: "Mödling",
           value: "moedling",
         },
@@ -3235,24 +3195,12 @@ export const searchConfig: SearchConfigItems = {
           value: "lustenau",
         },
         {
-          title: "Hallein",
-          value: "hallein",
-        },
-        {
           title: "Neunkirchen",
           value: "neunkirchen",
         },
         {
           title: "Steyr",
           value: "steyr",
-        },
-        {
-          title: "Feldkirch",
-          value: "feldkirch",
-        },
-        {
-          title: "Bregenz",
-          value: "bregenz",
         },
         {
           title: "Wolfsberg",
@@ -3267,20 +3215,8 @@ export const searchConfig: SearchConfigItems = {
           value: "klosterneuburg",
         },
         {
-          title: "Leoben",
-          value: "leoben",
-        },
-        {
           title: "Traun",
           value: "traun",
-        },
-        {
-          title: "Krems an der Donau",
-          value: "krems-an-der-donau",
-        },
-        {
-          title: "Amstetten",
-          value: "amstetten",
         },
         {
           title: "Leonding",
@@ -3289,14 +3225,6 @@ export const searchConfig: SearchConfigItems = {
         {
           title: "Kapfenberg",
           value: "kapfenberg",
-        },
-        {
-          title: "Mödling",
-          value: "moedling",
-        },
-        {
-          title: "Lustenau",
-          value: "lustenau",
         },
         {
           title: "Hallein",
@@ -3367,24 +3295,8 @@ export const searchConfig: SearchConfigItems = {
           value: "gmunden",
         },
         {
-          title: "Hallein",
-          value: "hallein",
-        },
-        {
-          title: "Krems an der Donau",
-          value: "krems-an-der-donau",
-        },
-        {
-          title: "Linz",
-          value: "linz",
-        },
-        {
           title: "Mistelbach",
           value: "mistelbach",
-        },
-        {
-          title: "Neunkirchen",
-          value: "neunkirchen",
         },
         {
           title: "Pöchlarn",
@@ -3413,10 +3325,6 @@ export const searchConfig: SearchConfigItems = {
         {
           title: "Vöcklabruck",
           value: "voecklabruck",
-        },
-        {
-          title: "Wels",
-          value: "wels",
         },
         {
           title: "Zeltweg",
@@ -3601,10 +3509,6 @@ export const searchConfig: SearchConfigItems = {
           value: "thyssenkrupp",
         },
         {
-          title: "Freenet AG",
-          value: "freenet",
-        },
-        {
           title: "KION Group AG",
           value: "kion",
         },
@@ -3639,10 +3543,6 @@ export const searchConfig: SearchConfigItems = {
         {
           title: "Beiersdorf AG",
           value: "beiersdorf",
-        },
-        {
-          title: "Freenet AG",
-          value: "freenet",
         },
         {
           title: "Schaeffler AG",

@@ -47,7 +47,7 @@
       "list": {
         "title": "In Ihren Favoriten",
         "notFoundTitle": "Keine Artikel in den Favoriten gefunden",
-        "notExistTitle": "Sie haben Ihren Favoriten keine Artikel hinzugefügt"
+        "notExistTitle": "Du hast noch keine Favoriten gespeichert"
       },
       "title": "Favoriten"
     },
@@ -133,6 +133,7 @@
     },
     "noData": "Daten nicht gefunden",
     "noViews": "Keine Ansichten",
-    "noApplies": "Keine antworten"
+    "noApplies": "Keine antworten",
+    "account": "Konto"
   }
 }
