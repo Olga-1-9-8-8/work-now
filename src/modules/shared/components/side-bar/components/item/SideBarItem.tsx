@@ -10,6 +10,7 @@ import {
 } from "../../../../ui/accordion/Accordion";
 import { MultiSelect } from "../../../../ui/form-control/select/multi/MultiSelect";
 import { TypographyH6 } from "../../../../ui/typography/TypographyH6";
+import { capitalizeFirstLetter } from "../../../../utils/helpers";
 import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { SideBarItemButtonReset } from "../button/SideBarItemButton";
 
@@ -50,7 +51,16 @@ export const SideBarItem = ({
       setCanShow(selectedValues.length > 0);
       setParam(value, selectedValuesString);
       setParam("offset", "1");
-      onSearchTermChange?.(selectedValuesString);
+      onSearchTermChange?.(
+        selectedValues
+          .map((i) =>
+            i
+              .split(" ")
+              .map((part) => capitalizeFirstLetter(part))
+              .join(" "),
+          )
+          .join(", "),
+      );
     },
     [onSearchTermChange, setParam, value],
   );

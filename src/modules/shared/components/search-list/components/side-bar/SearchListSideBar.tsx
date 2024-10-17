@@ -1,5 +1,6 @@
+import { useCallback } from "react";
 import { useResponsiveContext } from "../../../../responsive";
-import { UniversalItemType } from "../../../../types";
+import { UniversalItemType, UniversalItemsWithTitleType } from "../../../../types";
 import { SideBar } from "../../../side-bar";
 import { SideBarItem } from "../../../side-bar/components/item/SideBarItem";
 
@@ -15,21 +16,30 @@ export const SearchListSideBar = <T extends Record<string, string>>({
   onSearchTermChange,
 }: SearchListSideBarProps<T>) => {
   const isMobile = useResponsiveContext();
-  if (isMobile) return null;
 
-  return (
-    <SideBar
-      isHiring={isHiring}
-      render={(key, item) => (
+  const renderSideBarItem = useCallback(
+    (key: string, item: UniversalItemsWithTitleType) => {
+      const formattedValue = searchTerms[key]
+        .trim()
+        .split(",")
+        .map((i) => i.trim())
+        .join(",")
+        .toLowerCase();
+
+      return (
         <SideBarItem
           key={key}
           value={key}
           title={item.title}
           items={item.items as Required<UniversalItemType<string>>[]}
-          defaultSearchTerm={searchTerms[key as keyof T]}
+          defaultSearchTerm={formattedValue}
           onSearchTermChange={(value) => onSearchTermChange(key, value)}
         />
-      )}
-    />
+      );
+    },
+    [onSearchTermChange, searchTerms],
   );
+
+  if (isMobile) return null;
+  return <SideBar isHiring={isHiring} render={renderSideBarItem} />;
 };

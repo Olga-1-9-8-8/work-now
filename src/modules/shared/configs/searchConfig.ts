@@ -2028,12 +2028,8 @@ export const searchConfig: SearchConfigItems = {
           value: "coca-cola",
         },
         {
-          title: "Johnson & Johnson",
-          value: "johnson & johnson",
-        },
-        {
-          title: "Procter & Gamble",
-          value: "procter & gamble",
+          title: "Procter and Gamble",
+          value: "procter and gamble",
         },
         {
           title: "Unilever",
@@ -2104,8 +2100,8 @@ export const searchConfig: SearchConfigItems = {
           value: "walt disney",
         },
         {
-          title: "AT&T",
-          value: "at&t",
+          title: "ATT",
+          value: "att",
         },
         {
           title: "Cisco Systems",
@@ -2136,8 +2132,8 @@ export const searchConfig: SearchConfigItems = {
           value: "airbus",
         },
         {
-          title: "Bain & Company",
-          value: "bain & company",
+          title: "Bain and Company",
+          value: "bain and company",
         },
         {
           title: "Atlassian",
@@ -3621,7 +3617,7 @@ export const searchConfig: SearchConfigItems = {
           value: "ceratizit",
         },
         {
-          title: "P&TLuxembourg",
+          title: "PTLuxembourg",
           value: "ptluxembourg",
         },
         {

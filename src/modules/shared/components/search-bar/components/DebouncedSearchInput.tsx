@@ -26,7 +26,14 @@ export const DebouncedSearchInput = ({
   const debouncedSearchTerm = useDebounce(defaultSearchTerm, debounceDelay);
 
   useEffect(() => {
-    setParam(paramKey, debouncedSearchTerm);
+    const formattedValue = debouncedSearchTerm
+      .trim()
+      .split(",")
+      .map((i) => i.trim())
+      .join(",")
+      .toLowerCase();
+
+    setParam(paramKey, formattedValue);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearchTerm, paramKey]);
 
