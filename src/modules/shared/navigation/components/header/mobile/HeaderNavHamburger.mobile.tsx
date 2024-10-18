@@ -19,13 +19,13 @@ interface HeaderNavHamburgerMobileProps {
 export const HeaderNavHamburgerMobile = ({ items }: HeaderNavHamburgerMobileProps) => {
   const { language } = useLanguageSwitcher("shared");
   return (
-    <div className="flex items-center gap-8">
+    <div className="flex items-center gap-4">
       <LanguageSwitcherDropdown />
       <NavigationMenu delayDuration={100} className="justify-end">
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="mr-10 sm:mr-5">
-              <Menu size={38} className="text-white" />
+            <NavigationMenuTrigger className="mr-5">
+              <Menu className="h-8 w-8 text-white sm:h-9 sm:w-9" />
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="w-[300px] p-4">

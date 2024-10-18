@@ -5,7 +5,7 @@ const salaryTitleConfigs = {
   ru: {
     from: "от",
     to: "до",
-    notSpecified: "Not specified",
+    notSpecified: "Не указана",
   },
   en: {
     from: "from",

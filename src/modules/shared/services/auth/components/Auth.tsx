@@ -1,11 +1,13 @@
 import { useLocation } from "react-router-dom";
 import { Tabs } from "../../../components/tabs";
+import { useResponsiveContext } from "../../../responsive";
 import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { AuthLoginForm } from "./form/AuthLoginForm";
 import { AuthSignUpForm } from "./form/AuthSignUpForm";
 
 export const Auth = () => {
   const { state } = useLocation();
+  const isMobile = useResponsiveContext();
 
   const { t } = useLanguageSwitcher("login");
   return (
@@ -20,6 +22,7 @@ export const Auth = () => {
       ]}
       defaultValue={state?.tab ?? "login"}
       isFullWidth
+      isShort={isMobile}
     />
   );
 };

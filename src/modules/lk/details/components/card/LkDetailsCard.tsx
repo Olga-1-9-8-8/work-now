@@ -10,7 +10,7 @@ interface LkDetailsCardProps {
 
 export const LkDetailsCard = ({ title, isLoading, children }: LkDetailsCardProps) => {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="xs:gap-6 flex flex-col gap-4">
       <CardTitle>{title}</CardTitle>
       <Card className="w-full">
         <CardContent className="p-10">{isLoading ? <Spinner /> : children}</CardContent>

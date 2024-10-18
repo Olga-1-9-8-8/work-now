@@ -2,6 +2,7 @@ import { ElementType, ReactElement } from "react";
 import { Button } from "../../../../../../shared/ui/buttons/Button";
 import { DrawerDialogResponsive } from "../../../../../../shared/ui/drawer-dialog/DrawerDialogResponsive";
 import { Tooltip } from "../../../../../../shared/ui/tooltip/Tooltip";
+import { cn } from "../../../../../../shared/utils";
 import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { getModalTitle } from "../../../../utils/getModalTitle";
 
@@ -11,6 +12,7 @@ interface LkItemCardContentItemProps {
   isHiring: boolean;
   count?: number;
   children: ReactElement;
+  className?: string;
 }
 
 export const LkItemCardContentItem = ({
@@ -19,6 +21,7 @@ export const LkItemCardContentItem = ({
   count,
   isHiring,
   children,
+  className,
 }: LkItemCardContentItemProps) => {
   const { t } = useLanguageSwitcher("lk");
   return (
@@ -26,11 +29,14 @@ export const LkItemCardContentItem = ({
       button={
         <Button
           variant="link"
-          className={`${!count && "pointer-events-none"} m-0 flex gap-2 p-0 text-sm font-semibold text-dark`}
+          className={cn(
+            `${!count && "pointer-events-none"} m-0 flex max-w-32 gap-2 p-0 text-sm font-semibold text-dark sm:max-w-fit`,
+            className,
+          )}
         >
           <Icon size={20} className="stroke-primary-extraDark" />
           <Tooltip content={t("lk.card.content.tooltip")}>
-            <span>
+            <span className="truncate">
               {count
                 ? variant === "view"
                   ? t("lk.card.views.description", { count })

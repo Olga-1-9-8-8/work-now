@@ -40,8 +40,8 @@ export const LkItemCardHeader = ({
             title: `${t("lk.card.backButtonTitle")} ${isCompany ? t("lk.vacancies.title") : t("lk.resumes.title")}`,
           }}
         >
-          <CardTitle className="text-primary-extraDark">
-            {truncateText(position, isMobile ? 26 : 70)}
+          <CardTitle className="text-lg text-primary-extraDark sm:text-xl">
+            {truncateText(position, isMobile ? 27 : 70)}
           </CardTitle>
         </Link>
 
@@ -49,12 +49,12 @@ export const LkItemCardHeader = ({
           {getSalaryTitle(language as LanguageType, salary)}
         </Badge>
       </div>
-      <div className="flex gap-4">
-        <CardDescription>
+      <div className="flex flex-wrap gap-2">
+        <CardDescription className="font-medium">
           {t("lk.card.description")} {formattedTimeString(creationDate, language as LanguageType)}
         </CardDescription>
         {updatedDate && (
-          <CardDescription>
+          <CardDescription className="mr-6 font-medium">
             {t("lk.card.updated")} {formattedTimeString(updatedDate, language as LanguageType)}
           </CardDescription>
         )}

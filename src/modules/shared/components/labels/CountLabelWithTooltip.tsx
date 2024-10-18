@@ -31,7 +31,9 @@ export const CountLabelWithTooltip = <T,>({
       }
       className={cn("min-w-20", className)}
     >
-      <div className={`flex items-center gap-1 ${items.length > 1 && "hover:opacity-85"}`}>
+      <div
+        className={`flex items-center gap-1 text-wrap ${items.length > 1 && "hover:opacity-85"}`}
+      >
         {title}
         {items.length > 1 && (
           <div

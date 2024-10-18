@@ -51,6 +51,7 @@ export const LkDetailsProfileDataCard = ({ profile, isLoading }: LkDetailsProfil
           </div>
           {profile.role === UserEntity.Person && (
             <RadioGroupWithLabel
+              className="flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-0"
               label={t("lk.details.profileDataCard.gender")}
               disabled={isUpdatingUser}
               value={profile.gender}

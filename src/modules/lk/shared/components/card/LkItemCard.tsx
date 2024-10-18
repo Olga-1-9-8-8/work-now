@@ -28,7 +28,7 @@ export const LkItemCard = ({
 }: LkItemCardProps) => {
   const { t } = useLanguageSwitcher("lk");
   return (
-    <Card className="start flex flex-row items-stretch justify-between gap-4 p-5 md:flex-col ">
+    <Card className="start relative flex flex-row items-stretch justify-between gap-4 p-5 md:flex-col">
       <div className="flex flex-col gap-2">
         <LkItemCardHeader
           position={item.position}

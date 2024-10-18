@@ -29,14 +29,14 @@ export const FormRadioGroup = <T extends FieldValues>({
               disabled={disabled}
               onValueChange={field.onChange}
               defaultValue={field.value}
-              className="flex space-x-1"
+              className="flex flex-col sm:flex-row sm:space-x-1"
             >
               {options.map(({ value, title }) => (
                 <FormItem key={value} className="flex items-center space-x-3 space-y-0">
                   <FormControl>
                     <RadioGroupItem value={value} />
                   </FormControl>
-                  <FormLabel className="text-lg">{title}</FormLabel>
+                  <FormLabel className="text-sm">{title}</FormLabel>
                 </FormItem>
               ))}
             </RadioGroup>

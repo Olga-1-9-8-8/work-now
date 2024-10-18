@@ -10,7 +10,7 @@ const ResumeCreationPage = () => {
         title={t("seo.resumeCreationPage.title")}
         description={t("seo.resumeCreationPage.description")}
       />
-      <ResumeCreation />;
+      <ResumeCreation />
     </>
   );
 };

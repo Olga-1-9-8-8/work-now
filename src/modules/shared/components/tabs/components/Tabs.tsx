@@ -10,15 +10,16 @@ interface TabsProps {
   defaultValue?: string;
   className?: string;
   isFullWidth?: boolean;
+  isShort?: boolean;
 }
 
-export const Tabs = ({ tabs, defaultValue, isFullWidth, className }: TabsProps) => {
+export const Tabs = ({ tabs, defaultValue, isFullWidth, isShort, className }: TabsProps) => {
   return (
     <TabsBase defaultValue={defaultValue} className={cn("space-y-4", className)}>
       <TabsList className={`${isFullWidth && "w-full"}`}>
         {tabs.map(({ title, value }) => (
           <TabsTrigger className={`${isFullWidth && "grow"} font-bold`} key={value} value={value}>
-            {title}
+            {isShort ? title.split(" ")[0] : title}
           </TabsTrigger>
         ))}
       </TabsList>

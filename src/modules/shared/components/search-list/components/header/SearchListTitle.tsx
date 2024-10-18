@@ -15,7 +15,7 @@ export const SearchListTitle = ({ title }: SearchListTitleProps) => {
     .filter((filter) => filter !== null);
 
   return (
-    <h2 className="flex flex-col flex-wrap gap-2 text-nowrap text-xl font-semibold md:flex-row">
+    <h2 className="flex w-full flex-col flex-wrap gap-2 overflow-hidden text-nowrap text-xl font-semibold md:flex-row">
       {title}
       <div className="flex flex-row flex-wrap gap-1 text-lg text-primary-extraDark lg:text-xl">
         {filters.length > 0 &&

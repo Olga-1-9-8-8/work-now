@@ -7,12 +7,14 @@ interface LkItemCardContentApplicantsProps {
   id: number;
   isHiring: boolean;
   applicantsQuantity?: number;
+  className?: string;
 }
 
 export const LkItemCardContentApplicants = ({
   id,
   applicantsQuantity,
   isHiring,
+  className,
 }: LkItemCardContentApplicantsProps) => {
   const { appliesData, isAppliesLoading } = useUserApplies(id, isHiring);
 
@@ -22,6 +24,7 @@ export const LkItemCardContentApplicants = ({
       icon={Mail}
       count={applicantsQuantity}
       isHiring={isHiring}
+      className={className}
     >
       <LkItemCardContentItemModal data={appliesData} isLoading={isAppliesLoading} />
     </LkItemCardContentItem>

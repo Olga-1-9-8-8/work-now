@@ -1,10 +1,12 @@
 import { Tabs } from "../../../shared/components/tabs";
+import { useResponsiveContext } from "../../../shared/responsive";
 import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { HomeChartsOverview } from "./overview/HomeChartsOverview";
 import { HomeChartsPricing } from "./pricing/HomeChartsPricing";
 
 export const HomeCharts = () => {
   const { t } = useLanguageSwitcher("home");
+  const isMobile = useResponsiveContext();
   return (
     <Tabs
       tabs={[
@@ -20,6 +22,8 @@ export const HomeCharts = () => {
         },
       ]}
       defaultValue="overview"
+      isFullWidth={isMobile}
+      isShort={isMobile}
     />
   );
 };

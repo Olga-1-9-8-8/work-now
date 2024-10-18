@@ -15,10 +15,10 @@ interface HomeDetailsCardProps {
 
 export const HomeDetailsCard = ({ title, description, children }: HomeDetailsCardProps) => {
   return (
-    <Card className="flex w-[400px] flex-col justify-between pb-5 pt-2 md:w-[600px] lg:w-[500px]">
+    <Card className="flex flex-col justify-between pb-5 pt-2 md:w-[700px] xl:w-[500px]">
       <div>
         <CardHeader>
-          <CardTitle>{title}</CardTitle>
+          <CardTitle className="text-xl">{title}</CardTitle>
           {description && <CardDescription>{description}</CardDescription>}
         </CardHeader>
         <CardContent>{children}</CardContent>

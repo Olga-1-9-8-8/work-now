@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { LanguageType, currencyConfigs, homeInfoPricingConfig } from "../../../../shared/configs";
 import { useUser } from "../../../../shared/services/auth";
 import { Button } from "../../../../shared/ui/buttons/Button";
+import { TypographyH3 } from "../../../../shared/ui/typography/TypographyH3";
 import { formatCurrency } from "../../../../shared/utils/helpers";
 import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { HomeChartsPricingItem } from "./item/HomeChartsPricingItem";
@@ -36,21 +37,19 @@ export const HomeChartsPricing = () => {
         </div>
         <div className="flex flex-col gap-4 text-center">
           <div>
-            <h4 className="text-7xl font-bold">
+            <TypographyH3 className="text-3xl font-bold sm:text-4xl">
               {formatCurrency(
                 import.meta.env.VITE_PRICE_PER_MONTH,
                 language,
                 currencyConfigs[language as LanguageType].currency,
               )}
-            </h4>
+            </TypographyH3>
             <p className="text-sm font-medium text-muted-foreground">
               {t("home.charts.pricing.price")}
             </p>
           </div>
           {!isAuthenticated && (
-            <Button onClick={handleClick} size="lg">
-              {t("home.charts.pricing.btnTitle")}
-            </Button>
+            <Button onClick={handleClick}>{t("home.charts.pricing.btnTitle")}</Button>
           )}
         </div>
       </div>

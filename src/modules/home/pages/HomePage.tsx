@@ -8,7 +8,7 @@ export const HomePage = () => {
   return (
     <>
       <SeoMetadata title="Work Now" description={t("seo.homePage.description")} />
-      <Home />;
+      <Home />
     </>
   );
 };

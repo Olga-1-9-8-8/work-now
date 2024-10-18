@@ -49,83 +49,87 @@ export const LkItemCardFooterMobile = ({
   const isCompany = role === UserEntity.Company;
   const { t, language } = useLanguageSwitcher("lk");
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="secondary" size="sm">
-          <MoreVertical />
-        </Button>
-      </DropdownMenuTrigger>
+    <div className="absolute right-2 top-2">
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="secondary" size="sm" className="p-2">
+            <MoreVertical size={22} />
+          </Button>
+        </DropdownMenuTrigger>
 
-      <DropdownMenuContent className="w-52">
-        <DropdownMenuItem
-          className="flex cursor-pointer gap-4 "
-          onClick={onDuplicateItem}
-          disabled={isItemDuplicating}
-        >
-          <Copy size={22} className="stroke-primary-extraDark" />
-          <TypographyH6 className="text-primary-extraDark">
-            {t("lk.card.duplicateButton")}
-          </TypographyH6>
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
+        <DropdownMenuContent className="w-52">
+          <DropdownMenuItem
+            className="flex cursor-pointer gap-4 "
+            onClick={onDuplicateItem}
+            disabled={isItemDuplicating}
+          >
+            <Copy size={20} className="stroke-primary-extraDark" />
+            <TypographyH6 className="text-sm text-primary-extraDark">
+              {t("lk.card.duplicateButton")}
+            </TypographyH6>
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
 
-        <Drawer open={open} onOpenChange={setOpen}>
-          <DrawerTrigger asChild>
-            <DropdownMenuItem
-              onSelect={(e) => e.preventDefault()}
-              className="flex cursor-pointer gap-4"
-            >
-              <Pencil size={22} className="stroke-primary-extraDark" />
-              <TypographyH6 className="text-primary-extraDark">
-                {t("lk.card.editButton")}
-              </TypographyH6>
-            </DropdownMenuItem>
-          </DrawerTrigger>
+          <Drawer open={open} onOpenChange={setOpen}>
+            <DrawerTrigger asChild>
+              <DropdownMenuItem
+                onSelect={(e) => e.preventDefault()}
+                className="flex cursor-pointer gap-4"
+              >
+                <Pencil size={20} className="stroke-primary-extraDark" />
+                <TypographyH6 className="text-sm text-primary-extraDark">
+                  {t("lk.card.editButton")}
+                </TypographyH6>
+              </DropdownMenuItem>
+            </DrawerTrigger>
 
-          <DrawerContent>
-            <DrawerHeader>
-              <DrawerTitle>
-                {t("lk.card.editButton")}{" "}
-                {isCompany ? t("lk.card.titleVacancy") : t("lk.card.linkTitleResume")} {position}
-              </DrawerTitle>
-              <DrawerDescription>
-                {t("lk.card.editButtonDescription")}{" "}
-                {formattedTimeString(creationDate, language as LanguageType)}
-              </DrawerDescription>
-            </DrawerHeader>
-            {cloneElement(children, { onModalClose: () => setOpen(false) })}
-          </DrawerContent>
-        </Drawer>
+            <DrawerContent>
+              <DrawerHeader>
+                <DrawerTitle>
+                  {t("lk.card.editButton")}{" "}
+                  {isCompany ? t("lk.card.titleVacancy") : t("lk.card.linkTitleResume")} {position}
+                </DrawerTitle>
+                <DrawerDescription>
+                  {t("lk.card.editButtonDescription")}{" "}
+                  {formattedTimeString(creationDate, language as LanguageType)}
+                </DrawerDescription>
+              </DrawerHeader>
+              {cloneElement(children, { onModalClose: () => setOpen(false) })}
+            </DrawerContent>
+          </Drawer>
 
-        <DropdownMenuSeparator />
+          <DropdownMenuSeparator />
 
-        <Drawer>
-          <DrawerTrigger asChild>
-            <DropdownMenuItem
-              onSelect={(e) => e.preventDefault()}
-              className="flex cursor-pointer gap-4"
-            >
-              <TrashIcon size={22} className="stroke-primary-extraDark" />
-              <TypographyH6 className="text-primary-extraDark">{t("shared.delete")}</TypographyH6>
-            </DropdownMenuItem>
-          </DrawerTrigger>
+          <Drawer>
+            <DrawerTrigger asChild>
+              <DropdownMenuItem
+                onSelect={(e) => e.preventDefault()}
+                className="flex cursor-pointer gap-4"
+              >
+                <TrashIcon size={20} className="stroke-primary-extraDark" />
+                <TypographyH6 className="text-sm  text-primary-extraDark">
+                  {t("lk.card.deleteButton")}
+                </TypographyH6>
+              </DropdownMenuItem>
+            </DrawerTrigger>
 
-          <DrawerContent>
-            <DrawerHeader>
-              <DrawerTitle>
-                {t("lk.card.deleteButton")}{" "}
-                {isCompany ? t("lk.card.linkTitleVacancy") : t("lk.card.linkTitleResume")}{" "}
-                {position}
-              </DrawerTitle>
-            </DrawerHeader>
-            <DeleteConfirmation
-              disabled={isItemDeleting}
-              title={isCompany ? t("lk.card.titleVacancy") : t("lk.card.linkTitleResume")}
-              onDelete={onDeleteItem}
-            />
-          </DrawerContent>
-        </Drawer>
-      </DropdownMenuContent>
-    </DropdownMenu>
+            <DrawerContent>
+              <DrawerHeader>
+                <DrawerTitle>
+                  {t("lk.card.deleteButton")}{" "}
+                  {isCompany ? t("lk.card.linkTitleVacancy") : t("lk.card.linkTitleResume")}{" "}
+                  {position}
+                </DrawerTitle>
+              </DrawerHeader>
+              <DeleteConfirmation
+                disabled={isItemDeleting}
+                title={isCompany ? t("lk.card.titleVacancy") : t("lk.card.linkTitleResume")}
+                onDelete={onDeleteItem}
+              />
+            </DrawerContent>
+          </Drawer>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
   );
 };

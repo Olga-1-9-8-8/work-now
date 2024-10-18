@@ -37,7 +37,7 @@ export const FormSliderField = <T extends FieldValues>({
       render={({ field: { value, onChange } }) => {
         return (
           <FormItem>
-            <FormLabel className="text-lg">{getLabel(value)}</FormLabel>
+            <FormLabel className="text-md">{getLabel(value)}</FormLabel>
             <FormControl>
               <Slider
                 min={min}

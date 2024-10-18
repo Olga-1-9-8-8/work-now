@@ -1,4 +1,5 @@
-import { capitalizeFirstLetter } from "../../../../utils/helpers";
+import { useResponsiveContext } from "../../../../responsive";
+import { capitalizeFirstLetter, truncateText } from "../../../../utils/helpers";
 import { CountLabelWithTooltip } from "../../../labels";
 
 interface SearchListTitleFilterLabelProps {
@@ -6,6 +7,8 @@ interface SearchListTitleFilterLabelProps {
 }
 
 export const SearchListTitleFilterLabel = ({ filter }: SearchListTitleFilterLabelProps) => {
+  const isMobile = useResponsiveContext();
+
   const items = filter
     .split(",")
     .map((item) => item.trim())
@@ -13,7 +16,7 @@ export const SearchListTitleFilterLabel = ({ filter }: SearchListTitleFilterLabe
 
   return (
     <CountLabelWithTooltip
-      title={capitalizeFirstLetter(items[0])}
+      title={truncateText(capitalizeFirstLetter(items[0]), isMobile ? 28 : 55)}
       badgeClassName="bg-primary"
       items={items}
       className="min-w-48"

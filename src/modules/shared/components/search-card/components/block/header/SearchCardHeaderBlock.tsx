@@ -35,7 +35,7 @@ export const SearchCardHeaderTitle = memo(
   ({ userName, avatar, position, isHiring }: SearchCardHeaderTitleProps) => {
     const { t } = useLanguageSwitcher("shared");
     return (
-      <div className="flex flex-col items-start gap-4 sm:flex-row">
+      <div className="flex flex-row items-start gap-4">
         <Avatar
           className="h-16 w-16 border-2"
           icon={isHiring ? Building : undefined}

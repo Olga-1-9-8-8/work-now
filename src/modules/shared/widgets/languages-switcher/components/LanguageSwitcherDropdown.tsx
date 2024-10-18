@@ -27,7 +27,7 @@ export const LanguageSwitcherDropdown = memo(({ ...props }: LanguagesSwitcherBut
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" {...props}>
-            <Globe className="h-6 w-6 stroke-primary-light transition-colors hover:stroke-muted md:h-5 md:w-5" />
+            <Globe className="h-5 w-5 stroke-primary-light transition-colors hover:stroke-muted sm:h-6 sm:w-6 md:h-5 md:w-5" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="min-w-48">

@@ -30,7 +30,7 @@ export const LkLayoutNav = () => {
               // eslint-disable-next-line react/no-array-index-key
               <NavigationMenuItem key={index}>
                 <HeaderNavListItemLink
-                  className="flex-col text-base font-bold text-dark lg:flex-row lg:gap-4"
+                  className="xs:p-3 flex-col p-2 text-base font-bold text-dark lg:flex-row lg:gap-4"
                   to={i.href}
                   title={isMobile ? undefined : i.title[language as LanguageType]}
                   icon={i.icon}
