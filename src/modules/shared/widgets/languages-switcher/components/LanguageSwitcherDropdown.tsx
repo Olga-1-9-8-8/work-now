@@ -5,6 +5,7 @@ import {
   InternationalizationConfig,
   LanguageType,
 } from "../../../configs/internationalization/InternationalizationConfig";
+import { useUrl } from "../../../hooks";
 import { Button, buttonVariants } from "../../../ui/buttons/Button";
 import {
   DropdownMenu,
@@ -20,7 +21,14 @@ interface LanguagesSwitcherButtonProps
     VariantProps<typeof buttonVariants> {}
 
 export const LanguageSwitcherDropdown = memo(({ ...props }: LanguagesSwitcherButtonProps) => {
+  const { clearAllParams } = useUrl();
+
   const { changeLanguage, language } = useLanguageSwitcher("shared");
+
+  const handleChangeLanguage = (value: string) => {
+    changeLanguage(value);
+    clearAllParams();
+  };
 
   return (
     <div>
@@ -31,7 +39,7 @@ export const LanguageSwitcherDropdown = memo(({ ...props }: LanguagesSwitcherBut
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="min-w-48">
-          <DropdownMenuRadioGroup value={language} onValueChange={changeLanguage}>
+          <DropdownMenuRadioGroup value={language} onValueChange={handleChangeLanguage}>
             {InternationalizationConfig.map((item) => (
               <DropdownMenuRadioItem
                 className="text-sm font-medium text-primary-dark"

@@ -31,7 +31,7 @@ export const HomeChartsOverviewToggles = () => {
       variant="primary"
       type="single"
       options={toggleOptions[language as LanguageType]}
-      defaultValue={getParam("last") ?? DEFAULT_LAST_DAYS}
+      value={getParam("last") ?? DEFAULT_LAST_DAYS}
       onValueChange={handleLastValueChange}
     />
   );

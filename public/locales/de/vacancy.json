@@ -10,7 +10,7 @@
           "label": "Gewünschten Ort eingeben"
         },
         "salary": {
-          "label": "Gehalt:",
+          "label": "Gehalt (Monatlich):",
           "description": "Gehaltsspanne auswählen"
         },
         "about": {

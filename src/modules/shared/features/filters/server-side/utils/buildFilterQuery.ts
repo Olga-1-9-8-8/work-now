@@ -1,11 +1,13 @@
 import { PostgrestFilterBuilder } from "@supabase/postgrest-js";
 import { GenericSchema } from "@supabase/supabase-js/dist/module/lib/types";
+import { LanguageType } from "../../../../configs";
 import { FilterType } from "../types/FilterType";
 import { getFilterValue } from "./getFilterValue";
 
 export const buildFilterQuery = (
   filters: FilterType[],
   query: PostgrestFilterBuilder<GenericSchema, Record<string, unknown>, any, unknown, unknown>,
+  language: LanguageType,
 ) => {
   let updatedQuery = query;
 
@@ -32,6 +34,13 @@ export const buildFilterQuery = (
             break;
           }
           case "cs": {
+            if (column === "cities") {
+              updatedQuery = query.or(
+                value.map((v) => `${column}_${language}.cs.{${v}}`).join(","),
+              );
+              break;
+            }
+
             updatedQuery = query.or(value.map((v) => `${column}.cs.{${v}}`).join(","));
             break;
           }

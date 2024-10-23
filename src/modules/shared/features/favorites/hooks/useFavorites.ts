@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../components/pagination";
+import { LanguageType } from "../../../configs";
 import { useUrl } from "../../../hooks";
 import { mapResumeVacancyItem } from "../../../utils";
 import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
@@ -7,7 +8,7 @@ import { getFavorites } from "../api/apiFavorites";
 
 export const useFavorites = () => {
   const queryClient = useQueryClient();
-  const { t } = useLanguageSwitcher("shared");
+  const { t, language } = useLanguageSwitcher("shared");
 
   const { getParam } = useUrl();
   const page = Number(getParam("offset")) || 1;
@@ -56,7 +57,9 @@ export const useFavorites = () => {
   return {
     isFavoritesLoading: isLoading,
     favoritesError: error,
-    favorites: favorites ? mapResumeVacancyItem(favorites.data) : undefined,
+    favorites: favorites
+      ? mapResumeVacancyItem(favorites.data, language as LanguageType)
+      : undefined,
     totalFavoritesCount: favorites?.totalCount ?? undefined,
   };
 };

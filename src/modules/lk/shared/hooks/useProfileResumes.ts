@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagination";
+import { LanguageType } from "../../../shared/configs";
 import { useUrl } from "../../../shared/hooks";
 import { mapUniversalItem } from "../../../shared/utils";
 import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
@@ -8,7 +9,7 @@ import { getProfileResumes } from "../api/apiProfile";
 export const useProfileResumes = () => {
   const queryClient = useQueryClient();
 
-  const { t } = useLanguageSwitcher("lk");
+  const { t, language } = useLanguageSwitcher("lk");
 
   const { getParam } = useUrl();
   const page = Number(getParam("offset")) || 1;
@@ -18,9 +19,9 @@ export const useProfileResumes = () => {
     data: profileResumes,
     error,
   } = useQuery({
-    queryKey: ["resumes", page],
+    queryKey: ["resumes", page, language],
     queryFn: async () => {
-      const resumesData = await getProfileResumes(page, t);
+      const resumesData = await getProfileResumes(page, t, language as LanguageType);
       if (resumesData) {
         resumesData.data.forEach((resumeData) => {
           const { id } = resumeData;
@@ -37,21 +38,23 @@ export const useProfileResumes = () => {
   ) {
     queryClient.prefetchQuery({
       queryKey: ["resumes", page + 1],
-      queryFn: () => getProfileResumes(page + 1, t),
+      queryFn: () => getProfileResumes(page + 1, t, language as LanguageType),
     });
   }
 
   if (page > 1) {
     queryClient.prefetchQuery({
       queryKey: ["resumes", page - 1],
-      queryFn: () => getProfileResumes(page - 1, t),
+      queryFn: () => getProfileResumes(page - 1, t, language as LanguageType),
     });
   }
 
   return {
     isProfileResumesLoading: isLoading,
     profileResumesError: error,
-    profileResumes: profileResumes?.data.map((resume) => mapUniversalItem(resume)),
+    profileResumes: profileResumes?.data.map((resume) =>
+      mapUniversalItem(resume, language as LanguageType),
+    ),
     totalProfileResumesCount: profileResumes?.totalCount ?? undefined,
   };
 };

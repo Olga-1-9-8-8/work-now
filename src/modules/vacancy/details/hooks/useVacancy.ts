@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
+import { LanguageType } from "../../../shared/configs";
 import { mapUniversalItemWithProfile } from "../../../shared/utils";
 import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { getVacancy } from "../api/apiVacancy";
 
 export const useVacancy = () => {
-  const { t } = useLanguageSwitcher("vacancy");
+  const { t, language } = useLanguageSwitcher("vacancy");
   const { id } = useParams();
   const vacancyId = id ? Number(id) : undefined;
 
@@ -22,6 +23,6 @@ export const useVacancy = () => {
   return {
     isLoading,
     error,
-    vacancy: vacancy ? mapUniversalItemWithProfile(vacancy) : undefined,
+    vacancy: vacancy ? mapUniversalItemWithProfile(vacancy, language as LanguageType) : undefined,
   };
 };

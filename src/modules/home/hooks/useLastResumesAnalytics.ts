@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { subDays } from "date-fns";
 import { useMemo } from "react";
+import { LanguageType } from "../../shared/configs";
 import { useUrl } from "../../shared/hooks";
 import { useLanguageSwitcher } from "../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { getResumesAnalyticsAfterDate } from "../api/apiResumesAnalytics";
@@ -10,15 +11,15 @@ export const useLastResumesAnalytics = () => {
   const { getParam } = useUrl();
   const numDays = getParam("last") ? Number(getParam("last")) : Number(DEFAULT_LAST_DAYS);
   const queryDate = subDays(new Date(), numDays).toISOString();
-  const { t } = useLanguageSwitcher("home");
+  const { t, language } = useLanguageSwitcher("home");
 
   const {
     isLoading,
     data: lastResumes,
     error,
   } = useQuery({
-    queryFn: () => getResumesAnalyticsAfterDate(queryDate, t),
-    queryKey: ["resumes", `last-${numDays}`],
+    queryFn: () => getResumesAnalyticsAfterDate(queryDate, t, language as LanguageType),
+    queryKey: ["resumes", `last-${numDays}`, language],
   });
 
   return useMemo(

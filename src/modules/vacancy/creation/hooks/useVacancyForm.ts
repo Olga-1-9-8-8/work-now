@@ -42,6 +42,7 @@ export const useVacancyForm = ({ vacancy, userId, onModalClose }: UseVacancyForm
           creationDate: vacancy?.creationDate ?? new Date(),
         },
         userId,
+        language as LanguageType,
         vacancy?.id,
       );
 
@@ -63,14 +64,15 @@ export const useVacancyForm = ({ vacancy, userId, onModalClose }: UseVacancyForm
       });
     },
     [
-      vacancy?.id,
-      vacancy?.creationDate,
-      userId,
-      editVacancy,
       createVacancy,
+      editVacancy,
       form,
-      onModalClose,
+      language,
       navigate,
+      onModalClose,
+      userId,
+      vacancy?.creationDate,
+      vacancy?.id,
     ],
   );
 

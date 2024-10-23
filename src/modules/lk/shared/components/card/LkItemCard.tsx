@@ -1,4 +1,5 @@
 import { UniversalItemApiTypeInput } from "../../../../shared/api";
+import { LanguageType } from "../../../../shared/configs";
 import { UniversalJobType } from "../../../../shared/types";
 import { Card } from "../../../../shared/ui/card/Card";
 import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
@@ -26,7 +27,7 @@ export const LkItemCard = ({
   isHiring = false,
   children,
 }: LkItemCardProps) => {
-  const { t } = useLanguageSwitcher("lk");
+  const { t, language } = useLanguageSwitcher("lk");
   return (
     <Card className="start relative flex flex-row items-stretch justify-between gap-4 p-5 md:flex-col">
       <div className="flex flex-col gap-2">
@@ -50,7 +51,9 @@ export const LkItemCard = ({
         position={item.position}
         onDeleteItem={onDeleteItem}
         isItemDeleting={isItemDeleting}
-        onDuplicateItem={() => onCreateItem(createJobDuplicateToApi(item, isHiring, t))}
+        onDuplicateItem={() =>
+          onCreateItem(createJobDuplicateToApi(item, isHiring, t, language as LanguageType))
+        }
         isItemDuplicating={isItemDuplicating}
       >
         {children}

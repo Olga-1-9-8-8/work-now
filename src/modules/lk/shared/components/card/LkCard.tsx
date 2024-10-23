@@ -22,7 +22,10 @@ export const LkCard = ({ data, title }: LkCardProps) => {
       className="relative"
       onClick={() =>
         navigate(`/${data.role === UserEntity.Company ? "vacancies" : "resumes"}/${data.id}`, {
-          state: { from: location.pathname, title: `${t("lk.card.backButtonTitle")} ${title}` },
+          state: {
+            from: `${location.pathname}${location.search}`,
+            title: `${t("lk.card.backButtonTitle")} ${title}`,
+          },
         })
       }
     >

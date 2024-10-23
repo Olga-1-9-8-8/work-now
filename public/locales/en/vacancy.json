@@ -10,7 +10,7 @@
           "label": "Enter desired location"
         },
         "salary": {
-          "label": "Salary:",
+          "label": "Salary (year):",
           "description": "Select salary range"
         },
         "about": {

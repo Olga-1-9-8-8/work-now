@@ -14,7 +14,7 @@
         },
         "salary": {
           "description": "Select salary range",
-          "label": "Salary:"
+          "label": "Salary (year):"
         },
         "about": {
           "label": "Professional Summary",

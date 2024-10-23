@@ -1,7 +1,12 @@
+import { LanguageType } from "../../../shared/configs";
 import { buildPaginationQuery } from "../../../shared/features/filters/server-side/utils/buildPaginationQuery";
 import { supabase } from "../../../shared/services";
 
-export const getProfileResumes = async (page: number, t: (key: string) => string) => {
+export const getProfileResumes = async (
+  page: number,
+  t: (key: string) => string,
+  language: LanguageType,
+) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -13,6 +18,7 @@ export const getProfileResumes = async (page: number, t: (key: string) => string
   let query = supabase
     .from("resumes")
     .select("*", { count: "exact" })
+    .not(`cities_${language}`, "is", null)
     .eq("user_id", session.user.id)
     .order("creation_date", { ascending: false })
     .order("updated_at", { ascending: false });
@@ -31,7 +37,11 @@ export const getProfileResumes = async (page: number, t: (key: string) => string
   return { data, totalCount: count };
 };
 
-export const getProfileVacancies = async (page: number, t: (key: string) => string) => {
+export const getProfileVacancies = async (
+  page: number,
+  t: (key: string) => string,
+  language: LanguageType,
+) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -43,6 +53,7 @@ export const getProfileVacancies = async (page: number, t: (key: string) => stri
   let query = supabase
     .from("vacancies")
     .select("*", { count: "exact" })
+    .not(`cities_${language}`, "is", null)
     .eq("user_id", session.user.id)
     .order("creation_date", { ascending: false })
     .order("updated_at", { ascending: false });

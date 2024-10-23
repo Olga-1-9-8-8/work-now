@@ -38,6 +38,7 @@ export const useResumeForm = ({ resume, userId, onModalClose }: UseResumeFormPro
       const formattedData = mapItemToApiType(
         { ...values, creationDate: resume?.creationDate ?? new Date() },
         userId,
+        language as LanguageType,
         resume?.id,
       );
 
@@ -53,7 +54,17 @@ export const useResumeForm = ({ resume, userId, onModalClose }: UseResumeFormPro
         },
       });
     },
-    [form, resume, userId, createResume, editResume, onModalClose, navigate],
+    [
+      createResume,
+      editResume,
+      form,
+      language,
+      navigate,
+      onModalClose,
+      resume?.creationDate,
+      resume?.id,
+      userId,
+    ],
   );
 
   return { form, handleSubmit, isSubmitting: isCreating || isEditing };

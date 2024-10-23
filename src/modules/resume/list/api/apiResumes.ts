@@ -1,5 +1,6 @@
 /* eslint-disable unicorn/prefer-switch */
 import { getApply, getAvatar, getFavorite } from "../../../shared/api";
+import { LanguageType } from "../../../shared/configs";
 import {
   FilterType,
   SortingType,
@@ -15,13 +16,17 @@ interface GetResumesProps {
   sort: SortingType;
   page: number;
   t: (key: string) => string;
+  language: string;
 }
 
-export const getResumes = async ({ filters, sort, page, t }: GetResumesProps) => {
-  let query = supabase.from("resumes").select("*,profiles(*)", { count: "exact" });
+export const getResumes = async ({ filters, sort, page, t, language }: GetResumesProps) => {
+  let query = supabase
+    .from("resumes")
+    .select("*,profiles(*)", { count: "exact" })
+    .not(`cities_${language}`, "is", null);
 
   if (filters.length > 0) {
-    query = buildFilterQuery(filters, query);
+    query = buildFilterQuery(filters, query, language as LanguageType);
   }
 
   query = buildSortQuery(sort, query);

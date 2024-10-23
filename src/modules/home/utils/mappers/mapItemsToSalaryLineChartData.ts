@@ -42,9 +42,9 @@ export const mapItemsToSalaryLineChartData = (
 
     return {
       title: format(date, "dd MMM", { locale: getLocale(language) }),
-      salaryAverage: getSalaryAverage(),
-      salaryMin: getSalaryMin(),
-      salaryMax: getSalaryMax(),
+      salaryAverage: getSalaryAverage().toFixed(0),
+      salaryMin: getSalaryMin().toFixed(0),
+      salaryMax: getSalaryMax().toFixed(0),
     };
   });
 };

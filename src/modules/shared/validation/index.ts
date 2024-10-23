@@ -1,4 +1,5 @@
 export { getAgeSchema } from "./schemas/getAgeSchema";
+export { getCitiesSchema } from "./schemas/getCitiesSchema";
 export { getEmailSchema } from "./schemas/getEmailSchema";
 export { getPasswordSchema } from "./schemas/getPasswordSchema";
 export { getPhoneSchema } from "./schemas/getPhoneSchema";

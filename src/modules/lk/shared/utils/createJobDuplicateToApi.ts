@@ -1,3 +1,4 @@
+import { LanguageType } from "../../../shared/configs";
 import { UniversalJobType } from "../../../shared/types";
 import { mapItemToApiType } from "../../../shared/utils";
 
@@ -5,6 +6,7 @@ export const createJobDuplicateToApi = (
   item: UniversalJobType,
   isHiring: boolean,
   t: (key: string) => string,
+  language: LanguageType,
 ) => {
   const { id, isInApplies, isInFavorites, views, applicantsQuantity, cities, gender, ...itemData } =
     item;
@@ -18,6 +20,6 @@ export const createJobDuplicateToApi = (
     applicantsQuantity: 0,
     ...(isHiring ? { gender } : {}),
   };
-  const newItem = mapItemToApiType(newItemData, itemData.userId);
+  const newItem = mapItemToApiType(newItemData, itemData.userId, language);
   return newItem;
 };

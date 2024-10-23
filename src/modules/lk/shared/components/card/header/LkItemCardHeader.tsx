@@ -36,7 +36,7 @@ export const LkItemCardHeader = ({
         <Link
           to={`/${isCompany ? "vacancies" : "resumes"}/${id}`}
           state={{
-            from: location.pathname,
+            from: `${location.pathname}${location.search}`,
             title: `${t("lk.card.backButtonTitle")} ${isCompany ? t("lk.vacancies.title") : t("lk.resumes.title")}`,
           }}
         >

@@ -32,7 +32,7 @@ export const LkResumesList = ({ resumes, totalCount }: LkResumesListProps) => {
               onClick={() =>
                 navigate("/resumes/creation", {
                   state: {
-                    from: location.pathname,
+                    from: `${location.pathname}${location.search}`,
                     title: t("lk.resumes.backButtonTitle"),
                   },
                 })

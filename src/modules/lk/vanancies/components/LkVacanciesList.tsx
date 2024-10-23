@@ -15,6 +15,7 @@ export const LkVacanciesList = ({ vacancies, totalCount }: LkVacanciesListProps)
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useLanguageSwitcher("lk");
+
   return (
     <div className="py-2 sm:py-6">
       <div className="flex flex-col md:gap-6">
@@ -32,7 +33,7 @@ export const LkVacanciesList = ({ vacancies, totalCount }: LkVacanciesListProps)
               onClick={() =>
                 navigate("/vacancies/creation", {
                   state: {
-                    from: location.pathname,
+                    from: `${location.pathname}${location.search}`,
                     title: t("lk.vacancies.backButtonTitle"),
                   },
                 })

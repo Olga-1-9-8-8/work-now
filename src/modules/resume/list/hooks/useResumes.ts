@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagination";
+import { LanguageType } from "../../../shared/configs";
 import { sortClientData } from "../../../shared/features/filters/client-side";
 import { useFiltersParams } from "../../../shared/features/filters/server-side";
 import { mapUniversalItemWithProfile } from "../../../shared/utils";
@@ -8,7 +9,7 @@ import { getResumes } from "../api/apiResumes";
 
 export const useResumes = () => {
   const queryClient = useQueryClient();
-  const { t } = useLanguageSwitcher("resume");
+  const { t, language } = useLanguageSwitcher("resume");
   const { filters, sort, page } = useFiltersParams();
 
   const {
@@ -16,9 +17,9 @@ export const useResumes = () => {
     data: resumes,
     error,
   } = useQuery({
-    queryKey: ["resumes", filters, sort, page],
+    queryKey: ["resumes", filters, sort, page, language],
     queryFn: async () => {
-      const resumesData = await getResumes({ filters, sort, page, t });
+      const resumesData = await getResumes({ filters, sort, page, t, language });
 
       resumesData.data.forEach((resumeData) => {
         queryClient.setQueryData(["resume", resumeData.id], resumeData);
@@ -30,14 +31,14 @@ export const useResumes = () => {
   if (resumes?.totalCount && page < Math.ceil(resumes.totalCount / QUANTITY_OF_ITEMS_ON_ONE_PAGE)) {
     queryClient.prefetchQuery({
       queryKey: ["resumes", filters, undefined, page + 1],
-      queryFn: () => getResumes({ filters, sort, page: page + 1, t }),
+      queryFn: () => getResumes({ filters, sort, page: page + 1, t, language }),
     });
   }
 
   if (page > 1) {
     queryClient.prefetchQuery({
       queryKey: ["resumes", filters, undefined, page - 1],
-      queryFn: () => getResumes({ filters, sort, page: page - 1, t }),
+      queryFn: () => getResumes({ filters, sort, page: page - 1, t, language }),
     });
   }
   if (sort.column === "salary" && resumes?.data) {
@@ -47,7 +48,9 @@ export const useResumes = () => {
   return {
     isLoading,
     error,
-    resumes: resumes?.data?.map(mapUniversalItemWithProfile),
+    resumes: resumes?.data?.map((item) =>
+      mapUniversalItemWithProfile(item, language as LanguageType),
+    ),
     totalCount: resumes?.totalCount ?? undefined,
   };
 };

@@ -14,7 +14,7 @@
         },
         "salary": {
           "description": "Gehaltsspanne auswählen",
-          "label": "Gehalt:"
+          "label": "Gehalt (Monatlich):"
         },
         "about": {
           "label": "Berufliche Zusammenfassung",

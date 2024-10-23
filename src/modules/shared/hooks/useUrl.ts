@@ -20,6 +20,10 @@ export const useUrl = () => {
     [searchParams, setSearchParams],
   );
 
+  const clearAllParams = useCallback(() => {
+    setSearchParams({});
+  }, [setSearchParams]);
+
   const removeParam = useCallback(
     (key: string, options?: NavigateOptions) => {
       searchParams.delete(key);
@@ -33,5 +37,6 @@ export const useUrl = () => {
     getAllParams,
     setParam,
     removeParam,
+    clearAllParams,
   };
 };

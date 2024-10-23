@@ -1,5 +1,6 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../components/pagination";
+import { LanguageType } from "../../../configs/internationalization/InternationalizationConfig";
 import { useUrl } from "../../../hooks";
 import { mapResumeVacancyItem } from "../../../utils";
 import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
@@ -7,7 +8,7 @@ import { getApplies } from "../api/apiApplies";
 
 export const useApplies = () => {
   const queryClient = useQueryClient();
-  const { t } = useLanguageSwitcher("shared");
+  const { t, language } = useLanguageSwitcher("shared");
 
   const { getParam } = useUrl();
   const page = Number(getParam("offset")) || 1;
@@ -53,7 +54,9 @@ export const useApplies = () => {
   return {
     isAppliesLoading: isLoading,
     appliesError: error,
-    applies: applies?.data ? mapResumeVacancyItem(applies.data) : undefined,
+    applies: applies?.data
+      ? mapResumeVacancyItem(applies.data, language as LanguageType)
+      : undefined,
     totalAppliesCount: applies?.totalCount ?? undefined,
   };
 };
