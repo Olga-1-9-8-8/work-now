@@ -24,7 +24,7 @@ export const HomeInfo = () => {
     <Accordion type="single" collapsible>
       <AccordionItem value="item-1" className="flex flex-col items-center py-4">
         <TypographyH1 className="text-2xl font-semibold">{t("home.info.title")}</TypographyH1>
-        <p className="pt-4 font-medium md:text-lg">{t("home.info.description")}</p>
+        <p className="text-pretty pt-4 font-medium md:text-lg">{t("home.info.description")}</p>
         <AccordionContent className="w-full overflow-hidden py-4">
           <HomeInfoList />
           {!isAuthenticated && (
