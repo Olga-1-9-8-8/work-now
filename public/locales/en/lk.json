@@ -57,17 +57,17 @@
     },
     "resumes": {
       "notExist": {
-        "title": "You don't have a resume yet."
+        "title": "You don't have a resume yet in English speaking market."
       },
       "notFoundTitle": "No resumes found",
       "buttonTitle": "Create a resume",
-      "title": "My resumes",
+      "title": "My resumes : ( {{count}} ) on all markets",
       "backButtonTitle": "Back to My Resumes",
       "createButtonTitle": "Create another resume",
       "list": {
         "title": "You have created:",
-        "description_one": "{{count}} resume",
-        "description_other": "{{count}} resumes"
+        "description_one": "{{count}} resume in English market",
+        "description_other": "{{count}} resumes in English market"
       },
       "api": {
         "deleteError": "Resume delete Error",
@@ -84,10 +84,10 @@
       },
       "notFoundTitle": "No vacancies found",
       "notExist": {
-        "title": "You don't have any vacancies yet."
+        "title": "You don't have any vacancies yet on English speaking markets."
       },
       "buttonTitle": "Create a vacancy",
-      "title": "My vacancies",
+      "title": "My vacancies : ( {{count}} ) on all markets",
       "createButtonTitle": "Create another vacancy",
       "backButtonTitle": "Back to My Vacancies",
       "list": {
@@ -96,6 +96,7 @@
         "description_other": "{{count}} vacancies in English market"
       }
     },
+    "tooltip": "Click to view other markets",
     "card": {
       "backButtonTitle": "Back to",
       "linkTitle": "Navigate to",

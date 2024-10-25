@@ -48,18 +48,17 @@ const DetailsCardContentEducation = ({ education, isHiring }: DetailsCardContent
 
 interface DetailsCardContentSalaryProps {
   salary?: number[];
+  language: LanguageType;
 }
 
-const DetailsCardContentSalary = ({ salary }: DetailsCardContentSalaryProps) => {
-  const { t, language } = useLanguageSwitcher("shared");
+const DetailsCardContentSalary = ({ salary, language }: DetailsCardContentSalaryProps) => {
+  const { t } = useLanguageSwitcher("shared");
   return (
     <div className="flex flex-col gap-4">
       <div>
         <Card className="rounded-md bg-secondary p-4">
           <TypographyH4>{t("shared.details.card.salary.title")}</TypographyH4>
-          <TypographyH5 className="text-success">
-            {getSalaryTitle(language as LanguageType, salary)}
-          </TypographyH5>
+          <TypographyH5 className="text-success">{getSalaryTitle(language, salary)}</TypographyH5>
         </Card>
       </div>
     </div>

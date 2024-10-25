@@ -13,11 +13,17 @@ interface TooltipProps extends React.ComponentPropsWithoutRef<typeof TooltipBase
   className?: string;
 }
 
-export const Tooltip = ({ className, content, children, ...props }: TooltipProps) => {
+export const Tooltip = ({
+  className,
+  content,
+  children,
+  delayDuration,
+  ...props
+}: TooltipProps) => {
   if (!content) return <>{children}</>;
   return (
     <TooltipProvider>
-      <TooltipBase {...props}>
+      <TooltipBase delayDuration={delayDuration} {...props}>
         <TooltipTrigger asChild>{children}</TooltipTrigger>
         <TooltipContent side="top" align="center" className={className} {...props}>
           {content}

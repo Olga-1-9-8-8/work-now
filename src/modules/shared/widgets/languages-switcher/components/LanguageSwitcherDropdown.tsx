@@ -38,7 +38,7 @@ export const LanguageSwitcherDropdown = memo(({ ...props }: LanguagesSwitcherBut
             <Globe className="h-5 w-5 stroke-primary-light transition-colors hover:stroke-muted sm:h-6 sm:w-6 md:h-5 md:w-5" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent sideOffset={6} align="end" className="min-h-32 min-w-48 ">
+        <DropdownMenuContent sideOffset={6} align="end" className="min-h-32 min-w-48">
           <DropdownMenuRadioGroup value={language} onValueChange={handleChangeLanguage}>
             {InternationalizationConfig.map((item) => {
               const Icon = item.icon;

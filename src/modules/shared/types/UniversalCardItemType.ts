@@ -1,3 +1,4 @@
+import { LanguageType } from "../configs/internationalization/InternationalizationConfig";
 import { CityType } from "./CityType";
 import { EducationType } from "./EducationType";
 import { EmploymentType } from "./EmploymentType";
@@ -33,6 +34,7 @@ export interface UniversalJobType {
   views: number;
   companyCode?: string;
   gender?: GenderType;
+  language: LanguageType;
 }
 
 export interface UniversalCardItemType extends UniversalProfileType, UniversalJobType {}

@@ -3,7 +3,7 @@ import { LanguageType } from "../../configs";
 import { UniversalJobType } from "../../types";
 
 export const mapItemToApiType = (
-  items: Omit<UniversalJobType, "id" | "cities"> & { cities?: string[] },
+  items: Omit<UniversalJobType, "id" | "cities" | "language"> & { cities?: string[] },
   userId: string,
   language: LanguageType,
   id?: number,

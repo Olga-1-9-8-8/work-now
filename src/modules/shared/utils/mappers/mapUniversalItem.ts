@@ -8,6 +8,7 @@ import {
   ScheduleType,
   WeekHoursType,
 } from "../../types";
+import { getLanguage } from "../getLanguage";
 
 export const mapUniversalItem = (item: UniversalItemApiTypeInput, language: LanguageType) => {
   const {
@@ -27,7 +28,9 @@ export const mapUniversalItem = (item: UniversalItemApiTypeInput, language: Lang
   } = item;
 
   return {
-    ...data,
+    id: data.id,
+    position: data.position,
+    views: data.views,
     employmentStartDate: employmentStartDate ? new Date(employmentStartDate) : undefined,
     creationDate: new Date(creationDate),
     updatedAt: updatedAt ? new Date(updatedAt) : undefined,
@@ -41,5 +44,6 @@ export const mapUniversalItem = (item: UniversalItemApiTypeInput, language: Lang
     applicantsQuantity,
     userId,
     gender: gender ? (gender as GenderType) : undefined,
+    language: getLanguage(data),
   };
 };
