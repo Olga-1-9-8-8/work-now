@@ -8,7 +8,7 @@ export const useAddApply = () => {
   const { t } = useLanguageSwitcher("shared");
 
   const { isPending: isApplyAdding, mutate: addApply } = useMutation({
-    mutationFn: (id: number | string) => addApplyApi(id, t),
+    mutationFn: (id: number) => addApplyApi(id, t),
     onSuccess: (data) => {
       toast.success(
         data?.isCompanyRole

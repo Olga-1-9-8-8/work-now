@@ -1,20 +1,22 @@
 import { AvatarProps } from "@radix-ui/react-avatar";
 import { UserRound } from "lucide-react";
-import { AvatarBase, AvatarFallback, AvatarImage } from "../../../ui/avatar/AvatarBase";
+import { memo } from "react";
+import { AvatarBase, AvatarFallback } from "../../../ui/avatar/AvatarBase";
+import { AvatarImage } from "./AvatarImage";
 
 interface UserAvatarProps extends AvatarProps {
   icon?: React.ElementType;
-  src?: string;
+  avatar?: string;
   userName?: string;
 }
 
-export const Avatar = ({ icon, src, userName, ...props }: UserAvatarProps) => {
+export const Avatar = memo(({ icon, avatar, userName, ...props }: UserAvatarProps) => {
   const Icon = icon ?? UserRound;
 
   return (
     <AvatarBase {...props}>
-      {src ? (
-        <AvatarImage alt="Аватар" src={src} />
+      {avatar ? (
+        <AvatarImage avatar={avatar} />
       ) : (
         <AvatarFallback className="border-2 border-primary text-3xl">
           {userName && <span className="sr-only">{userName}</span>}
@@ -23,4 +25,4 @@ export const Avatar = ({ icon, src, userName, ...props }: UserAvatarProps) => {
       )}
     </AvatarBase>
   );
-};
+});

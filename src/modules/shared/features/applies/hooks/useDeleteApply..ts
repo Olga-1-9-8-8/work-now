@@ -9,7 +9,7 @@ export const useDeleteApply = () => {
   const { t } = useLanguageSwitcher("shared");
 
   const { isPending: isApplyDeleting, mutate: deleteApply } = useMutation({
-    mutationFn: (id: number | string) => deleteApplyApi(id, t),
+    mutationFn: (id: number) => deleteApplyApi(id, t),
     onSuccess: (data) => {
       toast.error(
         data?.isCompanyRole

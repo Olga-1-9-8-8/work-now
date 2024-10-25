@@ -56,6 +56,7 @@ export const SideBarItem = ({
           .map((i) =>
             i
               .split(" ")
+              .filter(Boolean)
               .map((part) => capitalizeFirstLetter(part))
               .join(" "),
           )

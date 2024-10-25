@@ -1,12 +1,11 @@
 import { UniversalItemsWithTitleType } from "../types";
 import { LanguageType } from "./internationalization/InternationalizationConfig";
 
-export type SearchConfigType = {
-  position: UniversalItemsWithTitleType;
-  cities: UniversalItemsWithTitleType;
-  username: UniversalItemsWithTitleType;
-};
+export const searchConfigTypes = ["position", "cities", "username"] as const;
 
+export type SearchConfigTypes = (typeof searchConfigTypes)[number];
+
+export type SearchConfigType = Record<SearchConfigTypes, UniversalItemsWithTitleType>;
 export type SearchConfigItems = Record<LanguageType, SearchConfigType>;
 
 export const searchConfig: SearchConfigItems = {

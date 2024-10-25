@@ -8,8 +8,7 @@ export const createJobDuplicateToApi = (
   t: (key: string) => string,
   language: LanguageType,
 ) => {
-  const { id, isInApplies, isInFavorites, views, applicantsQuantity, cities, gender, ...itemData } =
-    item;
+  const { id, views, applicantsQuantity, cities, gender, ...itemData } = item;
 
   const newItemData = {
     ...itemData,

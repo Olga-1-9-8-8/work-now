@@ -1,4 +1,4 @@
-import { supabase } from "../services/api/supabase";
+import { supabase } from "../../../services/api/supabase";
 
 export const getAvatar = async (avatar: string) => {
   const { data: avatarFile, error: avatarFileError } = await supabase.storage
@@ -9,5 +9,7 @@ export const getAvatar = async (avatar: string) => {
     throw new Error(avatarFileError.message);
   }
 
-  return URL.createObjectURL(avatarFile);
+  const url = URL.createObjectURL(avatarFile);
+
+  return url;
 };

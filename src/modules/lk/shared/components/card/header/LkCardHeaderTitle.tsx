@@ -6,18 +6,11 @@ import { TypographyH4 } from "../../../../../shared/ui/typography/TypographyH4";
 interface LkCardHeaderTitleProps {
   id: number;
   position: string;
-  isInFavorites?: boolean;
   userName?: string;
   role?: UserEntity;
 }
 
-export const LkCardHeaderTitle = ({
-  position,
-  id,
-  role,
-  isInFavorites,
-  userName,
-}: LkCardHeaderTitleProps) => {
+export const LkCardHeaderTitle = ({ position, id, role, userName }: LkCardHeaderTitleProps) => {
   const isMobile = useResponsiveContext();
 
   return (
@@ -25,25 +18,11 @@ export const LkCardHeaderTitle = ({
       <TypographyH4 className="flex flex-col gap-1 md:flex-row">
         <div className="flex items-center gap-2">
           <span>{position}</span>
-          {isMobile && (
-            <FavoriteButton
-              id={id}
-              role={role!}
-              isInFavorites={isInFavorites}
-              className="h-9 w-9 border-0"
-            />
-          )}
+          {isMobile && <FavoriteButton id={id} role={role!} className="h-9 w-9 border-0" />}
         </div>
         <strong className="text-primary-extraDark">{userName}</strong>
       </TypographyH4>
-      {!isMobile && (
-        <FavoriteButton
-          id={id}
-          role={role!}
-          isInFavorites={isInFavorites}
-          className="h-9 w-9 border-0"
-        />
-      )}
+      {!isMobile && <FavoriteButton id={id} role={role!} className="h-9 w-9 border-0" />}
     </div>
   );
 };

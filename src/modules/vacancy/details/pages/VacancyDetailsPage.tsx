@@ -10,7 +10,7 @@ const VacancyDetailsPage = () => {
         title={t("seo.vacancyDetailsPage.title")}
         description={t("seo.vacancyDetailsPage.description")}
       />
-      <VacancyDetails />;
+      <VacancyDetails />
     </>
   );
 };

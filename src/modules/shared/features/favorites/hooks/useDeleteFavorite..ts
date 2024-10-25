@@ -9,7 +9,7 @@ export const useDeleteFavorite = () => {
   const { t } = useLanguageSwitcher("shared");
 
   const { isPending: isFavoriteDeleting, mutate: deleteFavorite } = useMutation({
-    mutationFn: (id: number | string) => deleteFavoriteApi(id, t),
+    mutationFn: (id: number) => deleteFavoriteApi(id, t),
     onSuccess: (data) => {
       toast.error(
         data?.isCompanyRole

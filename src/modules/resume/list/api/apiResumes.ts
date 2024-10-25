@@ -1,5 +1,3 @@
-/* eslint-disable unicorn/prefer-switch */
-import { getApply, getAvatar, getFavorite } from "../../../shared/api";
 import { LanguageType } from "../../../shared/configs";
 import {
   FilterType,
@@ -46,22 +44,9 @@ export const getResumes = async ({ filters, sort, page, t, language }: GetResume
 
   const resumesData = await Promise.all(
     data.map(async (resume) => {
-      const [favorite, appliesData] = await Promise.all([
-        getFavorite(resume.id, t),
-        getApply(resume.id, t),
-      ]);
-
-      const avatarPromise = resume.profiles?.avatar
-        ? getAvatar(resume.profiles.avatar)
-        : Promise.resolve(null);
-
-      const avatar = await avatarPromise;
-
       return {
         ...resume,
-        isInFavorites: !!favorite,
-        isInApplies: !!appliesData,
-        profiles: resume.profiles ? { ...resume.profiles, avatar } : null,
+        profiles: resume.profiles ? { ...resume.profiles } : null,
       };
     }),
   );

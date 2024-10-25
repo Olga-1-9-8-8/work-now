@@ -10,7 +10,7 @@ export const ResumeDetailsPage = () => {
         title={t("seo.resumeDetailsPage.title")}
         description={t("seo.resumeDetailsPage.description")}
       />
-      <ResumeDetails />;
+      <ResumeDetails />
     </>
   );
 };

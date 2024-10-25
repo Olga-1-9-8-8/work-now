@@ -1,4 +1,4 @@
-import { getApply, getAvatar, ResumeWithProfileApiTypeInput } from "../../../api";
+import { ResumeWithProfileApiTypeInput } from "../../../api";
 import { VacancyWithProfileApiTypeInput } from "../../../api/types/VacancyApiType";
 import { supabase } from "../../../services/api/supabase";
 import { UserEntity } from "../../../types";
@@ -8,24 +8,19 @@ const processItemsWithFavoriteApplyStatusAndDownloadAvatar = async <
   T extends ResumeWithProfileApiTypeInput | VacancyWithProfileApiTypeInput | null,
 >(
   items: T[],
-  t: (key: string) => string,
 ) => {
   const filteredItems = items.filter((item) => item !== null);
 
   return Promise.all(
     filteredItems.map(async (item) => {
-      const applies = await getApply(item.id, t);
       const profiles = item.profiles
         ? {
             ...item.profiles,
-            avatar: item.profiles?.avatar ? await getAvatar(item.profiles.avatar) : null,
           }
         : null;
 
       return {
         ...item,
-        isInFavorites: true,
-        isInApplies: !!applies,
         profiles,
       };
     }),
@@ -61,18 +56,16 @@ export const getFavorites = async (page: number, t: (key: string) => string) => 
   const favoritesData = {
     vacancies: await processItemsWithFavoriteApplyStatusAndDownloadAvatar(
       data.flatMap((item) => item.vacancies),
-      t,
     ),
     resumes: await processItemsWithFavoriteApplyStatusAndDownloadAvatar(
       data.flatMap((item) => item.resumes),
-      t,
     ),
   };
 
   return { data: favoritesData, totalCount: count };
 };
 
-export const addFavorite = async (id: number | string, t: (key: string) => string) => {
+export const addFavorite = async (id: number, t: (key: string) => string) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -106,7 +99,7 @@ export const addFavorite = async (id: number | string, t: (key: string) => strin
   return { ...applicationData, isCompanyRole };
 };
 
-export const deleteFavorite = async (id: number | string, t: (key: string) => string) => {
+export const deleteFavorite = async (id: number, t: (key: string) => string) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();

@@ -1,16 +1,16 @@
 import { Building2 } from "lucide-react";
-import { Avatar } from "../../../../shared/components/avatar";
+import { Avatar } from "../../../../shared/features/avatar";
 import { UserEntity } from "../../../../shared/types";
 
 interface LkDetailsFormAvatarBlockProps {
-  avatarSrc?: string;
+  avatar?: string;
   role: UserEntity;
 }
 
-export const LkDetailsFormAvatar = ({ avatarSrc, role }: LkDetailsFormAvatarBlockProps) => {
+export const LkDetailsFormAvatar = ({ avatar, role }: LkDetailsFormAvatarBlockProps) => {
   return (
     <Avatar
-      src={avatarSrc}
+      avatar={avatar}
       icon={role === UserEntity.Company ? Building2 : undefined}
       className="h-20 w-20"
     />

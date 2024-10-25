@@ -38,17 +38,24 @@ export const LanguageSwitcherDropdown = memo(({ ...props }: LanguagesSwitcherBut
             <Globe className="h-5 w-5 stroke-primary-light transition-colors hover:stroke-muted sm:h-6 sm:w-6 md:h-5 md:w-5" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="min-w-48">
+        <DropdownMenuContent sideOffset={6} align="end" className="min-h-32 min-w-48 ">
           <DropdownMenuRadioGroup value={language} onValueChange={handleChangeLanguage}>
-            {InternationalizationConfig.map((item) => (
-              <DropdownMenuRadioItem
-                className="text-sm font-medium text-primary-dark"
-                key={item.value}
-                value={item.value}
-              >
-                {item.title[language as LanguageType]}
-              </DropdownMenuRadioItem>
-            ))}
+            {InternationalizationConfig.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <DropdownMenuRadioItem
+                  className="text-sm font-medium text-primary-dark"
+                  key={item.value}
+                  value={item.value}
+                >
+                  <div className="flex items-center gap-2">
+                    <Icon className="h-6 w-6" />
+                    {item.title[language as LanguageType]}
+                  </div>
+                </DropdownMenuRadioItem>
+              );
+            })}
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
       </DropdownMenu>

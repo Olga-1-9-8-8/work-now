@@ -92,8 +92,8 @@
       "backButtonTitle": "Back to My Vacancies",
       "list": {
         "title": "You have created:",
-        "description_one": "{{count}} vacancy",
-        "description_other": "{{count}} vacancies"
+        "description_one": "{{count}} vacancy in English market",
+        "description_other": "{{count}} vacancies in English market"
       }
     },
     "card": {

@@ -1,9 +1,9 @@
 import { Building } from "lucide-react";
+import { Avatar } from "../../../../../../../features/avatar";
 import { CityType, GenderType } from "../../../../../../../types";
 import { TypographyH2 } from "../../../../../../../ui/typography/TypographyH2";
 import { capitalizeFirstLetter } from "../../../../../../../utils/helpers";
 import { useLanguageSwitcher } from "../../../../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
-import { Avatar } from "../../../../../../avatar";
 import { CardTitleWithTooltip } from "../../../../../../card";
 import { MapCityBadgeGroup } from "../../../../../../map";
 import { DetailsCardHeaderTitlePersonalData } from "./items/DetailsCardHeaderTitlePersonalData";
@@ -40,7 +40,7 @@ export const DetailsCardHeaderTitle = ({
         <Avatar
           className="h-20 w-20 rounded-full border-2"
           icon={isHiring ? Building : undefined}
-          src={avatar}
+          avatar={avatar}
           userName={userName}
         />
         <div className="flex flex-col ">

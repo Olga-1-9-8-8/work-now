@@ -33,8 +33,6 @@ export interface UniversalJobType {
   views: number;
   companyCode?: string;
   gender?: GenderType;
-  isInFavorites?: boolean;
-  isInApplies?: boolean;
 }
 
 export interface UniversalCardItemType extends UniversalProfileType, UniversalJobType {}

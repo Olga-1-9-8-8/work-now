@@ -33,8 +33,6 @@ export const DetailsCard = memo(({ data, isHiring = false, className }: DetailsC
     age,
     gender,
     avatar,
-    isInApplies,
-    isInFavorites,
   } = data;
 
   return (
@@ -46,8 +44,6 @@ export const DetailsCard = memo(({ data, isHiring = false, className }: DetailsC
         <DetailsCardHeaderBlock.DetailsCardHeaderOperations
           {...{
             id,
-            isInApplies,
-            isInFavorites,
             creationDate,
             updatedAt,
             applicantsQuantity,

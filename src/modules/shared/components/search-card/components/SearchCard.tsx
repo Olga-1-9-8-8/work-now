@@ -35,8 +35,6 @@ export const SearchCard = ({ data, onClick, isHiring = false }: SearchCardProps)
     age,
     gender,
     avatar,
-    isInApplies,
-    isInFavorites,
   } = data;
 
   return (
@@ -88,13 +86,7 @@ export const SearchCard = ({ data, onClick, isHiring = false }: SearchCardProps)
         schedule={schedule}
         weekHours={weekHours}
       />
-      <SearchCardOperationsFooterBlock
-        isHiring={isHiring}
-        phone={phone}
-        id={id}
-        isInApplies={isInApplies}
-        isInFavorites={isInFavorites}
-      />
+      <SearchCardOperationsFooterBlock isHiring={isHiring} phone={phone} id={id} />
     </Card>
   );
 };

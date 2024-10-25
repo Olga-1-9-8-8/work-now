@@ -4,20 +4,17 @@ import { Button, ButtonProps } from "../../../ui/buttons/Button";
 import { Tooltip } from "../../../ui/tooltip/Tooltip";
 import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { useAddApply } from "../hooks/useAddApply";
+import { useApply } from "../hooks/useApply";
 import { useDeleteApply } from "../hooks/useDeleteApply.";
 
 type AppliedButtonProps = {
-  id: number | string;
-  isInApplies?: boolean;
+  id: number;
   tooltipContent?: string;
 } & Omit<ButtonProps, "id">;
 
-export const AppliedButton = ({
-  id,
-  isInApplies = false,
-  tooltipContent,
-  ...props
-}: AppliedButtonProps) => {
+export const AppliedButton = ({ id, tooltipContent, ...props }: AppliedButtonProps) => {
+  const { isInApplies, isInAppliesLoading } = useApply(id);
+
   const [isApplied, setIsApplied] = useState(isInApplies);
   const { deleteApply, isApplyDeleting } = useDeleteApply();
   const { addApply, isApplyAdding } = useAddApply();
@@ -52,7 +49,7 @@ export const AppliedButton = ({
       <div>
         <Button
           className="w-full lg:w-auto"
-          disabled={isApplyDeleting || isApplyAdding}
+          disabled={isApplyDeleting || isApplyAdding || isInAppliesLoading}
           onClick={handleApplyClick}
           variant={isApplied ? "destructive" : "success"}
           {...props}

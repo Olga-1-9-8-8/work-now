@@ -9,7 +9,7 @@ export const useAddFavorite = () => {
   const { t } = useLanguageSwitcher("shared");
 
   const { isPending: isFavoriteAdding, mutate: addFavorite } = useMutation({
-    mutationFn: (id: number | string) => addFavoriteApi(id, t),
+    mutationFn: (id: number) => addFavoriteApi(id, t),
     onSuccess: (data) => {
       toast.success(
         data?.isCompanyRole

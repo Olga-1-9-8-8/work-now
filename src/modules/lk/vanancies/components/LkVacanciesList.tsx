@@ -22,9 +22,9 @@ export const LkVacanciesList = ({ vacancies, totalCount }: LkVacanciesListProps)
         <div>
           <TypographyH3>{t("lk.vacancies.title")}</TypographyH3>
 
-          <div className=" flex flex-col gap-8 md:flex-row md:items-baseline">
-            <p className="pt-2 text-lg text-muted-foreground">
-              {t("lk.vacancies.list.title")}{" "}
+          <div className="flex flex-col gap-8 md:flex-row md:items-baseline">
+            <p className="flex flex-col gap-1 pt-2 text-muted-foreground sm:flex-row sm:text-lg ">
+              <span>{t("lk.vacancies.list.title")} </span>
               <strong className="text-primary-extraDark">
                 {t("lk.vacancies.list.description", { count: totalCount })}
               </strong>

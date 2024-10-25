@@ -1,4 +1,4 @@
-import { getAvatar, getFavorite, ResumeWithProfileApiTypeInput } from "../../../api";
+import { ResumeWithProfileApiTypeInput } from "../../../api";
 import { VacancyWithProfileApiTypeInput } from "../../../api/types/VacancyApiType";
 import { supabase } from "../../../services/api/supabase";
 import { UserEntity } from "../../../types";
@@ -8,25 +8,19 @@ const processItemsWithFavoriteApplyStatusAndDownloadAvatar = async <
   T extends ResumeWithProfileApiTypeInput | VacancyWithProfileApiTypeInput | null,
 >(
   items: T[],
-  t: (key: string) => string,
 ) => {
   const filteredItems = items.filter((item) => item !== null);
 
   return Promise.all(
     filteredItems.map(async (item) => {
-      const favorite = await getFavorite(item.id, t);
-
       const profiles = item.profiles
         ? {
             ...item.profiles,
-            avatar: item.profiles?.avatar ? await getAvatar(item.profiles.avatar) : null,
           }
         : null;
 
       return {
         ...item,
-        isInFavorites: !!favorite,
-        isInApplies: true,
         profiles,
       };
     }),
@@ -62,18 +56,16 @@ export const getApplies = async (page: number, t: (key: string) => string) => {
   const appliesData = {
     vacancies: await processItemsWithFavoriteApplyStatusAndDownloadAvatar(
       data.flatMap((item) => item.vacancies),
-      t,
     ),
     resumes: await processItemsWithFavoriteApplyStatusAndDownloadAvatar(
       data.flatMap((item) => item.resumes),
-      t,
     ),
   };
 
   return { data: appliesData, totalCount: count };
 };
 
-export const addApply = async (id: number | string, t: (key: string) => string) => {
+export const addApply = async (id: number, t: (key: string) => string) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -125,7 +117,7 @@ export const addApply = async (id: number | string, t: (key: string) => string) 
   return { ...applicationData, isCompanyRole };
 };
 
-export const deleteApply = async (id: number | string, t: (key: string) => string) => {
+export const deleteApply = async (id: number, t: (key: string) => string) => {
   const {
     data: { session },
   } = await supabase.auth.getSession();

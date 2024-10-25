@@ -20,8 +20,6 @@ export const mapUniversalItem = (item: UniversalItemApiTypeInput, language: Lang
     employment,
     education,
     salary,
-    isInFavorites,
-    isInApplies,
     updated_at: updatedAt,
     gender,
     about,
@@ -43,7 +41,5 @@ export const mapUniversalItem = (item: UniversalItemApiTypeInput, language: Lang
     applicantsQuantity,
     userId,
     gender: gender ? (gender as GenderType) : undefined,
-    isInFavorites: isInFavorites ?? undefined,
-    isInApplies: isInApplies ?? undefined,
   };
 };

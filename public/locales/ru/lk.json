@@ -93,10 +93,10 @@
       "backButtonTitle": "Назад в Мои вакансии",
       "list": {
         "title": "Вы заполнили:",
-        "description_one": "{{count}} вакансию",
-        "description_few": "{{count}} вакансии",
-        "description_many": "{{count}} вакансий",
-        "description_other": "{{count}} вакансий"
+        "description_one": "{{count}} вакансию на Русскоязычном рынке",
+        "description_few": "{{count}} вакансии на Русскоязычном рынке",
+        "description_many": "{{count}} вакансий на Русскоязычном рынке",
+        "description_other": "{{count}} вакансий на Русскоязычном рынке"
       }
     },
     "card": {

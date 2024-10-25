@@ -166,7 +166,7 @@ const DetailsCardContentAbout = ({ about, isHiring }: DetailsCardContentAboutPro
           ? t("shared.details.card.about.company")
           : t("shared.details.card.about.candidate")}
       </TypographyH4>
-      {about}
+      <div className="whitespace-pre-wrap">{about}</div>
     </>
   );
 };

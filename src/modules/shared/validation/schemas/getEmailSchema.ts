@@ -17,6 +17,7 @@ const emailErrorMessages = {
 export const getEmailSchema = (language: LanguageType) =>
   z
     .string()
+    .trim()
     .min(1, {
       message: emailErrorMessages.minLength1[language],
     })

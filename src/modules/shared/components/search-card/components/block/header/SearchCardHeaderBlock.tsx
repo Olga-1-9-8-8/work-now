@@ -2,6 +2,7 @@ import { Building, CalendarDays, ClipboardCheck, EyeIcon, GraduationCap } from "
 import { ReactNode, memo, useState } from "react";
 import { FaCircleChevronDown, FaCircleChevronUp, FaPerson } from "react-icons/fa6";
 import { LanguageType } from "../../../../../configs";
+import { Avatar } from "../../../../../features/avatar";
 import { CityType, EducationType, GenderType } from "../../../../../types";
 import { Badge } from "../../../../../ui/badge/Badge";
 import { Button } from "../../../../../ui/buttons/Button";
@@ -19,7 +20,6 @@ import {
   getDayMonthYear,
 } from "../../../../../utils/helpers";
 import { useLanguageSwitcher } from "../../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
-import { Avatar } from "../../../../avatar";
 import { CardItemInsight, CardTitleWithTooltip, getEducationTitle } from "../../../../card";
 import { MapCityBadgeGroup } from "../../../../map";
 import { getPersonalInfoTitle } from "../../../utils/getPersonalInfoTitle";
@@ -39,7 +39,7 @@ export const SearchCardHeaderTitle = memo(
         <Avatar
           className="h-16 w-16 border-2"
           icon={isHiring ? Building : undefined}
-          src={avatar}
+          avatar={avatar}
           userName={userName}
         />
         <div>
@@ -176,7 +176,7 @@ export const SearchCardHeaderAdditionalInfo = ({
         </CollapsibleTrigger>
       </div>
       <CollapsibleContent className="overflow-hidden data-[state=open]:animate-collapsible-down">
-        {content}
+        <div className="whitespace-pre-wrap">{content}</div>
       </CollapsibleContent>
     </Collapsible>
   );

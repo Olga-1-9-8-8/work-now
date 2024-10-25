@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { Avatar } from "../../../../shared/components/avatar";
 import { LanguageType } from "../../../../shared/configs";
 import { LkNavItems } from "../../../../shared/configs/lkNavConfig";
+import { Avatar } from "../../../../shared/features/avatar";
 import { useResponsiveContext } from "../../../../shared/responsive";
 import { useLogout } from "../../../../shared/services/auth";
 import { Button } from "../../../../shared/ui/buttons/Button";

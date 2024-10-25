@@ -1,4 +1,3 @@
-import { getAvatar } from "../../../api";
 import { supabase } from "../../api/supabase";
 
 export const getProfile = async (id?: string) => {
@@ -13,9 +12,6 @@ export const getProfile = async (id?: string) => {
   if (error) {
     throw new Error(error.message);
   }
-  if (!profileData.avatar) return profileData;
 
-  const avatar = await getAvatar(profileData.avatar);
-
-  return { ...profileData, avatar };
+  return profileData;
 };

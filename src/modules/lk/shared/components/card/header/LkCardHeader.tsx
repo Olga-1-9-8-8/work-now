@@ -1,7 +1,7 @@
 import { ArrowRight, Building2 } from "lucide-react";
-import { Avatar } from "../../../../../shared/components/avatar";
 import { MapCityBadgeGroup } from "../../../../../shared/components/map";
 import { LanguageType } from "../../../../../shared/configs";
+import { Avatar } from "../../../../../shared/features/avatar";
 import { UniversalCardItemType, UserEntity } from "../../../../../shared/types";
 import { Badge } from "../../../../../shared/ui/badge/Badge";
 import { Button } from "../../../../../shared/ui/buttons/Button";
@@ -22,7 +22,7 @@ export const LkCardHeader = ({ data }: LkCardHeaderProps) => {
     <CardHeader className="flex-row justify-between">
       <div className="flex items-center gap-4">
         <Avatar
-          src={data.avatar}
+          avatar={data.avatar}
           userName={data.userName}
           icon={isCompany ? Building2 : undefined}
           className="h-16 w-16"
@@ -32,7 +32,6 @@ export const LkCardHeader = ({ data }: LkCardHeaderProps) => {
             position={data.position}
             id={data.id}
             role={data.role}
-            isInFavorites={data.isInFavorites}
             userName={data.userName}
           />
           {data.cities && <MapCityBadgeGroup cities={data.cities} />}

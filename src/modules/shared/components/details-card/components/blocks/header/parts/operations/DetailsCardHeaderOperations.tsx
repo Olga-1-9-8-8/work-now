@@ -10,13 +10,11 @@ import { formattedTimeString } from "../../../../../../../utils/helpers";
 import { useLanguageSwitcher } from "../../../../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 
 interface DetailsCardHeaderOperationsProps {
-  id: number | string;
+  id: number;
   isHiring?: boolean;
   creationDate: Date;
   updatedAt?: Date | null;
   applicantsQuantity: number;
-  isInFavorites?: boolean;
-  isInApplies?: boolean;
 }
 export const DetailsCardHeaderOperations = ({
   id,
@@ -24,8 +22,6 @@ export const DetailsCardHeaderOperations = ({
   updatedAt,
   creationDate,
   applicantsQuantity,
-  isInFavorites,
-  isInApplies,
 }: DetailsCardHeaderOperationsProps) => {
   const { isAuthenticated, role } = useUser();
   const { language, t } = useLanguageSwitcher("shared");
@@ -45,7 +41,6 @@ export const DetailsCardHeaderOperations = ({
         <FavoriteButton
           id={id}
           role={role}
-          isInFavorites={isInFavorites}
           tooltipContent={
             isDisabled
               ? isHiring
@@ -57,7 +52,6 @@ export const DetailsCardHeaderOperations = ({
         />
         <AppliedButton
           id={id}
-          isInApplies={isInApplies}
           disabled={isDisabled}
           tooltipContent={
             isDisabled
