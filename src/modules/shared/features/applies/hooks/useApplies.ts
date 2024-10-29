@@ -3,6 +3,7 @@ import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../components/pagination";
 import { LanguageType } from "../../../configs/internationalization/InternationalizationConfig";
 import { useUrl } from "../../../hooks";
 import { mapResumeVacancyItem } from "../../../utils";
+import { ResumeVacancyItemType } from "../../../utils/mappers/mapResumeVacancyItem";
 import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { getApplies } from "../api/apiApplies";
 
@@ -21,15 +22,20 @@ export const useApplies = () => {
     queryKey: ["applies", page],
     queryFn: async () => {
       const appliesData = await getApplies(page, t);
+
       if (appliesData?.data?.resumes) {
         appliesData.data.resumes.forEach((resume) => {
-          queryClient.setQueryData(["resume", resume.id], resume);
+          if (resume) {
+            queryClient.setQueryData(["resume", resume.id], resume);
+          }
         });
       }
 
       if (appliesData?.data.vacancies) {
         appliesData.data.vacancies.forEach((vacancy) => {
-          queryClient.setQueryData(["vacancy", vacancy.id], vacancy);
+          if (vacancy) {
+            queryClient.setQueryData(["vacancy", vacancy.id], vacancy);
+          }
         });
       }
 
@@ -55,7 +61,7 @@ export const useApplies = () => {
     isAppliesLoading: isLoading,
     appliesError: error,
     applies: applies?.data
-      ? mapResumeVacancyItem(applies.data, language as LanguageType)
+      ? mapResumeVacancyItem(applies.data as ResumeVacancyItemType, language as LanguageType)
       : undefined,
     totalAppliesCount: applies?.totalCount ?? undefined,
   };

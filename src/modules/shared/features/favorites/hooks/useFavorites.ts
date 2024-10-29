@@ -3,6 +3,7 @@ import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../components/pagination";
 import { LanguageType } from "../../../configs";
 import { useUrl } from "../../../hooks";
 import { mapResumeVacancyItem } from "../../../utils";
+import { ResumeVacancyItemType } from "../../../utils/mappers/mapResumeVacancyItem";
 import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
 import { getFavorites } from "../api/apiFavorites";
 
@@ -21,15 +22,20 @@ export const useFavorites = () => {
     queryKey: ["favorites", page],
     queryFn: async () => {
       const favoritesData = await getFavorites(page, t);
+
       if (favoritesData?.data?.resumes) {
         favoritesData.data.resumes.forEach((resume) => {
-          queryClient.setQueryData(["resume", resume.id], resume);
+          if (resume) {
+            queryClient.setQueryData(["resume", resume.id], resume);
+          }
         });
       }
 
       if (favoritesData?.data.vacancies) {
         favoritesData.data.vacancies.forEach((vacancy) => {
-          queryClient.setQueryData(["vacancy", vacancy.id], vacancy);
+          if (vacancy) {
+            queryClient.setQueryData(["vacancy", vacancy.id], vacancy);
+          }
         });
       }
 
@@ -58,7 +64,7 @@ export const useFavorites = () => {
     isFavoritesLoading: isLoading,
     favoritesError: error,
     favorites: favorites
-      ? mapResumeVacancyItem(favorites.data, language as LanguageType)
+      ? mapResumeVacancyItem(favorites.data as ResumeVacancyItemType, language as LanguageType)
       : undefined,
     totalFavoritesCount: favorites?.totalCount ?? undefined,
   };

@@ -3,22 +3,17 @@ import { capitalizeFirstLetter, truncateText } from "../../../../utils/helpers";
 import { CountLabelWithTooltip } from "../../../labels";
 
 interface SearchListTitleFilterLabelProps {
-  filter: string;
+  titleItems: string[];
 }
 
-export const SearchListTitleFilterLabel = ({ filter }: SearchListTitleFilterLabelProps) => {
+export const SearchListTitleFilterLabel = ({ titleItems }: SearchListTitleFilterLabelProps) => {
   const isMobile = useResponsiveContext();
-
-  const items = filter
-    .split(",")
-    .map((item) => item.trim())
-    .filter(Boolean);
 
   return (
     <CountLabelWithTooltip
-      title={truncateText(capitalizeFirstLetter(items[0]), isMobile ? 28 : 55)}
+      title={truncateText(capitalizeFirstLetter(titleItems[0]), isMobile ? 28 : 55)}
       badgeClassName="bg-primary"
-      items={items}
+      items={titleItems}
       className="min-w-48"
       renderContent={(item) => <span key={item}>{capitalizeFirstLetter(item)}</span>}
     />
