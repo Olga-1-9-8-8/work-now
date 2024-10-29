@@ -18,7 +18,7 @@ export const LkCardHeader = ({ data }: LkCardHeaderProps) => {
   return (
     <CardHeader className="flex-row justify-between">
       <div>
-        <div className="flex items-center gap-2">
+        <div className="mb-2 flex items-center gap-2">
           <Avatar
             avatar={data.avatar}
             userName={data.userName}
