@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../widgets/languages-switcher";
 
 interface SideBarItemButtonResetProps {
   onClick: () => void;

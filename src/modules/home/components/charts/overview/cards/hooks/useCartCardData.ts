@@ -1,7 +1,7 @@
 import { FileStack, GraduationCap, Mails } from "lucide-react";
 import { useMemo } from "react";
 import { LanguageType, currencyConfigs } from "../../../../../../shared/configs";
-import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher";
 import { UniversalItemAnalyticsApiTypeInput } from "../../../../../types/UniversalItemAnalyticsApiTypeInput";
 import { getApplicantsWithHighEducation } from "../../../../../utils/getApplicantsWithHighEducation";
 import { getAverageApplicantsQuantity } from "../../../../../utils/getAverageApplicantsQuantity";

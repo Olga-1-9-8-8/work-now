@@ -1,7 +1,7 @@
 import { ArrowLeft } from "lucide-react";
 import { useMoveBack } from "../../../hooks";
 import { Button, ButtonProps } from "../../../ui/buttons/Button";
-import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher";
 
 interface BackButtonProps extends ButtonProps {
   to?: string;

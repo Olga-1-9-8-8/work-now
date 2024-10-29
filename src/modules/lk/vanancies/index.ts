@@ -1,2 +1,3 @@
 export { useDeleteVacancy } from "./hooks/useDeleteVacancy";
-export { LkVacanciesPage } from "./pages/LkVacanciesPage";
+// eslint-disable-next-line no-restricted-exports, import/no-default-export
+export { default } from "./pages/LkVacanciesPage";

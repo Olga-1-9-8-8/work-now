@@ -7,7 +7,7 @@ import {
 } from "../../../shared/features/filters/server-side";
 import { buildPaginationQuery } from "../../../shared/features/filters/server-side/utils/buildPaginationQuery";
 
-import { supabase } from "../../../shared/services";
+import { supabase } from "../../../shared/services/supabase";
 
 interface GetResumesProps {
   filters: FilterType[];

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
-import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher";
 import { getFavorite } from "../api/apiFavorite";
 
 export const useFavorite = (id: number) => {

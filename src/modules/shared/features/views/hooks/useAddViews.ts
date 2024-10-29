@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useUser } from "../../../services/auth";
 import { UserEntity } from "../../../types";
-import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher";
 import { addView as addViewsApi } from "../api/apiViews";
 
 export const useAddViews = (id: number, count: number, isHiring: boolean) => {

@@ -9,7 +9,7 @@ import {
   getBadgesTitle,
   getSalaryTitle,
 } from "../../../../utils";
-import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../widgets/languages-switcher";
 import { CardItemInsight } from "../../../card";
 
 interface SearchCardDetailsBlockProps {

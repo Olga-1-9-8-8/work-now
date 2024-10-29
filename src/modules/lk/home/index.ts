@@ -1,1 +1,2 @@
-export { LkHomePage } from "./pages/LkHomePage";
+// eslint-disable-next-line no-restricted-exports, import/no-default-export
+export { default } from "./pages/LkHomePage";

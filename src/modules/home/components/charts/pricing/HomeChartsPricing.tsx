@@ -4,7 +4,7 @@ import { useUser } from "../../../../shared/services/auth";
 import { Button } from "../../../../shared/ui/buttons/Button";
 import { TypographyH3 } from "../../../../shared/ui/typography/TypographyH3";
 import { formatCurrency } from "../../../../shared/utils/helpers";
-import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher";
 import { HomeChartsPricingItem } from "./item/HomeChartsPricingItem";
 
 export const HomeChartsPricing = () => {

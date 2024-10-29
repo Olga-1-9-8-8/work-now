@@ -1,6 +1,6 @@
 import { LanguageType, sortConfig } from "../../../../configs";
 import { UniversalItemType } from "../../../../types";
-import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../widgets/languages-switcher";
 import { FilteredDropdownMenu } from "./FilteredDropdownMenu";
 
 export const SearchFiltersBarDropdown = () => {

@@ -3,7 +3,7 @@ import { CardSocialsButtons } from "../../../../shared/components/card";
 import { AppliedButton } from "../../../../shared/features/applies";
 import { UniversalCardItemType, UserEntity } from "../../../../shared/types";
 import { Card, CardFooter } from "../../../../shared/ui/card/Card";
-import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher";
 import { LkCardHeader } from "./header/LkCardHeader";
 
 interface LkCardProps {

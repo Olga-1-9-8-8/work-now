@@ -1,6 +1,6 @@
 import { useProfile } from "../../../shared/services/auth";
 import { TypographyH5 } from "../../../shared/ui/typography/TypographyH5";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { LkDetailsDeleteAccountCard } from "./cards/LkDetailsDeleteAccountCard";
 import { LkDetailsProfileDataCard } from "./cards/LkDetailsProfileDataCard";
 import { LkDetailsUpdatePasswordCard } from "./cards/LkDetailsUpdatePasswordCard";

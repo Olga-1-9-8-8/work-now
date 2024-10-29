@@ -1,4 +1,4 @@
-import { supabase } from "../../../services";
+import { supabase } from "../../../services/supabase";
 
 interface AddViewParams {
   id: number;

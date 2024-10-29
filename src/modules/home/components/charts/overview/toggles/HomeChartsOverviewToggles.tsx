@@ -2,7 +2,7 @@ import { useCallback, useEffect } from "react";
 import { Toggles } from "../../../../../shared/components/toggles";
 import { LanguageType } from "../../../../../shared/configs";
 import { useUrl } from "../../../../../shared/hooks";
-import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher";
 import { DEFAULT_LAST_DAYS } from "../../../../const";
 import { toggleOptions } from "./config/toggleOptions";
 

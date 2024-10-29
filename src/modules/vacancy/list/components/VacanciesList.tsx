@@ -1,7 +1,7 @@
 import { NotFound } from "../../../shared/components/not-found";
 import { Pagination } from "../../../shared/components/pagination/components/Pagination";
 import { UniversalCardItemType } from "../../../shared/types";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { VacanciesListItem } from "./item/VacanciesListItem";
 
 interface VacanciesListProps {

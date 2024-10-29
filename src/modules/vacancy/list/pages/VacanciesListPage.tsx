@@ -1,7 +1,7 @@
 import { SearchList } from "../../../shared/components/search-list";
 import { SeoMetadata } from "../../../shared/navigation";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { VacanciesList } from "../components/VacanciesList";
 import { useVacancies } from "../hooks/useVacancies";
 

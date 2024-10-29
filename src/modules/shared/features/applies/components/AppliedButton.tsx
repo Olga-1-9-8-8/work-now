@@ -2,7 +2,7 @@ import { Zap } from "lucide-react";
 import { useLayoutEffect, useState } from "react";
 import { Button, ButtonProps } from "../../../ui/buttons/Button";
 import { Tooltip } from "../../../ui/tooltip/Tooltip";
-import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher";
 import { useAddApply } from "../hooks/useAddApply";
 import { useApply } from "../hooks/useApply";
 import { useDeleteApply } from "../hooks/useDeleteApply.";

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../../../shared/ui/buttons/Button";
 import { Input } from "../../../../shared/ui/inputs/Input";
-import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher";
 
 export const HomeSearchBarForm = () => {
   const navigate = useNavigate();

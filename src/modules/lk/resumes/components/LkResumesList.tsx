@@ -5,8 +5,8 @@ import { UniversalJobType } from "../../../shared/types";
 import { Button } from "../../../shared/ui/buttons/Button";
 import { Tooltip } from "../../../shared/ui/tooltip/Tooltip";
 import { TypographyH3 } from "../../../shared/ui/typography/TypographyH3";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
-import { useLkTotalProfileResumesCountContext } from "../../shared/context/LkTotalProfileResumesCountContextProvider";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
+import { useLkTotalProfileResumesCountContext } from "../../shared";
 import { LkResumesCard } from "./card/LkResumesCard";
 
 interface LkResumesListProps {

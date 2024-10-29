@@ -3,7 +3,7 @@ import { Avatar } from "../../../../../../../features/avatar";
 import { CityType, GenderType } from "../../../../../../../types";
 import { TypographyH2 } from "../../../../../../../ui/typography/TypographyH2";
 import { capitalizeFirstLetter } from "../../../../../../../utils/helpers";
-import { useLanguageSwitcher } from "../../../../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../../../widgets/languages-switcher";
 import { CardTitleWithTooltip } from "../../../../../../card";
 import { MapCityBadgeGroup } from "../../../../../../map";
 import { DetailsCardHeaderTitlePersonalData } from "./items/DetailsCardHeaderTitlePersonalData";

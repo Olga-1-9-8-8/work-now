@@ -2,7 +2,7 @@ import { filterConfig, LanguageType } from "../../../../configs";
 import { useUrl } from "../../../../hooks";
 import { UniversalItemType } from "../../../../types";
 import { MultiSelect } from "../../../../ui/form-control/select/multi/MultiSelect";
-import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../widgets/languages-switcher";
 
 export const SearchFiltersBarSelect = () => {
   const { getParam, setParam } = useUrl();

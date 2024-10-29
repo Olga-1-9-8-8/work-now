@@ -1,15 +1,9 @@
 import { lazy } from "react";
 import { Navigate, RouteObject } from "react-router-dom";
+import { AuthLayout } from "../../../../auth/shared";
 import { HomePage } from "../../../../home/pages/HomePage";
-import { LkApplicationsPage } from "../../../../lk/applications";
-import { LkDetailsPage } from "../../../../lk/details";
-import { LkFavoritesPage } from "../../../../lk/favorites";
-import { LkHomePage } from "../../../../lk/home";
-import { LkResumesPage } from "../../../../lk/resumes";
 import { LkLayout } from "../../../../lk/shared/ui";
-import { LkVacanciesPage } from "../../../../lk/vanancies";
 import { PageNotFound } from "../../../pages";
-import { AuthLayout } from "../../../services";
 import { AppLayout } from "../../../ui/layout";
 import { ProtectedRoute } from "../components/ProtectedRoute";
 
@@ -19,11 +13,15 @@ const ResumeDetailsPage = lazy(() => import("../../../../resume/details"));
 const VacanciesListPage = lazy(() => import("../../../../vacancy/list"));
 const VacancyCreationPage = lazy(() => import("../../../../vacancy/creation"));
 const VacancyDetailsPage = lazy(() => import("../../../../vacancy/details"));
-const AuthLoginPage = lazy(() => import("../../../services/auth/pages/AuthPage"));
-const AuthResetPage = lazy(() => import("../../../services/auth/pages/AuthResetPage"));
-const AuthUpdatePasswordPage = lazy(
-  () => import("../../../services/auth/pages/AuthUpdatePasswordPage"),
-);
+const AuthLoginPage = lazy(() => import("../../../../auth/login"));
+const AuthResetPage = lazy(() => import("../../../../auth/reset"));
+const AuthUpdatePasswordPage = lazy(() => import("../../../../auth/update"));
+const LkHomePage = lazy(() => import("../../../../lk/home"));
+const LkResumesPage = lazy(() => import("../../../../lk/resumes"));
+const LkVacanciesPage = lazy(() => import("../../../../lk/vanancies"));
+const LkDetailsPage = lazy(() => import("../../../../lk/details"));
+const LkFavoritesPage = lazy(() => import("../../../../lk/favorites"));
+const LkApplicationsPage = lazy(() => import("../../../../lk/applications"));
 
 export const routes: RouteObject[] = [
   {

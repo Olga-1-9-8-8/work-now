@@ -1,4 +1,4 @@
-import { supabase } from "../../api/supabase";
+import { supabase } from "../../supabase";
 
 export const getProfile = async (id?: string) => {
   if (!id) return null;

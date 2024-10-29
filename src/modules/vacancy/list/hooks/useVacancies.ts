@@ -4,7 +4,7 @@ import { LanguageType } from "../../../shared/configs";
 import { sortClientData } from "../../../shared/features/filters/client-side";
 import { useFiltersParams } from "../../../shared/features/filters/server-side";
 import { mapUniversalItemWithProfile } from "../../../shared/utils";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { getVacancies } from "../api/apiVacancies";
 
 export const useVacancies = () => {

@@ -6,7 +6,7 @@ import {
   currencyConfigs,
   homeChartSalaryConfig,
 } from "../../../../../../shared/configs";
-import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher";
 import { UniversalItemAnalyticsApiTypeInput } from "../../../../../types/UniversalItemAnalyticsApiTypeInput";
 import { mapItemsToSalaryLineChartData } from "../../../../../utils/mappers/mapItemsToSalaryLineChartData";
 import { ChartNotExist } from "./blocks/ChartNotExist";

@@ -1,3 +1,3 @@
-import { Database } from "../../../api/types/database.types";
+import { Database } from "../../../services/supabase";
 
 export type AppliesApiType = Database["public"]["Tables"]["applies"]["Row"];

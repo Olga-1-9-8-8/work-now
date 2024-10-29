@@ -1,6 +1,6 @@
 import { LanguageType } from "../../../shared/configs";
 import { buildPaginationQuery } from "../../../shared/features/filters/server-side/utils/buildPaginationQuery";
-import { supabase } from "../../../shared/services";
+import { supabase } from "../../../shared/services/supabase";
 
 export const getProfileResumes = async (
   page: number,

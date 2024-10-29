@@ -4,7 +4,7 @@ import { externalUrlsConfig } from "../../../../configs";
 import { Badge } from "../../../../ui/badge/Badge";
 import { Button } from "../../../../ui/buttons/Button";
 import { formatPhoneNumber } from "../../../../utils/helpers";
-import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../widgets/languages-switcher";
 
 interface CardSocialsButtonsProps {
   phone?: string;

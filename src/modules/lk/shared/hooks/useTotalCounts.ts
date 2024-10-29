@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { getTotalCounts } from "../api/apiCounts";
 
 export const useTotalCounts = () => {

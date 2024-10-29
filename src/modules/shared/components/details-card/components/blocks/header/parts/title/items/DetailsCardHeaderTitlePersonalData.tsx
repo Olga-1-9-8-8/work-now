@@ -1,7 +1,7 @@
 import { FaPerson } from "react-icons/fa6";
 import { LanguageType } from "../../../../../../../../configs";
 import { GenderType, getGenderTitle } from "../../../../../../../../types";
-import { useLanguageSwitcher } from "../../../../../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../../../../widgets/languages-switcher";
 
 interface DetailsCardHeaderTitlePersonalDataProps {
   gender?: GenderType;

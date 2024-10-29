@@ -12,7 +12,7 @@ import {
 } from "../../../shared/ui/card/Card";
 import { PageContainer } from "../../../shared/ui/layout";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { VacancyCreationForm } from "./VacancyCreationForm";
 
 export const VacancyCreation = () => {

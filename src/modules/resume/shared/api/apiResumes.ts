@@ -1,5 +1,5 @@
 import { ResumeApiType } from "../../../shared/api";
-import { supabase } from "../../../shared/services/api/supabase";
+import { supabase } from "../../../shared/services/supabase";
 
 export const createEditResume = async (
   newResume: Omit<ResumeApiType, "id"> & { id?: number },

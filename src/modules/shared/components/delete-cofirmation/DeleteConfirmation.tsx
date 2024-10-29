@@ -1,6 +1,6 @@
 import { Button } from "../../ui/buttons/Button";
 import { TypographyH5 } from "../../ui/typography/TypographyH5";
-import { useLanguageSwitcher } from "../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../widgets/languages-switcher";
 
 interface DeleteConfirmationProps {
   title: string;

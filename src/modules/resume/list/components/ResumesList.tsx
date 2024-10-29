@@ -1,7 +1,7 @@
 import { NotFound } from "../../../shared/components/not-found";
 import { Pagination } from "../../../shared/components/pagination";
 import { UniversalCardItemType } from "../../../shared/types";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { ResumesListItem } from "./item/ResumesListItem";
 
 interface ResumesListProps {

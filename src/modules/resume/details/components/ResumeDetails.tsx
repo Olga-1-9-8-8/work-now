@@ -3,7 +3,7 @@ import { DetailsCard } from "../../../shared/components/details-card";
 import { NotExist } from "../../../shared/components/not-found";
 import { PageContainer } from "../../../shared/ui/layout";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { useResume } from "../hooks/useResume";
 
 export const ResumeDetails = () => {

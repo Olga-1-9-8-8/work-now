@@ -11,7 +11,7 @@ import {
 import { MultiSelect } from "../../../../ui/form-control/select/multi/MultiSelect";
 import { TypographyH6 } from "../../../../ui/typography/TypographyH6";
 import { capitalizeFirstLetter } from "../../../../utils/helpers";
-import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../widgets/languages-switcher";
 import { SideBarItemButtonReset } from "../button/SideBarItemButton";
 
 interface SideBarItemProps {

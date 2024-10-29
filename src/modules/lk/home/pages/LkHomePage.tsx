@@ -1,8 +1,8 @@
 import { SeoMetadata } from "../../../shared/navigation";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { LkHome } from "../components/LkHome";
 
-export const LkHomePage = () => {
+const LkHomePage = () => {
   const { t } = useLanguageSwitcher("seo");
   return (
     <>
@@ -14,3 +14,6 @@ export const LkHomePage = () => {
     </>
   );
 };
+
+// eslint-disable-next-line import/no-default-export
+export default LkHomePage;

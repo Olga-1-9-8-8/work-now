@@ -1,4 +1,4 @@
-import { supabase } from "../../../shared/services/api/supabase";
+import { supabase } from "../../../shared/services/supabase";
 
 export const deleteResume = async (id: number, t: (key: string) => string) => {
   const { data, error } = await supabase.from("resumes").delete().eq("id", id).select("*").single();

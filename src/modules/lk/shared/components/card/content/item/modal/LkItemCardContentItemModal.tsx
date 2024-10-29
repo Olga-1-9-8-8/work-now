@@ -5,7 +5,7 @@ import { Badge } from "../../../../../../../shared/ui/badge/Badge";
 import { Button } from "../../../../../../../shared/ui/buttons/Button";
 import { Spinner } from "../../../../../../../shared/ui/spinner/Spinner";
 import { formattedTimeString } from "../../../../../../../shared/utils/helpers";
-import { useLanguageSwitcher } from "../../../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../../../shared/widgets/languages-switcher";
 
 interface LkItemCardContentItemModalProps {
   data?: UniversalEngagementType[];

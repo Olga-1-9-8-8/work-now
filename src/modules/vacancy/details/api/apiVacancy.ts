@@ -1,4 +1,4 @@
-import { supabase } from "../../../shared/services";
+import { supabase } from "../../../shared/services/supabase";
 
 export const getVacancy = async (t: (key: string) => string, id?: number) => {
   if (!id) return null;

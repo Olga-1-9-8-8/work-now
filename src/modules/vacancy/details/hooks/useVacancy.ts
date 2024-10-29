@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { LanguageType } from "../../../shared/configs";
 import { mapUniversalItemWithProfile } from "../../../shared/utils";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { getVacancy } from "../api/apiVacancy";
 
 export const useVacancy = () => {

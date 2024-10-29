@@ -1,8 +1,7 @@
 import { lkNavConfig } from "../../../shared/configs";
 import { useAuthContext } from "../../../shared/services/auth";
 import { UserEntity } from "../../../shared/types";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
-
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { getContext } from "../../shared/utils/getContext";
 import { LkHomeCard } from "./card/LkHomeCard";
 

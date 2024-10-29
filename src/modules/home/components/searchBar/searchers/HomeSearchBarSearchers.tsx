@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import { Fragment } from "react";
 import { LanguageType, searchConfig } from "../../../../shared/configs";
-import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher";
 import { HomeSearchBarSearchersItem } from "./item/HomeSearchBarSearchersItem";
 
 export const HomeSearchBarSearchers = () => {

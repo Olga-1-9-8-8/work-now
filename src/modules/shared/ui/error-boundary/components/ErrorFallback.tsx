@@ -1,4 +1,4 @@
-import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher";
 import { Button } from "../../buttons/Button";
 import { NotRight } from "../../icons";
 import { PageContainer } from "../../layout";

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { NotExist, NotFound } from "../../../shared/components/not-found";
 import { Button } from "../../../shared/ui/buttons/Button";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { useProfileVacancies } from "../../shared/hooks/useProfileVacancies";
 import { LkVacanciesList } from "./LkVacanciesList";
 

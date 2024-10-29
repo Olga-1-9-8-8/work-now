@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { LanguageType } from "../../../shared/configs";
 import { UniversalJobType } from "../../../shared/types";
 import { getDefaultUniversalJobFormValues, mapItemToApiType } from "../../../shared/utils";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { ResumeCreationFormType } from "../types/ResumeCreationFormType";
 import { getResumeFormValidationSchema } from "../validation/getResumeFormValidationSchema";
 import { useCreateResume } from "./useCreateResume";

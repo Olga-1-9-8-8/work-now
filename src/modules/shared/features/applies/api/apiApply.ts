@@ -1,4 +1,4 @@
-import { supabase } from "../../../services/api/supabase";
+import { supabase } from "../../../services/supabase";
 import { UserEntity } from "../../../types";
 
 export const getApply = async (id: number, t: (key: string) => string) => {

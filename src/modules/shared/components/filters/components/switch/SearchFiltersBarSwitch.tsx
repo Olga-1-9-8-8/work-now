@@ -1,6 +1,6 @@
 import { LanguageType, popularFilterConfig } from "../../../../configs";
 import { UniversalItemType } from "../../../../types";
-import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../widgets/languages-switcher";
 import { FilterSwitch } from "./FilterSwitch";
 
 export const SearchFiltersBarSwitch = () => {

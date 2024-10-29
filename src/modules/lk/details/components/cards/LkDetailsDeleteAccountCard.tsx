@@ -1,10 +1,10 @@
 import { TrashIcon } from "lucide-react";
+import { useDeleteAccount } from "../../../../auth/shared/hooks/useDeleteAccount";
 import { DeleteConfirmation } from "../../../../shared/components/delete-cofirmation";
-import { useDeleteAccount } from "../../../../shared/services/auth/hooks/useDeleteAccount";
 import { Button } from "../../../../shared/ui/buttons/Button";
 import { DrawerDialogResponsive } from "../../../../shared/ui/drawer-dialog/DrawerDialogResponsive";
 import { TypographyH3 } from "../../../../shared/ui/typography/TypographyH3";
-import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher";
 import { LkDetailsCard } from "../card/LkDetailsCard";
 
 interface LkDetailsDeleteAccountCardProps {

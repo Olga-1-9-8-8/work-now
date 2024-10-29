@@ -19,7 +19,7 @@ import {
   FormMessage,
 } from "../../../shared/ui/form/Form";
 import { getSalaryTitle } from "../../../shared/utils";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { useResumeForm } from "../hooks/useResumeForm";
 import { ResumeCreationFormType } from "../types/ResumeCreationFormType";
 

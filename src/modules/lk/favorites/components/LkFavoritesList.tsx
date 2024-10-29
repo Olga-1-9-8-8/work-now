@@ -1,7 +1,7 @@
 import { Pagination } from "../../../shared/components/pagination";
 import { UniversalCardItemType } from "../../../shared/types";
 import { TypographyH4 } from "../../../shared/ui/typography/TypographyH4";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { LkCard } from "../../shared/components";
 
 interface LkFavoritesListProps {

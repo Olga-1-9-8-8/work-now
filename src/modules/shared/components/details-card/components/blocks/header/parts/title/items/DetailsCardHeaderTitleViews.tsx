@@ -1,7 +1,7 @@
 import { EyeIcon } from "lucide-react";
 import { useAddUserViews } from "../../../../../../../../features/views/hooks/useAddUserViews";
 import { Tooltip } from "../../../../../../../../ui/tooltip/Tooltip";
-import { useLanguageSwitcher } from "../../../../../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../../../../widgets/languages-switcher";
 
 interface DetailsCardHeaderTitleViewsProps {
   id: number;

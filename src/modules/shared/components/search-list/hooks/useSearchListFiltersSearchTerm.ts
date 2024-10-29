@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useUrl } from "../../../hooks";
 import { capitalizeFirstLetter } from "../../../utils/helpers";
-import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher";
 
 export const useSearchListFiltersSearchTerm = () => {
   const { getParam } = useUrl();

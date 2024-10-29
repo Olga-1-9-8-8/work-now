@@ -2,7 +2,7 @@ import { UniversalItemApiTypeInput } from "../../../../shared/api";
 import { LanguageType } from "../../../../shared/configs";
 import { UniversalJobType } from "../../../../shared/types";
 import { Card } from "../../../../shared/ui/card/Card";
-import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher";
 import { createJobDuplicateToApi } from "../../utils/createJobDuplicateToApi";
 import { LkItemCardContent } from "./content/LkItemCardContent";
 import { LkItemCardFooter } from "./footer/LkItemCardFooter";

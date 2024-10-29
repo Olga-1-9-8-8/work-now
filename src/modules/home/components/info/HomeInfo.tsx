@@ -8,7 +8,7 @@ import {
 } from "../../../shared/ui/accordion/Accordion";
 import { Button } from "../../../shared/ui/buttons/Button";
 import { TypographyH1 } from "../../../shared/ui/typography/TypographyH1";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { HomeInfoList } from "./list/HomeInfoList";
 
 export const HomeInfo = () => {

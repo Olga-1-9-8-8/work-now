@@ -8,8 +8,10 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "../../../../ui/nav-menu/NavigationMenu";
-import { LanguageSwitcherDropdown } from "../../../../widgets/languages-switcher";
-import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import {
+  LanguageSwitcherDropdown,
+  useLanguageSwitcher,
+} from "../../../../widgets/languages-switcher";
 import { HeaderNavListItemLink } from "../link/HeaderNavListItemLink";
 
 interface HeaderNavHamburgerMobileProps {

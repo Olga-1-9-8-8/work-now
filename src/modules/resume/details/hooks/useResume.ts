@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { LanguageType } from "../../../shared/configs";
 import { mapUniversalItemWithProfile } from "../../../shared/utils";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { getResume } from "../api/apiResume";
 
 export const useResume = () => {

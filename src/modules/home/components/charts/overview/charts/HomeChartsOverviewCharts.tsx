@@ -1,4 +1,4 @@
-import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher";
 import { useLastResumesAnalytics } from "../../../../hooks/useLastResumesAnalytics";
 import { AgeBarChart } from "./chart/AgeBarChart";
 import { GenderChart } from "./chart/GenderChart";

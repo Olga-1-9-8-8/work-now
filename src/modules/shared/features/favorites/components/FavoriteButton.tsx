@@ -2,7 +2,7 @@ import { Heart } from "lucide-react";
 import { memo, useLayoutEffect, useState } from "react";
 import { Button, ButtonProps } from "../../../ui/buttons/Button";
 import { Tooltip } from "../../../ui/tooltip/Tooltip";
-import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher";
 import { useAddFavorite } from "../hooks/useAddFavorite";
 import { useDeleteFavorite } from "../hooks/useDeleteFavorite.";
 import { useFavorite } from "../hooks/useFavorite";

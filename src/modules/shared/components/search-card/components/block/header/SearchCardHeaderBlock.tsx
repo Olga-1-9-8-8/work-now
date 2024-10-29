@@ -19,7 +19,7 @@ import {
   formattedTimeString,
   getDayMonthYear,
 } from "../../../../../utils/helpers";
-import { useLanguageSwitcher } from "../../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../widgets/languages-switcher";
 import { CardItemInsight, CardTitleWithTooltip, getEducationTitle } from "../../../../card";
 import { MapCityBadgeGroup } from "../../../../map";
 import { getPersonalInfoTitle } from "../../../utils/getPersonalInfoTitle";

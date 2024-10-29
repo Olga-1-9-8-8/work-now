@@ -3,7 +3,7 @@ import { subDays } from "date-fns";
 import { useMemo } from "react";
 import { LanguageType } from "../../shared/configs";
 import { useUrl } from "../../shared/hooks";
-import { useLanguageSwitcher } from "../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../shared/widgets/languages-switcher";
 import { getResumesAnalyticsAfterDate } from "../api/apiResumesAnalytics";
 import { DEFAULT_LAST_DAYS } from "../const";
 

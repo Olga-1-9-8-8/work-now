@@ -1,4 +1,4 @@
-import { supabase } from "../../../services/api/supabase";
+import { supabase } from "../../../services/supabase";
 import { UserEntity } from "../../../types";
 import { buildPaginationQuery } from "../../filters/server-side/utils/buildPaginationQuery";
 

@@ -8,7 +8,7 @@ import {
   NavigationMenuTrigger,
 } from "../../../../../ui/nav-menu/NavigationMenu";
 import { cn } from "../../../../../utils";
-import { useLanguageSwitcher } from "../../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../widgets/languages-switcher";
 import { HeaderNavListItemLink } from "../../link/HeaderNavListItemLink";
 
 interface HeaderNavListItemDesktopProps {

@@ -1,6 +1,6 @@
 import { addDays, format } from "date-fns";
 import { LanguageType } from "../../shared/configs";
-import { supabase } from "../../shared/services";
+import { supabase } from "../../shared/services/supabase";
 
 export const getResumesAnalyticsAfterDate = async (
   date: string,

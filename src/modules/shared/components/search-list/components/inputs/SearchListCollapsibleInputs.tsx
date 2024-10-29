@@ -6,7 +6,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "../../../../ui/collapsible/Collapsible";
-import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../widgets/languages-switcher";
 import { DebouncedSearchInput } from "../../../search-bar";
 import { getPlaceholderByKey } from "../../utils/getPlaceholderByKey";
 

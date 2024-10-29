@@ -22,7 +22,7 @@ import {
 } from "../../../../../../shared/ui/dropdown-menu/DropdownMenu";
 import { TypographyH6 } from "../../../../../../shared/ui/typography/TypographyH6";
 import { formattedTimeString } from "../../../../../../shared/utils/helpers";
-import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher";
 
 interface LkItemCardFooterMobileProps {
   position: string;

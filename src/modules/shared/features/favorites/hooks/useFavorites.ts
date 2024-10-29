@@ -4,7 +4,7 @@ import { LanguageType } from "../../../configs";
 import { useUrl } from "../../../hooks";
 import { mapResumeVacancyItem } from "../../../utils";
 import { ResumeVacancyItemType } from "../../../utils/mappers/mapResumeVacancyItem";
-import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher";
 import { getFavorites } from "../api/apiFavorites";
 
 export const useFavorites = () => {

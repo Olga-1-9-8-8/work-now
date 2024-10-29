@@ -1,7 +1,7 @@
 import { SeoMetadata } from "../navigation";
 import { NotFound } from "../ui/icons";
 import { TypographyH5 } from "../ui/typography/TypographyH5";
-import { useLanguageSwitcher } from "../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../widgets/languages-switcher";
 
 export const PageNotFound = () => {
   const { t } = useLanguageSwitcher("seo");

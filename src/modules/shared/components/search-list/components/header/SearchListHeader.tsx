@@ -2,7 +2,7 @@ import { Loader2 } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../../../../services/auth";
 import { UserEntity } from "../../../../types";
-import { useLanguageSwitcher } from "../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../widgets/languages-switcher";
 import { CreateButton } from "../../../buttons";
 import { SearchListTitle } from "./SearchListTitle";
 

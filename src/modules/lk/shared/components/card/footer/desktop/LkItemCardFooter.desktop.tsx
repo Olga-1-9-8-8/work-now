@@ -7,7 +7,7 @@ import { Button } from "../../../../../../shared/ui/buttons/Button";
 import { CardFooter } from "../../../../../../shared/ui/card/Card";
 import { DrawerDialogResponsive } from "../../../../../../shared/ui/drawer-dialog/DrawerDialogResponsive";
 import { formattedTimeString } from "../../../../../../shared/utils/helpers";
-import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher";
 
 interface LkItemCardFooterDesktopProps {
   position: string;

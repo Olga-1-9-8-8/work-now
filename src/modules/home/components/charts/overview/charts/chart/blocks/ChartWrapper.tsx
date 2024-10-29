@@ -1,7 +1,7 @@
 import { ElementType, ReactElement } from "react";
 import { ResponsiveContainer } from "recharts";
 import { Spinner } from "../../../../../../../shared/ui/spinner/Spinner";
-import { useLanguageSwitcher } from "../../../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../../../shared/widgets/languages-switcher";
 import { ChartHeader } from "../header/ChartHeader";
 
 interface ChartWrapperProps {

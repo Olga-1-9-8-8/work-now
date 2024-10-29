@@ -1,4 +1,4 @@
-import { supabase } from "../../../shared/services";
+import { supabase } from "../../../shared/services/supabase";
 
 interface Counts {
   resumesCount: number;

@@ -2,7 +2,7 @@ import { MapPin } from "lucide-react";
 import { Button } from "../../../ui/buttons/Button";
 import { DrawerDialogResponsive } from "../../../ui/drawer-dialog/DrawerDialogResponsive";
 import { Tooltip } from "../../../ui/tooltip/Tooltip";
-import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher";
 import { CardItemInsight } from "../../card";
 import { Map } from "./Map";
 

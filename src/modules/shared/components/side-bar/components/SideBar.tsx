@@ -1,6 +1,6 @@
 import { LanguageType, searchConfig } from "../../../configs";
 import { UniversalItemsWithTitleType } from "../../../types";
-import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher";
 
 interface SideBarProps {
   isHiring?: boolean;

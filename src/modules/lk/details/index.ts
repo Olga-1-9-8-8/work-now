@@ -1,1 +1,2 @@
-export { LkDetailsPage } from "./pages/LkDetailsPage";
+// eslint-disable-next-line no-restricted-exports, import/no-default-export
+export { default } from "./pages/LkDetailsPage";

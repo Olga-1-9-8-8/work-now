@@ -1,4 +1,4 @@
-import { Database } from "./database.types";
+import { Database } from "../../services/supabase";
 import { ProfileApiTypeInput } from "./ProfileApiType";
 
 export type VacancyApiType = Database["public"]["Tables"]["vacancies"]["Row"];

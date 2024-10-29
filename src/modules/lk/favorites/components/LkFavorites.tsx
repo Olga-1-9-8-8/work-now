@@ -1,7 +1,7 @@
 import { NotExist, NotFound } from "../../../shared/components/not-found";
 import { useFavorites } from "../../../shared/features/favorites/hooks/useFavorites";
 import { Spinner } from "../../../shared/ui/spinner/Spinner";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { LkFavoritesList } from "./LkFavoritesList";
 
 export const LkFavorites = () => {

@@ -1,4 +1,4 @@
-import { supabase } from "../../../services/api/supabase";
+import { supabase } from "../../../services/supabase";
 
 export const getAvatar = async (avatar: string) => {
   const { data: avatarFile, error: avatarFileError } = await supabase.storage

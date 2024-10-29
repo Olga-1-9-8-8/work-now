@@ -1,10 +1,11 @@
 import { ReactNode } from "react";
+
 import { useUser } from "../../../../../services/auth";
 import { UserEntity } from "../../../../../types";
 import { Badge } from "../../../../../ui/badge/Badge";
 import { CardFooter } from "../../../../../ui/card/Card";
 import { TypographyH4 } from "../../../../../ui/typography/TypographyH4";
-import { useLanguageSwitcher } from "../../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../widgets/languages-switcher";
 import { CardSocialsButtons } from "../../../../card";
 
 interface DetailsCardFooterSocialsProps {

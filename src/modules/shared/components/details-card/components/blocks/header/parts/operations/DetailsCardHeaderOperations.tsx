@@ -7,7 +7,7 @@ import { useUser } from "../../../../../../../services/auth";
 import { UserEntity } from "../../../../../../../types";
 import { CardDescription } from "../../../../../../../ui/card/Card";
 import { formattedTimeString } from "../../../../../../../utils/helpers";
-import { useLanguageSwitcher } from "../../../../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../../../widgets/languages-switcher";
 
 interface DetailsCardHeaderOperationsProps {
   id: number;

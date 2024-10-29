@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { mapUniversalEngagement } from "../../../utils";
-import { useLanguageSwitcher } from "../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher";
 import { getAllUserApplies } from "../api/apiApplies";
 
 export const useUserApplies = (id: number, isHiring: boolean) => {

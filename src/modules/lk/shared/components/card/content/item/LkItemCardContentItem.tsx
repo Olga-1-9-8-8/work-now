@@ -3,7 +3,7 @@ import { Button } from "../../../../../../shared/ui/buttons/Button";
 import { DrawerDialogResponsive } from "../../../../../../shared/ui/drawer-dialog/DrawerDialogResponsive";
 import { Tooltip } from "../../../../../../shared/ui/tooltip/Tooltip";
 import { cn } from "../../../../../../shared/utils";
-import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher";
 import { getModalTitle } from "../../../../utils/getModalTitle";
 
 interface LkItemCardContentItemProps {

@@ -14,7 +14,7 @@ import {
   getSalaryTitle,
 } from "../../../../../utils";
 import { getDayMonthYear } from "../../../../../utils/helpers";
-import { useLanguageSwitcher } from "../../../../../widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../widgets/languages-switcher";
 import { getEducationTitle } from "../../../../card";
 
 interface DetailsCardContentEducationProps {

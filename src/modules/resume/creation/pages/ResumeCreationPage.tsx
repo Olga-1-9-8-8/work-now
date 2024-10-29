@@ -1,5 +1,5 @@
 import { SeoMetadata } from "../../../shared/navigation";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { ResumeCreation } from "../components/ResumeCreation";
 
 const ResumeCreationPage = () => {

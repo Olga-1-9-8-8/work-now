@@ -1,1 +1,2 @@
-export { LkFavoritesPage } from "./pages/LkFavoritesPage";
+// eslint-disable-next-line no-restricted-exports, import/no-default-export
+export { default } from "./pages/LkFavoritesPage";
