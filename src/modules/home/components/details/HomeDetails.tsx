@@ -5,7 +5,7 @@ import animationGirl from "../../../../../public/assets/animation/AnimationGirl.
 import { LanguageType, homeDetailsConfig } from "../../../shared/configs";
 import { useResponsiveContext } from "../../../shared/responsive";
 import { TypographyH3 } from "../../../shared/ui/typography/TypographyH3";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { HomeDetailsCard } from "./card/HomeDetailsCard";
 import { HomeDetailsCardItem } from "./card/item/HomeDetailsCardItem";
 

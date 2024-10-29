@@ -7,7 +7,7 @@ import { Badge } from "../../../../../shared/ui/badge/Badge";
 import { CardDescription, CardTitle } from "../../../../../shared/ui/card/Card";
 import { getSalaryTitle } from "../../../../../shared/utils";
 import { formattedTimeString, truncateText } from "../../../../../shared/utils/helpers";
-import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher";
 
 interface LkItemCardHeaderProps {
   id: number;

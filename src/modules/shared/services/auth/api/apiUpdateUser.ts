@@ -1,6 +1,6 @@
 import { UserAttributes } from "@supabase/supabase-js";
-import { supabase } from "../../../shared/services/supabase";
-import { GenderType } from "../../../shared/types";
+import { GenderType } from "../../../types";
+import { supabase } from "../../supabase";
 
 export interface UpdateUserTypeProps {
   userName?: string;

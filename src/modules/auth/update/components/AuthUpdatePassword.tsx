@@ -1,6 +1,6 @@
+import { AuthUpdatePasswordForm } from "../../../shared/services/auth";
 import { CardDescription, CardTitle } from "../../../shared/ui/card/Card";
 import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
-import { AuthUpdatePasswordForm } from "./form/AuthUpdatePasswordForm";
 
 export const AuthUpdatePassword = () => {
   const { t } = useLanguageSwitcher("login");

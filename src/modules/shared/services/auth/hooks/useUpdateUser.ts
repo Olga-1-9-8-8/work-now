@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { ProfileType } from "../../../shared/services/auth/types/ProfileType";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
-import { updateUser as updateUserApi } from "../api/apiAuthUpdate";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher";
+import { updateUser as updateUserApi } from "../api/apiUpdateUser";
+import { ProfileType } from "../types/ProfileType";
 
 export const useUpdateUser = () => {
   const queryClient = useQueryClient();

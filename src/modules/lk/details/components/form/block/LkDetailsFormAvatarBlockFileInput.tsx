@@ -6,7 +6,7 @@ import { Button } from "../../../../../shared/ui/buttons/Button";
 import { FormControl, FormField, FormItem, FormMessage } from "../../../../../shared/ui/form/Form";
 import { Input } from "../../../../../shared/ui/inputs/Input";
 import { cn } from "../../../../../shared/utils/cn";
-import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher";
 import { LkDetailsFormType } from "../../../types/LkDetailsFormType";
 
 interface LkDetailsFormAvatarBlockFileInputProps {

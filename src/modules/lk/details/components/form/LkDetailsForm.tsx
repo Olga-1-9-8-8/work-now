@@ -8,7 +8,7 @@ import { Button } from "../../../../shared/ui/buttons/Button";
 import { FormInputField, FormRadioGroup } from "../../../../shared/ui/form-control";
 import { FormInputOptField } from "../../../../shared/ui/form-control/input/FormInputOptField";
 import { Form } from "../../../../shared/ui/form/Form";
-import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher";
 import { LkDetailsFormType } from "../../types/LkDetailsFormType";
 import { getLkDetailsFormValidationSchema } from "../../validation/lkDetailsFormValidationSchema";
 import { LkDetailsFormAvatarBlock } from "./block/LkDetailsFormAvatarBlock";

@@ -1,12 +1,12 @@
 import { UseFormReset } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { LanguageType } from "../../../../shared/configs";
-import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher";
-import { AuthFormWrapper } from "../../../shared/components/AuthFormWrapper";
-import { AuthPasswordField } from "../../../shared/components/items/AuthPasswordField";
-import { useUpdateUser } from "../../hooks/useUpdateUser";
-import { UpdatePasswordFormType } from "../../types/UpdatePasswordFormType";
-import { getAuthUpdatePasswordFormValidationSchema } from "../../validation/getAuthUpdatePasswordFormValidationSchema";
+import { AuthFormWrapper } from "../../../../auth/shared/components/AuthFormWrapper";
+import { AuthPasswordField } from "../../../../auth/shared/components/items/AuthPasswordField";
+import { UpdatePasswordFormType } from "../../../../auth/update/types/UpdatePasswordFormType";
+import { getAuthUpdatePasswordFormValidationSchema } from "../../../../auth/update/validation/getAuthUpdatePasswordFormValidationSchema";
+import { LanguageType } from "../../../configs";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher";
+import { useUpdateUser } from "../hooks/useUpdateUser";
 
 export const AuthUpdatePasswordForm = () => {
   const { updateUser, isUpdatingUser } = useUpdateUser();

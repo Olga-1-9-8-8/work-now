@@ -1,5 +1,5 @@
 import { LanguageType, searchConfig } from "../../../../shared/configs";
-import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher";
 import { HomeInfoListItems } from "./items/HomeInfoListItems";
 
 export const HomeInfoList = () => {

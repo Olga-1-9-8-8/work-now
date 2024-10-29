@@ -9,7 +9,7 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
 } from "../../../../../shared/ui/nav-menu/NavigationMenu";
-import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher";
 import { getContext } from "../../../utils/getContext";
 
 export const LkLayoutNav = () => {

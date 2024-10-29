@@ -6,7 +6,7 @@ import { Badge } from "../../../../../shared/ui/badge/Badge";
 import { Button } from "../../../../../shared/ui/buttons/Button";
 import { CardHeader } from "../../../../../shared/ui/card/Card";
 import { getSalaryTitle } from "../../../../../shared/utils";
-import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher";
 import { LkCardHeaderTitle } from "./LkCardHeaderTitle";
 
 interface LkCardHeaderProps {

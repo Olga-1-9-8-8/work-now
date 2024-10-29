@@ -3,7 +3,7 @@ import { QUANTITY_OF_ITEMS_ON_ONE_PAGE } from "../../../shared/components/pagina
 import { LanguageType } from "../../../shared/configs";
 import { useUrl } from "../../../shared/hooks";
 import { mapUniversalItem } from "../../../shared/utils";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
 import { getProfileResumes } from "../api/apiProfile";
 
 export const useProfileResumes = () => {

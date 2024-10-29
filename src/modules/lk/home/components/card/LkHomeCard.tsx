@@ -8,7 +8,7 @@ import { Button } from "../../../../shared/ui/buttons/Button";
 import { Card, CardContent, CardFooter, CardHeader } from "../../../../shared/ui/card/Card";
 import { TypographyH2 } from "../../../../shared/ui/typography/TypographyH2";
 import { cn } from "../../../../shared/utils/cn";
-import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher";
 
 interface LkHomeCardProps {
   item: LkNavItems;

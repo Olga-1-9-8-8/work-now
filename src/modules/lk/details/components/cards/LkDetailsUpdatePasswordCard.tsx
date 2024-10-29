@@ -1,5 +1,5 @@
 import { AuthUpdatePasswordForm } from "../../../../shared/services/auth";
-import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher";
 import { LkDetailsCard } from "../card/LkDetailsCard";
 
 interface LkDetailsUpdatePasswordCardProps {

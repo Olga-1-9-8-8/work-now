@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import { useLanguageSwitcher } from "../../../shared/widgets/languages-switcher";
-import { logout as logoutApi } from "../api/apiAuth";
+import { useLanguageSwitcher } from "../../../widgets/languages-switcher";
+import { logout as logoutApi } from "../api/apiLogout";
 
 export const useLogout = () => {
   const queryClient = useQueryClient();

@@ -2,7 +2,7 @@ import { Trash2Icon } from "lucide-react";
 import { useUpdateUser } from "../../../../../shared/services/auth";
 import { UserEntity } from "../../../../../shared/types";
 import { Button } from "../../../../../shared/ui/buttons/Button";
-import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher";
 import { LkDetailsFormAvatar } from "../../avatar/LkDetailsFormAvatar";
 import { LkDetailsFormAvatarBlockFileInput } from "./LkDetailsFormAvatarBlockFileInput";
 

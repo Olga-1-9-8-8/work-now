@@ -10,7 +10,7 @@ import {
 } from "../../../../shared/ui/radio/RadioGroupWithLabel";
 import { TypographyH2 } from "../../../../shared/ui/typography/TypographyH2";
 import { formatPhoneNumber, maskPhoneNumber } from "../../../../shared/utils/helpers";
-import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher/hooks/useLanguageSwitcher";
+import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher";
 import { LkDetailsFormAvatar } from "../avatar/LkDetailsFormAvatar";
 import { LkDetailsCard } from "../card/LkDetailsCard";
 import { LkDetailsForm } from "../form/LkDetailsForm";
