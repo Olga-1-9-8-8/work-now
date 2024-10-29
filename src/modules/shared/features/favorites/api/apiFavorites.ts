@@ -1,31 +1,6 @@
-import { ResumeWithProfileApiTypeInput } from "../../../api";
-import { VacancyWithProfileApiTypeInput } from "../../../api/types/VacancyApiType";
 import { supabase } from "../../../services/api/supabase";
 import { UserEntity } from "../../../types";
 import { buildPaginationQuery } from "../../filters/server-side/utils/buildPaginationQuery";
-
-const processItemsWithFavoriteApplyStatusAndDownloadAvatar = async <
-  T extends ResumeWithProfileApiTypeInput | VacancyWithProfileApiTypeInput | null,
->(
-  items: T[],
-) => {
-  const filteredItems = items.filter((item) => item !== null);
-
-  return Promise.all(
-    filteredItems.map(async (item) => {
-      const profiles = item.profiles
-        ? {
-            ...item.profiles,
-          }
-        : null;
-
-      return {
-        ...item,
-        profiles,
-      };
-    }),
-  );
-};
 
 export const getFavorites = async (page: number, t: (key: string) => string) => {
   const {
@@ -54,12 +29,8 @@ export const getFavorites = async (page: number, t: (key: string) => string) => 
   }
 
   const favoritesData = {
-    vacancies: await processItemsWithFavoriteApplyStatusAndDownloadAvatar(
-      data.flatMap((item) => item.vacancies),
-    ),
-    resumes: await processItemsWithFavoriteApplyStatusAndDownloadAvatar(
-      data.flatMap((item) => item.resumes),
-    ),
+    vacancies: data.flatMap((item) => item.vacancies).filter((item) => item !== null),
+    resumes: data.flatMap((item) => item.resumes).filter((item) => item !== null),
   };
 
   return { data: favoritesData, totalCount: count };

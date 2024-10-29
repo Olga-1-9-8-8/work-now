@@ -42,7 +42,7 @@ export const LkDetailsForm = ({ profile, onModalClose }: LkDetailsFormProps) => 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 py-4">
-        <LkDetailsFormAvatarBlock avatarSrc={profile.avatar} role={role} />
+        <LkDetailsFormAvatarBlock avatar={profile.avatar} role={role} />
         <FormInputField<LkDetailsFormType>
           label={`${role === UserEntity.Company ? t("lk.details.form.companyName") : t("lk.details.form.name")}`}
           name="userName"

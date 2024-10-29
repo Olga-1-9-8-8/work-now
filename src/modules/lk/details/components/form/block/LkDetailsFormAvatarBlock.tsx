@@ -7,18 +7,18 @@ import { LkDetailsFormAvatar } from "../../avatar/LkDetailsFormAvatar";
 import { LkDetailsFormAvatarBlockFileInput } from "./LkDetailsFormAvatarBlockFileInput";
 
 interface LkDetailsFormAvatarBlockProps {
-  avatarSrc?: string;
+  avatar?: string;
   role: UserEntity;
 }
 
-export const LkDetailsFormAvatarBlock = ({ avatarSrc, role }: LkDetailsFormAvatarBlockProps) => {
+export const LkDetailsFormAvatarBlock = ({ avatar, role }: LkDetailsFormAvatarBlockProps) => {
   const { updateUser, isUpdatingUser } = useUpdateUser();
   const { t } = useLanguageSwitcher("lk");
 
-  return avatarSrc ? (
+  return avatar ? (
     <div className="flex items-center justify-evenly gap-4">
       <LkDetailsFormAvatarBlockFileInput />
-      <LkDetailsFormAvatar avatarSrc={avatarSrc} role={role} />
+      <LkDetailsFormAvatar avatar={avatar} role={role} />
 
       <div className=" flex flex-col items-center">
         <Button
@@ -35,7 +35,7 @@ export const LkDetailsFormAvatarBlock = ({ avatarSrc, role }: LkDetailsFormAvata
     </div>
   ) : (
     <div className="flex flex-col items-center gap-4">
-      <LkDetailsFormAvatar avatarSrc={avatarSrc} role={role} />
+      <LkDetailsFormAvatar avatar={avatar} role={role} />
       <LkDetailsFormAvatarBlockFileInput className="flex-row gap-2" />
     </div>
   );
