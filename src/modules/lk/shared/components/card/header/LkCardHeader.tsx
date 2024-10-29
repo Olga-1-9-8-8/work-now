@@ -2,10 +2,8 @@ import { ArrowRight, Building2 } from "lucide-react";
 import { MapCityBadgeGroup } from "../../../../../shared/components/map";
 import { Avatar } from "../../../../../shared/features/avatar";
 import { UniversalCardItemType, UserEntity } from "../../../../../shared/types";
-import { Badge } from "../../../../../shared/ui/badge/Badge";
 import { Button } from "../../../../../shared/ui/buttons/Button";
 import { CardHeader } from "../../../../../shared/ui/card/Card";
-import { getSalaryTitle } from "../../../../../shared/utils";
 import { useLanguageSwitcher } from "../../../../../shared/widgets/languages-switcher";
 import { LkCardHeaderTitle } from "./LkCardHeaderTitle";
 
@@ -19,25 +17,24 @@ export const LkCardHeader = ({ data }: LkCardHeaderProps) => {
 
   return (
     <CardHeader className="flex-row justify-between">
-      <div className="flex items-center gap-4">
-        <Avatar
-          avatar={data.avatar}
-          userName={data.userName}
-          icon={isCompany ? Building2 : undefined}
-          className="h-16 w-16"
-        />
-        <div className="flex flex-col gap-2">
+      <div>
+        <div className="flex items-center gap-2">
+          <Avatar
+            avatar={data.avatar}
+            userName={data.userName}
+            icon={isCompany ? Building2 : undefined}
+            className=" h-14 w-14 sm:h-16 sm:w-16"
+          />
           <LkCardHeaderTitle
             position={data.position}
             id={data.id}
             role={data.role}
             userName={data.userName}
+            language={data.language}
+            salary={data.salary}
           />
-          {data.cities && <MapCityBadgeGroup cities={data.cities} />}
-          <Badge className="ml-4 w-max" variant="success">
-            {getSalaryTitle(data.language, data.salary)}
-          </Badge>
         </div>
+        {data.cities && <MapCityBadgeGroup cities={data.cities} />}
       </div>
       <Button variant="link" className="hidden py-0 lg:inline-flex">
         {t("lk.card.linkTitle")}{" "}
