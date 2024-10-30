@@ -1,6 +1,7 @@
 # WorkNow 💼
 
-WorkNow is a international platform for job and employee search. It allows users to create resumes and vacancies, hired employees, and get a job in markets of different countries.
+WorkNow is a international platform for job and employee search.
+It allows users to create resumes and vacancies, hired employees, and get a job in markets of different countries.
 
 ## Getting started 💻
 
