@@ -3,7 +3,7 @@ import { FooterNavigationListItem } from "./item/FooterNavigationListItem";
 
 const footerItems = [
   {
-    href: externalUrlsConfig.links.twitter,
+    href: externalUrlsConfig.links.linkedIn,
     title: "Built by",
     text: "Olga Koroleva",
   },
@@ -13,9 +13,7 @@ const footerItems = [
     text: "Vercel",
   },
   {
-    href: externalUrlsConfig.links.github,
-    title: "The source code is available on",
-    text: "GitHub",
+    title: "The source code is on GitHub.",
   },
 ];
 

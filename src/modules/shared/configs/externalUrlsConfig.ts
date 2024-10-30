@@ -1,8 +1,6 @@
 interface ExternalUrlsConfig {
   links: {
-    twitter: string;
-    github: string;
-    youtube: string;
+    linkedIn: string;
     vercel: string;
     whatsApp: string;
     telegram: string;
@@ -11,9 +9,7 @@ interface ExternalUrlsConfig {
 
 export const externalUrlsConfig: ExternalUrlsConfig = {
   links: {
-    twitter: "https://twitter.com",
-    github: "https://github.com",
-    youtube: "https://youtube.com",
+    linkedIn: "www.linkedin.com/in/olgakoroleva88",
     vercel: "https://vercel.com",
     whatsApp: "https://wa.me/",
     telegram: "https://t.me/",
