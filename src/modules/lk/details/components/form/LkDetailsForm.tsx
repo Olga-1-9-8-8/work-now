@@ -10,7 +10,7 @@ import { FormInputOptField } from "../../../../shared/ui/form-control/input/Form
 import { Form } from "../../../../shared/ui/form/Form";
 import { useLanguageSwitcher } from "../../../../shared/widgets/languages-switcher";
 import { LkDetailsFormType } from "../../types/LkDetailsFormType";
-import { getLkDetailsFormValidationSchema } from "../../validation/lkDetailsFormValidationSchema";
+import { getLkDetailsFormValidationSchema } from "../../validation/getLkDetailsFormValidationSchema";
 import { LkDetailsFormAvatarBlock } from "./block/LkDetailsFormAvatarBlock";
 
 interface LkDetailsFormProps {
