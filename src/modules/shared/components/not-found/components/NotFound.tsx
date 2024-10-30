@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { NoRoadIcon } from "../../../ui/icons";
+import { NotFound as NotFoundIcon } from "../../../ui/icons";
 import { TypographyH6 } from "../../../ui/typography/TypographyH6";
 
 interface NotFoundProps {
@@ -13,7 +13,7 @@ export const NotFound = ({ title, description }: NotFoundProps) => {
       <TypographyH6 className="text-center">
         {title}. {description}
       </TypographyH6>
-      <NoRoadIcon className="h-32 w-32" />
+      <NotFoundIcon className="h-32 w-32" />
     </div>
   );
 };

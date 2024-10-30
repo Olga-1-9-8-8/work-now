@@ -6,7 +6,7 @@ import { Spinner } from "../spinner/Spinner";
 import { AppLayoutFooter } from "./footer/AppLayoutFooter";
 import { AppLayoutHeader } from "./header/AppLayoutHeader";
 
-export const AppLayout = () => {
+const AppLayout = () => {
   const isMobile = useResponsiveContext();
   return (
     <div className="overflow-x-hidden ">
@@ -28,3 +28,6 @@ export const AppLayout = () => {
     </div>
   );
 };
+
+// eslint-disable-next-line import/no-default-export
+export default AppLayout;

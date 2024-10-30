@@ -2,7 +2,7 @@ import { SeoMetadata } from "../../shared/navigation";
 import { useLanguageSwitcher } from "../../shared/widgets/languages-switcher";
 import { Home } from "../components/Home";
 
-export const HomePage = () => {
+const HomePage = () => {
   const { t } = useLanguageSwitcher("seo");
 
   return (
@@ -12,3 +12,6 @@ export const HomePage = () => {
     </>
   );
 };
+
+// eslint-disable-next-line import/no-default-export
+export default HomePage;

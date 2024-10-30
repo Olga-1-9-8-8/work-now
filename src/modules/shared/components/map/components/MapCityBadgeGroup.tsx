@@ -10,16 +10,9 @@ interface MapCityBadgeGroupProps {
 export const MapCityBadgeGroup = ({ cities }: MapCityBadgeGroupProps) => {
   return (
     <CountLabelWithTooltip
-      title={
-        <MapBadge
-          city={capitalizeFirstLetter(cities[0].city)}
-          coordinates={cities[0].coordinates}
-        />
-      }
+      title={<MapBadge city={capitalizeFirstLetter(cities[0].city)} />}
       items={cities}
-      renderContent={({ city, coordinates }) => (
-        <MapBadge key={city} city={capitalizeFirstLetter(city)} coordinates={coordinates} />
-      )}
+      renderContent={({ city }) => <MapBadge key={city} city={capitalizeFirstLetter(city)} />}
     />
   );
 };

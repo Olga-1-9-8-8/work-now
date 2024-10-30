@@ -1,18 +1,19 @@
 import { lazy } from "react";
 import { Navigate, RouteObject } from "react-router-dom";
 import { AuthLayout } from "../../../../auth/shared";
-import { HomePage } from "../../../../home/pages/HomePage";
 import { LkLayout } from "../../../../lk/shared/ui";
 import { PageNotFound } from "../../../pages";
-import { AppLayout } from "../../../ui/layout";
 import { ProtectedRoute } from "../components/ProtectedRoute";
 
+const HomePage = lazy(() => import("../../../../home"));
 const ResumesListPage = lazy(() => import("../../../../resume/list"));
 const ResumeCreationPage = lazy(() => import("../../../../resume/creation"));
 const ResumeDetailsPage = lazy(() => import("../../../../resume/details"));
 const VacanciesListPage = lazy(() => import("../../../../vacancy/list"));
 const VacancyCreationPage = lazy(() => import("../../../../vacancy/creation"));
 const VacancyDetailsPage = lazy(() => import("../../../../vacancy/details"));
+
+const AppLayout = lazy(() => import("../../../ui/layout"));
 const AuthLoginPage = lazy(() => import("../../../../auth/login"));
 const AuthResetPage = lazy(() => import("../../../../auth/reset"));
 const AuthUpdatePasswordPage = lazy(() => import("../../../../auth/update"));

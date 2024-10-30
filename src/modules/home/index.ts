@@ -1,1 +1,2 @@
-export { HomePage } from "./pages/HomePage";
+// eslint-disable-next-line no-restricted-exports, import/no-default-export
+export { default } from "./pages/HomePage";
