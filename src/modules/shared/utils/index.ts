@@ -11,5 +11,4 @@ export { mapItemToApiType } from "./mappers/mapItemToApiType";
 export { mapResumeVacancyItem } from "./mappers/mapResumeVacancyItem";
 export { mapUniversalItem } from "./mappers/mapUniversalItem";
 export { mapUniversalItemWithProfile } from "./mappers/mapUniversalItemWithProfile";
-export { mapUniversalItems } from "./mappers/mapUniversalItems";
 export { mapUniversalEngagement } from "./mappers/mapViewsItem";
