@@ -31,7 +31,7 @@
       }
     },
     "login": {
-      "title": "Login to  Account",
+      "title": "Login to Account",
       "form": {
         "title": "Login to account",
         "email": {

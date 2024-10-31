@@ -31,7 +31,7 @@
       }
     },
     "login": {
-      "title": "In das Benutzerkonto einloggen",
+      "title": "Login an Ihrem Konto",
       "form": {
         "title": "Melden Sie sich beim Konto an",
         "email": {
