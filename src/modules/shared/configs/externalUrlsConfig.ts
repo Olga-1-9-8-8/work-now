@@ -10,7 +10,7 @@ interface ExternalUrlsConfig {
 export const externalUrlsConfig: ExternalUrlsConfig = {
   links: {
     linkedIn: "www.linkedin.com/in/olgakoroleva88",
-    vercel: "https://vercel.com",
+    vercel: "https://worknow-global.vercel.app/",
     whatsApp: "https://wa.me/",
     telegram: "https://t.me/",
   },
