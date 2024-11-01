@@ -15,6 +15,7 @@ interface DetailsCardHeaderOperationsProps {
   creationDate: Date;
   updatedAt?: Date | null;
   applicantsQuantity: number;
+  userId: string;
 }
 export const DetailsCardHeaderOperations = ({
   id,
@@ -22,8 +23,10 @@ export const DetailsCardHeaderOperations = ({
   updatedAt,
   creationDate,
   applicantsQuantity,
+  userId,
 }: DetailsCardHeaderOperationsProps) => {
-  const { isAuthenticated, role } = useUser();
+  const { isAuthenticated, role, user } = useUser();
+
   const { language, t } = useLanguageSwitcher("shared");
 
   const isDisabled = !isAuthenticated || !!isHiring === (role === UserEntity.Company);
@@ -37,31 +40,33 @@ export const DetailsCardHeaderOperations = ({
 
   return (
     <div className="flex flex-col gap-3">
-      <div className="md:flex-start flex flex-row-reverse justify-end gap-8 md:flex-row">
-        <FavoriteButton
-          id={id}
-          role={role}
-          tooltipContent={
-            isDisabled
-              ? isHiring
-                ? t("shared.details.card.operations.tooltip.favorites.candidate")
-                : t("shared.details.card.operations.tooltip.favorites.company")
-              : undefined
-          }
-          disabled={isDisabled}
-        />
-        <AppliedButton
-          id={id}
-          disabled={isDisabled}
-          tooltipContent={
-            isDisabled
-              ? isHiring
-                ? t("shared.details.card.operations.tooltip.applies.candidate")
-                : t("shared.details.card.operations.tooltip.applies.company")
-              : undefined
-          }
-        />
-      </div>
+      {user?.id !== userId && (
+        <div className="md:flex-start flex flex-row-reverse justify-end gap-8 md:flex-row">
+          <FavoriteButton
+            id={id}
+            role={role}
+            tooltipContent={
+              isDisabled
+                ? isHiring
+                  ? t("shared.details.card.operations.tooltip.favorites.candidate")
+                  : t("shared.details.card.operations.tooltip.favorites.company")
+                : undefined
+            }
+            disabled={isDisabled}
+          />
+          <AppliedButton
+            id={id}
+            disabled={isDisabled}
+            tooltipContent={
+              isDisabled
+                ? isHiring
+                  ? t("shared.details.card.operations.tooltip.applies.candidate")
+                  : t("shared.details.card.operations.tooltip.applies.company")
+                : undefined
+            }
+          />
+        </div>
+      )}
       <p className="mt-2 flex gap-1 text-sm font-medium text-muted-foreground">
         <ClipboardCheck size={20} className="stroke-success" />
         {getApplicantsQuantityText}

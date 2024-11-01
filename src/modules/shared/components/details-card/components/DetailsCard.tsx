@@ -34,6 +34,7 @@ export const DetailsCard = memo(({ data, isHiring = false, className }: DetailsC
     gender,
     avatar,
     language,
+    userId,
   } = data;
 
   return (
@@ -49,6 +50,7 @@ export const DetailsCard = memo(({ data, isHiring = false, className }: DetailsC
             updatedAt,
             applicantsQuantity,
             isHiring,
+            userId,
           }}
         />
       </DetailsCardHeaderBlock>
@@ -64,7 +66,7 @@ export const DetailsCard = memo(({ data, isHiring = false, className }: DetailsC
         <DetailsCardContentBlock.DetailsCardContentAbout {...{ about, isHiring }} />
       </DetailsCardContentBlock>
       <DetailsCardFooterBlock>
-        <DetailsCardFooterBlock.DetailsCardFooterSocials {...{ phone, isHiring }} />
+        <DetailsCardFooterBlock.DetailsCardFooterSocials {...{ phone, isHiring, userId }} />
       </DetailsCardFooterBlock>
     </Card>
   );

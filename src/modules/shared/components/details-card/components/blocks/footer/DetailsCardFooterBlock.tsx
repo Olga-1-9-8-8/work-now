@@ -11,14 +11,15 @@ import { CardSocialsButtons } from "../../../../card";
 interface DetailsCardFooterSocialsProps {
   phone?: string;
   isHiring?: boolean;
+  userId: string;
 }
 
-const DetailsCardFooterSocials = ({ phone, isHiring }: DetailsCardFooterSocialsProps) => {
-  const { isAuthenticated, role } = useUser();
+const DetailsCardFooterSocials = ({ phone, isHiring, userId }: DetailsCardFooterSocialsProps) => {
+  const { isAuthenticated, role, user } = useUser();
   const { t } = useLanguageSwitcher("shared");
 
   const canShow = isAuthenticated && role === (isHiring ? UserEntity.Person : UserEntity.Company);
-
+  if (userId === user?.id) return null;
   return (
     <>
       <TypographyH4 className="py-3">{t("shared.details.card.footer.title")}</TypographyH4>
