@@ -8,19 +8,20 @@ export const useFavorite = (id: number) => {
 
   const {
     isLoading: isInFavoritesLoading,
-    data: favorite,
+    data: isInFavorites,
     error,
   } = useQuery({
-    queryKey: ["favorite", id],
+    queryKey: ["favorites", id],
     queryFn: () => getFavorite(id, t),
+    select: (data) => !!data,
   });
 
   return useMemo(
     () => ({
       isInFavoritesLoading,
       isInFavoritesError: error,
-      isInFavorites: !!favorite,
+      isInFavorites,
     }),
-    [error, favorite, isInFavoritesLoading],
+    [error, isInFavorites, isInFavoritesLoading],
   );
 };

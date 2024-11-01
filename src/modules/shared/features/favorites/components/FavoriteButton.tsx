@@ -1,11 +1,11 @@
 import { Heart } from "lucide-react";
-import { memo, useLayoutEffect, useState } from "react";
+import { memo } from "react";
+import { FaSpinner } from "react-icons/fa6";
 import { Button, ButtonProps } from "../../../ui/buttons/Button";
 import { Tooltip } from "../../../ui/tooltip/Tooltip";
 import { useLanguageSwitcher } from "../../../widgets/languages-switcher";
-import { useAddFavorite } from "../hooks/useAddFavorite";
-import { useDeleteFavorite } from "../hooks/useDeleteFavorite.";
 import { useFavorite } from "../hooks/useFavorite";
+import { useHandleFavorite } from "../hooks/useHandleFavorite";
 
 type FavoriteButtonProps = {
   id: number;
@@ -16,28 +16,13 @@ type FavoriteButtonProps = {
 export const FavoriteButton = memo(
   ({ id, withTitle, tooltipContent, ...props }: FavoriteButtonProps) => {
     const { isInFavorites, isInFavoritesLoading } = useFavorite(id);
-
-    const [isFavorite, setIsFavorite] = useState(isInFavorites);
-    const { deleteFavorite, isFavoriteDeleting } = useDeleteFavorite();
-    const { addFavorite, isFavoriteAdding } = useAddFavorite();
-
     const { t } = useLanguageSwitcher("shared");
 
-    useLayoutEffect(() => {
-      if (isInFavorites) setIsFavorite(isInFavorites);
-    }, [isInFavorites]);
-
-    const handleFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-      e.stopPropagation();
-      setIsFavorite((prevIsFavorite) => {
-        if (prevIsFavorite) {
-          deleteFavorite(id);
-        } else {
-          addFavorite(id);
-        }
-        return !prevIsFavorite;
-      });
-    };
+    const { handleFavoriteClick, isFavoriteDeleting, isFavoriteAdding } = useHandleFavorite(
+      id,
+      isInFavorites,
+    );
+    const isDisabled = isInFavoritesLoading || isFavoriteDeleting || isFavoriteAdding;
 
     return (
       <Tooltip
@@ -49,19 +34,24 @@ export const FavoriteButton = memo(
       >
         <div>
           <Button
-            className={`group w-full px-2 lg:w-auto ${isFavorite && "border-2 border-destructive"}`}
+            className={`group w-full px-2 lg:w-auto ${isInFavorites && "border-2 border-destructive"}`}
             variant={withTitle ? "secondary" : "outline"}
-            disabled={isFavoriteDeleting || isFavoriteAdding || isInFavoritesLoading}
+            disabled={isDisabled}
             size={withTitle ? "default" : "icon"}
-            onClick={handleFavoriteClick}
+            onClick={(e) => !isDisabled && handleFavoriteClick(e)}
             {...props}
           >
-            <Heart
-              className={`h-5 w-5 stroke-destructive group-hover:fill-destructive ${isFavorite && "fill-destructive"}`}
-            />
+            {isInFavoritesLoading ? (
+              <FaSpinner className="h-5 w-5 animate-spin-slow text-secondary" />
+            ) : (
+              <Heart
+                className={`h-5 w-5 stroke-destructive group-hover:fill-destructive ${isInFavorites && "fill-destructive"}`}
+              />
+            )}
+
             {withTitle && (
               <span className="ml-2">
-                {isFavorite
+                {isInFavorites
                   ? t("shared.favorites.button.removed")
                   : t("shared.favorites.button.add")}
               </span>

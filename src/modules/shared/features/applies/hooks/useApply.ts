@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { useMemo } from "react";
 import { useLanguageSwitcher } from "../../../widgets/languages-switcher";
 import { getApply } from "../api/apiApply";
 
@@ -8,19 +7,17 @@ export const useApply = (id: number) => {
 
   const {
     isLoading: isInAppliesLoading,
-    data: applies,
+    data: isInApplies,
     error,
   } = useQuery({
-    queryKey: ["apply", id],
+    queryKey: ["applies", id],
     queryFn: () => getApply(id, t),
+    select: (data) => !!data,
   });
 
-  return useMemo(
-    () => ({
-      isInAppliesLoading,
-      isInAppliesError: error,
-      isInApplies: !!applies,
-    }),
-    [error, applies, isInAppliesLoading],
-  );
+  return {
+    isInAppliesLoading,
+    isInAppliesError: error,
+    isInApplies,
+  };
 };

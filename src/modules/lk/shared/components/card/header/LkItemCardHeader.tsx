@@ -37,7 +37,7 @@ export const LkItemCardHeader = ({
           to={`/${isCompany ? "vacancies" : "resumes"}/${id}`}
           state={{
             from: `${location.pathname}${location.search}`,
-            title: `${t("lk.card.backButtonTitle")} ${isCompany ? t("lk.vacancies.backButtonTitle") : t("lk.resumes.backButtonTitle")}`,
+            title: `${isCompany ? t("lk.vacancies.backButtonTitle") : t("lk.resumes.backButtonTitle")}`,
           }}
         >
           <CardTitle className="text-lg text-primary-extraDark sm:text-xl">

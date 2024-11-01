@@ -20,9 +20,6 @@ export const useDeleteFavorite = () => {
         queryKey: ["favorites"],
       });
       queryClient.invalidateQueries({
-        queryKey: ["applies"],
-      });
-      queryClient.invalidateQueries({
         queryKey: ["counts"],
       });
       queryClient.invalidateQueries({

@@ -14,6 +14,7 @@ export const useProfile = () => {
   } = useQuery({
     queryKey: ["profile", user?.id],
     queryFn: () => getProfile(user?.id),
+    enabled: !!user?.id,
   });
 
   const memoizedProfile = useMemo(() => (profile ? mapProfile(profile) : undefined), [profile]);
