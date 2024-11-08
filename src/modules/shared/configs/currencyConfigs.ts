@@ -2,17 +2,17 @@ import { BadgeDollarSign, BadgeEuro, BadgeRussianRuble } from "lucide-react";
 
 export const currencyConfigs = {
   ru: {
-    title: " руб.",
+    title: " ₽",
     icon: BadgeRussianRuble,
     currency: "RUB",
   },
   en: {
-    title: " dol.",
+    title: " $",
     icon: BadgeDollarSign,
     currency: "USD",
   },
   de: {
-    title: " euro",
+    title: " €",
     icon: BadgeEuro,
     currency: "EUR",
   },

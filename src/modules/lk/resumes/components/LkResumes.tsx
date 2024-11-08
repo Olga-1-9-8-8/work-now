@@ -24,7 +24,7 @@ export const LkResumes = () => {
   ) : (
     <NotExist
       title={
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col items-center gap-4">
           <span>{t("lk.resumes.notExist.title")}</span>
           <Button onClick={() => navigate("/resumes/creation")} variant="success" size="sm">
             {t("lk.resumes.buttonTitle")}

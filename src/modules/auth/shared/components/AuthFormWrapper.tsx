@@ -31,7 +31,7 @@ export const AuthFormWrapper = <T extends FieldValues>({
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit((data) => onSubmit(data, form.reset))}
-        className="w-full min-w-60 space-y-6"
+        className="w-full space-y-6"
       >
         {children}
         <Button className="w-full" type="submit" disabled={isLoading}>

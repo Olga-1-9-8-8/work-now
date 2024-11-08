@@ -11,7 +11,7 @@ export const SearchListTitleFilterLabel = ({ titleItems }: SearchListTitleFilter
 
   return (
     <CountLabelWithTooltip
-      title={truncateText(capitalizeFirstLetter(titleItems[0]), isMobile ? 28 : 55)}
+      title={truncateText(capitalizeFirstLetter(titleItems[0]), isMobile ? 24 : 55)}
       badgeClassName="bg-primary"
       items={titleItems}
       className="min-w-48"

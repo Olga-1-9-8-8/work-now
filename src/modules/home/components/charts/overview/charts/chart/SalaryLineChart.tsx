@@ -6,6 +6,7 @@ import {
   currencyConfigs,
   homeChartSalaryConfig,
 } from "../../../../../../shared/configs";
+import { useResponsiveContext } from "../../../../../../shared/responsive";
 import { useLanguageSwitcher } from "../../../../../../shared/widgets/languages-switcher";
 import { UniversalItemAnalyticsApiTypeInput } from "../../../../../types/UniversalItemAnalyticsApiTypeInput";
 import { mapItemsToSalaryLineChartData } from "../../../../../utils/mappers/mapItemsToSalaryLineChartData";
@@ -28,6 +29,7 @@ export const SalaryLineChart = ({
   isLoading,
 }: LineChartProps) => {
   const { language } = useLanguageSwitcher("home");
+  const isMobile = useResponsiveContext();
   const chartData = useMemo(() => {
     if (!items || items.length === 0) return null;
     return mapItemsToSalaryLineChartData(items, numDays, language as LanguageType);
@@ -69,7 +71,11 @@ export const SalaryLineChart = ({
               stroke={series.stroke}
               fill={series.fill}
               strokeWidth={3}
-              name={series.name[language as LanguageType]}
+              name={
+                isMobile
+                  ? series.nameShort[language as LanguageType]
+                  : series.name[language as LanguageType]
+              }
               unit={currencyConfigs[language as LanguageType].title}
             />
           ))}

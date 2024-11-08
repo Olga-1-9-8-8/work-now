@@ -1,5 +1,6 @@
 import { TrashIcon } from "lucide-react";
 import { DeleteConfirmation } from "../../../../shared/components/delete-cofirmation";
+import { useResponsiveContext } from "../../../../shared/responsive";
 import { useDeleteAccount } from "../../../../shared/services/auth";
 import { Button } from "../../../../shared/ui/buttons/Button";
 import { DrawerDialogResponsive } from "../../../../shared/ui/drawer-dialog/DrawerDialogResponsive";
@@ -13,6 +14,7 @@ interface LkDetailsDeleteAccountCardProps {
 
 export const LkDetailsDeleteAccountCard = ({ isLoading }: LkDetailsDeleteAccountCardProps) => {
   const { deleteAccount, isAccountDeleting } = useDeleteAccount();
+  const isMobile = useResponsiveContext();
   const { t } = useLanguageSwitcher("lk");
 
   return (
@@ -22,11 +24,11 @@ export const LkDetailsDeleteAccountCard = ({ isLoading }: LkDetailsDeleteAccount
         <p className="font-medium text-muted-foreground">
           {t("lk.details.deleteAccountCard.text")}
         </p>
-        <div className="flex justify-end">
+        <div className="flex sm:justify-end">
           <DrawerDialogResponsive
             button={
               <Button
-                variant="link"
+                variant={isMobile ? "outline" : "link"}
                 size="lg"
                 className="flex gap-2 text-base text-destructive"
                 disabled={isAccountDeleting}

@@ -6,9 +6,9 @@ export const createJobDuplicateToApi = (
   item: UniversalJobType,
   isHiring: boolean,
   t: (key: string) => string,
-  language: LanguageType,
+  lang: LanguageType,
 ) => {
-  const { id, views, applicantsQuantity, cities, gender, ...itemData } = item;
+  const { id, views, applicantsQuantity, cities, gender, language, ...itemData } = item;
 
   const newItemData = {
     ...itemData,
@@ -19,6 +19,6 @@ export const createJobDuplicateToApi = (
     applicantsQuantity: 0,
     ...(isHiring ? { gender } : {}),
   };
-  const newItem = mapItemToApiType(newItemData, itemData.userId, language);
+  const newItem = mapItemToApiType(newItemData, itemData.userId, lang);
   return newItem;
 };

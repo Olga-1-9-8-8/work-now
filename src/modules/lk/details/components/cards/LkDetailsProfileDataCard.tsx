@@ -27,13 +27,10 @@ export const LkDetailsProfileDataCard = ({ profile, isLoading }: LkDetailsProfil
   return (
     <LkDetailsCard title={t("lk.details.profileDataCard.title")} isLoading={isLoading}>
       {profile && (
-        <section className="flex flex-col gap-4">
-          <div className="flex items-center gap-6">
+        <section className="flex flex-col gap-2">
+          <div className="flex items-center gap-4">
             <LkDetailsFormAvatar key={profile.avatar} avatar={profile.avatar} role={profile.role} />
 
-            <TypographyH2 className=" text-xl text-primary-extraDark lg:text-2xl">
-              {profile.userName || t("lk.details.profileDataCard.noName")}
-            </TypographyH2>
             <DrawerDialogResponsive
               button={
                 <Button size="icon" variant="ghost" className="hover:bg-transparent">
@@ -45,15 +42,19 @@ export const LkDetailsProfileDataCard = ({ profile, isLoading }: LkDetailsProfil
               <LkDetailsForm profile={profile} />
             </DrawerDialogResponsive>
           </div>
+          <TypographyH2 className="text-xl text-primary-extraDark">
+            {profile.userName || t("lk.details.profileDataCard.noName")}
+          </TypographyH2>
+
           {profile.role === UserEntity.Person && (
             <RadioGroupWithLabel
-              className="flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-0"
+              className="flex-col items-start gap-2 space-x-0 sm:flex-row sm:items-center"
               label={t("lk.details.profileDataCard.gender")}
               disabled={isUpdatingUser}
               value={profile.gender}
               onValueChange={(value: GenderType) => updateUser({ gender: value })}
             >
-              <div className="flex gap-6 p-2">
+              <div className="flex gap-6 py-2">
                 <RadioGroupItemWithLabel
                   label={`${getGenderTitle(language as LanguageType, "male").slice(0, 3)}.`}
                   value="male"
